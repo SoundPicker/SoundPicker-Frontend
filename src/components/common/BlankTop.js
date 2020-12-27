@@ -9,6 +9,7 @@ const BlankDiv = styled.div`
 `
 
 const BlankTop = ({DesktopMargin,MobileMargin}) => {
+    // 이 친구는 마진을 담당하는 친구야... 예시로 만들어 놨지만 유용하게 써주길 바래
     return <BlankDiv DesktopMargin={DesktopMargin} MobileMargin={MobileMargin}></BlankDiv>
 }
 
