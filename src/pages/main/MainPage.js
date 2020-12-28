@@ -6,9 +6,9 @@ const MainPage = () => {
 
     return (
         <>
-            <BlankTop DesktopMargin='20' MobileMargin='10' />
+            <BlankTop DesktopMargin='20' TabletMargin='10' MobileMargin='5' />
             <MainContainer />
-            <BlankTop DesktopMargin='20' MobileMargin='10' />
+            <BlankTop DesktopMargin='20' TabletMargin='10' MobileMargin='5' />
         </>
     )
 }
