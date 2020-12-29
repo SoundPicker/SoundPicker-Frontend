@@ -127,7 +127,7 @@ const
 ```
 - main
      ├── dev (Develop)
-          ├── dev_seongmi
+          ├── dev_seungmi
           ├── dev_ayeon
           ├── dev_jaehun
           └── dev_jaehyeon
