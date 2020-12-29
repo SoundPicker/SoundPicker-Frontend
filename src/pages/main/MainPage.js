@@ -8,7 +8,7 @@ const MainPage = () => {
         <>
             <BlankTop DesktopMargin='20' TabletMargin='10' MobileMargin='5' />
             <MainContainer />
-            <BlankTop DesktopMargin='20' TabletMargin='10' MobileMargin='5' />
+            <BlankTop DesktopMargin='10' TabletMargin='10' MobileMargin='5' />
         </>
     )
 }
