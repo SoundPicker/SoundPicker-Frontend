@@ -129,7 +129,7 @@ const
      ├── dev (Develop)
           ├── dev_seungmi
           ├── dev_ayeon
-          ├── dev_jaehun
+          ├── dev_jaehoon
           └── dev_jaehyeon
 ```
 
