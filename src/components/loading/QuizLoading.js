@@ -3,6 +3,7 @@ import styled from "styled-components";
 import TitleComponent from "./TitleComponent";
 import ContentComponent from "./ContentComponent";
 import BlankTop from '../common/BlankTop';
+import LoadingComponent from '../common/LoadingComponent';
 import Bg1 from '../../assets/images/all_background.png';
 import Bg2 from '../../assets/images/all_background2.png';
 
@@ -36,7 +37,7 @@ const Wrapper=styled.div`
       width:100%auto;
     }
 
-    @media (min-width: 1024px) { //desktop
+    @media (min-width: 1024px) { //desktop 
       margin-top:15%;
       width:100%auto;
     }
@@ -46,54 +47,6 @@ const Wrapper=styled.div`
   }
 
 `;
-
-
-const CircleBorder = styled.div`
-  
-  
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-  border-radius: 50%;
-  background: linear-gradient( rgba(96,255,205,1) ,rgba(96,255,205,0.2) ,rgba(96,255,205,0.01) );
-  box-shadow:  5px 0px 20px -5px  rgba(96,255,205,0.5);
-  animation: spin .8s linear 0s infinite;
-
-  @media  (max-width:1024px) { 
-    width: 30px;
-  height: 30px;
-  padding: 4px;
-    }
-    
-    @media (min-width: 1024px) {
-      width: 65px;
-     height: 65px;
-     padding: 7px;
-    }
-`;
-
-const CircleCore =styled.div`
- width: 100%;
-  height: 100%;
-  background-color: rgba(12,28,48,1);
-  border-radius: 50%;
-`;
-
-const SpinnerBox = styled.div`
-@keyframes spin {
-  from {
-    transform: rotate(359deg);
-  }
-  to{
-    transform: rotate(0);
-  }
-}
-* {
-  box-sizing: border-box;
-}
-`;
-
 const QuizLoading = () => {
 
     return(
@@ -105,11 +58,7 @@ const QuizLoading = () => {
                 <BlankTop DesktopMargin='2' TabletMargin='2' MobileMargin='2' />
             <TitleComponent title="레드벨벳 찐팬만 맞출 수 있는 정답모음" />
             <BlankTop DesktopMargin='2' TabletMargin='2' MobileMargin='2' />
-            <SpinnerBox>
-                <CircleBorder>
-                    <CircleCore></CircleCore>
-                </CircleBorder>
-            </SpinnerBox>
+            <LoadingComponent></LoadingComponent>
             <BlankTop DesktopMargin='5' TabletMargin='2' MobileMargin='2' />
             <ContentComponent title="아 빌리빈유 아빌리빈마라잎 벌써 일초가 지났지마-한~" />
             </Wrapper>
