@@ -46,6 +46,7 @@ const Main = () => {
       <Banner />
       <SearchInput />
       <Category />
+      <CardList />
     </Background>
   );
 };
