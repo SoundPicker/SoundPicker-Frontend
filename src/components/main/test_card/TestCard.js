@@ -103,7 +103,7 @@ const CardListWrap = styled.div`
 
 const GradientBox = styled.div`
   width: 60.1rem;
-  height: 39.3rem;
+  height: 33rem;
   position: absolute;
   bottom: 0;
   left: -15.5px;

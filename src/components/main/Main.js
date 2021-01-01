@@ -38,6 +38,7 @@ import Banner from "../main/banner/Banner";
 import SearchInput from "./SearchInput";
 import Category from "../main/category/Category";
 import CardList from "../main/test_card/TestCard";
+import Footer from "../main/footer/Footer";
 
 const Main = () => {
   return (
@@ -47,6 +48,7 @@ const Main = () => {
       <SearchInput />
       <Category />
       <CardList />
+      <Footer />
     </Background>
   );
 };
