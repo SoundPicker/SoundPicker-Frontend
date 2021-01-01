@@ -20,6 +20,7 @@ const LoginDiv = styled.div`
 
 const Login = styled.strong`
   font-size: 1.4rem;
+  font-weight: 700;
   color: #ffffff;
 `;
 
@@ -33,6 +34,7 @@ const SignUpDiv = styled.div`
 
 const SignUp = styled.strong`
   font-size: 1.4rem;
+  font-weight: 700;
   color: #ffffff;
 `;
 

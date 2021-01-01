@@ -155,6 +155,12 @@ html {
 @import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap");
 
 body,
-button {
+button,
+input {
   font-family: "Nanum Gothic", sans-serif;
+}
+
+/* 스크롤 막대 숨기기 */
+body::-webkit-scrollbar {
+  display: none;
 }

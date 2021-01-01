@@ -38,20 +38,24 @@ const CardTitle = styled.div`
   text-align: left;
   font-size: 2.4rem;
   font-weight: 700;
+  line-height: 3.4rem;
 `;
 
 const CardContent = styled.div`
   width: 22.2rem;
   text-align: left;
   font-size: 1.2rem;
+  line-height: 2.2rem;
 `;
 
 const TestNumber = styled.div`
   font-size: 1.2rem;
+  line-height: 1.8rem;
 `;
 
 const Play = styled.span`
   font-size: 1.2rem;
+  line-height: 1.8rem;
 `;
 
 const PlayBtn = styled.div`
@@ -83,28 +87,209 @@ const PlayFooter = styled.div`
   align-items: center;
 `;
 
+const CardWrapLeft = styled.div``;
+
+const CardWrapRight = styled.div``;
+
+const CardListWrap = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 57rem;
+  margin: 0 auto;
+`;
+
 const CardList = () => {
   return (
-    <>
-      <PlusBtn />
-      <Card>
-        <CardTitle>
-          오마이걸 찐팬 모여라 오마이걸 찐팬 오마이걸 찐팬 모여라. 미미 유튜브
-          보셨나요? 영상을 보고 나면 아이스크림을 반드시 먹게 됩니다. 지금도
-          아이스크림이 먹고 싶네요.
-        </CardTitle>
-        <BlankTop DesktopMargin={3} TabletMargin={2.7} MobileMargin={0} />
-        <CardContent>
-          내용이 들어갑니다.내용이 들어갑니다.내용이 들어갑니다.내용이
-          들어갑니다.내용이 들어갑니다.내용이 들어갑니다.내용이 들어갑니다.
-        </CardContent>
-        <BlankTop DesktopMargin={3.8} TabletMargin={3.3} MobileMargin={4.8} />
-        <PlayFooter>
-          <TestNumber>10문제</TestNumber>
-          <PlayBox />
-        </PlayFooter>
-      </Card>
-    </>
+    <CardListWrap>
+      <CardWrapLeft>
+        <PlusBtn />
+        <BlankTop DesktopMargin={1.6} TabletMargin={1.6} MobileMargin={1.8} />
+        {[...Array(4)].map((n, index) => {
+          return (
+            <>
+              <Card>
+                <CardTitle>
+                  오마이걸 찐팬 모여라 오마이걸 찐팬 오마이걸 찐팬 모여라.
+                  오마이걸 찐팬 모여라 오마이걸 찐팬 오마이걸 찐팬 모여라.
+                  오마이걸 찐팬 모여라 오마이걸 찐팬 오마이걸 찐팬 모여라.
+                </CardTitle>
+                <BlankTop
+                  DesktopMargin={1.6}
+                  TabletMargin={1.4}
+                  MobileMargin={1.8}
+                />
+                <CardContent>
+                  내용이 들어갑니다.내용이 들어갑니다.내용이 들어갑니다.내용이
+                  들어갑니다.내용이 들어갑니다.내용이 들어갑니다.내용이
+                  들어갑니다.
+                </CardContent>
+                <BlankTop
+                  DesktopMargin={3.8}
+                  TabletMargin={3.3}
+                  MobileMargin={4.8}
+                />
+                <PlayFooter>
+                  <TestNumber>10문제</TestNumber>
+                  <PlayBox />
+                </PlayFooter>
+              </Card>
+              <BlankTop
+                DesktopMargin={1.6}
+                TabletMargin={1.6}
+                MobileMargin={1.8}
+              />
+              <Card>
+                <CardTitle>
+                  오마이걸 찐팬 모여라 오마이걸 찐팬 오마이걸 찐팬 모여라.
+                </CardTitle>
+                <BlankTop
+                  DesktopMargin={1.6}
+                  TabletMargin={1.4}
+                  MobileMargin={1.8}
+                />
+                <CardContent>
+                  내용이 들어갑니다.내용이 들어갑니다.내용이 들어갑니다.내용이
+                  들어갑니다.내용이 들어갑니다.
+                </CardContent>
+                <BlankTop
+                  DesktopMargin={3.8}
+                  TabletMargin={3.3}
+                  MobileMargin={4.8}
+                />
+                <PlayFooter>
+                  <TestNumber>10문제</TestNumber>
+                  <PlayBox />
+                </PlayFooter>
+              </Card>
+              <BlankTop
+                DesktopMargin={1.6}
+                TabletMargin={1.6}
+                MobileMargin={1.8}
+              />
+              <Card>
+                <CardTitle>
+                  오마이걸 찐팬 모여라 오마이걸 찐팬 오마이걸 찐팬 모여라.
+                  오마이걸 찐팬 모여라 오마이걸 찐팬 오마이걸 찐팬 모여라.
+                </CardTitle>
+                <BlankTop
+                  DesktopMargin={1.6}
+                  TabletMargin={1.4}
+                  MobileMargin={1.8}
+                />
+                <CardContent>내용이 들어갑니다.내용이 들어갑니다.</CardContent>
+                <BlankTop
+                  DesktopMargin={3.8}
+                  TabletMargin={3.3}
+                  MobileMargin={4.8}
+                />
+                <PlayFooter>
+                  <TestNumber>10문제</TestNumber>
+                  <PlayBox />
+                </PlayFooter>
+              </Card>
+              <BlankTop
+                DesktopMargin={1.6}
+                TabletMargin={1.6}
+                MobileMargin={1.8}
+              />
+            </>
+          );
+        })}
+      </CardWrapLeft>
+      <CardWrapRight>
+        {[...Array(4)].map((n, index) => {
+          return (
+            <>
+              <Card>
+                <CardTitle>
+                  오마이걸 찐팬 모여라 오마이걸 찐팬 오마이걸 찐팬 모여라.
+                  오마이걸 찐팬 모여라 오마이걸 찐팬 오마이걸 찐팬 모여라.
+                  오마이걸 찐팬 모여라 오마이걸 찐팬 오마이걸 찐팬 모여라.
+                </CardTitle>
+                <BlankTop
+                  DesktopMargin={1.6}
+                  TabletMargin={1.4}
+                  MobileMargin={1.8}
+                />
+                <CardContent>
+                  내용이 들어갑니다.내용이 들어갑니다.내용이 들어갑니다.내용이
+                  들어갑니다.내용이 들어갑니다.내용이 들어갑니다.내용이
+                  들어갑니다.
+                </CardContent>
+                <BlankTop
+                  DesktopMargin={3.8}
+                  TabletMargin={3.3}
+                  MobileMargin={4.8}
+                />
+                <PlayFooter>
+                  <TestNumber>10문제</TestNumber>
+                  <PlayBox />
+                </PlayFooter>
+              </Card>
+              <BlankTop
+                DesktopMargin={1.6}
+                TabletMargin={1.6}
+                MobileMargin={1.8}
+              />
+              <Card>
+                <CardTitle>
+                  오마이걸 찐팬 모여라 오마이걸 찐팬 오마이걸 찐팬 모여라.
+                </CardTitle>
+                <BlankTop
+                  DesktopMargin={1.6}
+                  TabletMargin={1.4}
+                  MobileMargin={1.8}
+                />
+                <CardContent>
+                  내용이 들어갑니다.내용이 들어갑니다.내용이 들어갑니다.내용이
+                  들어갑니다.내용이 들어갑니다.
+                </CardContent>
+                <BlankTop
+                  DesktopMargin={3.8}
+                  TabletMargin={3.3}
+                  MobileMargin={4.8}
+                />
+                <PlayFooter>
+                  <TestNumber>10문제</TestNumber>
+                  <PlayBox />
+                </PlayFooter>
+              </Card>
+              <BlankTop
+                DesktopMargin={1.6}
+                TabletMargin={1.6}
+                MobileMargin={1.8}
+              />
+              <Card>
+                <CardTitle>
+                  오마이걸 찐팬 모여라 오마이걸 찐팬 오마이걸 찐팬 모여라.
+                  오마이걸 찐팬 모여라 오마이걸 찐팬 오마이걸 찐팬 모여라.
+                </CardTitle>
+                <BlankTop
+                  DesktopMargin={1.6}
+                  TabletMargin={1.4}
+                  MobileMargin={1.8}
+                />
+                <CardContent>내용이 들어갑니다.내용이 들어갑니다.</CardContent>
+                <BlankTop
+                  DesktopMargin={3.8}
+                  TabletMargin={3.3}
+                  MobileMargin={4.8}
+                />
+                <PlayFooter>
+                  <TestNumber>10문제</TestNumber>
+                  <PlayBox />
+                </PlayFooter>
+              </Card>
+              <BlankTop
+                DesktopMargin={1.6}
+                TabletMargin={1.6}
+                MobileMargin={1.8}
+              />
+            </>
+          );
+        })}
+      </CardWrapRight>
+    </CardListWrap>
   );
 };
 
