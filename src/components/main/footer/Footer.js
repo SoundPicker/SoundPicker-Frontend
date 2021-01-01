@@ -1,7 +1,11 @@
 import styled from "styled-components";
 import BlankTop from "../../common/BlankTop";
 import Divider from "../../common/Divider";
+import DesktopMotoText from "../../../assets/desktop/image_moto.png";
+import TabletMotoText from "../../../assets/tablet/image_moto.png";
 import MobileMotoText from "../../../assets/mobile/mobile_text_moto.png";
+import DesktopWaterMark from "../../../assets/desktop/image_watermark.png";
+import TabletWaterMark from "../../../assets/tablet/image_watermark.png";
 import MobileWaterMark from "../../../assets/mobile/mobile_image_watermark.png";
 
 const Wrap = styled.div`
@@ -9,19 +13,50 @@ const Wrap = styled.div`
   justify-content: center;
 `;
 
-const MotoText = styled.img.attrs({
-  src: MobileMotoText,
-})``;
+const MotoText = styled.div`
+  width: 16.4rem;
+  height: 1.6rem;
+  background: url(${DesktopMotoText});
+  background-repeat: no-repeat;
+  background-position: center center;
+  @media (max-width: 1024px) {
+    width: 14.5rem;
+    height: 1.3rem;
+    background: url(${TabletMotoText});
+  }
+  @media (max-width: 768px) {
+    width: 14.3rem;
+    height: 1.3rem;
+    background: url(${MobileMotoText});
+  }
+`;
 
-const WaterMark = styled.img.attrs({
-  src: MobileWaterMark,
-})``;
+const WaterMark = styled.div`
+  width: 37.5rem;
+  height: 6.5rem;
+  background: url(${DesktopWaterMark});
+  background-repeat: no-repeat;
+  background-position: center center;
+  @media (max-width: 1024px) {
+    width: 33.2rem;
+    height: 5.8rem;
+    background: url(${TabletWaterMark});
+  }
+  @media (max-width: 768px) {
+    width: 32.3rem;
+    height: 4.7rem;
+    background: url(${MobileWaterMark});
+  }
+`;
 
 const TextIntroduction = styled.div`
   display: flex;
   justify-content: center;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   color: #ffffff;
+  @media (max-width: 1024px) {
+    font-size: 1.4rem;
+  }
 `;
 
 const Plan = styled.div`
@@ -67,9 +102,16 @@ const NameTitle = styled.div`
 const Member = styled.div`
   display: flex;
   justify-content: space-between;
-  width: 54.3rem;
-  height: 16.6rem;
+  width: 84.6rem;
+  height: 17rem;
   margin: 0 auto;
+  @media (max-width: 1024px) {
+    width: 59.1rem;
+    height: 16.6rem;
+  }
+  @media (max-width: 768px) {
+    width: 54.3rem;
+  }
 `;
 
 const Footer = () => {

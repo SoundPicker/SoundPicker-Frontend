@@ -4,9 +4,12 @@ const HeaderDiv = styled.div`
   display: flex;
   justify-content: flex-end;
   width: 100vw;
-  height: 6.4rem;
-  padding: 1.2rem 1.8rem;
-  margin-bottom: 8.8em;
+  height: 9.4rem;
+  padding: 2.7rem 5.6rem;
+  @media (max-width: 768px) {
+    height: 6.4rem;
+    padding: 1.2rem 1.8rem;
+  }
 `;
 
 const LoginDiv = styled.div`
@@ -15,13 +18,19 @@ const LoginDiv = styled.div`
   align-items: center;
   width: 8.2rem;
   height: 4rem
-  margin-right: 0.9rem;
+  margin-right: 1.1rem;
+  @media(max-width: 768px){
+    margin-right: 0.9rem;
+  }
 `;
 
 const Login = styled.strong`
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   font-weight: 700;
   color: #ffffff;
+  @media (max-width: 768px) {
+    font-size: 1.4rem;
+  }
 `;
 
 const SignUpDiv = styled.div`
@@ -33,9 +42,12 @@ const SignUpDiv = styled.div`
 `;
 
 const SignUp = styled.strong`
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   font-weight: 700;
   color: #ffffff;
+  @media (max-width: 768px) {
+    font-size: 1.4rem;
+  }
 `;
 
 const Header = () => {
