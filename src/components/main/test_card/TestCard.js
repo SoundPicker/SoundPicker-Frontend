@@ -1,3 +1,4 @@
+// 카드 크기 때문에 breakpoint - 1440(추가), 768 -> 828로 변경
 import styled from "styled-components";
 import PlusDesktop from "../../../assets/desktop/button_add.png";
 import PlusTablet from "../../../assets/tablet/button_add.png";
