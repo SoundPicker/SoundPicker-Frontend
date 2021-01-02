@@ -20,7 +20,6 @@ const StyledSpan = styled.span`
     font-size:1.5rem;
     text-align: center;
     color: #FFFFFF;    
-
     @media only screen and (max-width: 1024px) {
         font-size:2rem;
 

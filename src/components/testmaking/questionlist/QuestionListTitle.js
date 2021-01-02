@@ -8,6 +8,8 @@ const Title = styled.h2`
     font-size:2.4rem;
     color: #60FFDA;
     text-align:center;
+    font-weight:bold;
+
     @media only screen and (max-width: 1024px) {
     font-size: 3.1rem;
   }

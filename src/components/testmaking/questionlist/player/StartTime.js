@@ -8,17 +8,35 @@ const StyledStartWarp = styled.div`
     justify-content:space-around;
     align-items:center;
     border:1px solid #fff;
+    padding-left:2rem;
+    padding-top:1.1rem;
+    padding-bottom:1.1rem;
+    padding-right:2rem;
+
     @media only screen and (max-width: 1024px) {
-        width:16.5rem;
+        width:14rem;
   }
     @media only screen and (max-width: 768px) {
         width:10.4rem;
+        height:2.8rem;
+        padding-left:0.9rem;
+        padding-top:0.8rem;
+        padding-bottom:0.8rem;
+        padding-right:0.9rem;
+
   }
 `
 const StyledText = styled.div`
      font-weight: bold;
     font-size: 1.2rem;
     color: #FFFFFF;
+    margin-top:0.2rem;
+
+    @media only screen and (max-width: 768px) {
+        font-size: 1.1rem;
+        margin-top:0rem;
+
+  }
 `
 const Time = styled.input`
     width:5rem;
@@ -28,6 +46,12 @@ const Time = styled.input`
     font-size: 1.2rem;
     text-align: center;
     color: rgba(255, 255, 255, 0.5);
+    @media only screen and (max-width: 768px) {
+        width:3.4rem;
+
+        font-size: 1.1rem;
+
+  }
 `
 
 

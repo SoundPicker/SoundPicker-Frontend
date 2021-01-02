@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 import {ReactComponent as BtnCategory} from '../../../assets/icons/button_category.svg';
 
+const StyledBtnCategory = styled(BtnCategory)`
+    align-self : flex-start;
+
+`
 const StyledInput = styled.input`
     width:100%;
     background-color:transparent;
@@ -8,6 +12,18 @@ const StyledInput = styled.input`
     border:0;
     color: #fff;
     font-size: 1.6rem;
+    padding-bottom:1.5rem;
+    @media only screen and (max-width: 1024px) {
+        padding-bottom:1.6rem;
+        font-size: 1.2rem;
+
+
+  }
+    @media only screen and (max-width: 768px) {
+        padding-bottom:1.2rem;
+                font-size: 1.2rem;
+
+  } 
     &::placeholder{
         color: #fff;
     }
@@ -16,16 +32,23 @@ const StyledButtonWrap = styled.div`
     display: flex;
     align-items:center;
     justify-content:center;
+    margin-bottom:1.5rem;
+
     cursor: pointer;
     width: ${props=> props.DesktopSize || 0}rem;
     height: ${props=> props.DesktopSize || 0}rem;
+
     @media only screen and (max-width: 1024px) {
     width: ${props=> props.TabletSize || 0}rem;
     height: ${props=> props.TabletpSize || 0}rem;
+    margin-bottom:5rem;
+
   }
     @media only screen and (max-width: 768px) {
     width: ${props=> props.MobileSize || 0}rem;
     height: ${props=> props.MobileSize || 0}rem;
+    margin-bottom:2rem;
+
   }    
 `
 const Category = styled.div`
@@ -90,7 +113,7 @@ const InputCategory = ({chooseCategory,chooseCategoryHandler,isCategoryVisible, 
         <>
             <div style={{width:'100%',display:"flex"}}>
                 <StyledInput type='text' disabled placeholder={inputPlaceholder} maxLength='20' name={inputName} value={chooseCategory?chooseCategory:''} onChange={chooseCategoryHandler}/>
-                <StyledButtonWrap DesktopSize='3.6' TabletSize='3.8' MobileSize='2.8'> <BtnCategory onClick={categoryVisibleHandler}/> </StyledButtonWrap>
+                <StyledButtonWrap DesktopSize='3.6' TabletSize='3.8' MobileSize='2.8'> <StyledBtnCategory onClick={categoryVisibleHandler}/> </StyledButtonWrap>
             </div>
             {isCategoryVisible ? 
             <Category>

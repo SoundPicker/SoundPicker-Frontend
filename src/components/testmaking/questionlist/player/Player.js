@@ -49,7 +49,7 @@ const Player =
 
 
         <TimeWrap>
-        {player ? `${currentTime}` : "0:00"}
+        {player ? `${currentTime}` : "00:00"}
         </TimeWrap>
         <WaveCenter>
             <WaveWrap>
@@ -100,11 +100,17 @@ const ButtonCover = styled.div`
   justify-content:center;
   align-items:center;
 
+  @media only screen and (max-width: 1024px) {
+      margin-left:0rem;
+      margin-right:1.4rem;
+      width:2.6rem;
+      height:2.6rem;
+  }
     @media only screen and (max-width: 768px) {
-        margin-left:0.4rem;
-        margin-right:0.6rem;
-
-
+      margin-left:0.8rem;
+      margin-right:0.9rem;
+      width:2.2rem;
+      height:2.2rem;
   }
 `
 
@@ -118,12 +124,25 @@ const BackButtonCover = styled.div`
   display:flex;
   justify-content:center;
   align-items:center;
+  @media only screen and (max-width: 1024px) {
+        margin-left:0;
+        margin-right:2.2rem;
+        width:2.6rem;
+        height:2.6rem;
+  }
+  @media only screen and (max-width: 768px) {
+      margin-right:0rem;
+      width:2.2rem;
+      height:2.2rem;
+
+  }
+
 `
 
 const Button = styled.div`
 
   all: unset;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   color: #ffffff;
   display:flex;
   align-items:center;
@@ -133,7 +152,7 @@ const Button = styled.div`
 const MoveButton = styled.div`
 
    all: unset;
-   font-size: 1.4rem;
+   font-size: 1.6rem;
   color: #ffffff;
   display:flex;
   align-items:center;
@@ -176,8 +195,15 @@ const TimeWrap = styled.div`
     justify-content:center;
     font-size:1.4rem;
     margin-top:0.3rem;
+    @media only screen and (max-width: 1024px) {
+        margin-right:1.8rem;
+  }
     @media only screen and (max-width: 768px) {
-        width: 3.8rem;
+        width: 4.5rem;
+        font-size:1.2rem;
+        margin-top:0.4rem;
+        margin-right:0.4rem;
+
 
 
   }
@@ -193,7 +219,7 @@ const WaveWrap = styled.div`
 
 const WaveCenter = styled.div`
     @media only screen and (max-width: 1024px) {
-        width:41rem;
+        width:31.4rem;
         height:3.6rem;
         display:flex;
         align-items:center;

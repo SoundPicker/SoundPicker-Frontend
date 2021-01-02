@@ -58,6 +58,8 @@ table {
 }
 *{
   box-sizing: border-box;
+  font-family: NanumGothic;
+
 }
 
 html,body{
@@ -67,6 +69,4 @@ html,body{
 
 html{
   font-size: 10px;
-  font-family: NanumGothic;
-
 }

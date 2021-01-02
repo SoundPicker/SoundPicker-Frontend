@@ -4,12 +4,12 @@ import styled from 'styled-components';
 const SaveButtonWrap = styled.div`
     width:28rem;
     height:5.9rem;
-    background-image:linear-gradient(to right,rgba(20, 0, 255, 1),rgba(0, 255, 240, 1));
+    background-image:linear-gradient(to right,rgba(0, 224, 255, 1),rgba(0, 255, 209, 1));
     display:flex;
     justify-content:center;
     align-items:center;
-    box-shadow: 10px 0 15px -6px rgba(0, 255, 240, 0.3),
-                -10px 0 15px -5px rgba(20, 0, 255, 0.3); 
+    box-shadow: 10px 0 15px -6px rgba(0, 255, 209, 0.3),
+                -10px 0 15px -6px rgba(0, 224, 255, 0.3); 
     margin:0 auto;
 `
 const SaveButtonInner = styled.button`
@@ -26,8 +26,8 @@ const SaveButtonInner = styled.button`
     display:flex;
     justify-content:center;
     align-items:center;
-    box-shadow: 10px 0 15px -6px rgba(20, 0, 255, 0.3) inset,
-                -10px 0 15px -5px rgba(0, 255, 240, 0.3)inset; 
+    box-shadow: 10px 0 15px -6px rgba(0, 255, 209, 0.3) inset,
+                -10px 0 15px -6px rgba(0, 224, 255, 0.3)inset; 
 
 `
 

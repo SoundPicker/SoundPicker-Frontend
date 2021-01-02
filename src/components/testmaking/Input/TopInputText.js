@@ -5,19 +5,16 @@ const StyledInputText = styled.span`
     width:12.4rem;
     padding-left:2rem;
     padding-bottom:1.5rem;
-    padding-top:1.7rem;
     @media only screen and (max-width: 1024px) {
         width:20.4rem;
-        padding-bottom:1.5rem;
+        padding-bottom:1.6rem;
         padding-left:1.9rem;
-        padding-top:1.1rem;
 
   }
     @media only screen and (max-width: 768px) {
         width:15.6rem;
         padding-left:1.4rem;
-        padding-bottom:1rem;
-        padding-top:0.5rem;
+        padding-bottom:1.2rem;
   } 
 
 `

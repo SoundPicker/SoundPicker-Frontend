@@ -6,6 +6,14 @@ const StyledWrap = styled.div`
     display:flex;
     align-items:center;
     justify-content:space-between;
+    @media only screen and (max-width: 1024px) {
+        padding:0 3.8rem;
+
+  }
+  @media only screen and (max-width: 768px) {
+        padding:0;
+
+  }
 `
 
 const PlayerWrap = ({children}) => {
