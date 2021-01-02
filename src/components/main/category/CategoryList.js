@@ -6,6 +6,15 @@ const CategoryName = styled.span`
   font-size: 1.6rem;
   line-height: 1.035;
   color: #dadada;
+
+  @media (max-width: 1440px) {
+    font-size: 1.2rem;
+  }
+
+  @media (max-width: 1024px) {
+    font-size: 1.6rem;
+    line-height: 1.035;
+  }
 `;
 
 const CategoryBtn = styled.button`
@@ -54,7 +63,7 @@ const CategoryItem = styled.div`
       margin-right: 1.4rem;
     }
   }
-  @media (max-width: 768px) {
+  @media (max-width: 828px) {
     &:nth-child(5) {
       margin-right: 3.2rem;
     }
@@ -88,7 +97,7 @@ function useWindowDimensions() {
 const CategoryList = () => {
   const { width } = useWindowDimensions();
 
-  const categoryNum = width > 1024 ? 8 : width > 768 ? 6 : 4;
+  const categoryNum = width > 1024 ? 8 : width > 828 ? 6 : 4;
 
   return (
     <>

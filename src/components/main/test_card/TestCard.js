@@ -25,7 +25,7 @@ const PlusBtn = styled.button`
     height: 4.8rem;
     background-image: url(${PlusTablet});
   }
-  @media (max-width: 768px) {
+  @media (max-width: 828px) {
     width: 27.6rem;
     height: 5.5rem;
     background-image: url(${PlusMobile});
@@ -49,7 +49,7 @@ const Card = styled.button`
     width: 26.2rem;
     padding: 3.2rem 1.9rem 1.8rem 2.4rem;
   }
-  @media (max-width: 768px) {
+  @media (max-width: 828px) {
     width: 27.6rem;
     padding: 3.4rem 2.5rem 2.9rem 2.4rem;
   }
@@ -66,7 +66,7 @@ const CardTitle = styled.div`
     font-size: 2.8rem;
     line-height: 4rem;
   }
-  @media (max-width: 768px) {
+  @media (max-width: 828px) {
     font-size: 2.4rem;
     line-height: 3.4rem;
   }
@@ -81,7 +81,7 @@ const CardContent = styled.div`
   @media (max-width: 1024px) {
     line-height: 1.8rem;
   }
-  @media (max-width: 768px) {
+  @media (max-width: 828px) {
     line-height: 2.2rem;
   }
 `;
@@ -130,13 +130,13 @@ const CardWrapOne = styled.div``;
 const CardWrapTwo = styled.div``;
 
 const CardWrapThree = styled.div`
-  @media (max-width: 768px) {
+  @media (max-width: 828px) {
     display: none;
   }
 `;
 
 const CardWrapFour = styled.div`
-  @media (max-width: 1024px) {
+  @media (max-width: 1440px) {
     display: none;
   }
 `;
@@ -150,11 +150,15 @@ const CardListWrap = styled.div`
   margin: 0 auto;
   overflow: hidden;
 
+  @media (max-width: 1440px) {
+    width: 92rem;
+  }
+
   @media (max-width: 1024px) {
     width: 81.6rem;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 828px) {
     width: 57rem;
   }
 `;
@@ -167,12 +171,17 @@ const GradientBox = styled.div`
   left: -3.55rem;
   background: linear-gradient(to bottom, transparent, #071923);
 
+  @media (max-width: 1440px) {
+    width: 95.7rem;
+    left: -1.85rem;
+  }
+
   @media (max-width: 1024px) {
     width: 86rem;
     left: -2.2rem;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 828px) {
     width: 60.1rem;
     left: -1.55rem;
   }
@@ -197,14 +206,20 @@ const LoadMoreBtn = styled.button`
     outline: none;
   }
 
+  @media (max-width: 1440px) {
+    width: 29.6rem;
+    height: 6rem;
+    margin: 0.9rem auto 0;
+  }
+
   @media (max-width: 1024px) {
     width: 26.2rem;
     height: 5.2rem;
+    margin: 1.5rem auto 0;
     font-size: 1.8rem;
     letter-spacing: 0;
-    margin: 1.5rem auto 0;
   }
-  @media (max-width: 768px) {
+  @media (max-width: 828px) {
     width: 35.2rem;
     height: 4.8rem;
     margin: 0.7rem auto 0;
@@ -225,9 +240,9 @@ const CardList = () => {
                 <Card>
                   <CardTitle>오마이걸 찐팬만 맞출 수 있는 정답 모음</CardTitle>
                   <BlankTop
-                    DesktopMargin={1.6}
-                    TabletMargin={1.4}
-                    MobileMargin={1.8}
+                    DesktopMargin={3}
+                    TabletMargin={2.7}
+                    MobileMargin={0.4}
                   />
                   <CardContent>
                     내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다.
@@ -254,9 +269,9 @@ const CardList = () => {
                     오마이걸 찐팬 모여라 오마이걸 찐팬 오마이걸 찐팬 모여라.
                   </CardTitle>
                   <BlankTop
-                    DesktopMargin={1.6}
-                    TabletMargin={1.4}
-                    MobileMargin={1.8}
+                    DesktopMargin={3}
+                    TabletMargin={2.7}
+                    MobileMargin={0.4}
                   />
                   <CardContent>
                     내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다.
@@ -284,9 +299,9 @@ const CardList = () => {
                     오마이걸 찐팬 모여라 오마이걸 찐팬 오마이걸 찐팬 모여라.
                   </CardTitle>
                   <BlankTop
-                    DesktopMargin={1.6}
-                    TabletMargin={1.4}
-                    MobileMargin={1.8}
+                    DesktopMargin={3}
+                    TabletMargin={2.7}
+                    MobileMargin={0.4}
                   />
                   <CardContent>
                     내용이 들어갑니다.내용이 들어갑니다.
@@ -317,9 +332,9 @@ const CardList = () => {
                 <Card>
                   <CardTitle>오마이걸 찐팬 모여라 오마이걸 찐팬</CardTitle>
                   <BlankTop
-                    DesktopMargin={1.6}
-                    TabletMargin={1.4}
-                    MobileMargin={1.8}
+                    DesktopMargin={3}
+                    TabletMargin={2.7}
+                    MobileMargin={0.4}
                   />
                   <CardContent>
                     내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다.
@@ -345,9 +360,9 @@ const CardList = () => {
                     오마이걸 찐팬 모여라 오마이걸 찐팬 오마이걸 찐팬 모여라.
                   </CardTitle>
                   <BlankTop
-                    DesktopMargin={1.6}
-                    TabletMargin={1.4}
-                    MobileMargin={1.8}
+                    DesktopMargin={3}
+                    TabletMargin={2.7}
+                    MobileMargin={0.4}
                   />
                   <CardContent>
                     내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다.
@@ -373,9 +388,9 @@ const CardList = () => {
                     오마이걸 찐팬 모여라 오마이걸 찐팬 오마이걸 찐팬 모여라.
                   </CardTitle>
                   <BlankTop
-                    DesktopMargin={1.6}
-                    TabletMargin={1.4}
-                    MobileMargin={1.8}
+                    DesktopMargin={3}
+                    TabletMargin={2.7}
+                    MobileMargin={0.4}
                   />
                   <CardContent>
                     내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다.
@@ -407,9 +422,9 @@ const CardList = () => {
                 <Card>
                   <CardTitle>오마이걸 찐팬 모여라 오마이걸 찐팬</CardTitle>
                   <BlankTop
-                    DesktopMargin={1.6}
-                    TabletMargin={1.4}
-                    MobileMargin={1.8}
+                    DesktopMargin={3}
+                    TabletMargin={2.7}
+                    MobileMargin={0.4}
                   />
                   <CardContent>
                     내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다.
@@ -435,9 +450,9 @@ const CardList = () => {
                     오마이걸 찐팬 모여라 오마이걸 찐팬 오마이걸 찐팬 모여라.
                   </CardTitle>
                   <BlankTop
-                    DesktopMargin={1.6}
-                    TabletMargin={1.4}
-                    MobileMargin={1.8}
+                    DesktopMargin={3}
+                    TabletMargin={2.7}
+                    MobileMargin={0.4}
                   />
                   <CardContent>
                     내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다.
@@ -463,9 +478,9 @@ const CardList = () => {
                     오마이걸 찐팬 모여라 오마이걸 찐팬 오마이걸 찐팬 모여라.
                   </CardTitle>
                   <BlankTop
-                    DesktopMargin={1.6}
-                    TabletMargin={1.4}
-                    MobileMargin={1.8}
+                    DesktopMargin={3}
+                    TabletMargin={2.7}
+                    MobileMargin={0.4}
                   />
                   <CardContent>
                     내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다.
@@ -497,9 +512,9 @@ const CardList = () => {
                 <Card>
                   <CardTitle>오마이걸 찐팬 모여라 오마이걸 찐팬</CardTitle>
                   <BlankTop
-                    DesktopMargin={1.6}
-                    TabletMargin={1.4}
-                    MobileMargin={1.8}
+                    DesktopMargin={3}
+                    TabletMargin={2.7}
+                    MobileMargin={0.4}
                   />
                   <CardContent>
                     내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다.
@@ -525,9 +540,9 @@ const CardList = () => {
                     오마이걸 찐팬 모여라 오마이걸 찐팬 오마이걸 찐팬 모여라.
                   </CardTitle>
                   <BlankTop
-                    DesktopMargin={1.6}
-                    TabletMargin={1.4}
-                    MobileMargin={1.8}
+                    DesktopMargin={3}
+                    TabletMargin={2.7}
+                    MobileMargin={0.4}
                   />
                   <CardContent>
                     내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다.
@@ -553,9 +568,9 @@ const CardList = () => {
                     오마이걸 찐팬 모여라 오마이걸 찐팬 오마이걸 찐팬 모여라.
                   </CardTitle>
                   <BlankTop
-                    DesktopMargin={1.6}
-                    TabletMargin={1.4}
-                    MobileMargin={1.8}
+                    DesktopMargin={3}
+                    TabletMargin={2.7}
+                    MobileMargin={0.4}
                   />
                   <CardContent>
                     내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다.
