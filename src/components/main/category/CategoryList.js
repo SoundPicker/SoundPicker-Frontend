@@ -45,8 +45,12 @@ const CategoryItem = styled.div`
   height: 5.3rem;
   margin-right: 4.3rem;
 
+  &:nth-child(9) {
+    margin-right: 8rem;
+  }
+
   @media (max-width: 1024px) {
-    &:nth-child(5) {
+    &:nth-child(7) {
       margin-right: 1.4rem;
     }
   }
