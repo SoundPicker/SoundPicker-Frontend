@@ -1,8 +1,8 @@
-import { useState } from "react";
 import styled from "styled-components";
 import BtnLeft from "../../../assets/button_left.png";
 import BtnRight from "../../../assets/button_right.png";
 import BlankTop from "../../common/BlankTop";
+import CategoryList from "../category/CategoryList";
 
 const Wrap = styled.div`
   display: flex;
@@ -13,7 +13,7 @@ const LeftBtn = styled.button`
   display: block;
   width: 5.4rem;
   height: 5.4rem;
-  margin-right: 2.6rem;
+  margin-right: 8.1rem;
   background-image: url(${BtnLeft});
   background-repeat: no-repeat;
   background-position: center center;
@@ -22,6 +22,13 @@ const LeftBtn = styled.button`
 
   &:focus {
     outline: none;
+  }
+
+  @media (max-width: 1024px) {
+    margin-right: 1.7rem;
+  }
+  @media (max-width: 768px) {
+    margin-right: 2.6rem;
   }
 `;
 
@@ -43,6 +50,7 @@ const RightBtn = styled.button`
 // 서버랑 통신해서 카테고리 이름 받아오기
 const CategoryName = styled.span`
   font-size: 1.6rem;
+  line-height: 1.035;
   color: #dadada;
 `;
 
@@ -85,36 +93,27 @@ const CategoryItem = styled.div`
 
   // 마지막 CategoryItem은 margin을 따로 줘야 함
   &:nth-child(5) {
-    margin-right: 3.2rem;
+    margin-right: 8rem;
+  }
+
+  @media (max-width: 1024px) {
+    &:nth-child(5) {
+      margin-right: 1.4rem;
+    }
+  }
+  @media (max-width: 768px) {
+    &:nth-child(5) {
+      margin-right: 3.2rem;
+    }
   }
 `;
 
-// CategoryList에서 map 사용해서 CategoryItem 불러오기(개수는 vw에 따라 달라짐)
-const CategoryList = styled.div`
-  display: flex;
-`;
-
-const Category = ({ click, hover }) => {
+const Category = () => {
   return (
     <>
       <Wrap>
         <LeftBtn></LeftBtn>
-        <CategoryItem>
-          <CategoryName>전체</CategoryName>
-          <CategoryBtn />
-        </CategoryItem>
-        <CategoryItem>
-          <CategoryName>남아이돌</CategoryName>
-          <CategoryBtn />
-        </CategoryItem>
-        <CategoryItem>
-          <CategoryName>여아이돌</CategoryName>
-          <CategoryBtn />
-        </CategoryItem>
-        <CategoryItem>
-          <CategoryName>여아이돌</CategoryName>
-          <CategoryBtn />
-        </CategoryItem>
+        <CategoryList />
         <RightBtn></RightBtn>
       </Wrap>
       <BlankTop DesktopMargin={5.2} TabletMargin={4} MobileMargin={3.8} />

@@ -5,8 +5,8 @@ import PlayImg from "../../../assets/play.png";
 
 const PlusBtn = styled.button`
   display: block;
-  width: 27.6rem;
-  height: 5.5rem;
+  width: 29.6rem;
+  height: 5.6rem;
   background-image: url(${Plus});
   background-repeat: no-repeat;
   background-position: center center;
@@ -17,12 +17,21 @@ const PlusBtn = styled.button`
   &:focus {
     outline: none;
   }
+
+  @media (max-width: 1024px) {
+    width: 26.2rem;
+    height: 4.8rem;
+  }
+  @media (max-width: 768px) {
+    width: 27.6rem;
+    height: 5.5rem;
+  }
 `;
 
 const Card = styled.button`
   display: block;
-  width: 27.6rem;
-  padding: 3.4rem 2.7rem 2.9rem 2.4rem;
+  width: 29.6rem;
+  padding: 3.6rem 2.1rem 2rem 2.7rem;
   border-radius: 8px;
   border-color: #60ffda;
   color: #ffffff;
@@ -31,21 +40,46 @@ const Card = styled.button`
   &:focus {
     outline: none;
   }
+
+  @media (max-width: 1024px) {
+    width: 26.2rem;
+    padding: 3.2rem 1.9rem 1.8rem 2.4rem;
+  }
+  @media (max-width: 768px) {
+    width: 27.6rem;
+    padding: 3.4rem 2.5rem 2.9rem 2.4rem;
+  }
 `;
 
 const CardTitle = styled.div`
   width: 22.5rem;
   text-align: left;
-  font-size: 2.4rem;
+  font-size: 3.2rem;
   font-weight: 700;
-  line-height: 3.4rem;
+  line-height: 4.65rem;
+
+  @media (max-width: 1024px) {
+    font-size: 2.8rem;
+    line-height: 4rem;
+  }
+  @media (max-width: 768px) {
+    font-size: 2.4rem;
+    line-height: 3.4rem;
+  }
 `;
 
 const CardContent = styled.div`
   width: 22.2rem;
   text-align: left;
   font-size: 1.2rem;
-  line-height: 2.2rem;
+  line-height: 1.8rem;
+
+  @media (max-width: 1024px) {
+    line-height: 1.8rem;
+  }
+  @media (max-width: 768px) {
+    line-height: 2.2rem;
+  }
 `;
 
 const TestNumber = styled.div`
@@ -148,9 +182,9 @@ const CardList = () => {
                     MobileMargin={1.8}
                   />
                   <CardContent>
-                    내용이 들어갑니다.내용이 들어갑니다.내용이 들어갑니다.내용이
-                    들어갑니다.내용이 들어갑니다.내용이 들어갑니다.내용이
-                    들어갑니다.
+                    내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다.
+                    내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다.
+                    내용이 들어갑니다.
                   </CardContent>
                   <BlankTop
                     DesktopMargin={3.8}
@@ -177,8 +211,9 @@ const CardList = () => {
                     MobileMargin={1.8}
                   />
                   <CardContent>
-                    내용이 들어갑니다.내용이 들어갑니다.내용이 들어갑니다.내용이
-                    들어갑니다.내용이 들어갑니다.
+                    내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다.
+                    내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다.
+                    내용이 들어갑니다.
                   </CardContent>
                   <BlankTop
                     DesktopMargin={3.8}
@@ -239,8 +274,8 @@ const CardList = () => {
                     MobileMargin={1.8}
                   />
                   <CardContent>
-                    내용이 들어갑니다. 내용이 들어갑니다.내용이
-                    들어갑니다.내용이 들어갑니다.내용이 들어갑니다.
+                    내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다.
+                    내용이 들어갑니다. 내용이 들어갑니다.
                   </CardContent>
                   <BlankTop
                     DesktopMargin={3.8}
@@ -267,8 +302,8 @@ const CardList = () => {
                     MobileMargin={1.8}
                   />
                   <CardContent>
-                    내용이 들어갑니다. 내용이 들어갑니다.내용이
-                    들어갑니다.내용이 들어갑니다.내용이 들어갑니다.
+                    내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다.
+                    내용이 들어갑니다. 내용이 들어갑니다.
                   </CardContent>
                   <BlankTop
                     DesktopMargin={3.8}
@@ -295,8 +330,8 @@ const CardList = () => {
                     MobileMargin={1.8}
                   />
                   <CardContent>
-                    내용이 들어갑니다. 내용이 들어갑니다.내용이
-                    들어갑니다.내용이 들어갑니다.내용이 들어갑니다.
+                    내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다.
+                    내용이 들어갑니다. 내용이 들어갑니다.
                   </CardContent>
                   <BlankTop
                     DesktopMargin={3.8}
