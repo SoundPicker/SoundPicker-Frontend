@@ -5,6 +5,7 @@ const UnderLine = styled.div`
   border-top: 1px solid #c4c4c4;    
   margin-top:15px;
   width: ${props=> props.DesktopLength || 0}rem;
+  
     @media only screen and (max-width: 1024px) {
     width: ${props=> props.TabletLength || 0}rem;
   }

@@ -27,9 +27,6 @@ const Title = styled.div`
 `
 
 const TitleComponent = ({title}) => {
-
-    //나중에 서버 연결 후 정보 받아오는 것 구현
-
     return(
    
                 <Title>{title}</Title>

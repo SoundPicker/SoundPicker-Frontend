@@ -4,6 +4,7 @@ import {
   Route
 } from "react-router-dom";
 import MainPage from "./pages/main/MainPage";
+import MyPage from "./pages/mypage/MyPage";
 import QuizLoading from './components/loading/QuizLoading';
 import StartLoading from './components/loading/StartLoading';
 
@@ -12,6 +13,7 @@ const App = () => {
       <Router>
         <Switch>
           <Route exact path="/" component={MainPage}/>
+          <Route component={MyPage} path="/mypage" exact/>
           <Route component={QuizLoading} path="/quizloading" exact/>
           <Route component={StartLoading} path="/startloading" exact/>
           <Route path='/*'>404 Not Found</Route>

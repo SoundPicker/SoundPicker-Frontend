@@ -82,7 +82,7 @@ const StartLoading = () => {
             <BlankTop DesktopMargin='5' TabletMargin='2' MobileMargin='2' />
             <ContentComponent title="오늘밤 사픽 주인공은 나야나~ 나야나~ " />
             <div></div>
-            <UnderLineWrap  DesktopLength='30' TabletLength='20' MobileLength='10' ></UnderLineWrap>
+            
             </Wrapper>
             </Background>
         </div>
