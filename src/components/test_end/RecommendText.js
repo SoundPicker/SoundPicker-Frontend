@@ -2,34 +2,37 @@ import styled from "styled-components";
 
 const Wrap = styled.div`
   display: flex;
-  height: 1.6rem;
+  height: 2rem;
   justify-content: center;
 
   @media (max-width: 1089px) {
-    height: 1.8rem;
+    height: 1.6rem;
   }
 
   @media (max-width: 768px) {
-    height: 1.4rem;
+    height: 1.2rem;
   }
 `;
 
-const Title = styled.strong`
-  font-size: 1.6rem;
-  font-weight: 700;
+const Title = styled.span`
+  font-size: 2rem;
   color: #ffffff;
+
+  @media (max-width: 1089px) {
+    font-size: 1.6rem;
+  }
 
   @media (max-width: 768px) {
     font-size: 1.4rem;
   }
 `;
 
-const TestTitle = () => {
+const RecommendText = () => {
   return (
     <Wrap>
-      <Title>레드벨벳 찐팬만 맞출 수 있는 정답 모음</Title>
+      <Title>리니꿍님, 이런 테스트들은 어떤가요?</Title>
     </Wrap>
   );
 };
 
-export default TestTitle;
+export default RecommendText;

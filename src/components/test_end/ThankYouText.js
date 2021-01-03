@@ -9,6 +9,10 @@ const Wrap = styled.div`
 const Text = styled.p`
   font-size: 1.6rem;
   color: #ffffff;
+
+  @media (max-width: 768px) {
+    font-size: 1.4rem;
+  }
 `;
 
 const ThankYouText = () => {

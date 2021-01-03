@@ -5,6 +5,9 @@ import LogoTitle from "./LogoTitle";
 import TestTitle from "./TestTitle";
 import ThankYouText from "./ThankYouText";
 import Divider from "../common/Divider";
+import RecommendText from "./RecommendText";
+import RecommendCardList from "./RecommendCardList";
+import BackToMain from "./BackToMain";
 
 const TestEnd = () => {
   return (
@@ -19,6 +22,11 @@ const TestEnd = () => {
       <BlankTop DesktopMargin={5.6} TabletMargin={4.4} MobileMargin={3.3} />
       <Divider DesktopLength={6} TabletLength={6} MobileLength={4.8} />
       <BlankTop DesktopMargin={5.5} TabletMargin={4.4} MobileMargin={3.5} />
+      <RecommendText />
+      <BlankTop DesktopMargin={5.4} TabletMargin={4.4} MobileMargin={3.5} />
+      <RecommendCardList />
+      <BlankTop DesktopMargin={2.8} TabletMargin={3.7} MobileMargin={3} />
+      <BackToMain />
     </Background>
   );
 };
