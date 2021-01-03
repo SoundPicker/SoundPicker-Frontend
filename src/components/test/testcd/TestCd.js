@@ -8,7 +8,7 @@ import TextComponent from '../../common/test/TextComponent'
 
 const TestCd = ({ recordList }) => {
   //state정의
-  const [buttonText, setButtonText] = useState('정답보기') //클릭한 버튼명(버튼명으로 현재 상태비교)
+  const [buttonText, setButtonText] = useState('정답 보기') //클릭한 버튼명(버튼명으로 현재 상태비교)
   const [rotateSecond, setRotateSecond] = useState(0) //1초재생인지 3초재생인지 상태값(0일때는 애니메이션 없음)
   const [recordInside, isRecordInside] = useState(false) //레코드판을 넣는 애니메이션 트리거
   const [activeIndex, setActiveIndex] = useState(0) //현재 선택된 레코드판 index넘버
@@ -17,19 +17,21 @@ const TestCd = ({ recordList }) => {
 
   useEffect(() => {
     isRecordInside(false)
-    setButtonText('정답보기')
+    setButtonText('정답 보기')
     setAnswer(undefined)
     setSoundUrl(recordList[activeIndex].sound)
     console.log(activeIndex)
     console.log(recordList[activeIndex])
   }, [activeIndex])
 
+  // 힌트보기 ->
+
   //다음문제 버튼 이벤트 정의
   const handleNextButton = () => {
     //버튼 텍스트가 '정답보기' 일때 버튼명을 '다음문제'로 변경 후 레코드 집어넣는 트리거를true로 바꿔줌
-    if (buttonText === '정답보기') {
+    if (buttonText === '정답 보기') {
       isRecordInside(true)
-      setButtonText('다음문제')
+      setButtonText('다음 문제')
       setAnswer(recordList[activeIndex].result)
     } else {
       //버튼 텍스트가 '다음문제'일때 선택된 레코드를 1증가하여 다음 레코드를 불러옴
@@ -54,20 +56,20 @@ const TestCd = ({ recordList }) => {
   return (
     <>
       <table></table>
-      <BlankTop DesktopMargin="20" TabletMargin="20" MobileMargin="20" />
+      <BlankTop DesktopMargin="19" TabletMargin="32" MobileMargin="21" />
       <IconWrapper>
         <MyIcon />
       </IconWrapper>
-      <BlankTop DesktopMargin="3" TabletMargin="20" MobileMargin="20" />
+      <BlankTop DesktopMargin="3" TabletMargin="3" MobileMargin="2.6" />
       <TitleWrapper>
         <TextComponent
           title="레드벨벳 찐팬만 맞출 수 있는 정답 모음"
-          DesktopLength="20"
-          TabletLength="15"
-          MobileLength="10"
+          DesktopLength="2"
+          TabletLength="2"
+          MobileLength="1.8"
         />
       </TitleWrapper>
-      <BlankTop DesktopMargin="8" TabletMargin="20" MobileMargin="20" />
+      <BlankTop DesktopMargin="4.2" TabletMargin="5" MobileMargin="9" />
       <Container>
         <ContentContainer>
           {recordList.map((item, index) => {
@@ -77,7 +79,10 @@ const TestCd = ({ recordList }) => {
                 activeIndex={activeIndex}
                 thisIndex={index}
               >
-                <CaseImg src={cdImg} />
+                <CaseImg
+                  // src={activeIndex === index ? cdImg : recordList[index].thumb}
+                  src={cdImg}
+                />
                 {index === activeIndex && (
                   <>
                     <AnswerText inside={recordInside}>
@@ -96,7 +101,7 @@ const TestCd = ({ recordList }) => {
           })}
         </ContentContainer>
       </Container>
-      <BlankTop DesktopMargin="5" TabletMargin="4" MobileMargin="3" />
+      <BlankTop DesktopMargin="0.5" TabletMargin="5" MobileMargin="10" />
 
       <ButtonContainer>
         <RowContainer>
@@ -110,10 +115,10 @@ const TestCd = ({ recordList }) => {
             </ListenButtonStyle>
           </ListenButtonWrapper>
         </RowContainer>
-        <BlankTop DesktopMargin="5" TabletMargin="4" MobileMargin="3" />
+        <BlankTop DesktopMargin="3" TabletMargin="1" MobileMargin="3" />
 
         <BigButtonWrapper>
-          <HintButtonStyle>힌트보기</HintButtonStyle>
+          <HintButtonStyle>힌트 보기</HintButtonStyle>
           <AnswerButtonStyle onClick={handleNextButton}>
             {buttonText}
           </AnswerButtonStyle>
@@ -165,8 +170,31 @@ const TextInside = keyframes`
 //신규 레코드판이 선택될때 나오는 애니메이션 키프레임
 const ActiveAnimation = keyframes`
 0% {
-    transform: translateX(50%) scale(.5);
     opacity: .5;
+    transform: translateX(50%) scale(.6);
+ 
+}
+100% {
+    transform: translateX(0%) scale(1);
+    opacity: 1;
+}
+`
+const ActiveAnimation1024 = keyframes`
+0% {
+    opacity: .5;
+    transform: translateX(40%) scale(.6);
+ 
+}
+100% {
+    transform: translateX(0%) scale(1);
+    opacity: 1;
+}
+`
+const ActiveAnimation768 = keyframes`
+0% {
+    opacity: .5;
+    transform: translateX(50%) scale(.6);
+ 
 }
 100% {
     transform: translateX(0%) scale(1);
@@ -180,10 +208,31 @@ const UnActiveAnimation = keyframes`
     transform: translateX(0%) scale(1);
     opacity: 1;
 }
-    100% {
-    transform: translateX(-71%) scale(.5);
-    opacity: .5;
-    
+100% {
+    opacity: .5; /*여기*/ 
+    transform: translateX(-65%) scale(0.6);
+}
+`
+
+const UnActiveAnimation1024 = keyframes`
+0% {
+    transform: translateX(0%) scale(1);
+    opacity: 1;
+}
+100% {
+    opacity: .5; /*여기*/ 
+    transform: translateX(-60%) scale(0.6);
+}
+`
+
+const UnActiveAnimation768 = keyframes`
+0% {
+    transform: translateX(0%) scale(1);
+    opacity: 1;
+}
+100% {
+    opacity: .5; /*여기*/ 
+    transform: translateX(-130%) scale(0.7);
 }
 `
 /* 키프레임 종료 */
@@ -208,33 +257,25 @@ const IconWrapper = styled.div`
 `
 
 const MyIcon = styled.img`
-  @media (min-width: 768px) and (max-width: 1024px) {
-    //between
-    width: 30rem;
+  width: 19rem;
+  @media only screen and (max-width: 1024px) {
+    width: 19rem;
   }
-  @media (min-width: 1024px) {
-    //desktop
-    width: 20rem;
-  }
-  @media (max-width: 767px) {
-    //iphone
-    width: 15rem;
+  @media only screen and (max-width: 768px) {
+    width: 18.5rem;
   }
 `
 
 MyIcon.defaultProps = {
   src: logo,
 }
-
 /* End Logo */
 
 /* Start Title  */
-
 const TitleWrapper = styled.div`
   width: 100%;
   height: auto;
 `
-
 /* End Title */
 
 const Container = styled.div`
@@ -244,34 +285,26 @@ const Container = styled.div`
   display: flex;
   /* border: 1px solid red; */
 `
-
 const ContentContainer = styled.div`
   width: 100%;
   display: flex;
   flex: 1;
   justify-content: center;
   align-items: center;
-  height: 20rem;
   /* position: absolute; */
   /* border: 1px solid blue; */
-  @media all and (max-width: 768px) {
-    height: 10rem;
+  /* 이부분 크기 조정하기~ */
+  height: 41rem;
+  padding-right: 12rem; // 1920 기준
+  @media only screen and (max-width: 1024px) {
+    height: 38rem;
+    padding-right: 8rem; // 여기
   }
-
-  @media all and (min-width: 1025px) {
-    height: 35rem;
+  @media only screen and (max-width: 768px) {
+    height: 26rem;
+    padding-left: 5rem;
   }
 `
-
-const BackgroundContainer = styled.div`
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100vw;
-  /* border: 1px solid orange; */
-`
-
 const AnswerText = styled.p`
   font-size: 1.4rem;
   font-weight: bold;
@@ -289,6 +322,83 @@ const AnswerText = styled.p`
       animation-iteration-count: 1;
       animation-name: ${TextInside};
     `}
+`
+
+const SwiperContainer = styled.div`
+  & > img {
+    height: 100%;
+  }
+  /* border: 1px solid green; */
+  margin-right: 10rem;
+  display: flex;
+  height: 100%;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  animation-fill-mode: forwards;
+  ${({ activeIndex, thisIndex }) => {
+    // 선택된 index와 각요소의 index를 비교해서 애니메이션과 위치를 처리해줌
+    const compare = Math.abs(activeIndex - thisIndex) //index비교 절대값
+    if (activeIndex === thisIndex) {
+      //선택된index와 현재요소의 값이 같다면(즉 active상태의 요소일때) 오른쪽에서 가운데로 나오는 애니메이션을 넣어줌
+      return css`
+        animation-timing-function: ease-in-out;
+        animation-duration: 0.5s;
+        animation-iteration-count: 1;
+        animation-name: ${ActiveAnimation};
+        @media only screen and (max-width: 1024px) {
+          animation-name: ${ActiveAnimation1024};
+        }
+        @media only screen and (max-width: 768px) {
+          animation-name: ${ActiveAnimation768};
+        }
+        z-index: 10;
+      `
+    } else if (activeIndex > thisIndex) {
+      //선택된index가 현재요소의 값보다 크다면(즉 active상태의 요소보다 왼쪽에 있을때)
+      if (compare === 1) {
+        //비교값이 1일때(즉 현재 active상태였다가 왼쪽으로 들어가야 하는 상태) 왼쪽으로 슬라이드되는 애니메이션을 넣어줌
+        return css`
+          animation-timing-function: ease-in-out;
+          animation-duration: 0.5s;
+          animation-iteration-count: 1;
+          animation-name: ${UnActiveAnimation};
+          @media only screen and (max-width: 1024px) {
+            animation-name: ${UnActiveAnimation1024};
+          }
+          @media only screen and (max-width: 768px) {
+            animation-name: ${UnActiveAnimation768};
+          }
+        `
+      }
+      //그이외 그냥 위치만 잡아줌
+      return css`
+        /* border: 1px solid blue; */
+        opacity: 0.5;
+        transform: translateX(-65%) scale(0.6);
+        @media only screen and (max-width: 1024px) {
+          transform: translateX(-60%) scale(0.6);
+        }
+        @media only screen and (max-width: 768px) {
+          transform: translateX(-130%) scale(0.7);
+        }
+      `
+    } else if (activeIndex < thisIndex) {
+      //선택된index가 현재요소의 값보다 작다면(즉 active상태의 요소보다 오른쪽에 있을때)위치만 잡아줌
+      return `
+      opacity: .5;
+      width: 40rem;
+      overflow: hidden;        
+      transform: translateX(101%) scale(.6);
+      @media only screen and (max-width: 1024px) {
+        transform: translateX(89%) scale(.6);
+      }
+      @media only screen and (max-width: 768px) {
+        transform: translateX(100%) scale(.7);
+      }
+    `
+    }
+  }}
 `
 
 const RecordImg = styled.img`
@@ -317,62 +427,14 @@ const RecordImg = styled.img`
     `}
 `
 
-const SwiperContainer = styled.div`
-  & > img {
-    height: 100%;
-  }
-  /* border: 1px solid green; */
-  margin-right: 10rem;
-  display: flex;
-  height: 100%;
-  position: absolute;
-  align-items: center;
-  justify-content: center;
-  animation-fill-mode: forwards;
-  ${({ activeIndex, thisIndex }) => {
-    // 선택된 index와 각요소의 index를 비교해서 애니메이션과 위치를 처리해줌
-    const compare = Math.abs(activeIndex - thisIndex) //index비교 절대값
-    if (activeIndex === thisIndex) {
-      //선택된index와 현재요소의 값이 같다면(즉 active상태의 요소일때) 오른쪽에서 가운데로 나오는 애니메이션을 넣어줌
-      return css`
-        animation-timing-function: ease-in-out;
-        animation-duration: 0.5s;
-        animation-iteration-count: 1;
-        animation-name: ${ActiveAnimation};
-        z-index: 10;
-      `
-    } else if (activeIndex > thisIndex) {
-      //선택된index가 현재요소의 값보다 크다면(즉 active상태의 요소보다 왼쪽에 있을때)
-      if (compare === 1) {
-        //비교값이 1일때(즉 현재 active상태였다가 왼쪽으로 들어가야 하는 상태) 왼쪽으로 슬라이드되는 애니메이션을 넣어줌
-        return css`
-          animation-timing-function: ease-in-out;
-          animation-duration: 0.5s;
-          animation-iteration-count: 1;
-          animation-name: ${UnActiveAnimation};
-        `
-      }
-      //그이외 그냥 위치만 잡아줌
-      return css`
-        transform: translateX(-71%) scale(0.5);
-        opacity: 0.5;
-      `
-    } else if (activeIndex < thisIndex) {
-      //선택된index가 현재요소의 값보다 작다면(즉 active상태의 요소보다 오른쪽에 있을때)위치만 잡아줌
-      return `
-        transform: translateX(91%) scale(.5);
-        opacity: .5;
-    `
-    } else {
-    }
-  }}
-`
+/* activeIndex={activeIndex} thisIndex={index} */
 
 const CaseImg = styled.img`
   margin-left: 30%;
-  height: auto;
   object-fit: contain;
   z-index: 2;
+  /* border: 1px solid red; */
+  /* width: 28rem; */
 `
 
 /* Start button */
@@ -398,19 +460,39 @@ const ListenButtonWrapper = styled.div`
 `
 
 const ListenButtonDisinguish = styled.span`
-  font-size: 3.5rem;
   color: #fff;
   font-weight: 300;
-  padding: 0 3rem;
+  font-size: 4rem;
+  text-align: center;
+  padding: 0 6rem;
+  @media only screen and (max-width: 1024px) {
+    font-size: 3.2rem;
+    padding: 0 6rem;
+  }
+  @media only screen and (max-width: 768px) {
+    font-size: 3rem;
+    padding: 0 6rem;
+  }
 `
 
 const ListenButtonStyle = styled.button`
-  color: #fff;
+  color: #ffffff;
   font-size: 1.8rem;
+  font-family: 'Nanum Gothic';
+  font-weight: 100;
   border: none;
   outline: none;
   background: none;
   padding: 0px;
+  font-size: 1.5rem;
+  @media only screen and (max-width: 1024px) {
+    font-size: 1.3rem;
+    padding-bottom: 0.5rem;
+  }
+  @media only screen and (max-width: 768px) {
+    font-size: 1.2rem;
+    padding-bottom: 0.5rem;
+  }
   cursor: pointer;
   &:hover {
     color: #60ffc6;
@@ -432,12 +514,22 @@ const HintButtonStyle = styled.button`
   display: block;
   color: #fff;
   border: 1px solid #ffffff;
-  width: 35rem;
-  height: 5rem;
   outline: none;
   background: none;
   padding: 0px;
+  width: 44rem;
+  height: 5rem;
   margin-bottom: 2rem;
+  @media only screen and (max-width: 1024px) {
+    width: 35rem;
+    height: 4rem;
+    margin-bottom: 1.5rem;
+  }
+  @media only screen and (max-width: 768px) {
+    width: 32rem;
+    height: 4rem;
+    margin-bottom: 1rem;
+  }
   &:hover {
     color: #49fff2;
     transition: color 0.1s ease-in-out;
@@ -448,9 +540,18 @@ const AnswerButtonStyle = styled.button`
   color: #030f2c;
   border: none;
   outline: none;
-  width: 35rem;
-  height: 5rem;
   box-shadow: 0px 0px 21px -6px #49fff2;
+  padding: 0px;
+  width: 44rem;
+  height: 5rem;
+  @media only screen and (max-width: 1024px) {
+    width: 35rem;
+    height: 4rem;
+  }
+  @media only screen and (max-width: 768px) {
+    width: 32rem;
+    height: 4rem;
+  }
   background: linear-gradient(
     90deg,
     rgba(73, 255, 242, 1) 0%,
@@ -462,8 +563,6 @@ const AnswerButtonStyle = styled.button`
     transition: box-shadow 0.5s ease-in-out;
     box-shadow: 0px 0px 40px -6px #49fff2;
   }
-  padding: 0px;
 `
-
 /* End button */
 export default TestCd
