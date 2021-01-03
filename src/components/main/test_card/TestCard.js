@@ -1,4 +1,5 @@
 // 카드 크기 때문에 breakpoint - 1440(추가), 768 -> 828로 변경
+import React, { useState } from "react";
 import styled from "styled-components";
 import PlusDesktop from "../../../assets/desktop/button_add.png";
 import PlusTablet from "../../../assets/tablet/button_add.png";
@@ -14,7 +15,7 @@ const PlusBtn = styled.button`
   background-repeat: no-repeat;
   background-position: center center;
   border-radius: 8px;
-  border-color: #60ffda;
+  border: 3px solid #60ffda;
   background-color: transparent;
 
   &:focus {
@@ -38,12 +39,20 @@ const Card = styled.button`
   width: 29.6rem;
   padding: 3.6rem 2.1rem 2rem 2.7rem;
   border-radius: 8px;
-  border-color: #60ffda;
+  border: 3px solid #60ffda;
   color: #ffffff;
   background-color: transparent;
 
   &:focus {
     outline: none;
+  }
+
+  &:hover {
+    background: linear-gradient(
+      180deg,
+      rgba(96, 255, 205, 0.38) 0%,
+      rgba(96, 255, 218, 0) 100%
+    );
   }
 
   @media (max-width: 1024px) {
@@ -146,7 +155,7 @@ const CardListWrap = styled.div`
   display: flex;
   justify-content: space-between;
   width: 123.2rem;
-  height: 116.5rem;
+  height: ${(props) => props.height}rem;
   position: relative;
   margin: 0 auto;
   overflow: hidden;
@@ -229,9 +238,18 @@ const LoadMoreBtn = styled.button`
 `;
 
 const CardList = () => {
+  const [count, setCount] = useState(2);
+  const [height, setHeight] = useState(116.5);
+  const countPlus = (e) => {
+    setCount(count + 1);
+    console.log(count);
+    setHeight(count * 116.5);
+    console.log(height);
+  };
+
   return (
     <>
-      <CardListWrap>
+      <CardListWrap height={height}>
         <CardWrapOne>
           <PlusBtn />
           <BlankTop DesktopMargin={1.6} TabletMargin={1.6} MobileMargin={1.8} />
@@ -239,16 +257,14 @@ const CardList = () => {
             return (
               <>
                 <Card>
-                  <CardTitle>오마이걸 찐팬만 맞출 수 있는 정답 모음</CardTitle>
+                  <CardTitle>오마이걸</CardTitle>
                   <BlankTop
                     DesktopMargin={3}
                     TabletMargin={2.7}
                     MobileMargin={0.4}
                   />
                   <CardContent>
-                    내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다.
-                    내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다.
-                    내용이 들어갑니다.
+                    내용이 들어갑니다. 내용이 들어갑니다.
                   </CardContent>
                   <BlankTop
                     DesktopMargin={3.8}
@@ -331,15 +347,16 @@ const CardList = () => {
             return (
               <>
                 <Card>
-                  <CardTitle>오마이걸 찐팬 모여라 오마이걸 찐팬</CardTitle>
+                  <CardTitle>
+                    오마이걸 찐팬들만 맞출 수 있는 노래 모음
+                  </CardTitle>
                   <BlankTop
                     DesktopMargin={3}
                     TabletMargin={2.7}
                     MobileMargin={0.4}
                   />
                   <CardContent>
-                    내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다.
-                    내용이 들어갑니다. 내용이 들어갑니다.
+                    오마이걸 찐팬이라면 이 테스트에 도전해보세요!
                   </CardContent>
                   <BlankTop
                     DesktopMargin={3.8}
@@ -598,7 +615,7 @@ const CardList = () => {
         </CardWrapFour>
         <GradientBox />
       </CardListWrap>
-      <LoadMoreBtn>더보기</LoadMoreBtn>
+      <LoadMoreBtn onClick={countPlus}>더보기</LoadMoreBtn>
     </>
   );
 };

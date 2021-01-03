@@ -34,6 +34,14 @@ const Card = styled.div`
   border-radius: 8px;
   background-color: transparent;
 
+  &:hover {
+    background: linear-gradient(
+      180deg,
+      rgba(96, 255, 205, 0.38) 0%,
+      rgba(96, 255, 218, 0) 100%
+    );
+  }
+
   @media (max-width: 1089px) {
     width: 35.4rem;
     height: 21rem;
