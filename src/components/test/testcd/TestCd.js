@@ -5,37 +5,55 @@ import cdImg from '../../../assets/images/test/blackcd_house-1.png'
 import BlankTop from '../../common/BlankTop'
 import logo from '../../../assets/images/test/image_watermark.png'
 import TextComponent from '../../common/test/TextComponent'
+import { useHistory } from 'react-router-dom'
 
 const TestCd = ({ recordList }) => {
   //state정의
+  const [hintText, setHintText] = useState('힌트 보기')
   const [buttonText, setButtonText] = useState('정답 보기') //클릭한 버튼명(버튼명으로 현재 상태비교)
   const [rotateSecond, setRotateSecond] = useState(0) //1초재생인지 3초재생인지 상태값(0일때는 애니메이션 없음)
   const [recordInside, isRecordInside] = useState(false) //레코드판을 넣는 애니메이션 트리거
   const [activeIndex, setActiveIndex] = useState(0) //현재 선택된 레코드판 index넘버
   const [answer, setAnswer] = useState() //정답 text state
   const [soundUrl, setSoundUrl] = useState()
+  const history = useHistory()
 
   useEffect(() => {
     isRecordInside(false)
     setButtonText('정답 보기')
     setAnswer(undefined)
     setSoundUrl(recordList[activeIndex].sound)
-    console.log(activeIndex)
     console.log(recordList[activeIndex])
   }, [activeIndex])
 
   // 힌트보기 ->
 
   //다음문제 버튼 이벤트 정의
+  const handleHintButton = () => {
+    if (hintText === '힌트 보기') {
+      setHintText(`${recordList[activeIndex].hint}`)
+    }
+  }
+
   const handleNextButton = () => {
     //버튼 텍스트가 '정답보기' 일때 버튼명을 '다음문제'로 변경 후 레코드 집어넣는 트리거를true로 바꿔줌
     if (buttonText === '정답 보기') {
       isRecordInside(true)
-      setButtonText('다음 문제')
-      setAnswer(recordList[activeIndex].result)
-    } else {
+      if (activeIndex + 1 < recordList.length) {
+        setButtonText('다음 문제')
+        setAnswer(recordList[activeIndex].result)
+      } else {
+        setButtonText('테스트 완료')
+      }
+    } else if (buttonText === '다음 문제') {
       //버튼 텍스트가 '다음문제'일때 선택된 레코드를 1증가하여 다음 레코드를 불러옴
-      setActiveIndex(activeIndex + 1)
+      setHintText('힌트 보기')
+      if (activeIndex + 1 < recordList.length) {
+        setActiveIndex(activeIndex + 1)
+      }
+    } else if (buttonText === '테스트 완료') {
+      console.log('여기서 테스트엔드로 푸쉬')
+      history.push('/test/recommendation')
     }
   }
 
@@ -45,11 +63,13 @@ const TestCd = ({ recordList }) => {
     if (rotateSecond === 0) {
       setRotateSecond(second)
       //이곳에 사운드 재생
-      console.log(recordList[activeIndex].sound)
-      console.log(soundUrl, '사운드유아렐 들어간거')
-
-      var audio = new Audio(soundUrl)
-      audio.play()
+      if (second === 1) {
+        // 1초 사운드
+      } else {
+        // 3초 사운드
+        var audio = new Audio(soundUrl)
+        audio.play()
+      }
     }
   }
 
@@ -101,7 +121,7 @@ const TestCd = ({ recordList }) => {
           })}
         </ContentContainer>
       </Container>
-      <BlankTop DesktopMargin="0.5" TabletMargin="5" MobileMargin="10" />
+      <BlankTop DesktopMargin="1" TabletMargin="5" MobileMargin="10" />
 
       <ButtonContainer>
         <RowContainer>
@@ -118,7 +138,9 @@ const TestCd = ({ recordList }) => {
         <BlankTop DesktopMargin="3" TabletMargin="1" MobileMargin="3" />
 
         <BigButtonWrapper>
-          <HintButtonStyle>힌트 보기</HintButtonStyle>
+          <HintButtonStyle onClick={handleHintButton}>
+            {hintText}
+          </HintButtonStyle>
           <AnswerButtonStyle onClick={handleNextButton}>
             {buttonText}
           </AnswerButtonStyle>
