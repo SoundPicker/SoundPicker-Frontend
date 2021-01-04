@@ -7,19 +7,19 @@ const TestCdWrapperContainer = () => {
       recordImg: '',
       sound:
         'https://soundpicker-bucket.s3.ap-northeast-2.amazonaws.com/hi.mp3',
-      result: 'DumbDumb',
+      result: '빨간맛',
       thumb:
         'https://cdnweb01.wikitree.co.kr/webdata/editor/202004/13/img_20200413145751_8f4f9492.webp',
-      hint: '0번문제 hint',
+      hint: 'x x 맛',
     },
     {
       recordImg: '',
       sound:
         'https://soundpicker-bucket.s3.ap-northeast-2.amazonaws.com/hi.mp3',
-      result: 'Rokie',
+      result: 'Dumb Dumb',
       thumb:
         'https://lh3.googleusercontent.com/proxy/rrlpHTBVOx-UBxXK0oORgGHrXrUPSWGdh-x7K-3fvkIwYZyaj3k1qcA-u9lL-1zcMibloFTfBkvht6ZWXypm522YuU3vjbwS4bwgx4hdNJcYkbXrx89-FHa6',
-      hint: '1번문제 hint',
+      hint: '바보',
     },
     {
       recordImg: '',

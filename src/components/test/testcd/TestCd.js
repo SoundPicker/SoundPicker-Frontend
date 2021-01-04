@@ -16,7 +16,10 @@ const TestCd = ({ recordList }) => {
   const [activeIndex, setActiveIndex] = useState(0) //현재 선택된 레코드판 index넘버
   const [answer, setAnswer] = useState() //정답 text state
   const [soundUrl, setSoundUrl] = useState()
+  const [isHint, setIsHint] = useState(false)
   const history = useHistory()
+
+  const hintBtn = document.getElementById('hintBtn')
 
   useEffect(() => {
     isRecordInside(false)
@@ -31,7 +34,10 @@ const TestCd = ({ recordList }) => {
   //다음문제 버튼 이벤트 정의
   const handleHintButton = () => {
     if (hintText === '힌트 보기') {
-      setHintText(`${recordList[activeIndex].hint}`)
+      setIsHint(true)
+      setTimeout(() => {
+        setHintText(`${recordList[activeIndex].hint}`)
+      }, 500)
     }
   }
 
@@ -39,9 +45,12 @@ const TestCd = ({ recordList }) => {
     //버튼 텍스트가 '정답보기' 일때 버튼명을 '다음문제'로 변경 후 레코드 집어넣는 트리거를true로 바꿔줌
     if (buttonText === '정답 보기') {
       isRecordInside(true)
+      setHintText('관련 영상 보기')
+
       if (activeIndex + 1 < recordList.length) {
         setButtonText('다음 문제')
         setAnswer(recordList[activeIndex].result)
+        setIsHint(false)
       } else {
         setButtonText('테스트 완료')
       }
@@ -138,7 +147,7 @@ const TestCd = ({ recordList }) => {
         <BlankTop DesktopMargin="3" TabletMargin="1" MobileMargin="3" />
 
         <BigButtonWrapper>
-          <HintButtonStyle onClick={handleHintButton}>
+          <HintButtonStyle onClick={handleHintButton} hint={isHint}>
             {hintText}
           </HintButtonStyle>
           <AnswerButtonStyle onClick={handleNextButton}>
@@ -151,6 +160,19 @@ const TestCd = ({ recordList }) => {
 }
 
 /**키프레임 시작 */
+
+const HintFade = keyframes`{
+  0% { 
+   opacity: 1;
+  }
+  50% {
+   width: 0;
+   opacity: 0;
+  }
+  100% {
+  opacity: 1;
+  }
+`
 
 //1초 레코드판 돌리는 키프레임
 const Rotate1Record = keyframes`
@@ -556,7 +578,16 @@ const HintButtonStyle = styled.button`
     color: #49fff2;
     transition: color 0.1s ease-in-out;
   }
+  ${props =>
+    props.hint &&
+    css`
+      animation-timing-function: ease-in;
+      animation-duration: 1s;
+      /* animation-iteration-count: 1; */
+      animation-name: ${HintFade};
+    `}
 `
+
 const AnswerButtonStyle = styled.button`
   cursor: pointer;
   color: #030f2c;
