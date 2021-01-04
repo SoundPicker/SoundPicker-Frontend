@@ -1,4 +1,4 @@
-<img src="">
+img src="">
 
 ## 🔈 SoundPicker WEB TEAM 🔈
 
@@ -6,7 +6,7 @@
 - 프로젝트 기간: 2020.12.26 ~ 2021.01.16 🦍
   > 
 
-<img style="border: 0px solid black !important;  " src="https://user-images.githubusercontent.com/61777830/103285304-23353d80-4a21-11eb-9d7e-899c970b818c.png" width="240px" height = "200px" />
+<img style="border: 0px solid black !important;  " src="https://user-images.githubusercontent.com/61777830/103285304-23353d80-4a21-11eb-9d7e-899c970b818c.png" width="100%" height = "300px" />
 
 <br>
 <br>
@@ -14,8 +14,8 @@
 
 ## 🕸 WEB Developer 🕸
 
-<img style="border: 0px solid black !important; border-radius:20px; " src="https://user-images.githubusercontent.com/61777830/103284989-309df800-4a20-11eb-95bd-d5b20b763b2d.jpeg" width="200px" height = "200px" /> 승미 <img style="border: 0px solid black !important; border-radius:20px; " src="https://user-images.githubusercontent.com/61777830/103285053-5d520f80-4a20-11eb-80ca-3c333c40cd8d.jpeg" width="200px" height = "200px" />아연
-<img style="border: 0px solid black !important; border-radius:20px; " src="https://user-images.githubusercontent.com/61777830/103285203-cdf92c00-4a20-11eb-9ef6-4475d32007ba.jpeg" width="200px" height = "200px" />재훈 <img style="border: 0px solid black !important; border-radius:20px; " src="https://user-images.githubusercontent.com/61777830/103285090-8377af80-4a20-11eb-87f2-4ac7855538c6.jpeg" width="200px" height = "200px" />
+<img style="border: 0px solid black !important; border-radius:50%; " src="https://user-images.githubusercontent.com/61777830/103284989-309df800-4a20-11eb-95bd-d5b20b763b2d.jpeg" width="200px" height = "200px" /> 승미 <img style="border: 0px solid black !important; border-radius:50%; " src="https://user-images.githubusercontent.com/61777830/103285053-5d520f80-4a20-11eb-80ca-3c333c40cd8d.jpeg" width="200px" height = "200px" />아연
+<img style="border: 0px solid black !important; border-radius:50%; " src="https://user-images.githubusercontent.com/61777830/103285203-cdf92c00-4a20-11eb-9ef6-4475d32007ba.jpeg" width="200px" height = "200px" />재훈 <img style="border: 0px solid black !important; border-radius:50%; " src="https://user-images.githubusercontent.com/61777830/103285090-8377af80-4a20-11eb-87f2-4ac7855538c6.jpeg" width="200px" height = "200px" />
 재현
 
 ## 🛠 개발 환경 및 사용한 라이브러리 (Development Environment and Using Library)
@@ -27,10 +27,14 @@
 | 라이브러리(Library) | 목적(Purpose) | 버전(Version) |
 | :-----------------: | :-----------: | :-----------: |
 |        Axios        |   서버 통신   |               |
-|          .          |       .       |               |
-|          .          |       .       |               |
-|          .          |       .       |               |
-|          .          |       .       |               |
+|  react-router-dom   |       라우터 기능       |               |
+|       Formik        |       form 에서 input 관리       |               |
+|         Yup         |        input 조건 관리        |               |
+|        redux        |        전역 상태 관리       |               |
+|     react-redux     |       전역 상태 관리       |               |
+|  styled-components  |       스타일 시트       |               |
+|        YoutubeApi   |       iframe을 가져오기 위함       |               |
+|         xeicon      |       기본 아이콘을 가져오기 위함       |               |
 
 <br>
  <br>
@@ -48,14 +52,6 @@
   -
   - Foler
 
-- **Sources**
-  -
-  -
-  -
-  -
-  - Extension
-- **Info.plist**
-
 <br>
 
 ### 🦍 역할 분담 🦍
@@ -72,21 +68,13 @@
 
 **Funcion / State**
 
-- Function 규칙
+- 파일별로 최대한 역할을 알 수 있게 한다.
 
-- State 규칙
+- 뷰에 해당하는 파일은 대문자로 시작하고 중간 띄어쓰기는 붙인채 대문자로 적는다 ex) MainCard.js 
 
-Function 예시 >
+- 모듈 및 폴더들은 소문자로 적는다. 
 
-```javascript
-const
-```
-
-State 예시 >
-
-```javascript
-const
-```
+- 함수명은 최대한 역할을 알수있게 적으며 소문자로 시작하고 중간 띄어쓰기는 붙인채 대문자로 적는다 ex)getUserInfo()
 
 <br>
 
@@ -97,12 +85,13 @@ const
   <br>
   <br>
 
-### 🦍 기타 🦍
+### 🦍 함께 일하는 방식 🦍
 
-- v
--
--
--
+- 매일 오후 2시 전체 스크럼 참여 - 어제 한 일, 오늘 할 일 공유
+- 각자 역할 분배 후, 스케쥴 정함
+- 각자 스케쥴에 맞게 태스크 진행
+- 노션에서 진행 상황 공유(시작 전 | 진행 중 | 완료)
+- 중간, 중간 서로의 도움이 필요할 경우 요청하고, 도와준다
 
 <br>
 <br>
@@ -117,10 +106,30 @@ const
 
   개인 브랜치 (dev_name)
 
-- 개인브랜치에서 작업 후 dev브랜치에서 통합+테스트 합니다.
-  <br>테스트 후 이상이 없는경우 Main브랜치로 병합합니다.
+- 개인브랜치에서 작업 후 dev브랜치에서 통합+테스트
+  <br>테스트 후 이상이 없는경우 Main브랜치로 병합한다.
 
-- 커밋 메세지는 알기 쉽게 작성!
+- 커밋 메세지는 알기 쉽게 작성한다.
+   
+- 모든 커밋 메세지는 한글로 작성한다.
+
+- 모든 커밋은 커밋에 애플리케이션이나 라이브러리에 새로운 기능이 추가될 때 사용되어야 한다.
+
+- push하여 conflict가 있다면 서버 코드를 fetch하여 conflict를 핸들링한 후 다시 push한다.
+
+- 커밋이력을 깨끗하게 하기위하여 conflict는 rebase로 해결한다.
+
+- 1커밋당 1푸시를 원칙으로 한다.
+
+- 새로이 구현할 기능이 있거나 수정해야 할 버그가 있는데 자신이 이를 바로 해결할 여건이 되지 않으면 깃헙 이슈를 남긴다.
+
+- 완료되면 완료한 사람이 이슈를 닫는다.
+
+- 한줄 주석은 코드에 부연설명이 필요한 경우 작성한다.
+
+- 여러줄 주석은 앞으로 구현할 코드가 남은 경우 작성한다.
+
+- 충돌해서 날아가는 경우를 방지하는 용도로 backup branch를 개인별로 생성한다.
   <br>
   <br>
 
