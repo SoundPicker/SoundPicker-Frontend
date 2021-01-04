@@ -288,6 +288,7 @@ const LoadMoreBtn = styled.button`
   letter-spacing: 0.025em;
   border-radius: 5px;
   border: 2px solid #60ffda;
+  cursor: pointer;
   color: #ffffff;
   background-color: transparent;
 
