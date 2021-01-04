@@ -26,9 +26,9 @@ const StyledInput = styled.input`
 
 
 
-const QustionListYoutubeInput = ({inputName,inputPlaceholder,inputMaxLength}) => {
+const QustionListYoutubeInput = ({inputName,inputPlaceholder,inputMaxLength,getYoutubeId}) => {
     return(
-        <StyledInput type='text' placeholder={inputPlaceholder} maxLength={inputMaxLength} name={inputName} required/>
+        <StyledInput type='text' placeholder={inputPlaceholder} maxLength={inputMaxLength} name={inputName} onChange={getYoutubeId} required/>
     )
 }
 

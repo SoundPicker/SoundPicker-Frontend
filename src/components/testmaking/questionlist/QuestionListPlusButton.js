@@ -31,11 +31,11 @@ const Ten = styled.div`
 `
 
 
-const QustionLustPlusButton = () => {
+const QustionLustPlusButton = ({addQuestions}) => {
 
     return(
         <Wrap>
-            <Plus/>
+            <Plus onClick={addQuestions}/>
             <Ten>최대 10개</Ten>
         </Wrap>
 

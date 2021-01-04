@@ -17,11 +17,12 @@ const Player =
     playHandler,
     backClick,
     clickActiveButtonOut,
-    clickActiveButtonOver}) => {
+    clickActiveButtonOver,
+    questionUrl}) => {
 
   return (
     <TotalWrap>
-        <div id="player"></div>
+        <div id={`player_${questionUrl}`}></div>
 
       <ControlsWrap>
         <ButtonCover>

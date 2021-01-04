@@ -20,9 +20,88 @@ import PlayerWrap from "../../../components/testmaking/questionlist/player/Playe
 import StartTime from "../../../components/testmaking/questionlist/player/StartTime";
 import QuestionLustPlusButton from "../../../components/testmaking/questionlist/QuestionListPlusButton";
 import QuestionSaveButton from "../../../components/testmaking/questionlist/QuestionListSaveButton";
-
+import React,{useState} from 'react';
 
 const TestMakingFormContainer = () => {
+    const [questions,setQuestions] = useState([{
+        questionNumber : 1,
+        questionYoutubeURL : "",
+        questionStartsfrom : "",
+        hint : "",
+        answer: "",
+        answerYoutubeURL: ""
+    }]);
+
+    const changeText = questionNumber => e => {
+        const { target: { value } } = e;
+        const { target: { name } } = e;
+        const tempsQustios = questions.map(question => {
+            if( question.questionNumber === questionNumber+1 ){
+                question[name] = value;
+            }
+
+            return question;
+
+        });
+
+        setQuestions(tempsQustios);
+
+    }
+    const addQuestions = () => {
+        let data = {
+            questionNumber : questions.length +1,
+            questionYoutubeURL : "",
+            questionStartsfrom : "",
+            hint : "",
+            answer: "",
+            answerYoutubeURL: ""
+
+        };
+        console.log(questions)
+        setQuestions([...questions, data]);
+    }
+
+    const deleteQuestions = questionNumber => () => {
+        let tempQuestions = questions.filter(question => {
+            return question.questionNumber !== questionNumber + 1;
+        })
+
+        setQuestions(tempQuestions);
+    }
+
+    const getYoutubeId = questionNumber => e => {
+        const { target: { value } } = e;
+        const { target: { name } } = e;
+        console.log(name,value)
+        if(value)  {
+            const regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
+            const matchs = value.match(regExp);
+            console.log(matchs);
+            if(value!==''&&matchs&&matchs[7].length===11){
+
+                const tempsQustios = questions.map(question => {
+                    if( question.questionNumber === questionNumber+1 ){
+                        question[name] = matchs[7];
+                    }
+        
+                    return question;
+        
+                });  
+                setQuestions(tempsQustios);
+            }else{
+                const tempsQustios = questions.map(question => {
+                    if( question.questionNumber === questionNumber+1 ){
+                        question[name] = "";
+                    }
+        
+                    return question;
+        
+                });  
+                setQuestions(tempsQustios);
+            }
+        }
+        
+    }
 
     return(
         <form>
@@ -31,68 +110,79 @@ const TestMakingFormContainer = () => {
                 <BlankTop DesktopMargin='3.6' TabletMargin='2' MobileMargin='2.6'/>
                 <TopInputWrap>
                     <TopInputText text='제목'/>
-                    <TopInput inputName='testTitle' inputPlaceholder='최대 20자' inputMaxLength='20'/>
+                    <TopInput inputName='title' inputPlaceholder='최대 20자' inputMaxLength='20' />
                 </TopInputWrap>
                 <BlankTop DesktopMargin='3.6' TabletMargin='3.4' MobileMargin='2.6'/>
                 <TopInputWrap>
                     <TopInputText text='내용'/>
-                    <TopInput inputName='testDescription' inputPlaceholder='최대 40자' inputMaxLength='40'/>
+                    <TopInput inputName='description' inputPlaceholder='최대 40자' inputMaxLength='40'/>
                 </TopInputWrap>
                 <BlankTop DesktopMargin='3.6' TabletMargin='3.7' MobileMargin='2.6'/>
                 <TopInputWrap>
                     <TopInputText text='카테고리'/>
-                    <InputCategoryContainer inputName='testDescription' inputPlaceholder='오른쪽 화살표를 눌러 카테고리를 골라주세요'/>
+                    <InputCategoryContainer inputName='CategoryId' inputPlaceholder='오른쪽 화살표를 눌러 카테고리를 골라주세요'/>
                 </TopInputWrap>
             </TopInner>
-            <BlankTop DesktopMargin='5.7' TabletMargin='5' MobileMargin ='8.4'/>
+            <BlankTop DesktopMargin='6.4' TabletMargin='8.7' MobileMargin ='6.2'/>
             <QuestionListTitle/>
 
+            {questions.length !== 0 && (
             <QuestionListInner>
+                {questions.map((d,i)=>(
+                 <div key={i}>
+                    <QuestionListHeader deleteQuestions={deleteQuestions(i)} i={i} />
+                    <InputsWrap >
+                        <QuestionListLeftWrap >
+                            <BlankTop DesktopMargin='1.9' TabletMargin='2' MobileMargin='2.6'/>
+                            <QuestionListInputWrap>
+                                <QuestionListInputText text={"Qustion00"+(i+1)} />
+                                <QuestionListInput inputName='answer' inputPlaceholder='정답을 적어주세요'  changeText={changeText(i)} />
+                            </QuestionListInputWrap>
+                            <BlankTop DesktopMargin='1.9' TabletMargin='3.9' MobileMargin='2.6'/>
+                            <QuestionListHintWrap>
+                                <QuestionListInputText text='Hint' />
+                                <QuestionListInput inputName='hint' inputPlaceholder='힌트를 자유롭게 적어주세요'  changeText={changeText(i)} />
+                            </QuestionListHintWrap>
+                        </QuestionListLeftWrap>
 
-                <QuestionListHeader />
-                <InputsWrap>
-                    <QuestionListLeftWrap >
-                        <BlankTop DesktopMargin='1.9' TabletMargin='2' MobileMargin='2.6'/>
-                        <QuestionListInputWrap>
-                            <QuestionListInputText text='Qustion001' />
-                            <QuestionListInput inputName='qustionNumber' inputPlaceholder='정답을 적어주세요' />
-                        </QuestionListInputWrap>
-                        <BlankTop DesktopMargin='1.9' TabletMargin='3.9' MobileMargin='2.6'/>
-                        <QuestionListHintWrap>
-                            <QuestionListInputText text='Hint' />
-                            <QuestionListInput inputName='Hint' inputPlaceholder='힌트를 자유롭게 적어주세요' />
-                        </QuestionListHintWrap>
-                    </QuestionListLeftWrap>
+                        <QuestionListRightWrap>
 
-                    <QuestionListRightWrap>
+                            <BlankTop DesktopMargin='1.9' TabletMargin='3.9' MobileMargin='2.6'/>
+                            <QuestionListInputWrap>
+                                <QuestionListInputText text='Youtube Link' />
+                                <QuestionListYoutubeInput inputName='questionYoutubeURL' inputPlaceholder='1초/3초간 나올 음악 주소를 넣어주세요'  getYoutubeId={getYoutubeId(i)} />
+                            </QuestionListInputWrap>
+                            <BlankTop DesktopMargin='1.9' TabletMargin='2' MobileMargin='1.6'/>
 
-                        <BlankTop DesktopMargin='1.9' TabletMargin='3.9' MobileMargin='2.6'/>
-                        <QuestionListInputWrap>
-                            <QuestionListInputText text='Youtube Link' />
-                            <QuestionListYoutubeInput inputName='qustionUrl' inputPlaceholder='1초/3초간 나올 음악 주소를 넣어주세요' />
-                        </QuestionListInputWrap>
+                           {questions[i].questionYoutubeURL ? 
+                            <PlayerWrap>
+                                <PlayerContainer questionUrl={questions[i].questionYoutubeURL} />
+                                <StartTime  changeText={changeText(i)}/>
+                            </PlayerWrap>
+                            : ""}
 
-                        <BlankTop DesktopMargin='1.9' TabletMargin='2' MobileMargin='1.6'/>
-                        <PlayerWrap>
-                            <PlayerContainer />
-                            <StartTime />
-                        </PlayerWrap>
+                            <BlankTop DesktopMargin='1.9' TabletMargin='2.4' MobileMargin='1.7'/>
+                            <QuestionListInputWrap>
+                                <QuestionListInputText text='Youtube Link' />
+                                <QuestionListYoutubeInput inputName='answerYoutubeURL' inputPlaceholder='정답 공개 후 보여줄 영상을 넣어주세요'  changeText={getYoutubeId(i)} />
+                            </QuestionListInputWrap>
 
-                        <BlankTop DesktopMargin='1.9' TabletMargin='2.4' MobileMargin='1.7'/>
-                        <QuestionListInputWrap>
-                            <QuestionListInputText text='Youtube Link' />
-                            <QuestionListYoutubeInput inputName='answerUrl' inputPlaceholder='정답 공개 후 보여줄 영상을 넣어주세요' />
-                        </QuestionListInputWrap>
+                        </QuestionListRightWrap>
+                    </InputsWrap>
+                </div>
+                ))}
 
-                    </QuestionListRightWrap>
-                </InputsWrap>
                 <BlankTop DesktopMargin='4.7' TabletMargin='5.2' MobileMargin='4.7'/>
-                <QuestionLustPlusButton />
+                <QuestionLustPlusButton addQuestions={addQuestions} />
                 <BlankTop DesktopMargin='3.6' TabletMargin='6' MobileMargin='3.5'/>
                 <QuestionSaveButton />
                 <BlankTop DesktopMargin='3.6' TabletMargin='9.1' MobileMargin='3.5'/>
                 <table></table>
-            </QuestionListInner>
+            </QuestionListInner>     
+
+               
+            )}
+
         </form>
     )
 

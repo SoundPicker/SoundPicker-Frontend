@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import {ReactComponent as BtnCategory} from '../../../assets/icons/button_category.svg';
+import Bg from '../../../assets/images/testmaking/category/bg_category.png';
 
 const StyledBtnCategory = styled(BtnCategory)`
     align-self : flex-start;
@@ -21,7 +22,7 @@ const StyledInput = styled.input`
   }
     @media only screen and (max-width: 768px) {
         padding-bottom:1.2rem;
-                font-size: 1.2rem;
+        font-size: 1.2rem;
 
   } 
     &::placeholder{
@@ -52,24 +53,51 @@ const StyledButtonWrap = styled.div`
   }    
 `
 const Category = styled.div`
-    width:38rem;
-    height:14rem;
-    background-color: rgba(255,255,255,0.6);
+    width:56.7rem;
+    height:13.3rem;
+    background-image: url(${Bg});
     position:absolute;
-    top:100%;
+    top:110%;
     right:0;
-    padding-top:1.5rem;
-    padding-right:2.7rem;
-    padding-bottom:2.9rem;
-    padding-left:2.7rem;
+    display:flex;
+    
+    justify-content:space-between;
+
+    background-repeat: no-repeat;
+    background-size:cover;
+    @media only screen and (max-width: 1024px) {
+        width:71.5rem;
+
+
+  }
+    @media only screen and (max-width: 768px) {
+        width:54.8rem;
+
+
+  } 
+
+`
+const CategoryLeftWrap = styled.div`
     display:flex;
     flex-direction:column;
+    width:42.6rem;
+    height:13.3rem;
+
+    @media only screen and (max-width: 1024px) {
+        width:56.4rem;
+
+
+  }
+    @media only screen and (max-width: 768px) {
+        width:40.7rem;
+
+
+  } 
 
 `
 const CategoryRowWrap = styled.div`
     width:100%;
     height:100%;
-    border-bottom: 1px solid black;
     display:flex;
     justify-content:space-between;
     align-items:center;
@@ -85,53 +113,50 @@ const CategoryLastRowWrap = styled.div`
 const CategoryItemWrap = styled.div`
     width:100%;
     height:100%;
-    padding-left:1.3rem;
-    padding-bottom:0.9rem;
-    padding-top:1.4rem;
     display:flex;
     align-items:center;
     justify-content:center;
 `
-const Dot = styled.div`
-    width:0.4rem;
-    height:0.4rem;
-    background-color:black;
-    border-radius:50%;
-    margin-right:0.7rem;
-    margin-bottom:0.3rem;
-`
+
 const CategoryItemText = styled.span`
     display:inline-block;
-    width:  6rem;
-    font-size: 1.2rem;
+    width:  7.2rem;
+    font-size: 1.4rem;
     color: #15074A;
     cursor: pointer;
+    color:white;
+
 `
 
 const InputCategory = ({chooseCategory,chooseCategoryHandler,isCategoryVisible, categoryVisibleHandler, inputName,inputPlaceholder}) => {
     return(
         <>
             <div style={{width:'100%',display:"flex"}}>
-                <StyledInput type='text' disabled placeholder={inputPlaceholder} maxLength='20' name={inputName} value={chooseCategory?chooseCategory:''} onChange={chooseCategoryHandler}/>
+                <StyledInput type='text' readOnly placeholder={inputPlaceholder} maxLength='20' name={inputName} value={chooseCategory?chooseCategory:''} onChange={chooseCategoryHandler} required/>
                 <StyledButtonWrap DesktopSize='3.6' TabletSize='3.8' MobileSize='2.8'> <StyledBtnCategory onClick={categoryVisibleHandler}/> </StyledButtonWrap>
             </div>
             {isCategoryVisible ? 
             <Category>
+                <div></div>
+                <CategoryLeftWrap>
             <CategoryRowWrap>
                 <CategoryItemWrap>
-                    <Dot/>
                     <CategoryItemText onClick={chooseCategoryHandler} value='여자 아이돌'>
                         여자 아이돌
                     </CategoryItemText>
                 </CategoryItemWrap>
+                    <CategoryItemText>
+                        /
+                    </CategoryItemText>
                 <CategoryItemWrap>
-                    <Dot/>
                     <CategoryItemText onClick={chooseCategoryHandler} value='남자 아이돌'>
                         남자 아이돌
                     </CategoryItemText>
                 </CategoryItemWrap>
+                <CategoryItemText>
+                        /
+                </CategoryItemText>
                 <CategoryItemWrap>
-                    <Dot/>
                     <CategoryItemText onClick={chooseCategoryHandler} value='연도별'>
                         연도별
                     </CategoryItemText>
@@ -139,19 +164,22 @@ const InputCategory = ({chooseCategory,chooseCategoryHandler,isCategoryVisible, 
             </CategoryRowWrap>
             <CategoryRowWrap>
                 <CategoryItemWrap>
-                    <Dot/>
                     <CategoryItemText onClick={chooseCategoryHandler} value='힙합'>
                         힙합
                     </CategoryItemText>
                 </CategoryItemWrap>
+                <CategoryItemText>
+                        /
+                </CategoryItemText>
                 <CategoryItemWrap>
-                    <Dot/>
                     <CategoryItemText onClick={chooseCategoryHandler} value='팝'>
                         팝
                     </CategoryItemText>
                 </CategoryItemWrap>
+                <CategoryItemText>
+                        /
+                </CategoryItemText>
                 <CategoryItemWrap>
-                    <Dot/>
                     <CategoryItemText onClick={chooseCategoryHandler} value='게임'>
                         게임
                     </CategoryItemText>
@@ -159,24 +187,29 @@ const InputCategory = ({chooseCategory,chooseCategoryHandler,isCategoryVisible, 
             </CategoryRowWrap>
             <CategoryLastRowWrap>
                 <CategoryItemWrap>
-                    <Dot/>
                     <CategoryItemText onClick={chooseCategoryHandler} value='영화/드라마'>
                         영화/드라마
                     </CategoryItemText>
                 </CategoryItemWrap>
+                <CategoryItemText>
+                        /
+                </CategoryItemText>
                 <CategoryItemWrap>
-                    <Dot/>
                     <CategoryItemText onClick={chooseCategoryHandler} value='애니메이션'>
                         애니메이션
                     </CategoryItemText>
                 </CategoryItemWrap>
+                <CategoryItemText>
+                        /
+                </CategoryItemText>
                 <CategoryItemWrap>
-                    <Dot/>
                     <CategoryItemText onClick={chooseCategoryHandler} value='가타'>
                         기타
                     </CategoryItemText>
                 </CategoryItemWrap>
             </CategoryLastRowWrap>
+            </CategoryLeftWrap>
+
         </Category>            
             :''}
 

@@ -6,13 +6,13 @@ const StyledInputText = styled.span`
     padding-left:2rem;
     padding-bottom:1.5rem;
     @media only screen and (max-width: 1024px) {
-        width:20.4rem;
+        width:27rem;
         padding-bottom:1.6rem;
         padding-left:1.9rem;
 
   }
     @media only screen and (max-width: 768px) {
-        width:15.6rem;
+        width:21.15rem;
         padding-left:1.4rem;
         padding-bottom:1.2rem;
   } 

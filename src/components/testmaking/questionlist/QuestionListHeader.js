@@ -3,7 +3,7 @@ import {ReactComponent as BtnDelete} from '../../../assets/icons/button_delete.s
 
 const StyledQustionListHeader = styled.header`
         width: 97.1rem;
-        height: 5.8rem;
+        height: 8.8rem;
         display:flex;
         justify-content: space-between;
     @media only screen and (max-width: 1024px) {
@@ -43,10 +43,15 @@ const StyledBtnDelete = styled(BtnDelete)`
 
 `
 
-const QustionListHeader = () => {
+const QustionListHeader = ({deleteQuestions,i}) => {
     return(
         <StyledQustionListHeader>
-            <div></div><StyledBtnDelete />
+            <div></div>
+            {i !== 0 ?
+            <StyledBtnDelete onClick={deleteQuestions}/>
+
+                : ""
+             }
         </StyledQustionListHeader>
     )
 }

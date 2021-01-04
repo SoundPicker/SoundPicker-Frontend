@@ -25,9 +25,9 @@ const StyledInput = styled.input`
 
 
 
-const QustionListInput = ({inputName,inputPlaceholder,inputMaxLength}) => {
+const QustionListInput = ({inputName,inputPlaceholder,inputMaxLength,changeText}) => {
     return(
-        <StyledInput type='text' placeholder={inputPlaceholder} maxLength={inputMaxLength} name={inputName} required/>
+        <StyledInput type='text' placeholder={inputPlaceholder} maxLength={inputMaxLength} name={inputName} onChange={changeText}required/>
     )
 }
 

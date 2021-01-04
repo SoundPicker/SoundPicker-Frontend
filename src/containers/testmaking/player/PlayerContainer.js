@@ -3,7 +3,7 @@ import Player from "../../../components/testmaking/questionlist/player/Player";
 export let player;
 
 
-const PlayerContainer = () => {
+const PlayerContainer = ({questionUrl}) => {
   const [isPlaying, setPlaying] = useState(false);
   const [isLoading, setLoading] = useState(false);
   const [currentTime, setCurrentTime] = useState("0:00");
@@ -68,7 +68,8 @@ const PlayerContainer = () => {
   } 
   
   const backClick = () => {
-    player.seekTo(player.getCurrentTime() - 10, true)
+      if(isLoading)player.seekTo(player.getCurrentTime() - 10, true)
+
   }
   const clickActiveButtonOver = () => {
      setactiveButton(true)
@@ -76,19 +77,30 @@ const PlayerContainer = () => {
   const clickActiveButtonOut = () => {
     setactiveButton(false)
 }
+
   useEffect(() => {
+    console.log(questionUrl);
+    const script = document.createElement('script');
+    script.src = 'https://www.youtube.com/iframe_api';
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(script, firstScriptTag);
+
     if (window.YT) {
       console.log(window.YT);
+      console.log(questionUrl);
       window.onYouTubeIframeAPIReady = () => {
-        player = new window.YT.Player("player", {
-          height: "0",
-          width: "0",
-          videoId: "e-ijD7kdTs4",
+        player = new window.YT.Player(`player_${questionUrl}`, {
+          height: "110",
+          width: "110",
+          videoId: questionUrl,
+          host: 'https://www.youtube.com',
           playerVars: {
             autoplay: 1,
             controls: 0,
             fs: 0,
-            enablejsapi: 1
+            showinfo:0,
+            enablejsapi: 1,
+            origin:'http://localhost:3001'
           },
           events: {
             onReady: onReadyAPI,
@@ -96,20 +108,24 @@ const PlayerContainer = () => {
           },
         });
       };
+
     } else {
       console.log("can not load player");
     }
     return () => {
       clearInterval(checkCurrentTime);
     };
-  },[]);
+  },[questionUrl]);
 
   if (isLoading) {
     if (isPlaying) {
-      player.playVideo();
+      player?.playVideo();
     } else {
-      player.pauseVideo();
+      player?.pauseVideo();
     }
+  }else{
+    player?.loadVideoById({videoId:questionUrl})
+
   }
   
 
@@ -128,10 +144,11 @@ const PlayerContainer = () => {
         backClick={backClick}
         clickActiveButtonOver={clickActiveButtonOver}
         clickActiveButtonOut={clickActiveButtonOut}
+        questionUrl={questionUrl}
             />
   );
 };
-export default React.memo(PlayerContainer);
+export default PlayerContainer;
 
 
 
