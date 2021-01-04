@@ -6,6 +6,7 @@ import BlankTop from '../../common/BlankTop'
 import logo from '../../../assets/images/test/image_watermark.png'
 import TextComponent from '../../common/test/TextComponent'
 import { useHistory } from 'react-router-dom'
+import ProgressBar from '../testcd/ProgressBar'
 
 const TestCd = ({ recordList }) => {
   //state정의
@@ -85,6 +86,7 @@ const TestCd = ({ recordList }) => {
   return (
     <>
       <table></table>
+
       <BlankTop DesktopMargin="19" TabletMargin="32" MobileMargin="21" />
       <IconWrapper>
         <MyIcon />
@@ -101,6 +103,7 @@ const TestCd = ({ recordList }) => {
       <BlankTop DesktopMargin="4.2" TabletMargin="5" MobileMargin="9" />
       <Container>
         <ContentContainer>
+          <ProgressBar percentual={(100 / recordList.length) * activeIndex} />
           {recordList.map((item, index) => {
             return (
               <SwiperContainer
@@ -280,17 +283,6 @@ const UnActiveAnimation768 = keyframes`
 }
 `
 /* 키프레임 종료 */
-
-const TestCdWrapper = styled.div`
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  /* border: 1px solid blue; */
-`
 
 /* Start Logo */
 const IconWrapper = styled.div`
@@ -555,7 +547,8 @@ const BigButtonWrapper = styled.div`
 
 const HintButtonStyle = styled.button`
   cursor: pointer;
-  display: block;
+  display: inline-block;
+  white-space: nowrap;
   color: #fff;
   border: 1px solid #ffffff;
   outline: none;

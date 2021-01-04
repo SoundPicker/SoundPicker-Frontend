@@ -10,7 +10,7 @@ const TestCdWrapperContainer = () => {
       result: '빨간맛',
       thumb:
         'https://cdnweb01.wikitree.co.kr/webdata/editor/202004/13/img_20200413145751_8f4f9492.webp',
-      hint: 'x x 맛',
+      hint: 'xx맛~궁금해허니',
     },
     {
       recordImg: '',
