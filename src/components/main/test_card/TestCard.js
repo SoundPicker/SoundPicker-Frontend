@@ -1,6 +1,7 @@
 // 카드 크기 때문에 breakpoint - 1440(추가), 768 -> 828로 변경
 import React, { useState } from "react";
 import styled from "styled-components";
+import { keyframes } from "styled-components";
 import PlusDesktop from "../../../assets/desktop/button_add.png";
 import PlusTablet from "../../../assets/tablet/button_add.png";
 import PlusMobile from "../../../assets/mobile/button_add.png";
@@ -276,7 +277,7 @@ const GradientBox = styled.div`
   }
 `;
 
-const LoadMoreBtn = styled.button`
+const LoadMoreBtn = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -287,10 +288,37 @@ const LoadMoreBtn = styled.button`
   font-weight: 700;
   letter-spacing: 0.025em;
   border-radius: 5px;
-  border: 2px solid #60ffda;
+  border: 3px solid;
   cursor: pointer;
   color: #ffffff;
   background-color: transparent;
+
+  // border animation: 꼭 content-box로 설정해줘야 함
+  box-sizing: content-box;
+
+  --angle: 90deg;
+
+  @property --angle {
+    syntax: "<angle>";
+    initial-value: 90deg;
+    inherits: true;
+  }
+
+  @keyframes borderRotate {
+    100% {
+      --angle: 420deg;
+    }
+  }
+
+  border-image: conic-gradient(
+      from var(--angle),
+      rgba(168, 239, 255, 0.1),
+      rgba(168, 239, 255, 1) 0.1turn,
+      rgba(168, 239, 255, 1) 0.15turn,
+      rgba(168, 239, 255, 0.1) 0.25turn
+    )
+    30;
+  animation: borderRotate 800ms linear infinite forwards;
 
   &:focus {
     outline: none;
