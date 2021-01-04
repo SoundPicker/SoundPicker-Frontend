@@ -14,7 +14,7 @@ const Background = styled.div`
     height:1000vh;
     background-repeat: no-repeat;
     background-position: center top;
-    background-color: black;
+    background-color: rgba( 12, 26, 34, 1);
     background-size:contain;
     @media  (max-width:768px) {
   background-image: url(${Bg2});

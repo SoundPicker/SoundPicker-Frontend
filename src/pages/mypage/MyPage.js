@@ -98,7 +98,7 @@ const MyPage= () => {
                 <BlankTop DesktopMargin='5' TabletMargin='5' MobileMargin='5' />
                 <Content>
                 <TextComponent title="&emsp;sound_picker@gmail.com"  DesktopLength='15' TabletLength='13' MobileLength='12'/>
-                <Button font='12' >이메일 변경</Button>
+                <Button font='12' color='gray'>이메일 변경불가</Button>
                 </Content>
                 <BlankTop DesktopMargin='5' TabletMargin='5' MobileMargin='5' />
                 <Content>
@@ -107,9 +107,7 @@ const MyPage= () => {
                 </Content>
                 <BlankTop DesktopMargin='8' TabletMargin='5' MobileMargin='5' />
                 <Content><BoldTextComponent title="마이테스트 수정"  DesktopLength='25' TabletLength='20' MobileLength='15'/></Content>
-                <BlankTop DesktopMargin='3' TabletMargin='3' MobileMargin='3' />
-                <UnderLineWrap  DesktopLength='130' TabletLength='70' MobileLength='30' ></UnderLineWrap>
-                <BlankTop DesktopMargin='4' TabletMargin='2' MobileMargin='2' />
+                <BlankTop DesktopMargin='7' TabletMargin='3' MobileMargin='3' />
                 <Content>
                 <BoldTextComponent title="&emsp;90년대 감성, 다들 기억하잖아요?"  DesktopLength='15' TabletLength='10' MobileLength='10'/>
                 <MyPageButton />
@@ -117,7 +115,7 @@ const MyPage= () => {
                 <Content><TextComponent title="&emsp;&ensp;싸이월드 감성 위주로 담아보았습니다."  DesktopLength='10' TabletLength='10' MobileLength='10'/>
                 </Content>
                 <BlankTop DesktopMargin='2' TabletMargin='2' MobileMargin='2' />
-                <UnderLineWrap  DesktopLength='130' TabletLength='70' MobileLength='30' ></UnderLineWrap>
+                <UnderLineWrap  DesktopLength='130'BetweenLength='95' TabletLength='70' MobileLength='45' ></UnderLineWrap>
                 <BlankTop DesktopMargin='4' TabletMargin='2' MobileMargin='2' />
                 <Content>
                 <BoldTextComponent title="&emsp;90년대 감성, 다들 기억하잖아요?"  DesktopLength='15' TabletLength='10' MobileLength='10'/>
@@ -126,7 +124,7 @@ const MyPage= () => {
                 <Content>
                 <TextComponent title="&emsp;&ensp;싸이월드 감성 위주로 담아보았습니다."  DesktopLength='10' TabletLength='10' MobileLength='10'/> </Content>
                 <BlankTop DesktopMargin='2' TabletMargin='2' MobileMargin='2' />
-                <UnderLineWrap  DesktopLength='130' TabletLength='70' MobileLength='30' ></UnderLineWrap>
+                <UnderLineWrap  DesktopLength='130'BetweenLength='95' TabletLength='70' MobileLength='45' ></UnderLineWrap>
                 <BlankTop DesktopMargin='4' TabletMargin='2' MobileMargin='2' />
                 <Content>
                 <BoldTextComponent title="&emsp;90년대 감성, 다들 기억하잖아요?"  DesktopLength='15' TabletLength='10' MobileLength='10'/>
@@ -135,7 +133,7 @@ const MyPage= () => {
                 <Content><TextComponent title="&emsp;&ensp;싸이월드 감성 위주로 담아보았습니다."  DesktopLength='10' TabletLength='10' MobileLength='10'/>
                 </Content>
                 <BlankTop DesktopMargin='2' TabletMargin='2' MobileMargin='2' />
-                <UnderLineWrap  DesktopLength='130' TabletLength='70' MobileLength='30' ></UnderLineWrap>
+                <UnderLineWrap  DesktopLength='130'BetweenLength='95' TabletLength='70' MobileLength='45' ></UnderLineWrap>
                 </Wrapper>
             </Background>
         </div>
