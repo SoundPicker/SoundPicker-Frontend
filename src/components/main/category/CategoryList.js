@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 // 서버랑 통신해서 카테고리 이름 받아오기
 const CategoryName = styled.span`
-  font-size: 1.6rem;
+  font-size: 1.3rem;
   line-height: 1.035;
   color: #dadada;
 
@@ -11,8 +11,12 @@ const CategoryName = styled.span`
     font-size: 1.2rem;
   }
 
+  @media (max-width: 1047px) {
+    font-size: 1.15rem;
+  }
+
   @media (max-width: 1024px) {
-    font-size: 1.6rem;
+    font-size: 1.2rem;
     line-height: 1.035;
   }
 `;
@@ -25,6 +29,7 @@ const CategoryBtn = styled.button`
   border-radius: 50%;
   box-shadow: 0 0 9px 0 #ffffff;
   background-color: #ffffff;
+  cursor: pointer;
 
   &:focus {
     width: 2rem;
@@ -104,7 +109,7 @@ const CategoryList = () => {
       {[...Array(categoryNum)].map((n, index) => {
         return (
           <CategoryItem>
-            <CategoryName>여아이돌</CategoryName>
+            <CategoryName>영화/드라마</CategoryName>
             <CategoryBtn />
           </CategoryItem>
         );

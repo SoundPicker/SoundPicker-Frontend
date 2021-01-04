@@ -7,16 +7,18 @@ import PlusMobile from "../../../assets/mobile/button_add.png";
 import BlankTop from "../../common/BlankTop";
 import PlayImg from "../../../assets/play.png";
 
-const PlusBtn = styled.button`
+const PlusBtn = styled.div`
   display: block;
   width: 29.6rem;
   height: 5.6rem;
+  position: relative;
   background-image: url(${PlusDesktop});
   background-repeat: no-repeat;
   background-position: center center;
   border-radius: 8px;
-  border: 3px solid #60ffda;
   background-color: transparent;
+  cursor: pointer;
+  overflow: hidden;
 
   &:focus {
     outline: none;
@@ -34,18 +36,16 @@ const PlusBtn = styled.button`
   }
 `;
 
-const Card = styled.button`
+const Card = styled.div`
   display: block;
   width: 29.6rem;
+  position: relative;
   padding: 3.6rem 2.1rem 2rem 2.7rem;
   border-radius: 8px;
-  border: 3px solid #60ffda;
+  cursor: pointer;
   color: #ffffff;
   background-color: transparent;
-
-  &:focus {
-    outline: none;
-  }
+  overflow: hidden;
 
   &:hover {
     background: linear-gradient(
@@ -62,6 +62,85 @@ const Card = styled.button`
   @media (max-width: 828px) {
     width: 27.6rem;
     padding: 3.4rem 2.5rem 2.9rem 2.4rem;
+  }
+`;
+
+const RotateBorder = styled.span`
+  position: absolute;
+  display: block;
+  filter: blur(7px);
+
+  &:nth-child(1) {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #60ffda);
+    animation: animate1 1s linear infinite;
+  }
+  @keyframes animate1 {
+    0% {
+      left: 100%;
+    }
+    50%,
+    100% {
+      left: -100%;
+    }
+  }
+  &:nth-child(2) {
+    top: -100%;
+    left: 0;
+    width: 3px;
+    height: 100%;
+    background: linear-gradient(180deg, transparent, #60ffda);
+    animation: animate2 1s linear infinite;
+    animation-delay: 0.25s;
+  }
+  @keyframes animate2 {
+    0% {
+      top: -100%;
+    }
+    50%,
+    100% {
+      top: 100%;
+    }
+  }
+  &:nth-child(3) {
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(270deg, transparent, #60ffda);
+    animation: animate3 1s linear infinite;
+    animation-delay: 0.5s;
+  }
+  @keyframes animate3 {
+    0% {
+      left: -100%;
+    }
+    50%,
+    100% {
+      left: 100%;
+    }
+  }
+
+  &:nth-child(4) {
+    bottom: -100%;
+    right: 0;
+    width: 3px;
+    height: 100%;
+    background: linear-gradient(360deg, transparent, #60ffda);
+    animation: animate4 1s linear infinite;
+    animation-delay: 0.75s;
+  }
+  @keyframes animate4 {
+    0% {
+      bottom: -100%;
+    }
+    50%,
+    100% {
+      bottom: 100%;
+    }
   }
 `;
 
@@ -251,12 +330,21 @@ const CardList = () => {
     <>
       <CardListWrap height={height}>
         <CardWrapOne>
-          <PlusBtn />
+          <PlusBtn>
+            <RotateBorder />
+            <RotateBorder />
+            <RotateBorder />
+            <RotateBorder />
+          </PlusBtn>
           <BlankTop DesktopMargin={1.6} TabletMargin={1.6} MobileMargin={1.8} />
           {[...Array(4)].map((n, index) => {
             return (
               <>
                 <Card>
+                  <RotateBorder />
+                  <RotateBorder />
+                  <RotateBorder />
+                  <RotateBorder />
                   <CardTitle>오마이걸</CardTitle>
                   <BlankTop
                     DesktopMargin={3}
@@ -282,6 +370,10 @@ const CardList = () => {
                   MobileMargin={1.8}
                 />
                 <Card>
+                  <RotateBorder />
+                  <RotateBorder />
+                  <RotateBorder />
+                  <RotateBorder />
                   <CardTitle>
                     오마이걸 찐팬 모여라 오마이걸 찐팬 오마이걸 찐팬 모여라.
                   </CardTitle>
@@ -311,6 +403,10 @@ const CardList = () => {
                   MobileMargin={1.8}
                 />
                 <Card>
+                  <RotateBorder />
+                  <RotateBorder />
+                  <RotateBorder />
+                  <RotateBorder />
                   <CardTitle>
                     오마이걸 찐팬 모여라 오마이걸 찐팬 오마이걸 찐팬 모여라.
                     오마이걸 찐팬 모여라 오마이걸 찐팬 오마이걸 찐팬 모여라.
@@ -347,6 +443,10 @@ const CardList = () => {
             return (
               <>
                 <Card>
+                  <RotateBorder />
+                  <RotateBorder />
+                  <RotateBorder />
+                  <RotateBorder />
                   <CardTitle>
                     오마이걸 찐팬들만 맞출 수 있는 노래 모음
                   </CardTitle>
@@ -374,6 +474,10 @@ const CardList = () => {
                   MobileMargin={1.8}
                 />
                 <Card>
+                  <RotateBorder />
+                  <RotateBorder />
+                  <RotateBorder />
+                  <RotateBorder />
                   <CardTitle>
                     오마이걸 찐팬 모여라 오마이걸 찐팬 오마이걸 찐팬 모여라.
                   </CardTitle>
@@ -402,6 +506,10 @@ const CardList = () => {
                   MobileMargin={1.8}
                 />
                 <Card>
+                  <RotateBorder />
+                  <RotateBorder />
+                  <RotateBorder />
+                  <RotateBorder />
                   <CardTitle>
                     오마이걸 찐팬 모여라 오마이걸 찐팬 오마이걸 찐팬 모여라.
                   </CardTitle>
@@ -438,6 +546,10 @@ const CardList = () => {
             return (
               <>
                 <Card>
+                  <RotateBorder />
+                  <RotateBorder />
+                  <RotateBorder />
+                  <RotateBorder />
                   <CardTitle>오마이걸 찐팬 모여라 오마이걸 찐팬</CardTitle>
                   <BlankTop
                     DesktopMargin={3}
@@ -464,6 +576,10 @@ const CardList = () => {
                   MobileMargin={1.8}
                 />
                 <Card>
+                  <RotateBorder />
+                  <RotateBorder />
+                  <RotateBorder />
+                  <RotateBorder />
                   <CardTitle>
                     오마이걸 찐팬 모여라 오마이걸 찐팬 오마이걸 찐팬 모여라.
                   </CardTitle>
@@ -492,6 +608,10 @@ const CardList = () => {
                   MobileMargin={1.8}
                 />
                 <Card>
+                  <RotateBorder />
+                  <RotateBorder />
+                  <RotateBorder />
+                  <RotateBorder />
                   <CardTitle>
                     오마이걸 찐팬 모여라 오마이걸 찐팬 오마이걸 찐팬 모여라.
                   </CardTitle>
@@ -528,6 +648,10 @@ const CardList = () => {
             return (
               <>
                 <Card>
+                  <RotateBorder />
+                  <RotateBorder />
+                  <RotateBorder />
+                  <RotateBorder />
                   <CardTitle>오마이걸 찐팬 모여라 오마이걸 찐팬</CardTitle>
                   <BlankTop
                     DesktopMargin={3}
@@ -555,6 +679,10 @@ const CardList = () => {
                 />
                 <Card>
                   <CardTitle>
+                    <RotateBorder />
+                    <RotateBorder />
+                    <RotateBorder />
+                    <RotateBorder />
                     오마이걸 찐팬 모여라 오마이걸 찐팬 오마이걸 찐팬 모여라.
                   </CardTitle>
                   <BlankTop
@@ -582,6 +710,10 @@ const CardList = () => {
                   MobileMargin={1.8}
                 />
                 <Card>
+                  <RotateBorder />
+                  <RotateBorder />
+                  <RotateBorder />
+                  <RotateBorder />
                   <CardTitle>
                     오마이걸 찐팬 모여라 오마이걸 찐팬 오마이걸 찐팬 모여라.
                   </CardTitle>

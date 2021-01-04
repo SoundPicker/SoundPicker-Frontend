@@ -6,7 +6,7 @@ const App = () => {
   return (
     <Router>
       <Switch>
-        <Route exact path="/" component={MainPage} />
+        <Route exact path="/" component={TestEndPage} />
         <Route path="/*">404 Not Found</Route>
       </Switch>
     </Router>

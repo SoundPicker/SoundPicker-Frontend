@@ -32,6 +32,7 @@ const Card = styled.div`
   padding: 3.2rem 4.8rem 2.1rem 2.9rem;
   border: 3px solid #60ffda;
   border-radius: 8px;
+  cursor: pointer;
   background-color: transparent;
 
   &:hover {

@@ -12,6 +12,7 @@ const BackBtn = styled.button`
   width: 34.9rem;
   height: 4.4rem;
   border: none;
+  cursor: pointer;
   box-shadow: 0 0 10px #60ffcd;
   background: linear-gradient(90.66deg, #60ffcd -8.61%, #60f5ff 112.74%);
 

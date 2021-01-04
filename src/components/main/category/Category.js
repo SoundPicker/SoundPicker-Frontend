@@ -19,6 +19,7 @@ const LeftBtn = styled.button`
   background-position: center center;
   border: none;
   background-color: transparent;
+  cursor: pointer;
 
   &:focus {
     outline: none;
@@ -41,6 +42,7 @@ const RightBtn = styled.button`
   background-position: center center;
   border: none;
   background-color: transparent;
+  cursor: pointer;
 
   &:focus {
     outline: none;
