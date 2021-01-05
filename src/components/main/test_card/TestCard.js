@@ -17,6 +17,7 @@ const PlusBtn = styled.div`
   background-repeat: no-repeat;
   background-position: center center;
   border-radius: 8px;
+  border: 3px solid #ffffff;
   background-color: transparent;
   cursor: pointer;
   overflow: hidden;
@@ -43,7 +44,7 @@ const Card = styled.div`
   position: relative;
   padding: 3.6rem 2.1rem 2rem 2.7rem;
   border-radius: 8px;
-  border: 4px solid;
+  border: 3px solid;
   cursor: pointer;
   color: #ffffff;
   background-color: transparent;
@@ -56,32 +57,6 @@ const Card = styled.div`
       rgba(96, 255, 218, 0) 100%
     );
   }
-
-  // border animation: 꼭 content-box로 설정해줘야 함
-
-  --angle: 90deg;
-
-  @property --angle {
-    syntax: "<angle>";
-    initial-value: 90deg;
-    inherits: true;
-  }
-
-  @keyframes borderRotate {
-    100% {
-      --angle: 420deg;
-    }
-  }
-
-  border-image: conic-gradient(
-      from var(--angle),
-      rgba(96, 121, 255, 0.1),
-      rgba(96, 255, 218, 1) 0.2turn,
-      rgba(96, 255, 218, 1) 0.25turn,
-      rgba(96, 121, 255, 0.1) 0.5turn
-    )
-    30;
-  animation: borderRotate 2000ms linear infinite forwards;
 
   @media (max-width: 1024px) {
     width: 26.2rem;
@@ -235,38 +210,11 @@ const LoadMoreBtn = styled.div`
   font-size: 2rem;
   font-weight: 700;
   letter-spacing: 0.025em;
-  border-radius: 5px;
-  border: 4px solid;
+  border-radius: 8px;
+  border: 3px solid;
   cursor: pointer;
   color: #ffffff;
   background-color: transparent;
-
-  // border animation: 꼭 content-box로 설정해줘야 함
-  box-sizing: content-box;
-
-  --angle: 90deg;
-
-  @property --angle {
-    syntax: "<angle>";
-    initial-value: 90deg;
-    inherits: true;
-  }
-
-  @keyframes borderRotate {
-    100% {
-      --angle: 420deg;
-    }
-  }
-
-  border-image: conic-gradient(
-      from var(--angle),
-      rgba(82, 0, 255, 1),
-      rgba(0, 255, 163, 1) 0.2turn,
-      rgba(0, 194, 255, 1) 0.25turn,
-      rgba(0, 255, 240, 1) 0.5turn
-    )
-    30;
-  animation: borderRotate 1500ms linear infinite forwards;
 
   &:focus {
     outline: none;

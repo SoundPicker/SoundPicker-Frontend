@@ -43,30 +43,6 @@ const Card = styled.div`
     );
   }
 
-  --angle: 90deg;
-
-  @property --angle {
-    syntax: "<angle>";
-    initial-value: 90deg;
-    inherits: true;
-  }
-
-  @keyframes borderRotate {
-    100% {
-      --angle: 420deg;
-    }
-  }
-
-  border-image: conic-gradient(
-      from var(--angle),
-      rgba(96, 121, 255, 0.1),
-      rgba(96, 255, 218, 1) 0.2turn,
-      rgba(96, 255, 218, 1) 0.25turn,
-      rgba(96, 121, 255, 0.1) 0.5turn
-    )
-    30;
-  animation: borderRotate 2000ms linear infinite forwards;
-
   @media (max-width: 1089px) {
     width: 35.4rem;
     height: 21rem;
