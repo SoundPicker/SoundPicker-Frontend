@@ -106,46 +106,45 @@ const TestMakingFormContainer = () => {
         
     }
 
-    // useEffect(() => {
-    //     const script = document.createElement('script');
-    //     script.src = 'https://www.youtube.com/iframe_api';
-    //     const firstScriptTag = document.getElementsByTagName('script')[0];
-    //       firstScriptTag.parentNode.insertBefore(script, firstScriptTag);
+    useEffect(() => {
+        const script = document.createElement('script');
+        script.src = 'https://www.youtube.com/iframe_api';
+        const firstScriptTag = document.getElementsByTagName('script')[0];
+          firstScriptTag.parentNode.insertBefore(script, firstScriptTag);
         
-    //     window.onYouTubeIframeAPIReady = () => {
-    //       console.error(questionUrl);
-    //       // eslint-disable-next-line react-hooks/exhaustive-deps
-    //       player0 = new window.YT.Player(`player0`, {
-    //         height: "1000",
-    //         width: "1000",
-    //         videoId: questionUrl,
-    //         host: 'https://www.youtube.com',
-    //         playerVars: {
-    //           autoplay: 0,
-    //           controls: 0,
-    //           fs: 0,
-    //           showinfo:0,
-    //           enablejsapi: 1,
-    //           origin:'http://localhost:3000'
-    //         },
-    //         events: {
-    //           onReady: onReadyAPI,
-    //           onStateChange: playerState,
-    //         },
-    //       });
-    //       console.error('player0', player);
-    //     // if (firstScriptTag.id === 'www-widgetapi-script') window.onYouTubeIframeAPIReady();
-    //     setTimeout(() => {
-    //       const a = document.getElementsByTagName('iframe')[0];
-    //       a.src = 'https://www.youtube.com/embed/F9Ex1ESEWN4';
-    //     }, 1000)
-    //     }
-    //     return () => {
-    //       // script.remove();
-    //       clearInterval(checkCurrentTime);
-    //     };
+        window.onYouTubeIframeAPIReady = () => {
+          // eslint-disable-next-line react-hooks/exhaustive-deps
+          player0 = new window.YT.Player(`player0`, {
+            height: "100",
+            width: "100",
+            videoId: "xYMxzPqBU-s",
+            host: 'https://www.youtube.com',
+            playerVars: {
+              autoplay: 0,
+              controls: 0,
+              fs: 0,
+              showinfo:0,
+              enablejsapi: 1,
+              origin:'http://localhost:3000'
+            },
+            events: {
+              onReady: onReadyAPI,
+              onStateChange: playerState,
+            },
+          });
+          console.error('player0', player);
+        // if (firstScriptTag.id === 'www-widgetapi-script') window.onYouTubeIframeAPIReady();
+        setTimeout(() => {
+          const a = document.getElementsByTagName('iframe')[0];
+          a.src = 'https://www.youtube.com/embed/F9Ex1ESEWN4?autoplay=1&controls=0&fs=0&enablejsapi=1&origin=http%3A%2F%2Flocalhost%3A3000&widgetid=1';
+        }, 1000)
+        }
+        return () => {
+          // script.remove();
+          clearInterval(checkCurrentTime);
+        };
         
-    //   }, []);
+      }, []);
     
 
     return(
