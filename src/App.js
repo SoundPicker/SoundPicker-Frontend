@@ -1,3 +1,4 @@
+
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import MainPage from "./pages/main/MainPage";
 import QuizLoading from './components/loading/QuizLoading';
@@ -17,3 +18,4 @@ const App = () => {
 };
 
 export default App;
+
