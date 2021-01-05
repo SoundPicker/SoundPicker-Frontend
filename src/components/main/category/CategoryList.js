@@ -39,14 +39,11 @@ const CategoryBtn = styled.button`
     background-color: #60ffda;
   }
 
-  &:hover{
+  &:hover {
     width: 2rem;
     height: 2rem;
     box-shadow: 0 0 12px 0 #ffffff;
-    outline: none; 
-  }
-
-
+    outline: none;
   }
 `;
 

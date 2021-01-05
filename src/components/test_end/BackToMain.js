@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const Wrap = styled.div`
   display: flex;
@@ -47,9 +48,13 @@ const BackBtn = styled.button`
 
 const BackToMain = () => {
   return (
-    <Wrap>
-      <BackBtn />
-    </Wrap>
+    <>
+      <Link to="/" style={{ textDecoration: "none" }}>
+        <Wrap>
+          <BackBtn />
+        </Wrap>
+      </Link>
+    </>
   );
 };
 
