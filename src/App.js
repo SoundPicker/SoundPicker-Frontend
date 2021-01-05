@@ -5,14 +5,12 @@ import {
   useHistory,
 } from 'react-router-dom'
 import MainPage from './pages/main/MainPage'
-import TestPage from './pages/test/TestPage'
 
 const App = () => {
   return (
     <Router>
       <Switch>
-        {/* <Route exact path="/" component={MainPage}/> */}
-        <Route exact path="/" component={TestPage} />
+        <Route exact path="/" component={MainPage} />
         <Route path="/*">404 Not Found</Route>
       </Switch>
     </Router>

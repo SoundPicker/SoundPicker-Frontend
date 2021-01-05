@@ -53,6 +53,7 @@ const TestCd = ({ recordList }) => {
         setAnswer(recordList[activeIndex].result)
         setIsHint(false)
       } else {
+        setAnswer(recordList[activeIndex].result)
         setButtonText('테스트 완료')
       }
     } else if (buttonText === '다음 문제') {
@@ -574,8 +575,8 @@ const HintButtonStyle = styled.button`
   ${props =>
     props.hint &&
     css`
-      animation-timing-function: ease-in;
-      animation-duration: 1s;
+      animation-timing-function: ease-in-out;
+      animation-duration: 0.6s;
       /* animation-iteration-count: 1; */
       animation-name: ${HintFade};
     `}
