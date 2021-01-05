@@ -131,12 +131,7 @@
   <br>
 
 ```
-- main
-     ├── dev (Develop)
-          ├── dev_seungmi
-          ├── dev_ahyeon
-          ├── dev_jaehoon
-          └── dev_jaehyeon
+
 ```
 
 <br>
@@ -145,9 +140,117 @@
 
 - **Resources**
 
-  - Folder
-  -
-  -
-  -
-  -
-  - Foler
+```
+
+├── App.js
+├── assets
+├── components
+│   ├── common
+│   │   ├── Background.js
+│   │   ├── BlankLeft.js
+│   │   ├── BlankTop.js
+│   │   ├── BoldTextComponent.js
+│   │   ├── Button.js
+│   │   ├── Divider.js
+│   │   ├── LoadingComponent.js
+│   │   ├── MenuIcon.js
+│   │   ├── TextComponent.js
+│   │   ├── UnderLineWrap.js
+│   ├── loading
+│   │   ├── ContentComponent.js
+│   │   ├── QuizLoading.js
+│   │   ├── StartLoading.js
+│   │   └── TitleComponent.js
+│   ├── main
+│   │   ├── Bg.js
+│   │   ├── Main.js
+│   │   ├── SearchInput.js
+│   │   ├── banner
+│   │   │   └── Banner.js
+│   │   ├── category
+│   │   │   ├── Category.js
+│   │   │   └── CategoryList.js
+│   │   ├── footer
+│   │   │   └── Footer.js
+│   │   ├── header
+│   │   │   └── Header.js
+│   │   └── test_card
+│   │       └── TestCard.js
+│   ├── test
+│   │   ├── TestBackground.js
+│   │   └── testcd
+│   │       ├── ProgressBar.js
+│   │       └── TestCd.js
+│   ├── test_end
+│   │   ├── BackToMain.js
+│   │   ├── Bg.js
+│   │   ├── Header.js
+│   │   ├── LogoTitle.js
+│   │   ├── RecommendCardList.js
+│   │   ├── RecommendText.js
+│   │   ├── TestEnd.js
+│   │   ├── TestTitle.js
+│   │   └── ThankYouText.js
+│   └── testmaking
+│       ├── Header.js
+│       ├── Input
+│       │   ├── InputCategory.js
+│       │   ├── TopInput.js
+│       │   ├── TopInputText.js
+│       │   └── TopInputWrap.js
+│       ├── TMBackground.js
+│       ├── TMInner.js
+│       ├── TopInner.js
+│       └── questionlist
+│           ├── QuestionListHeader.js
+│           ├── QuestionListInner.js
+│           ├── QuestionListPlusButton.js
+│           ├── QuestionListSaveButton.js
+│           ├── QuestionListTitle.js
+│           ├── input
+│           │   ├── InputsWrap.js
+│           │   ├── QusitonListYoutubeInput.js
+│           │   ├── QustionListHintWrap.js
+│           │   ├── QustionListInput.js
+│           │   ├── QustionListInputLeftWrap.js
+│           │   ├── QustionListInputRightWrap.js
+│           │   ├── QustionListInputText.js
+│           │   └── QustionListInputWrap.js
+│           └── player
+│               ├── Player.js
+│               ├── PlayerWrap.js
+│               ├── StartTime.js
+│               └── Wave.js
+├── containers
+│   ├── main
+│   │   └── MainContainer.js
+│   ├── test
+│   │   ├── TestCd
+│   │   │   └── TestCdWrapperContainer.js
+│   │   └── TestWrapperContainer.js
+│   ├── test_end
+│   │   └── TestEndContainer.js
+│   └── testmaking
+│       ├── InputCategoryContainer.js
+│       ├── form
+│       │   └── TestMakingFormContainer.js
+│       └── player
+│           └── PlayerContainer.js
+├── index.css
+├── index.js
+└── pages
+    ├── main
+    │   └── MainPage.js
+    ├── mypage
+    │   ├── MyPage.js
+    │   └── MyPageButton.js
+    ├── signup
+    │   └── SignIn.js
+    ├── test
+    │   └── TestPage.js
+    ├── test_end
+    │   └── TestEndPage.js
+    └── testmaking
+        └── TestMakingPage.js
+
+```
