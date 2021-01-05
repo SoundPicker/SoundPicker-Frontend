@@ -12,7 +12,7 @@ const Background = styled.div`
     height:1000vh;
     background-repeat: no-repeat;
     background-position: center top;
-    background-color: black;
+    background-color:  rgba( 12, 26, 34, 1);
     background-size:contain;
  @media  (max-width:768px) {
   background-image: url(${Bg2});
@@ -33,7 +33,7 @@ const Wrapper=styled.div`
   flex-wrap: wrap;
   align-items: center;
   @media (min-width: 768px) and (max-width:1024px) { //between
-    margin-top:15%;
+    margin-top:12%;
       width:100%auto;
     }
 

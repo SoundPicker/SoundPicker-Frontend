@@ -3,7 +3,6 @@ import styled from "styled-components";
 
 const Title = styled.div`
     font-family: NanumGothic;
-    
     color:#ffffff;
     line-height: 10px;
     text-align:center;
@@ -21,7 +20,7 @@ const Title = styled.div`
     }
 `
 
-const ContentComponent = ({title}) => {
+const ContentComponent = ({title}) => { 
 
     //나중에 서버 연결 후 정보 받아오는 것 구현
 
