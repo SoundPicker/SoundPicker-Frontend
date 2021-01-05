@@ -20,9 +20,9 @@ const StyledButton = styled.button`
   margin-right:10px;
 `
 
-function Button({ children, border, color, background, font }) {
+function Button({ children, border, color, background, font, width }) {
   return (
-    <StyledButton border={border} color={color} background={background} font={font}>
+    <StyledButton border={border} color={color} background={background} font={font} width={width} >
       {children}
     </StyledButton>
   )
