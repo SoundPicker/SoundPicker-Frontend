@@ -24,8 +24,17 @@ import React,{useEffect, useState} from 'react';
 
 export let player0;
 export let player1;
+export let player2;
+export let player3;
+
 
 const TestMakingFormContainer = () => {
+    let checkCurrentTime0;
+    let checkCurrentTime1;
+    let checkCurrentTime2;
+    let checkCurrentTime3;
+
+
     const [questions,setQuestions] = useState([{
         questionNumber : 1,
         questionYoutubeURL : "",
@@ -34,6 +43,27 @@ const TestMakingFormContainer = () => {
         answer: "",
         answerYoutubeURL: ""
     }]);
+
+    const [isPlaying0, setPlaying0] = useState(false);
+    const [isLoading0, setLoading0] = useState(false);
+    const [currentTime0, setCurrentTime0] = useState("0:00");
+    const [totalTime0, setTotalTime0] = useState("0:00");
+
+    const [isPlaying1, setPlaying1] = useState(false);
+    const [isLoading1, setLoading1] = useState(false);
+    const [currentTime1, setCurrentTime1] = useState("0:00");
+    const [totalTime1, setTotalTime1] = useState("0:00");
+
+    const [isPlaying2, setPlaying2] = useState(false);
+    const [isLoading2, setLoading2] = useState(false);
+    const [currentTime2, setCurrentTime2] = useState("0:00");
+    const [totalTime2, setTotalTime2] = useState("0:00");
+
+    const [isPlaying3, setPlaying3] = useState(false);
+    const [isLoading3, setLoading3] = useState(false);
+    const [currentTime3, setCurrentTime3] = useState("0:00");
+    const [totalTime3, setTotalTime3] = useState("0:00");
+
 
     const changeText = questionNumber => e => {
         const { target: { value } } = e;
@@ -106,6 +136,101 @@ const TestMakingFormContainer = () => {
         
     }
 
+  const playerState0 = (e) => {
+    if (e.data === 1) {
+      setPlaying0(true);
+    } else if (e.data === 2) {
+      setPlaying0(false);
+    }
+  };
+  const playerState1 = (e) => {
+    if (e.data === 1) {
+      setPlaying1(true);
+    } else if (e.data === 2) {
+      setPlaying1(false);
+    }
+  };
+  const playerState2 = (e) => {
+    if (e.data === 1) {
+      setPlaying2(true);
+    } else if (e.data === 2) {
+      setPlaying2(false);
+    }
+  };
+  const playerState3 = (e) => {
+    if (e.data === 1) {
+      setPlaying3(true);
+    } else if (e.data === 2) {
+      setPlaying3(false);
+    }
+  };
+
+  const transTime = (seconds) => {
+    if (!seconds) {      return;
+    }
+    const hour = parseInt(seconds / 3600);
+    const min = parseInt((seconds % 3600) / 60);
+    const sec = seconds % 60;
+
+    return `${hour > 0 ? String(hour) + ":" : ""} ${min}:${
+      sec < 10 ? "0" + String(sec) : sec
+    }`;
+  };
+
+  const setTime0 = () => {
+    setCurrentTime0(transTime(player0.getCurrentTime().toFixed()));
+  };
+  const setTime1 = () => {
+    setCurrentTime1(transTime(player1.getCurrentTime().toFixed()));
+  };
+  const setTime2 = () => {
+    setCurrentTime2(transTime(player2.getCurrentTime().toFixed()));
+  };
+
+  const onReadyAPI0 = () => {
+    setLoading0(true);
+    setPlaying0(false);
+    checkCurrentTime0 = setInterval(setTime0, 1000);
+    setTotalTime0(() => transTime(player0.getDuration()));
+  };
+  const onReadyAPI1 = () => {
+    setLoading1(true);
+    setPlaying1(false);
+    checkCurrentTime1 = setInterval(setTime1, 1000);
+    setTotalTime1(() => transTime(player1.getDuration()));
+  };
+  const onReadyAPI2 = () => {
+    setLoading2(true);
+    setPlaying2(false);
+    checkCurrentTime2 = setInterval(setTime2, 1000);
+    setTotalTime2(() => transTime(player2.getDuration()));
+  };
+
+
+  const playHandler0 = () => {
+    setPlaying0(!isPlaying0);
+  } 
+  
+  const playHandler1 = () => {
+  setPlaying1(!isPlaying1);
+} 
+const playHandler2 = () => {
+  setPlaying2(!isPlaying2);
+} 
+
+  const backClick0 = () => {
+      if(isLoading0)player0.seekTo(player0.getCurrentTime() - 10, true)
+
+  }
+  const backClick1 = () => {
+    if(isLoading1)player1.seekTo(player1.getCurrentTime() - 10, true)
+
+}
+const backClick2 = () => {
+    if(isLoading2)player2.seekTo(player2.getCurrentTime() - 10, true)
+
+}
+
     useEffect(() => {
         const script = document.createElement('script');
         script.src = 'https://www.youtube.com/iframe_api';
@@ -115,8 +240,8 @@ const TestMakingFormContainer = () => {
         window.onYouTubeIframeAPIReady = () => {
           // eslint-disable-next-line react-hooks/exhaustive-deps
           player0 = new window.YT.Player(`player0`, {
-            height: "100",
-            width: "100",
+            height: "0",
+            width: "0",
             videoId: "xYMxzPqBU-s",
             host: 'https://www.youtube.com',
             playerVars: {
@@ -125,32 +250,93 @@ const TestMakingFormContainer = () => {
               fs: 0,
               showinfo:0,
               enablejsapi: 1,
-              origin:'http://localhost:3000'
+              origin:'http://localhost:3001'
             },
             events: {
-              onReady: onReadyAPI,
-              onStateChange: playerState,
+              onReady: onReadyAPI0,
+              onStateChange: playerState0,
             },
           });
-          console.error('player0', player);
-        // if (firstScriptTag.id === 'www-widgetapi-script') window.onYouTubeIframeAPIReady();
-        setTimeout(() => {
-          const a = document.getElementsByTagName('iframe')[0];
-          a.src = 'https://www.youtube.com/embed/F9Ex1ESEWN4?autoplay=1&controls=0&fs=0&enablejsapi=1&origin=http%3A%2F%2Flocalhost%3A3000&widgetid=1';
-        }, 1000)
+          player1 = new window.YT.Player(`player1`, {
+            height: "0",
+            width: "0",
+            videoId: "xYMxzPqBU-s",
+            host: 'https://www.youtube.com',
+            playerVars: {
+              autoplay: 0,
+              controls: 0,
+              fs: 0,
+              showinfo:0,
+              enablejsapi: 1,
+              origin:'http://localhost:3001'
+            },
+            events: {
+              onReady: onReadyAPI1,
+              onStateChange: playerState1,
+            },
+          });
+          player2 = new window.YT.Player(`player2`, {
+            height: "0",
+            width: "0",
+            videoId: "xYMxzPqBU-s",
+            host: 'https://www.youtube.com',
+            playerVars: {
+              autoplay: 0,
+              controls: 0,
+              fs: 0,
+              showinfo:0,
+              enablejsapi: 1,
+              origin:'http://localhost:3001'
+            },
+            events: {
+              onReady: onReadyAPI2,
+              onStateChange: playerState2,
+            },
+          });
+
         }
         return () => {
-          // script.remove();
-          clearInterval(checkCurrentTime);
+          clearInterval(checkCurrentTime0);
+          clearInterval(checkCurrentTime1);
+          clearInterval(checkCurrentTime2);
+
         };
         
       }, []);
-    
+
+
+      if (isLoading0) {
+        if (isPlaying0) {
+          player0?.playVideo();
+        } else {
+          player0?.pauseVideo();
+        }
+      }
+
+      if (isLoading1) {    
+        if (isPlaying1) {
+          player1?.playVideo();
+
+        } else {
+          player1?.pauseVideo();
+        }
+      }
+
+      if (isLoading2) {
+          if (isPlaying2) {
+              player2?.playVideo();
+            } else {
+             player2?.pauseVideo();
+        }
+      }
+
 
     return(
         <form>
         <div id='player0'></div>
         <div id='player1'></div>
+        <div id='player2'></div>
+
 
             <TopInner>
                 <table></table>
@@ -203,7 +389,30 @@ const TestMakingFormContainer = () => {
 
                            {questions[i].questionYoutubeURL ? 
                             <PlayerWrap>
-                                <PlayerContainer questionUrl={questions[i].questionYoutubeURL} player={player0}/>
+                               {i===0? <PlayerContainer questionUrl={questions[i].questionYoutubeURL} 
+                                                        player={player0} i={i} 
+                                                        isPlaying={isPlaying0}
+                                                        isLoading={isLoading0}
+                                                        currentTime={currentTime0}
+                                                        totalTime={totalTime0}
+                                                        playHandler={playHandler0}
+                                                        backClick={backClick0}/>: 
+                                i===1? <PlayerContainer questionUrl={questions[i].questionYoutubeURL} 
+                                                        player={player1} i={i} 
+                                                        isPlaying={isPlaying1}
+                                                        isLoading={isLoading1}
+                                                        currentTime={currentTime1}
+                                                        totalTime={totalTime1}
+                                                        playHandler={playHandler1}
+                                                        backClick={backClick1}/>:
+                                i===2? <PlayerContainer questionUrl={questions[i].questionYoutubeURL} 
+                                                        player={player1} i={i} 
+                                                        isPlaying={isPlaying2}
+                                                        isLoading={isLoading2}
+                                                        currentTime={currentTime2}
+                                                        totalTime={totalTime2}
+                                                        playHandler={playHandler2}
+                                                        backClick={backClick2}/>:""} 
                                 <StartTime  changeText={changeText(i)}/>
                             </PlayerWrap>
                             : ""}

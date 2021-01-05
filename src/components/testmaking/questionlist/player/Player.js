@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Wave from './Wave'
+import Wave from './Wave';
 
 
 
@@ -12,14 +12,13 @@ const Player =
     mouseDragX,
     activeButton,
     containerWidth,
-    player,
     drag,
+    player,
     playHandler,
     backClick,
     clickActiveButtonOut,
     clickActiveButtonOver,
     questionUrl}) => {
-
   return (
     <TotalWrap>
 
