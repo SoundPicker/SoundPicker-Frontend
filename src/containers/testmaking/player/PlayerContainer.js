@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Player from "../../../components/testmaking/questionlist/player/Player";
-export let player;
 
 
-const PlayerContainer = ({questionUrl}) => {
+const PlayerContainer = ({questionUrl,player}) => {
   const [isPlaying, setPlaying] = useState(false);
   const [isLoading, setLoading] = useState(false);
   const [currentTime, setCurrentTime] = useState("0:00");
@@ -85,6 +84,8 @@ const PlayerContainer = ({questionUrl}) => {
     var firstScriptTag = document.getElementsByTagName('script')[0];
       firstScriptTag.parentNode.insertBefore(script, firstScriptTag);
 
+      console.log(window);
+
     if (window.YT) {
       console.log(window.YT);
       console.log(questionUrl);
@@ -123,9 +124,6 @@ const PlayerContainer = ({questionUrl}) => {
     } else {
       player?.pauseVideo();
     }
-  }else{
-    player?.loadVideoById({videoId:questionUrl})
-
   }
   
 

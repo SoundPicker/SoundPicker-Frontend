@@ -22,7 +22,6 @@ const Player =
 
   return (
     <TotalWrap>
-        <div id={`player_${questionUrl}`}></div>
 
       <ControlsWrap>
         <ButtonCover>

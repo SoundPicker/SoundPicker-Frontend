@@ -20,7 +20,10 @@ import PlayerWrap from "../../../components/testmaking/questionlist/player/Playe
 import StartTime from "../../../components/testmaking/questionlist/player/StartTime";
 import QuestionLustPlusButton from "../../../components/testmaking/questionlist/QuestionListPlusButton";
 import QuestionSaveButton from "../../../components/testmaking/questionlist/QuestionListSaveButton";
-import React,{useState} from 'react';
+import React,{useEffect, useState} from 'react';
+
+export let player0;
+export let player1;
 
 const TestMakingFormContainer = () => {
     const [questions,setQuestions] = useState([{
@@ -103,8 +106,53 @@ const TestMakingFormContainer = () => {
         
     }
 
+    // useEffect(() => {
+    //     const script = document.createElement('script');
+    //     script.src = 'https://www.youtube.com/iframe_api';
+    //     const firstScriptTag = document.getElementsByTagName('script')[0];
+    //       firstScriptTag.parentNode.insertBefore(script, firstScriptTag);
+        
+    //     window.onYouTubeIframeAPIReady = () => {
+    //       console.error(questionUrl);
+    //       // eslint-disable-next-line react-hooks/exhaustive-deps
+    //       player0 = new window.YT.Player(`player0`, {
+    //         height: "1000",
+    //         width: "1000",
+    //         videoId: questionUrl,
+    //         host: 'https://www.youtube.com',
+    //         playerVars: {
+    //           autoplay: 0,
+    //           controls: 0,
+    //           fs: 0,
+    //           showinfo:0,
+    //           enablejsapi: 1,
+    //           origin:'http://localhost:3000'
+    //         },
+    //         events: {
+    //           onReady: onReadyAPI,
+    //           onStateChange: playerState,
+    //         },
+    //       });
+    //       console.error('player0', player);
+    //     // if (firstScriptTag.id === 'www-widgetapi-script') window.onYouTubeIframeAPIReady();
+    //     setTimeout(() => {
+    //       const a = document.getElementsByTagName('iframe')[0];
+    //       a.src = 'https://www.youtube.com/embed/F9Ex1ESEWN4';
+    //     }, 1000)
+    //     }
+    //     return () => {
+    //       // script.remove();
+    //       clearInterval(checkCurrentTime);
+    //     };
+        
+    //   }, []);
+    
+
     return(
         <form>
+        <div id='player0'></div>
+        <div id='player1'></div>
+
             <TopInner>
                 <table></table>
                 <BlankTop DesktopMargin='3.6' TabletMargin='2' MobileMargin='2.6'/>
@@ -156,7 +204,7 @@ const TestMakingFormContainer = () => {
 
                            {questions[i].questionYoutubeURL ? 
                             <PlayerWrap>
-                                <PlayerContainer questionUrl={questions[i].questionYoutubeURL} />
+                                <PlayerContainer questionUrl={questions[i].questionYoutubeURL} player={player0}/>
                                 <StartTime  changeText={changeText(i)}/>
                             </PlayerWrap>
                             : ""}
