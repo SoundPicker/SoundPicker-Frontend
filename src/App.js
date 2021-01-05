@@ -1,8 +1,4 @@
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import MainPage from "./pages/main/MainPage";
 import QuizLoading from './components/loading/QuizLoading';
 import StartLoading from './components/loading/StartLoading';
@@ -18,6 +14,6 @@ const App = () => {
         </Switch>
     </Router>
   );
-}
+};
 
 export default App;
