@@ -25,7 +25,6 @@ const TestCd = ({ newList }) => {
   const hintBtn = document.getElementById('hintBtn')
 
   useEffect(() => {
-    console.log(newList, '새 데이터에요><')
     isRecordInside(false)
     setButtonText('정답 보기')
     setAnswer(undefined)

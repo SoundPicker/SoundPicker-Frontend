@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import styled from "styled-components";
+import React, { useEffect, useState } from 'react'
+import styled from 'styled-components'
 
 // 서버랑 통신해서 카테고리 이름 받아오기
 const CategoryName = styled.span`
@@ -19,7 +19,7 @@ const CategoryName = styled.span`
     font-size: 1.2rem;
     line-height: 1.035;
   }
-`;
+`
 
 const CategoryBtn = styled.button`
   display: block;
@@ -48,7 +48,7 @@ const CategoryBtn = styled.button`
 
 
   }
-`;
+`
 
 const CategoryItem = styled.div`
   display: flex;
@@ -73,36 +73,37 @@ const CategoryItem = styled.div`
       margin-right: 3.2rem;
     }
   }
-`;
+`
 
 function getWindowDimensions() {
-  const { innerWidth: width } = window;
+  const { innerWidth: width } = window
   return {
     width,
-  };
+  }
 }
 
 function useWindowDimensions() {
   const [windowDimensions, setWindowDimensions] = useState(
     getWindowDimensions()
-  );
+  )
 
   useEffect(() => {
     function handleResize() {
-      setWindowDimensions(getWindowDimensions());
+      setWindowDimensions(getWindowDimensions())
     }
 
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
 
-  return windowDimensions;
+  return windowDimensions
 }
 
-const CategoryList = () => {
-  const { width } = useWindowDimensions();
+const CategoryList = ({ newList }) => {
+  console.log(newList)
+  const { width } = useWindowDimensions()
 
-  const categoryNum = width > 1024 ? 8 : width > 828 ? 6 : 4;
+  const categoryNum = width > 1024 ? 8 : width > 828 ? 6 : 4
 
   return (
     <>
@@ -112,10 +113,10 @@ const CategoryList = () => {
             <CategoryName>영화/드라마</CategoryName>
             <CategoryBtn />
           </CategoryItem>
-        );
+        )
       })}
     </>
-  );
-};
+  )
+}
 
-export default CategoryList;
+export default CategoryList

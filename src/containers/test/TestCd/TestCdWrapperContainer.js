@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import TestCd from '../../../components/test/testcd/TestCd'
 import axios from 'axios'
-import LoadingComponent from '../../../components/common/LoadingComponent'
+import QuizLoading from '../../../components/loading/QuizLoading'
 const TestCdWrapperContainer = ({ match }) => {
   //레코드 데이터 정의
   const [quiz, setQuiz] = useState({
@@ -44,11 +44,11 @@ const TestCdWrapperContainer = ({ match }) => {
 
   switch (quiz.status) {
     case 'idle':
-      return <LoadingComponent />
+      return <QuizLoading />
     case 'rejected':
       return <>Error</>
     case 'pending':
-      return <LoadingComponent />
+      return <QuizLoading />
     case 'resolved':
     default:
       return (
