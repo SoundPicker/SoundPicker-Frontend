@@ -7,7 +7,7 @@ import StartLoading from "./components/loading/StartLoading";
 import TestPage from "./pages/test/TestPage";
 import TestEndPage from "./pages/test_end/TestEndPage";
 
-const App = () => {
+const App = (match) => {
   return (
     <Router>
       <Switch>

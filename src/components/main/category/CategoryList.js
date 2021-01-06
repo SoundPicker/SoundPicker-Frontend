@@ -1,22 +1,17 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
-import getCategories from "../../../lib/api/main/categoryAPI";
-
 // 서버랑 통신해서 카테고리 이름 받아오기
 const CategoryName = styled.span`
   font-size: 1.3rem;
   line-height: 1.035;
   color: #dadada;
-
   @media (max-width: 1440px) {
     font-size: 1.2rem;
   }
-
   @media (max-width: 1047px) {
     font-size: 1.15rem;
   }
-
   @media (max-width: 1024px) {
     font-size: 1.2rem;
     line-height: 1.035;
@@ -32,7 +27,6 @@ const CategoryBtn = styled.button`
   box-shadow: 0 0 9px 0 #ffffff;
   background-color: #ffffff;
   cursor: pointer;
-
   &:focus {
     width: 2rem;
     height: 2rem;
@@ -40,7 +34,6 @@ const CategoryBtn = styled.button`
     box-shadow: 0 0 12px 0 #60ffda;
     background-color: #60ffda;
   }
-
   &:hover {
     width: 2rem;
     height: 2rem;
@@ -57,11 +50,9 @@ const CategoryItem = styled.div`
   width: 6.9rem;
   height: 5.3rem;
   margin-right: 4.3rem;
-
   &:nth-child(9) {
     margin-right: 8rem;
   }
-
   @media (max-width: 1024px) {
     &:nth-child(7) {
       margin-right: 1.4rem;
@@ -113,7 +104,7 @@ const CategoryList = ({ newList }) => {
 
   //   const fetchCategories = async () => {
   //     const categoryData = await getCategories();
-  //     console.log(categoryData); //  10개의 카테고리 정보: [{…}, ... ,{…}]
+  //     console.log(categoryData); //  10개의 카테고리 정보: [{…}, ... ,{…}]
   //     setCategoriesState(categoryData);
   //   };
 

@@ -60,7 +60,7 @@ const Category = () => {
     <>
       <Wrap>
         <LeftBtn onClick={() => setStart((start) => start - 1)}></LeftBtn>
-        <CategoryList startNum={start} />
+        <CategoryList />
         <RightBtn onClick={() => setStart((start) => start + 1)}></RightBtn>
       </Wrap>
       <BlankTop DesktopMargin={5.2} TabletMargin={4} MobileMargin={3.8} />
