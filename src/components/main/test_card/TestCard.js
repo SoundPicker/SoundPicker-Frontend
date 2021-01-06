@@ -1,5 +1,5 @@
 // 카드 크기 때문에 breakpoint - 1440(추가), 768 -> 828로 변경
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import PlusDesktop from "../../../assets/desktop/button_add.png";
@@ -241,7 +241,32 @@ const LoadMoreBtn = styled.div`
   }
 `;
 
-const CardList = () => {
+function getWindowDimensions() {
+  const { innerWidth: width } = window;
+  return {
+    width,
+  };
+}
+
+function useWindowDimensions() {
+  const [windowDimensions, setWindowDimensions] = useState(
+    getWindowDimensions()
+  );
+
+  useEffect(() => {
+    function handleResize() {
+      setWindowDimensions(getWindowDimensions());
+    }
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  return windowDimensions;
+}
+
+const CardList = ({ testList }) => {
+  console.log(testList);
   const [count, setCount] = useState(2);
   const [height, setHeight] = useState(116.5);
   const countPlus = (e) => {
@@ -251,6 +276,18 @@ const CardList = () => {
     console.log(height);
   };
 
+  const { width } = useWindowDimensions();
+
+  const divideNum = width > 1440 ? 4 : width > 828 ? 3 : 2;
+  const divided = parseInt(testList.length / divideNum);
+
+  const testNum = testList.length;
+
+  let one_dividedBy2 = parseInt(testNum / 2);
+  let two_divideBy2 = testNum - one_dividedBy2;
+  //one_devidedBy3, two_devidedBy3, three_devidedBy3
+  // one_devidedBy4, two_devidedBy4, three_devidedBy4, four_devidedBy4
+
   return (
     <>
       <CardListWrap height={height}>
@@ -258,367 +295,209 @@ const CardList = () => {
           <Link to="/testmaking">
             <PlusBtn />
           </Link>
-
           <BlankTop DesktopMargin={1.6} TabletMargin={1.6} MobileMargin={1.8} />
-          {[...Array(4)].map((n, index) => {
-            return (
-              <>
-                <Card>
-                  <CardTitle>오마이걸</CardTitle>
-                  <BlankTop
-                    DesktopMargin={3}
-                    TabletMargin={2.7}
-                    MobileMargin={0.4}
-                  />
-                  <CardContent>
-                    내용이 들어갑니다. 내용이 들어갑니다.
-                  </CardContent>
-                  <BlankTop
-                    DesktopMargin={3.8}
-                    TabletMargin={3.3}
-                    MobileMargin={4.8}
-                  />
-                  <PlayFooter>
-                    <TestNumber>10문제</TestNumber>
-                    <PlayBox />
-                  </PlayFooter>
-                </Card>
-                <BlankTop
-                  DesktopMargin={1.6}
-                  TabletMargin={1.6}
-                  MobileMargin={1.8}
-                />
-                <Card>
-                  <CardTitle>
-                    오마이걸 찐팬 모여라 오마이걸 찐팬 오마이걸 찐팬 모여라.
-                  </CardTitle>
-                  <BlankTop
-                    DesktopMargin={3}
-                    TabletMargin={2.7}
-                    MobileMargin={0.4}
-                  />
-                  <CardContent>
-                    내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다.
-                    내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다.
-                    내용이 들어갑니다.
-                  </CardContent>
-                  <BlankTop
-                    DesktopMargin={3.8}
-                    TabletMargin={3.3}
-                    MobileMargin={4.8}
-                  />
-                  <PlayFooter>
-                    <TestNumber>10문제</TestNumber>
-                    <PlayBox />
-                  </PlayFooter>
-                </Card>
-                <BlankTop
-                  DesktopMargin={1.6}
-                  TabletMargin={1.6}
-                  MobileMargin={1.8}
-                />
-                <Card>
-                  <CardTitle>
-                    오마이걸 찐팬 모여라 오마이걸 찐팬 오마이걸 찐팬 모여라.
-                    오마이걸 찐팬 모여라 오마이걸 찐팬 오마이걸 찐팬 모여라.
-                  </CardTitle>
-                  <BlankTop
-                    DesktopMargin={3}
-                    TabletMargin={2.7}
-                    MobileMargin={0.4}
-                  />
-                  <CardContent>
-                    내용이 들어갑니다.내용이 들어갑니다.
-                  </CardContent>
-                  <BlankTop
-                    DesktopMargin={3.8}
-                    TabletMargin={3.3}
-                    MobileMargin={4.8}
-                  />
-                  <PlayFooter>
-                    <TestNumber>10문제</TestNumber>
-                    <PlayBox />
-                  </PlayFooter>
-                </Card>
-                <BlankTop
-                  DesktopMargin={1.6}
-                  TabletMargin={1.6}
-                  MobileMargin={1.8}
-                />
-              </>
-            );
-          })}
+          <>
+            {testList.map((item, index) => {
+              if (index < divided) {
+                return (
+                  <>
+                    <Card key={index}>
+                      <CardTitle>{item["title"]}</CardTitle>
+                      <BlankTop
+                        DesktopMargin={3}
+                        TabletMargin={2.7}
+                        MobileMargin={0.4}
+                      />
+                      <CardContent>{item["description"]}</CardContent>
+                      <BlankTop
+                        DesktopMargin={3.8}
+                        TabletMargin={3.3}
+                        MobileMargin={4.8}
+                      />
+                      <PlayFooter>
+                        <TestNumber>{item["questionCount"]}문제</TestNumber>
+                        <PlayBox />
+                      </PlayFooter>
+                    </Card>
+                    <BlankTop
+                      DesktopMargin={1.6}
+                      TabletMargin={1.6}
+                      MobileMargin={1.8}
+                    />
+                  </>
+                );
+              }
+            })}
+          </>
         </CardWrapOne>
         <CardWrapTwo>
-          {[...Array(4)].map((n, index) => {
-            return (
-              <>
-                <Card>
-                  <CardTitle>
-                    오마이걸 찐팬들만 맞출 수 있는 노래 모음
-                  </CardTitle>
-                  <BlankTop
-                    DesktopMargin={3}
-                    TabletMargin={2.7}
-                    MobileMargin={0.4}
-                  />
-                  <CardContent>
-                    오마이걸 찐팬이라면 이 테스트에 도전해보세요!
-                  </CardContent>
-                  <BlankTop
-                    DesktopMargin={3.8}
-                    TabletMargin={3.3}
-                    MobileMargin={4.8}
-                  />
-                  <PlayFooter>
-                    <TestNumber>10문제</TestNumber>
-                    <PlayBox />
-                  </PlayFooter>
-                </Card>
-                <BlankTop
-                  DesktopMargin={1.6}
-                  TabletMargin={1.6}
-                  MobileMargin={1.8}
-                />
-                <Card>
-                  <CardTitle>
-                    오마이걸 찐팬 모여라 오마이걸 찐팬 오마이걸 찐팬 모여라.
-                  </CardTitle>
-                  <BlankTop
-                    DesktopMargin={3}
-                    TabletMargin={2.7}
-                    MobileMargin={0.4}
-                  />
-                  <CardContent>
-                    내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다.
-                    내용이 들어갑니다. 내용이 들어갑니다.
-                  </CardContent>
-                  <BlankTop
-                    DesktopMargin={3.8}
-                    TabletMargin={3.3}
-                    MobileMargin={4.8}
-                  />
-                  <PlayFooter>
-                    <TestNumber>10문제</TestNumber>
-                    <PlayBox />
-                  </PlayFooter>
-                </Card>
-                <BlankTop
-                  DesktopMargin={1.6}
-                  TabletMargin={1.6}
-                  MobileMargin={1.8}
-                />
-                <Card>
-                  <CardTitle>
-                    오마이걸 찐팬 모여라 오마이걸 찐팬 오마이걸 찐팬 모여라.
-                  </CardTitle>
-                  <BlankTop
-                    DesktopMargin={3}
-                    TabletMargin={2.7}
-                    MobileMargin={0.4}
-                  />
-                  <CardContent>
-                    내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다.
-                    내용이 들어갑니다. 내용이 들어갑니다.
-                  </CardContent>
-                  <BlankTop
-                    DesktopMargin={3.8}
-                    TabletMargin={3.3}
-                    MobileMargin={4.8}
-                  />
-                  <PlayFooter>
-                    <TestNumber>10문제</TestNumber>
-                    <PlayBox />
-                  </PlayFooter>
-                </Card>
-                <BlankTop
-                  DesktopMargin={1.6}
-                  TabletMargin={1.6}
-                  MobileMargin={1.8}
-                />
-              </>
-            );
-          })}
+          <>
+            {testList.map((item, index) => {
+              if (width <= 828) {
+                if (index >= divided) {
+                  return (
+                    <>
+                      <Card key={index}>
+                        <CardTitle>{item["title"]}</CardTitle>
+                        <BlankTop
+                          DesktopMargin={3}
+                          TabletMargin={2.7}
+                          MobileMargin={0.4}
+                        />
+                        <CardContent>{item["description"]}</CardContent>
+                        <BlankTop
+                          DesktopMargin={3.8}
+                          TabletMargin={3.3}
+                          MobileMargin={4.8}
+                        />
+                        <PlayFooter>
+                          <TestNumber>{item["questionCount"]}문제</TestNumber>
+                          <PlayBox />
+                        </PlayFooter>
+                      </Card>
+                      <BlankTop
+                        DesktopMargin={1.6}
+                        TabletMargin={1.6}
+                        MobileMargin={1.8}
+                      />
+                    </>
+                  );
+                }
+              } else {
+                if (index >= divided && index < 2 * divided) {
+                  return (
+                    <>
+                      <Card key={index}>
+                        <CardTitle>{item["title"]}</CardTitle>
+                        <BlankTop
+                          DesktopMargin={3}
+                          TabletMargin={2.7}
+                          MobileMargin={0.4}
+                        />
+                        <CardContent>{item["description"]}</CardContent>
+                        <BlankTop
+                          DesktopMargin={3.8}
+                          TabletMargin={3.3}
+                          MobileMargin={4.8}
+                        />
+                        <PlayFooter>
+                          <TestNumber>{item["questionCount"]}문제</TestNumber>
+                          <PlayBox />
+                        </PlayFooter>
+                      </Card>
+                      <BlankTop
+                        DesktopMargin={1.6}
+                        TabletMargin={1.6}
+                        MobileMargin={1.8}
+                      />
+                    </>
+                  );
+                }
+              }
+            })}
+          </>
         </CardWrapTwo>
         <CardWrapThree>
-          {[...Array(4)].map((n, index) => {
-            return (
-              <>
-                <Card>
-                  <CardTitle>오마이걸 찐팬 모여라 오마이걸 찐팬</CardTitle>
-                  <BlankTop
-                    DesktopMargin={3}
-                    TabletMargin={2.7}
-                    MobileMargin={0.4}
-                  />
-                  <CardContent>
-                    내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다.
-                    내용이 들어갑니다. 내용이 들어갑니다.
-                  </CardContent>
-                  <BlankTop
-                    DesktopMargin={3.8}
-                    TabletMargin={3.3}
-                    MobileMargin={4.8}
-                  />
-                  <PlayFooter>
-                    <TestNumber>10문제</TestNumber>
-                    <PlayBox />
-                  </PlayFooter>
-                </Card>
-                <BlankTop
-                  DesktopMargin={1.6}
-                  TabletMargin={1.6}
-                  MobileMargin={1.8}
-                />
-                <Card>
-                  <CardTitle>
-                    오마이걸 찐팬 모여라 오마이걸 찐팬 오마이걸 찐팬 모여라.
-                  </CardTitle>
-                  <BlankTop
-                    DesktopMargin={3}
-                    TabletMargin={2.7}
-                    MobileMargin={0.4}
-                  />
-                  <CardContent>
-                    내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다.
-                    내용이 들어갑니다. 내용이 들어갑니다.
-                  </CardContent>
-                  <BlankTop
-                    DesktopMargin={3.8}
-                    TabletMargin={3.3}
-                    MobileMargin={4.8}
-                  />
-                  <PlayFooter>
-                    <TestNumber>10문제</TestNumber>
-                    <PlayBox />
-                  </PlayFooter>
-                </Card>
-                <BlankTop
-                  DesktopMargin={1.6}
-                  TabletMargin={1.6}
-                  MobileMargin={1.8}
-                />
-                <Card>
-                  <CardTitle>
-                    오마이걸 찐팬 모여라 오마이걸 찐팬 오마이걸 찐팬 모여라.
-                  </CardTitle>
-                  <BlankTop
-                    DesktopMargin={3}
-                    TabletMargin={2.7}
-                    MobileMargin={0.4}
-                  />
-                  <CardContent>
-                    내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다.
-                    내용이 들어갑니다. 내용이 들어갑니다.
-                  </CardContent>
-                  <BlankTop
-                    DesktopMargin={3.8}
-                    TabletMargin={3.3}
-                    MobileMargin={4.8}
-                  />
-                  <PlayFooter>
-                    <TestNumber>10문제</TestNumber>
-                    <PlayBox />
-                  </PlayFooter>
-                </Card>
-                <BlankTop
-                  DesktopMargin={1.6}
-                  TabletMargin={1.6}
-                  MobileMargin={1.8}
-                />
-              </>
-            );
-          })}
+          <>
+            {testList.map((item, index) => {
+              if (width <= 1440) {
+                if (index >= 2 * divided) {
+                  return (
+                    <>
+                      <Card key={index}>
+                        <CardTitle>{item["title"]}</CardTitle>
+                        <BlankTop
+                          DesktopMargin={3}
+                          TabletMargin={2.7}
+                          MobileMargin={0.4}
+                        />
+                        <CardContent>{item["description"]}</CardContent>
+                        <BlankTop
+                          DesktopMargin={3.8}
+                          TabletMargin={3.3}
+                          MobileMargin={4.8}
+                        />
+                        <PlayFooter>
+                          <TestNumber>{item["questionCount"]}문제</TestNumber>
+                          <PlayBox />
+                        </PlayFooter>
+                      </Card>
+                      <BlankTop
+                        DesktopMargin={1.6}
+                        TabletMargin={1.6}
+                        MobileMargin={1.8}
+                      />
+                    </>
+                  );
+                }
+              } else {
+                if (index >= 2 * divided && index < 3 * divided) {
+                  return (
+                    <>
+                      <Card key={index}>
+                        <CardTitle>{item["title"]}</CardTitle>
+                        <BlankTop
+                          DesktopMargin={3}
+                          TabletMargin={2.7}
+                          MobileMargin={0.4}
+                        />
+                        <CardContent>{item["description"]}</CardContent>
+                        <BlankTop
+                          DesktopMargin={3.8}
+                          TabletMargin={3.3}
+                          MobileMargin={4.8}
+                        />
+                        <PlayFooter>
+                          <TestNumber>{item["questionCount"]}문제</TestNumber>
+                          <PlayBox />
+                        </PlayFooter>
+                      </Card>
+                      <BlankTop
+                        DesktopMargin={1.6}
+                        TabletMargin={1.6}
+                        MobileMargin={1.8}
+                      />
+                    </>
+                  );
+                }
+              }
+            })}
+          </>
         </CardWrapThree>
         <CardWrapFour>
-          {[...Array(4)].map((n, index) => {
-            return (
-              <>
-                <Card>
-                  <CardTitle>오마이걸 찐팬 모여라 오마이걸 찐팬</CardTitle>
-                  <BlankTop
-                    DesktopMargin={3}
-                    TabletMargin={2.7}
-                    MobileMargin={0.4}
-                  />
-                  <CardContent>
-                    내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다.
-                    내용이 들어갑니다. 내용이 들어갑니다.
-                  </CardContent>
-                  <BlankTop
-                    DesktopMargin={3.8}
-                    TabletMargin={3.3}
-                    MobileMargin={4.8}
-                  />
-                  <PlayFooter>
-                    <TestNumber>10문제</TestNumber>
-                    <PlayBox />
-                  </PlayFooter>
-                </Card>
-                <BlankTop
-                  DesktopMargin={1.6}
-                  TabletMargin={1.6}
-                  MobileMargin={1.8}
-                />
-                <Card>
-                  <CardTitle>
-                    오마이걸 찐팬 모여라 오마이걸 찐팬 오마이걸 찐팬 모여라.
-                  </CardTitle>
-                  <BlankTop
-                    DesktopMargin={3}
-                    TabletMargin={2.7}
-                    MobileMargin={0.4}
-                  />
-                  <CardContent>
-                    내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다.
-                    내용이 들어갑니다. 내용이 들어갑니다.
-                  </CardContent>
-                  <BlankTop
-                    DesktopMargin={3.8}
-                    TabletMargin={3.3}
-                    MobileMargin={4.8}
-                  />
-                  <PlayFooter>
-                    <TestNumber>10문제</TestNumber>
-                    <PlayBox />
-                  </PlayFooter>
-                </Card>
-                <BlankTop
-                  DesktopMargin={1.6}
-                  TabletMargin={1.6}
-                  MobileMargin={1.8}
-                />
-                <Card>
-                  <CardTitle>
-                    오마이걸 찐팬 모여라 오마이걸 찐팬 오마이걸 찐팬 모여라.
-                  </CardTitle>
-                  <BlankTop
-                    DesktopMargin={3}
-                    TabletMargin={2.7}
-                    MobileMargin={0.4}
-                  />
-                  <CardContent>
-                    내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다.
-                    내용이 들어갑니다. 내용이 들어갑니다.
-                  </CardContent>
-                  <BlankTop
-                    DesktopMargin={3.8}
-                    TabletMargin={3.3}
-                    MobileMargin={4.8}
-                  />
-                  <PlayFooter>
-                    <TestNumber>10문제</TestNumber>
-                    <PlayBox />
-                  </PlayFooter>
-                </Card>
-                <BlankTop
-                  DesktopMargin={1.6}
-                  TabletMargin={1.6}
-                  MobileMargin={1.8}
-                />
-              </>
-            );
-          })}
+          <>
+            {testList.map((item, index) => {
+              if (index >= 3 * divided) {
+                return (
+                  <>
+                    <Card key={index}>
+                      <CardTitle>{item["title"]}</CardTitle>
+                      <BlankTop
+                        DesktopMargin={3}
+                        TabletMargin={2.7}
+                        MobileMargin={0.4}
+                      />
+                      <CardContent>{item["description"]}</CardContent>
+                      <BlankTop
+                        DesktopMargin={3.8}
+                        TabletMargin={3.3}
+                        MobileMargin={4.8}
+                      />
+                      <PlayFooter>
+                        <TestNumber>{item["questionCount"]}문제</TestNumber>
+                        <PlayBox />
+                      </PlayFooter>
+                    </Card>
+                    <BlankTop
+                      DesktopMargin={1.6}
+                      TabletMargin={1.6}
+                      MobileMargin={1.8}
+                    />
+                  </>
+                );
+              }
+            })}
+          </>
         </CardWrapFour>
         <GradientBox />
       </CardListWrap>

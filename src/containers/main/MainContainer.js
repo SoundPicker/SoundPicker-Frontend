@@ -42,6 +42,43 @@ const MainContainer = ({ match }) => {
     })();
   }, []);
 
+  // testList
+  const [test, setTest] = useState({
+    status: "idle",
+    item: null,
+  });
+
+  const getTestAPI = async () => {
+    const { data } = await axios.get(`${url}/main/`);
+    try {
+      console.log("[SUCCESS] GET TEST", data);
+      return data;
+    } catch (e) {
+      console.log("[FAIL] GET TEST");
+    }
+  };
+
+  useEffect(() => {
+    (async () => {
+      const data = await getTestAPI();
+      try {
+        setTest({
+          status: "pending",
+          item: null,
+        });
+        setTest({
+          status: "resolved",
+          item: data,
+        });
+      } catch (e) {
+        setTest({
+          status: "rejected",
+          item: null,
+        });
+      }
+    })();
+  }, []);
+
   switch (category.status) {
     case "idle":
       return <>idle</>;
@@ -51,7 +88,12 @@ const MainContainer = ({ match }) => {
       return <>pending</>;
     case "resolved":
     default:
-      return <Background categoryList={category.item.data.categories} />;
+      return (
+        <Background
+          categoryList={category.item.data.categories}
+          testList={category.item.data.tests}
+        />
+      );
   }
 };
 
