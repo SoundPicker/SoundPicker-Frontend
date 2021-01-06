@@ -7,6 +7,7 @@ import logo from '../../../assets/images/test/image_watermark.png'
 import TextComponent from '../../common/test/TextComponent'
 import { useHistory } from 'react-router-dom'
 import ProgressBar from '../testcd/ProgressBar'
+import ModalPage from '../../../pages/modal/ModalPage'
 
 const TestCd = ({ newList }) => {
   //state정의
@@ -18,11 +19,14 @@ const TestCd = ({ newList }) => {
   const [answer, setAnswer] = useState() //정답 text state
   const [sound1Url, setSound1Url] = useState()
   const [sound3Url, setSound3Url] = useState()
+  const [modalVisible, setModalVisible] = useState(false)
   const [isHint, setIsHint] = useState(false)
+  const [modalIn, setModalIn] = useState(false)
+  const [modalOut, setModalOut] = useState(false)
 
   const history = useHistory()
 
-  const hintBtn = document.getElementById('hintBtn')
+  // const hintBtn = document.getElementById('hintBtn')
 
   useEffect(() => {
     isRecordInside(false)
@@ -30,10 +34,15 @@ const TestCd = ({ newList }) => {
     setAnswer(undefined)
     setSound1Url(newList[activeIndex].sound1URL)
     setSound3Url(newList[activeIndex].sound3URL)
-    // console.log(recordList[activeIndex])
   }, [activeIndex])
 
-  // 힌트보기 ->
+  const openModal = () => {
+    setModalVisible(true)
+  }
+
+  const closeModal = () => {
+    setModalVisible(false)
+  }
 
   //다음문제 버튼 이벤트 정의
   const handleHintButton = () => {
@@ -42,6 +51,10 @@ const TestCd = ({ newList }) => {
       setTimeout(() => {
         setHintText(`${newList[activeIndex].hint}`)
       }, 500)
+    } else if (hintText === '관련 영상 보기') {
+      console.log('여기서 모달을 띄울거에요')
+      setModalIn(true)
+      openModal()
     }
   }
 
@@ -67,6 +80,7 @@ const TestCd = ({ newList }) => {
       }
     } else if (buttonText === '테스트 완료') {
       history.push('/test/recommendation')
+      console.log(history)
     }
   }
 
@@ -91,6 +105,15 @@ const TestCd = ({ newList }) => {
   return (
     <>
       <table></table>
+      {modalVisible && (
+        <ModalPage
+          modalIn={modalIn}
+          urlId={newList[activeIndex].answerYoutubeURL}
+          visible={modalVisible}
+          maskClosable={true}
+          closeModal={closeModal}
+        />
+      )}
       <BlankTop DesktopMargin="19" TabletMargin="32" MobileMargin="21" />
       <IconWrapper>
         <MyIcon />

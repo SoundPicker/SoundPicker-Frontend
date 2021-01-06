@@ -4,7 +4,7 @@ import styled from 'styled-components'
 const Bar = styled.div`
   position: relative;
   width: 8px;
-  z-index: 10000;
+  z-index: 998;
   border-radius: 3px;
   margin: 1rem auto;
   background-color: #fff;
