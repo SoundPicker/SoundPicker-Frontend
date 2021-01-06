@@ -66,7 +66,6 @@ const TestCd = ({ newList }) => {
         setActiveIndex(activeIndex + 1)
       }
     } else if (buttonText === '테스트 완료') {
-      console.log('여기서 테스트엔드로 푸쉬')
       history.push('/test/recommendation')
     }
   }
@@ -99,7 +98,7 @@ const TestCd = ({ newList }) => {
       <BlankTop DesktopMargin="3" TabletMargin="3" MobileMargin="2.6" />
       <TitleWrapper>
         <TextComponent
-          title="레드벨벳 찐팬만 맞출 수 있는 정답 모음"
+          title={newList[activeIndex].testTitle}
           DesktopLength="2"
           TabletLength="2"
           MobileLength="1.8"

@@ -1,14 +1,3 @@
-// import { useState } from "react";
-// import Main from "../../components/main/Main";
-// import Background from "../../components/main/Main";
-
-// const MainContainer = () => {
-
-//   return <Background />;
-// };
-
-// export default MainContainer;
-
 import React, { useState, useEffect } from 'react'
 import CategoryList from '../../components/main/category/CategoryList'
 import axios from 'axios'
