@@ -11,13 +11,11 @@ import Bg1 from '../../../assets/images/all_background.png';
 import Bg2 from '../../../assets/images/all_background2.png';
 import logo1 from '../../../assets/images/image_watermark.png';
 import Text from './Text';
-
+import ColorButton from './ColorButton';
 
 import {
   Form,
   Button,
-
-
 } from 'antd';
 
 
@@ -135,7 +133,7 @@ function RegisterPage(props) {
 
           dispatch(registerUser(dataToSubmit)).then(response => {
             if (response.payload.success) {
-              props.history.push("/main");
+              props.history.push("/login");
             } else {
               alert(response.payload.err.errmsg)
             }
@@ -159,9 +157,7 @@ function RegisterPage(props) {
         } = props;
         return (
 
-            <form style={{ minWidth: '150px' }}  onSubmit={handleSubmit} >
-                
-              
+            <form style={{ minWidth: '150px' }}  onSubmit={handleSubmit} > 
               <Form.Item  requiredMark="optional"  hasFeedback validateStatus={errors.email && touched.email ? "error" : 'success'}>
                 <Content>
               <Text title="이메일"  DesktopLength='15' TabletLength='15' MobileLength='10'/> 
@@ -231,10 +227,13 @@ function RegisterPage(props) {
                 </Form.Item>
 
                 <BlankTop DesktopMargin='3' TabletMargin='1' MobileMargin='1' />
-                <Center>
-                <Button block='true' onClick={handleSubmit}  disabled={isSubmitting}>
-                  회원가입
-                </Button></Center>
+                <ColorButton font='12' background="#60FFDA" color="#000000" border="#60FFDA"  > <Button size='large' ghost='true' type='text' onClick={handleSubmit}  disabled={isSubmitting}>
+                &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;
+                &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+                &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; 회원가입 &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; 
+                &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+                &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+                </Button></ColorButton> 
 
             </form>
          

@@ -1,31 +1,111 @@
 import React, { useState } from "react";
-import { withRouter } from "react-router-dom";
+import { withRouter,Link } from "react-router-dom";
 import { loginUser } from "../../../_actions/user_action";
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-import { Form, Input, Button, Checkbox, Typography } from 'antd';
+import { Form,  Button,  } from 'antd';
 import {UserOutlined,LockOutlined} from '@ant-design/icons';
 import { useDispatch } from "react-redux";
+import styled from "styled-components"
+import TextComponent from '../../../components/common/TextComponent';
+import BlankTop from '../../../components/common/BlankTop';
+import UnderLineComponent from './UnderLineComponent';
+import Bg1 from '../../../assets/images/all_background.png';
+import Bg2 from '../../../assets/images/all_background2.png';
+import logo1 from '../../../assets/images/image_watermark.png';
+import Text from './Text';
+import ColorButton from './ColorButton';
+import RegisterPage from '../RegisterPage/RegisterPage';
 
-const { Title } = Typography;
+
+const Background = styled.div`
+    width:100vw;
+    height:1000vh;
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-color:  rgba( 12, 26, 34, 1);
+    background-size:contain;
+ @media  (max-width:768px) {
+  background-image: url(${Bg2});
+    }
+    @media (min-width: 768px) {
+      background-image: url(${Bg1});
+    }
+`;
+const Wrapper=styled.div`
+ position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  @media (min-width: 768px) and (max-width:1024px) { //between
+    margin-top:12%;
+      width:100%auto;
+    }
+
+    @media (min-width: 1024px) { //desktop 
+      margin-top:20%;
+      width:100%auto;
+    }
+    @media (max-width: 767px) { //iphone
+      width:100%auto;
+        margin-top:30%;
+  }` 
+
+
+const MyIcon = styled.img`
+  @media (min-width: 768px) and (max-width:1024px) { //between
+    width:221px;
+    }
+
+    @media (min-width: 1024px) { //desktop
+    width:221px;
+    }
+    @media (max-width: 767px) { //iphone
+      width:150px;
+  }
+`;
+
+MyIcon.defaultProps = {
+  src: logo1,
+};
+
+const Input =styled.input`
+background-color:  rgba( 12, 26, 34, 0);
+border-radius:0px;
+border-color:rgba( 12, 26, 34, 0);
+width: 400px;
+color:white;
+`
+
+const Content=styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`
+
 
 function LoginPage(props) {
+  
   const dispatch = useDispatch();
-  const rememberMeChecked = localStorage.getItem("rememberMe") ? true : false;
 
   const [formErrorMessage, setFormErrorMessage] = useState('')
-  const [rememberMe, setRememberMe] = useState(rememberMeChecked)
 
-  const handleRememberMe = () => {
-    setRememberMe(!rememberMe)
-  };
-
-  const initialEmail = localStorage.getItem("rememberMe") ? localStorage.getItem("rememberMe") : '';
+  const goToMain = () => {
+    props.history.push('/register');}
 
   return (
+    <Background><Wrapper>
+       <MyIcon></MyIcon>
+  <BlankTop DesktopMargin='3' TabletMargin='3' MobileMargin='3' />
+  <TextComponent title="로그인"  DesktopLength='15' TabletLength='15' MobileLength='10'/> 
+  <BlankTop DesktopMargin='5' TabletMargin='3' MobileMargin='3' />
     <Formik
       initialValues={{
-        email: initialEmail,
+        email: '',
         password: '',
       }}
       validationSchema={Yup.object().shape({
@@ -45,13 +125,8 @@ function LoginPage(props) {
 
           dispatch(loginUser(dataToSubmit))
             .then(response => {
-              if (response.payload.loginSuccess) {
+              if (response.payload.success) {
                 window.localStorage.setItem('userId', response.payload.userId);
-                if (rememberMe === true) {
-                  window.localStorage.setItem('rememberMe', values.id);
-                } else {
-                  localStorage.removeItem('rememberMe');
-                }
                 props.history.push("/");
               } else {
                 setFormErrorMessage('Check out your Account or Password again')
@@ -80,16 +155,16 @@ function LoginPage(props) {
           handleReset,
         } = props;
         return (
-          <div className="app">
+          
 
-            <Title level={2}>Log In</Title>
-            <form onSubmit={handleSubmit} style={{ width: '350px' }}>
+            <form onSubmit={handleSubmit} style={{ minWidth: '100px' }}>
 
               <Form.Item required>
+              <Content>
+              <Text title="아이디&nbsp; &nbsp;"  DesktopLength='15' TabletLength='15' MobileLength='10'/> 
                 <Input
                   id="email"
                   prefix={<UserOutlined style={{ color: 'rgba(0,0,0,.25)' }} />}
-                  placeholder="Enter your email"
                   type="email"
                   value={values.email}
                   onChange={handleChange}
@@ -98,17 +173,17 @@ function LoginPage(props) {
                     errors.email && touched.email ? 'text-input error' : 'text-input'
                   }
                 />
-                {errors.email && touched.email && (
-                  <div className="input-feedback">{errors.email}</div>
-                )}
+                
+                 </Content>
+                <UnderLineComponent DesktopLength='45' BetweenLength='45' TabletLength='45' MobileLength='45' />
               </Form.Item>
 
               <Form.Item required>
+              <Content>
+              <Text title="패스워드&nbsp; &nbsp;"  DesktopLength='15' TabletLength='15' MobileLength='10'/> 
                 <Input
                   id="password"
-                
                   prefix={<LockOutlined style={{ color: 'rgba(0,0,0,.25)' }} />}
-                  placeholder="Enter your password"
                   type="password"
                   value={values.password}
                   onChange={handleChange}
@@ -117,9 +192,8 @@ function LoginPage(props) {
                     errors.password && touched.password ? 'text-input error' : 'text-input'
                   }
                 />
-                {errors.password && touched.password && (
-                  <div className="input-feedback">{errors.password}</div>
-                )}
+                </Content>
+                <UnderLineComponent DesktopLength='45' BetweenLength='45' TabletLength='45' MobileLength='45' />
               </Form.Item>
 
               {formErrorMessage && (
@@ -127,22 +201,20 @@ function LoginPage(props) {
               )}
 
               <Form.Item>
-                <Checkbox id="rememberMe" onChange={handleRememberMe} checked={rememberMe} >Remember me</Checkbox>
-                <a className="login-form-forgot" href="/reset_user" style={{ float: 'right' }}>
-                  forgot password
-                  </a>
                 <div>
-                  <Button type="primary" htmlType="submit" className="login-form-button" style={{ minWidth: '100%' }} disabled={isSubmitting} onSubmit={handleSubmit}>
-                    Log in
-                </Button>
+                <ColorButton font='12' border="#60FFDA" color="#ffffff"  ><Button onClick={goToMain} ghost='true' type='text'  style={{ minWidth: '100%' }} >
+                <p style={{ color: '#ffffff'}}>&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;회원가입&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;</p>
+                </Button></ColorButton>
+
+                <ColorButton font='12' background="#60FFDA" color="#000000" border="#60FFDA"  ><Button ghost='true' type='text' htmlType="submit" className="login-form-button" style={{ minWidth: '100%' }} disabled={isSubmitting} onSubmit={handleSubmit}>
+                &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; 로그인&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+                </Button></ColorButton>
                 </div>
-                Or <a href="/register">register now!</a>
               </Form.Item>
             </form>
-          </div>
         );
       }}
-    </Formik>
+    </Formik> </Wrapper></Background>
   );
 };
 
