@@ -51,7 +51,7 @@ const RightBtn = styled.button`
   }
 `;
 
-const Category = () => {
+const Category = (categoryList) => {
   const [start, setStart] = useState(0);
 
   useEffect(() => console.log(start));
@@ -60,7 +60,7 @@ const Category = () => {
     <>
       <Wrap>
         <LeftBtn onClick={() => setStart((start) => start - 1)}></LeftBtn>
-        <CategoryList />
+        <CategoryList categoryList={categoryList} />
         <RightBtn onClick={() => setStart((start) => start + 1)}></RightBtn>
       </Wrap>
       <BlankTop DesktopMargin={5.2} TabletMargin={4} MobileMargin={3.8} />

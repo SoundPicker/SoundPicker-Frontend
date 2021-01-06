@@ -89,31 +89,11 @@ function useWindowDimensions() {
   return windowDimensions;
 }
 
-// startNum은 CategoryList 시작 인덱스
-const CategoryList = ({ newList }) => {
-  console.log(newList);
+const CategoryList = ({ categoryList }) => {
+  console.log(categoryList);
   const { width } = useWindowDimensions();
 
   const categoryNum = width > 1024 ? 8 : width > 828 ? 6 : 4;
-
-  //const [categoriesState, setCategoriesState] = useState();
-
-  // useEffect는 component가 마운트될 때 나타난다.
-  // useEffect(() => {
-  //   console.log("=== useEffect ===");
-
-  //   const fetchCategories = async () => {
-  //     const categoryData = await getCategories();
-  //     console.log(categoryData); //  10개의 카테고리 정보: [{…}, ... ,{…}]
-  //     setCategoriesState(categoryData);
-  //   };
-
-  //   fetchCategories();
-  // }, []);
-
-  useEffect(() => {
-    console.log(newList, "카테고리 리스트 잘 도착함");
-  }, []);
 
   return (
     <>
@@ -127,15 +107,6 @@ const CategoryList = ({ newList }) => {
       })}
     </>
   );
-
-  // return (
-  //   ...categoriesState.map((n, index) => {
-  //     <CategoryItem>
-  //       <CategoryName></CategoryName>
-  //       <CategoryBtn />
-  //     </CategoryItem>;
-  //   }),
-  // );
 };
 
 export default CategoryList;

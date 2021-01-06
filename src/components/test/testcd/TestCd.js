@@ -8,7 +8,7 @@ import TextComponent from '../../common/test/TextComponent'
 import { useHistory } from 'react-router-dom'
 import ProgressBar from '../testcd/ProgressBar'
 
-const TestCd = ({ recordList }) => {
+const TestCd = ({ newList }) => {
   //state정의
   const [hintText, setHintText] = useState('힌트 보기')
   const [buttonText, setButtonText] = useState('정답 보기') //클릭한 버튼명(버튼명으로 현재 상태비교)
@@ -16,8 +16,10 @@ const TestCd = ({ recordList }) => {
   const [recordInside, isRecordInside] = useState(false) //레코드판을 넣는 애니메이션 트리거
   const [activeIndex, setActiveIndex] = useState(0) //현재 선택된 레코드판 index넘버
   const [answer, setAnswer] = useState() //정답 text state
-  const [soundUrl, setSoundUrl] = useState()
+  const [sound1Url, setSound1Url] = useState()
+  const [sound3Url, setSound3Url] = useState()
   const [isHint, setIsHint] = useState(false)
+
   const history = useHistory()
 
   const hintBtn = document.getElementById('hintBtn')
@@ -26,8 +28,9 @@ const TestCd = ({ recordList }) => {
     isRecordInside(false)
     setButtonText('정답 보기')
     setAnswer(undefined)
-    setSoundUrl(recordList[activeIndex].sound)
-    console.log(recordList[activeIndex])
+    setSound1Url(newList[activeIndex].sound1URL)
+    setSound3Url(newList[activeIndex].sound3URL)
+    // console.log(recordList[activeIndex])
   }, [activeIndex])
 
   // 힌트보기 ->
@@ -37,7 +40,7 @@ const TestCd = ({ recordList }) => {
     if (hintText === '힌트 보기') {
       setIsHint(true)
       setTimeout(() => {
-        setHintText(`${recordList[activeIndex].hint}`)
+        setHintText(`${newList[activeIndex].hint}`)
       }, 500)
     }
   }
@@ -48,18 +51,18 @@ const TestCd = ({ recordList }) => {
       isRecordInside(true)
       setHintText('관련 영상 보기')
 
-      if (activeIndex + 1 < recordList.length) {
+      if (activeIndex + 1 < newList.length) {
         setButtonText('다음 문제')
-        setAnswer(recordList[activeIndex].result)
+        setAnswer(newList[activeIndex].answer)
         setIsHint(false)
       } else {
-        setAnswer(recordList[activeIndex].result)
+        setAnswer(newList[activeIndex].answer)
         setButtonText('테스트 완료')
       }
     } else if (buttonText === '다음 문제') {
       //버튼 텍스트가 '다음문제'일때 선택된 레코드를 1증가하여 다음 레코드를 불러옴
       setHintText('힌트 보기')
-      if (activeIndex + 1 < recordList.length) {
+      if (activeIndex + 1 < newList.length) {
         setActiveIndex(activeIndex + 1)
       }
     } else if (buttonText === '테스트 완료') {
@@ -76,9 +79,11 @@ const TestCd = ({ recordList }) => {
       //이곳에 사운드 재생
       if (second === 1) {
         // 1초 사운드
+        var audio = new Audio(sound1Url)
+        audio.play()
       } else {
         // 3초 사운드
-        var audio = new Audio(soundUrl)
+        var audio = new Audio(sound3Url)
         audio.play()
       }
     }
@@ -87,7 +92,6 @@ const TestCd = ({ recordList }) => {
   return (
     <>
       <table></table>
-
       <BlankTop DesktopMargin="19" TabletMargin="32" MobileMargin="21" />
       <IconWrapper>
         <MyIcon />
@@ -104,8 +108,8 @@ const TestCd = ({ recordList }) => {
       <BlankTop DesktopMargin="4.2" TabletMargin="5" MobileMargin="9" />
       <Container>
         <ContentContainer>
-          <ProgressBar percentual={(100 / recordList.length) * activeIndex} />
-          {recordList.map((item, index) => {
+          <ProgressBar percentual={(100 / newList.length) * activeIndex} />
+          {newList.map((item, index) => {
             return (
               <SwiperContainer
                 key={index}
