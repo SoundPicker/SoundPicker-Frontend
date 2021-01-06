@@ -12,7 +12,7 @@ const StyledButton = styled.button`
   }
   padding-top:5px;
   padding-bottom:5px;
-  width: ${(props) => props.width || 20 } px ;
+  height: ${(props) => props.width || 20 } px ;
   border: 1px solid ${(props) => props.border|| "rgba( 255, 255, 255, 0 )"};
   color: ${(props) => props.color || "white"};
   background: ${(props) => props.background || "rgba( 255, 255, 255, 0 )"};

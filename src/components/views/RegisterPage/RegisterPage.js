@@ -4,13 +4,20 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { registerUser } from "../../../_actions/user_action";
 import { useDispatch } from "react-redux";
+import TextComponent from '../../../components/common/TextComponent';
+import BlankTop from '../../../components/common/BlankTop';
+import UnderLineComponent from './UnderLineComponent';
 import Bg1 from '../../../assets/images/all_background.png';
 import Bg2 from '../../../assets/images/all_background2.png';
+import logo1 from '../../../assets/images/image_watermark.png';
+import Text from './Text';
+
 
 import {
   Form,
-  Input,
   Button,
+
+
 } from 'antd';
 
 
@@ -43,7 +50,7 @@ const Wrapper=styled.div`
     }
 
     @media (min-width: 1024px) { //desktop 
-      margin-top:15%;
+      margin-top:17%;
       width:100%auto;
     }
     @media (max-width: 767px) { //iphone
@@ -51,18 +58,52 @@ const Wrapper=styled.div`
         margin-top:30%;
   }` 
 
-  const InputStyle =styled.input`
-    border-radius: 5px;
-    color: red;
-  `;
 
-  
+const MyIcon = styled.img`
+  @media (min-width: 768px) and (max-width:1024px) { //between
+    width:221px;
+    }
+
+    @media (min-width: 1024px) { //desktop
+    width:221px;
+    }
+    @media (max-width: 767px) { //iphone
+      width:150px;
+  }
+`;
+
+MyIcon.defaultProps = {
+  src: logo1,
+};
+
+const Input =styled.input`
+background-color:  rgba( 12, 26, 34, 0);
+border-radius:0px;
+border-color:rgba( 12, 26, 34, 0);
+width: 400px;
+color:white;
+`
+
+const Content=styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`
+const Center=styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+`
 
 function RegisterPage(props) {
   const dispatch = useDispatch();
   return (
 <Background>
   <Wrapper>
+  <MyIcon></MyIcon>
+  <BlankTop DesktopMargin='3' TabletMargin='3' MobileMargin='3' />
+  <TextComponent title="회원가입"  DesktopLength='15' TabletLength='15' MobileLength='10'/> 
+  <BlankTop DesktopMargin='5' TabletMargin='3' MobileMargin='3' />
     <Formik
       initialValues={{
         email: '',
@@ -94,7 +135,7 @@ function RegisterPage(props) {
 
           dispatch(registerUser(dataToSubmit)).then(response => {
             if (response.payload.success) {
-              props.history.push("/mainpage");
+              props.history.push("/main");
             } else {
               alert(response.payload.err.errmsg)
             }
@@ -118,27 +159,12 @@ function RegisterPage(props) {
         } = props;
         return (
 
-            <Form style={{ minWidth: '150px' }}  onSubmit={handleSubmit} >
-
-              <Form.Item requiredMark="optional" required label="닉네임">
-
-                <Input 
-                  id="nickname"
-                  type="text"
-                  value={values.name}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  className={
-                    errors.name && touched.name ? 'text-input error' : 'text-input'
-                  }
-                />
-                {errors.name && touched.name && (
-                  <div className="input-feedback">{errors.name}</div>
-                )}
-
-              </Form.Item>
-
-              <Form.Item  requiredMark="optional" required label="이메일" hasFeedback validateStatus={errors.email && touched.email ? "error" : 'success'}>
+            <form style={{ minWidth: '150px' }}  onSubmit={handleSubmit} >
+                
+              
+              <Form.Item  requiredMark="optional"  hasFeedback validateStatus={errors.email && touched.email ? "error" : 'success'}>
+                <Content>
+              <Text title="이메일"  DesktopLength='15' TabletLength='15' MobileLength='10'/> 
                 <Input
                   id="email"
                   type="email"
@@ -149,12 +175,13 @@ function RegisterPage(props) {
                     errors.email && touched.email ? 'text-input error' : 'text-input'
                   }
                 />
-                {errors.email && touched.email && (
-                  <div className="input-feedback">{errors.email}</div>
-                )}
+                </Content>
+                <UnderLineComponent DesktopLength='45' BetweenLength='45' TabletLength='45' MobileLength='45' />
               </Form.Item>
-
-              <Form.Item requiredMark="optional" required label="패스워드" hasFeedback validateStatus={errors.password && touched.password ? "error" : 'success'}>
+             
+              <Form.Item requiredMark="optional" hasFeedback validateStatus={errors.password && touched.password ? "error" : 'success'}>
+                 <Content>
+              <Text title="패스워드"  DesktopLength='15' TabletLength='15' MobileLength='10'/>
                 <Input
                   id="password"
                   type="password"
@@ -165,12 +192,13 @@ function RegisterPage(props) {
                     errors.password && touched.password ? 'text-input error' : 'text-input'
                   }
                 />
-                {errors.password && touched.password && (
-                  <div className="input-feedback">{errors.password}</div>
-                )}
+                </Content>
+                <UnderLineComponent DesktopLength='45' BetweenLength='45' TabletLength='45' MobileLength='45' />
               </Form.Item>
-
-              <Form.Item requiredMark="optional" required label="패스워드 확인" hasFeedback>
+              
+              <Form.Item requiredMark="optional"  hasFeedback>
+              <Content>
+              <Text title="패스워드 확인"  DesktopLength='15' TabletLength='15' MobileLength='10'/>
                 <Input
                   id="confirmPassword"
                   type="password"
@@ -181,17 +209,34 @@ function RegisterPage(props) {
                     errors.confirmPassword && touched.confirmPassword ? 'text-input error' : 'text-input'
                   }
                 />
-                {errors.confirmPassword && touched.confirmPassword && (
-                  <div className="input-feedback">{errors.confirmPassword}</div>
-                )}
+                </Content>
+                <UnderLineComponent DesktopLength='45' BetweenLength='45' TabletLength='45' MobileLength='45' />
               </Form.Item>
 
-              <Form.Item >
-                <Button  onClick={handleSubmit} type="default" disabled={isSubmitting}>
+              <Form.Item  requiredMark="optional"   validateStatus={errors.nickname && touched.nickname ? "error" : 'success'}>
+              <Content>
+              <Text title="닉네임"  DesktopLength='15' TabletLength='15' MobileLength='10'/>
+              <Input 
+                  id="nickname"
+                  type="text"
+                  value={values.name}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  className={
+                    errors.name && touched.name ? 'text-input error' : 'text-input'
+                  }
+                />
+                </Content>
+                <UnderLineComponent DesktopLength='45' BetweenLength='45' TabletLength='45' MobileLength='45' /> 
+                </Form.Item>
+
+                <BlankTop DesktopMargin='3' TabletMargin='1' MobileMargin='1' />
+                <Center>
+                <Button block='true' onClick={handleSubmit}  disabled={isSubmitting}>
                   회원가입
-                </Button>
-              </Form.Item>
-            </Form>
+                </Button></Center>
+
+            </form>
          
         );
       }}
