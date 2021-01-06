@@ -51,17 +51,49 @@ const RightBtn = styled.button`
   }
 `;
 
-const Category = (categoryList) => {
+function getWindowDimensions() {
+  const { innerWidth: width } = window;
+  return {
+    width,
+  };
+}
+
+function useWindowDimensions() {
+  const [windowDimensions, setWindowDimensions] = useState(
+    getWindowDimensions()
+  );
+
+  useEffect(() => {
+    function handleResize() {
+      setWindowDimensions(getWindowDimensions());
+    }
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  return windowDimensions;
+}
+
+const Category = ({ categoryList }) => {
   const [start, setStart] = useState(0);
 
   useEffect(() => console.log(start));
 
+  const { width } = useWindowDimensions();
+
+  const maxLeft = width > 1024 ? 2 : width > 828 ? 4 : 6;
+
   return (
     <>
       <Wrap>
-        <LeftBtn onClick={() => setStart((start) => start - 1)}></LeftBtn>
-        <CategoryList categoryList={categoryList} />
-        <RightBtn onClick={() => setStart((start) => start + 1)}></RightBtn>
+        <LeftBtn
+          onClick={() => start > 0 && setStart((start) => start - 1)}
+        ></LeftBtn>
+        <CategoryList categoryList={categoryList} startNum={start} />
+        <RightBtn
+          onClick={() => start < maxLeft && setStart((start) => start + 1)}
+        ></RightBtn>
       </Wrap>
       <BlankTop DesktopMargin={5.2} TabletMargin={4} MobileMargin={3.8} />
     </>

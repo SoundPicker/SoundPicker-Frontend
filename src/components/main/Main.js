@@ -7,7 +7,7 @@ import CardList from "../main/test_card/TestCard";
 import Footer from "../main/footer/Footer";
 import BlankTop from "../common/BlankTop";
 
-const Main = (categoryList) => {
+const Main = ({ categoryList }) => {
   return (
     <Background>
       <Header />

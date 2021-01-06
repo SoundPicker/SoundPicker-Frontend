@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import Background from "../../components/main/Main";
-import CategoryList from "../../components/main/category/CategoryList";
 import axios from "axios";
 
 const MainContainer = ({ match }) => {
@@ -11,6 +10,7 @@ const MainContainer = ({ match }) => {
 
   const url = "http://3.35.187.65:3000";
 
+  // categoryList
   const getCategoryAPI = async () => {
     const { data } = await axios.get(`${url}/main/`);
     try {

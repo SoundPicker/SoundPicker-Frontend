@@ -89,7 +89,7 @@ function useWindowDimensions() {
   return windowDimensions;
 }
 
-const CategoryList = ({ categoryList }) => {
+const CategoryList = ({ categoryList, startNum }) => {
   console.log(categoryList);
   const { width } = useWindowDimensions();
 
@@ -97,13 +97,15 @@ const CategoryList = ({ categoryList }) => {
 
   return (
     <>
-      {[...Array(categoryNum)].map((n, index) => {
-        return (
-          <CategoryItem>
-            <CategoryName>영화/드라마</CategoryName>
-            <CategoryBtn />
-          </CategoryItem>
-        );
+      {categoryList.map((item, index) => {
+        if (index < startNum + categoryNum && index >= startNum) {
+          return (
+            <CategoryItem>
+              <CategoryName key={index}>{item["description"]}</CategoryName>
+              <CategoryBtn />
+            </CategoryItem>
+          );
+        }
       })}
     </>
   );
