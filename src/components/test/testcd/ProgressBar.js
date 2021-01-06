@@ -3,14 +3,22 @@ import styled from 'styled-components'
 
 const Bar = styled.div`
   position: relative;
-  height: 37rem;
   width: 8px;
   z-index: 10000;
-  right: 23rem;
   border-radius: 3px;
   margin: 1rem auto;
   background-color: #fff;
   transform: rotate(180deg);
+  height: 37rem;
+  right: 23rem;
+  @media only screen and (max-width: 1024px) {
+    height: 34rem;
+    right: 21.5rem;
+  }
+  @media only screen and (max-width: 768px) {
+    height: 26rem;
+    right: 18rem;
+  }
 `
 
 const Fill = styled.div`
@@ -26,6 +34,10 @@ const Fill = styled.div`
   border-radius: inherit;
   transition: height 0.6s ease-in;
   height: ${props => `${props.percentual}%`};
+  @media only screen and (max-width: 1024px) {
+  }
+  @media only screen and (max-width: 768px) {
+  }
 `
 
 const ProgressBar = ({ percentual }) => {
