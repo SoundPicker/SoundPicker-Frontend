@@ -3,16 +3,14 @@ import styled from "styled-components";
 import Wave from '../../../components/testmaking/questionlist/player/Wave';
 
 
-const PlayerContainer = ({questionUrl,i,isLoading,isPlaying,player,totalTime,currentTime,playHandler,backClick}) => {
-
+const PlayerContainer = ({questionUrl,i,isLoading,isPlaying,player,totalTime,currentTime,playHandler,backClick,changeTotalTime}) => {
+  let time;
   const [mouseDragX, setMouseDragX] = useState(false);
   const [activeButton, setactiveButton] = useState(false);
   const [containerWidth,setContainerWidth] = useState(307);
 
 
-console.error(questionUrl, i)
   const dragHandler = (e) => {
-    console.log(e)
     const nowFraction = e.offsetX / containerWidth;
     player.seekTo(player.getDuration() * nowFraction, true);
   };
@@ -32,19 +30,12 @@ console.error(questionUrl, i)
   const clickActiveButtonOut = () => {
     setactiveButton(false)
 }
-
   useEffect(() => {
         const a = document.getElementsByTagName('iframe')[i];
-        a.src = `https://www.youtube.com/embed/${questionUrl}?autoplay=0&controls=0&fs=0&enablejsapi=1&origin=http%3A%2F%2Flocalhost%3A3001&widgetid=1`;
-  
+        a.src = `https://www.youtube.com/embed/${questionUrl}?autoplay=0&controls=0&fs=0&enablejsapi=1&origin=http%3A%2F%2Flocalhost%3A3000&widgetid=1`;
   },[questionUrl,i]);
 
-  console.log('isLoding',isLoading)
 
-
-  console.log(player)
- 
-  
   return (
     <TotalWrap>
 
@@ -109,7 +100,7 @@ console.error(questionUrl, i)
   </TotalWrap>
   );
 };
-export default PlayerContainer;
+export default React.memo(PlayerContainer);
 
 
 const ButtonCover = styled.div`

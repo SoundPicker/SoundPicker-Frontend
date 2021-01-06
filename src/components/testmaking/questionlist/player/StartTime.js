@@ -38,14 +38,10 @@ const StyledText = styled.div`
 
   }
 `
-const Time = styled.input`
+const TimeWrap = styled.div`
     width:5rem;
-    background-color:transparent;
-    outline:none;
-    border:0;
-    font-size: 1.2rem;
-    text-align: center;
-    color: rgba(255, 255, 255, 0.5);
+    display:flex;
+    align-items:center;
     @media only screen and (max-width: 768px) {
         width:3.4rem;
 
@@ -53,15 +49,46 @@ const Time = styled.input`
 
   }
 `
-
-
+const Time = styled.input`
+    width:2.3rem;
+    background-color:transparent;
+    appearance: none;
+    outline:none;
+    border:0;
+    font-size: 1.2rem;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.5);
+    @media only screen and (max-width: 768px) {
+        font-size: 1.1rem;
+  }
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+}
+`
+const Verse = styled.div`
+    background-color:transparent;
+    font-size: 1.2rem;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.5);
+    @media only screen and (max-width: 768px) {
+        font-size: 1.1rem;
+  }
+`
 const StartTime = () => {
 
 
     return(
         <StyledStartWarp>
             <StyledText>시작시간</StyledText>
-            <Time type='text'placeholder="00:00" />
+            <TimeWrap>
+                <Time type="number" name='min' placeholder="00" min={0} required/>
+                    <Verse>
+                        :
+                    </Verse>
+                <Time  type="number" name='sec' placeholder="00" min={0} max={60} required />
+            </TimeWrap>
         </StyledStartWarp>
     )
 }

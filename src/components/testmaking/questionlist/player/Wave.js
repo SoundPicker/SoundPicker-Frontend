@@ -10,7 +10,6 @@ const StyledSvg = styled.svg`
 
 const Wave = (props) => {
         const {FillColor} = props;
-        console.log(FillColor)
         const FillColorMath = Math.floor(FillColor*10);
         const FillBarNumber = Math.floor(156 * FillColor/10);
     return(
