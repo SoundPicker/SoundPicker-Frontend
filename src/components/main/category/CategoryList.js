@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
+import getCategories from "../../../lib/api/main/categoryAPI";
+
 // 서버랑 통신해서 카테고리 이름 받아오기
 const CategoryName = styled.span`
   font-size: 1.3rem;
@@ -96,10 +98,31 @@ function useWindowDimensions() {
   return windowDimensions;
 }
 
-const CategoryList = () => {
+// startNum은 CategoryList 시작 인덱스
+const CategoryList = ({ newList }) => {
+  console.log(newList);
   const { width } = useWindowDimensions();
 
   const categoryNum = width > 1024 ? 8 : width > 828 ? 6 : 4;
+
+  //const [categoriesState, setCategoriesState] = useState();
+
+  // useEffect는 component가 마운트될 때 나타난다.
+  // useEffect(() => {
+  //   console.log("=== useEffect ===");
+
+  //   const fetchCategories = async () => {
+  //     const categoryData = await getCategories();
+  //     console.log(categoryData); //  10개의 카테고리 정보: [{…}, ... ,{…}]
+  //     setCategoriesState(categoryData);
+  //   };
+
+  //   fetchCategories();
+  // }, []);
+
+  useEffect(() => {
+    console.log(newList, "카테고리 리스트 잘 도착함");
+  }, []);
 
   return (
     <>
@@ -113,6 +136,15 @@ const CategoryList = () => {
       })}
     </>
   );
+
+  // return (
+  //   ...categoriesState.map((n, index) => {
+  //     <CategoryItem>
+  //       <CategoryName></CategoryName>
+  //       <CategoryBtn />
+  //     </CategoryItem>;
+  //   }),
+  // );
 };
 
 export default CategoryList;

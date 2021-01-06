@@ -140,7 +140,6 @@ table {
 * {
   box-sizing: border-box;
   font-family: NanumGothic;
-
 }
 
 html,
@@ -165,4 +164,9 @@ input {
 /* 스크롤 막대 숨기기 */
 body::-webkit-scrollbar {
   display: none;
+}
+
+/* anchor text-decoration none으로 설정 */
+a {
+  text-decoration: none;
 }

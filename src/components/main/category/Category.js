@@ -4,6 +4,8 @@ import BtnRight from "../../../assets/button_right.png";
 import BlankTop from "../../common/BlankTop";
 import CategoryList from "../category/CategoryList";
 
+import { useState, useEffect } from "react";
+
 const Wrap = styled.div`
   display: flex;
   justify-content: center;
@@ -50,12 +52,16 @@ const RightBtn = styled.button`
 `;
 
 const Category = () => {
+  const [start, setStart] = useState(0);
+
+  useEffect(() => console.log(start));
+
   return (
     <>
       <Wrap>
-        <LeftBtn></LeftBtn>
-        <CategoryList />
-        <RightBtn></RightBtn>
+        <LeftBtn onClick={() => setStart((start) => start - 1)}></LeftBtn>
+        <CategoryList startNum={start} />
+        <RightBtn onClick={() => setStart((start) => start + 1)}></RightBtn>
       </Wrap>
       <BlankTop DesktopMargin={5.2} TabletMargin={4} MobileMargin={3.8} />
     </>

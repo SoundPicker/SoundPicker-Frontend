@@ -49,7 +49,7 @@ const BackBtn = styled.button`
 const BackToMain = () => {
   return (
     <>
-      <Link to="/" style={{ textDecoration: "none" }}>
+      <Link to="/">
         <Wrap>
           <BackBtn />
         </Wrap>

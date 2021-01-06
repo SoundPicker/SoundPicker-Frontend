@@ -1,7 +1,7 @@
 // 카드 크기 때문에 breakpoint - 1440(추가), 768 -> 828로 변경
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { keyframes } from "styled-components";
 import PlusDesktop from "../../../assets/desktop/button_add.png";
 import PlusTablet from "../../../assets/tablet/button_add.png";
 import PlusMobile from "../../../assets/mobile/button_add.png";
@@ -255,7 +255,10 @@ const CardList = () => {
     <>
       <CardListWrap height={height}>
         <CardWrapOne>
-          <PlusBtn />
+          <Link to="/testmaking">
+            <PlusBtn />
+          </Link>
+
           <BlankTop DesktopMargin={1.6} TabletMargin={1.6} MobileMargin={1.8} />
           {[...Array(4)].map((n, index) => {
             return (
