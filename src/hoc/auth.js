@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {auth} from '../_actions/user_action';
+
 
 export default function(SpecificComponent,option,adminRoute=null){
 
@@ -12,21 +12,21 @@ export default function(SpecificComponent,option,adminRoute=null){
 
         let user = useSelector(state => state.user);
         const dispatch = useDispatch()
+        if(window.localStorage.getItem('isAuth')===null){
+            window.localStorage.setItem('isAuth','false');
+        }
         
+
         useEffect(()=>{
         
             dispatch(()=>{
-                dispatch(auth()).then(response => {
-                    console.log(response);
-
+                console.log(window.localStorage.getItem('isAuth'));
                     //로그인 하지 않은 상태
-                    if(!response.payload.isAuth){
-                        if(option){
+                    if(window.localStorage.getItem('isAuth')==='false'){
                             props.history.push('/login');
-                        }
                     }else{
                         //로그인 한 상태
-                        if(adminRoute && !response.payload.isAdmin){
+                        if(adminRoute && window.localStorage.getItem('isAuth')==='true'){
                             props.history.push('/');
                         }else{
                             if(option===false){
@@ -35,8 +35,6 @@ export default function(SpecificComponent,option,adminRoute=null){
                         }
                     }
                     
-
-                })
             })
 
         },[])

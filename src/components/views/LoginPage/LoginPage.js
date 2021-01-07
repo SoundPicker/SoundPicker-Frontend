@@ -15,8 +15,6 @@ import Bg2 from '../../../assets/images/all_background2.png';
 import logo1 from '../../../assets/images/image_watermark.png';
 import Text from './Text';
 import ColorButton from './ColorButton';
-import RegisterPage from '../RegisterPage/RegisterPage';
-
 
 const Background = styled.div`
     width:100vw;
@@ -127,9 +125,11 @@ function LoginPage(props) {
             .then(response => {
               if (response.payload.success) {
                 window.localStorage.setItem('userId', response.payload.userId);
+                window.localStorage.setItem('isAuth','true');
                 props.history.push("/");
               } else {
-                setFormErrorMessage('Check out your Account or Password again')
+                setFormErrorMessage('Check out your Account or Password again');
+                window.localStorage.setItem('isAuth','false');
               }
             })
             .catch(err => {

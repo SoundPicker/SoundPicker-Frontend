@@ -80,15 +80,13 @@ MyIcon.defaultProps = {
 
 
 const MyPage= () => {
-
     return(
         <div>
           <Background>
             <Wrapper>
                 <MyIcon></MyIcon>
                 <BlankTop DesktopMargin='3' TabletMargin='3' MobileMargin='3' />
-                <TextComponent title="마이페이지"  DesktopLength='20' TabletLength='15' MobileLength='10'/> 
-                
+                <TextComponent title="마이페이지"  DesktopLength='20' TabletLength='15' MobileLength='10'/>  
                 <BlankTop DesktopMargin='5' TabletMargin='5' MobileMargin='5' />
                 <Content><BoldTextComponent title="개인정보 수정"  DesktopLength='25' TabletLength='20' MobileLength='15'/></Content>
                 <BlankTop DesktopMargin='5' TabletMargin='5' MobileMargin='5' />

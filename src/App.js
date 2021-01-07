@@ -14,7 +14,7 @@ const App = () => {
       <Router>
         <Switch>
           <Route exact path="/" component={MainPage}/>
-          <Route exact path="/testmaking" component={TestMakingPage}/>          
+          <Route exact path="/testmaking" component={Auth(TestMakingPage,true)}/>          
           <Route component={MyPage} path="/mypage" exact/>
           <Route component={QuizLoading} path="/quizloading" exact/>
           <Route component={StartLoading} path="/startloading" exact/>

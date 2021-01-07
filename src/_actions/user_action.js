@@ -26,10 +26,8 @@ export const registerUser=(dataToSubmit)=>{
 
 
 export const auth=()=>{
-   
-    const request = axios.get(`${USER_SERVER}/auth`)
+    const request = axios.get(`${USER_SERVER}/mypage`)
     .then(response => response.data)
-
     return{
         type: AUTH_USER,
         payload: request

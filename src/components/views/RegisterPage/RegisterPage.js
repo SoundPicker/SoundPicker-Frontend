@@ -24,7 +24,7 @@ const Background = styled.div`
     height:1000vh;
     background-repeat: no-repeat;
     background-position: center top;
-    background-color:  rgba( 12, 26, 34, 1);
+    background-color:  #081923;
     background-size:contain;
  @media  (max-width:768px) {
   background-image: url(${Bg2});
@@ -78,7 +78,7 @@ const Input =styled.input`
 background-color:  rgba( 12, 26, 34, 0);
 border-radius:0px;
 border-color:rgba( 12, 26, 34, 0);
-width: 400px;
+width: 370px;
 color:white;
 `
 
@@ -86,11 +86,6 @@ const Content=styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-`
-const Center=styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
 `
 
 function RegisterPage(props) {
@@ -148,12 +143,11 @@ function RegisterPage(props) {
           values,
           touched,
           errors,
-          dirty,
           isSubmitting,
           handleChange,
           handleBlur,
           handleSubmit,
-          handleReset,
+
         } = props;
         return (
 
@@ -175,7 +169,7 @@ function RegisterPage(props) {
                 <UnderLineComponent DesktopLength='45' BetweenLength='45' TabletLength='45' MobileLength='45' />
               </Form.Item>
              
-              <Form.Item requiredMark="optional" hasFeedback validateStatus={errors.password && touched.password ? "error" : 'success'}>
+              <Form.Item requiredMark="optional" hasFeedback >
                  <Content>
               <Text title="패스워드"  DesktopLength='15' TabletLength='15' MobileLength='10'/>
                 <Input
@@ -192,19 +186,19 @@ function RegisterPage(props) {
                 <UnderLineComponent DesktopLength='45' BetweenLength='45' TabletLength='45' MobileLength='45' />
               </Form.Item>
               
-              <Form.Item requiredMark="optional"  hasFeedback>
+              <Form.Item requiredMark="optional"  hasFeedback validateStatus={errors.confirmPassword && touched.confirmPassword ? "error" : 'success'}>
               <Content>
-              <Text title="패스워드 확인"  DesktopLength='15' TabletLength='15' MobileLength='10'/>
+              <Text title="패스워드확인"  DesktopLength='15' TabletLength='15' MobileLength='10'/>
                 <Input
                   id="confirmPassword"
                   type="password"
                   value={values.confirmPassword}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  className={
-                    errors.confirmPassword && touched.confirmPassword ? 'text-input error' : 'text-input'
-                  }
-                />
+                  className={'form-control' + (errors.confirmPassword && touched.confirmPassword ? ' is-invalid' : '')}
+                  />
+                  
+                
                 </Content>
                 <UnderLineComponent DesktopLength='45' BetweenLength='45' TabletLength='45' MobileLength='45' />
               </Form.Item>
