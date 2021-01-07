@@ -21,6 +21,7 @@ import QuestionLustPlusButton from "../../../components/testmaking/questionlist/
 import QuestionSaveButton from "../../../components/testmaking/questionlist/QuestionListSaveButton";
 import React,{useEffect, useState} from 'react';
 import StartTimeContainer from "../player/StartTimeContainer";
+import axios from "axios";
 
 export let player0;
 export let player1;
@@ -32,8 +33,9 @@ export let player6;
 export let player7;
 export let player8;
 export let player9;
+export let send=true ;
 
-const TestMakingFormContainer = () => {
+const TestMakingFormContainer = ({history}) => {
     let checkCurrentTime0;
     let checkCurrentTime1;
     let checkCurrentTime2;
@@ -58,10 +60,6 @@ const TestMakingFormContainer = () => {
         answerYoutubeURL: "",
     }]);
 
-    const [times,setTimes] = useState([{
-        questionNumber : 1,
-        totalTime : 0
-    }]);
 
     const [isPlaying0, setPlaying0] = useState(false);
     const [isLoading0, setLoading0] = useState(false);
@@ -113,7 +111,19 @@ const TestMakingFormContainer = () => {
     const [currentTime9, setCurrentTime9] = useState("00:00");
     const [totalTime9, setTotalTime9] = useState("00:00");
 
+    const changeTitle = e => {
+      const {target: {value}} = e;
+      setTestTitle(value);
+    }
+    const changeDescription = e => {
+      const {target: {value}} = e;
+      setTestDescription(value);
+      console.log(testTitle,testDescription,testCategory)
+    }
 
+    const changeCategory = e => {
+      setTestCategory(e);
+    }
 
     const changeText = questionNumber => e => {
         const { target: { value } } = e;
@@ -132,10 +142,10 @@ const TestMakingFormContainer = () => {
     }
 
     const changeStartTime = questionNumber => e => {
-
+        console.log(e);
         const tempsQustios = questions.map(question => {
             if( question.questionNumber === questionNumber+1 ){
-                question["questionStartsfrom"] = "value";
+                question["questionStartsfrom"] = e;
             }
 
             return question;
@@ -143,27 +153,9 @@ const TestMakingFormContainer = () => {
         });
 
         setQuestions(tempsQustios);
-
+        console.log(tempsQustios)
     }
 
-    
-    const changeTotalTime = questionNumber => value => {
-        const totalTimeValue = value;
-        console.log(totalTimeValue);
-        const tempsQustios = times.map(time => {
-            if( times.questionNumber === questionNumber+1 ){
-                time["totalTime"] = totalTimeValue;
-            }
-
-            return time;
-
-        });
-
-        setTimes(tempsQustios);
-        console.error(times)
-    }
-
-    
     
 
     const addQuestions = () => {
@@ -177,13 +169,9 @@ const TestMakingFormContainer = () => {
             answerYoutubeURL: ""
 
         };
-        let timeData = {
-            questionNumber : questions.length +1,
-            totalTime : 0
-        }
+
         console.log(questions)
         setQuestions([...questions, data]);
-        setTimes([...times],timeData);
     }
 
     const deleteQuestions = questionNumber => () => {
@@ -196,17 +184,8 @@ const TestMakingFormContainer = () => {
             i++;
             return question;
         })
-        let tempTimes = times.filter(time => {
-            return time.questionNumber !== questionNumber + 1;
-        })
-        let l = 1;
-        const reTempTimes = tempTimes.map(time => {
-            time.questionNumber = l;
-            l++;
-            return time;
-        })
+
         setQuestions(reTempQuestions);
-        setTimes(reTempTimes);
     }
 
     const getYoutubeId = questionNumber => e => {
@@ -239,6 +218,16 @@ const TestMakingFormContainer = () => {
                 });  
                 setQuestions(tempsQustios);
             }
+        }else{
+          const tempsQustios = questions.map(question => {
+            if( question.questionNumber === questionNumber+1 ){
+                question[name] = "";
+            }
+
+            return question;
+
+        });  
+        setQuestions(tempsQustios);
         }
         
     }
@@ -325,6 +314,51 @@ const TestMakingFormContainer = () => {
       sec < 10 ? "0" + String(sec) : sec
     }`;
   };
+  const onSubmitHandler = (e) =>{
+    e.preventDefault();
+
+    const variable ={
+        title: testTitle,
+        description: testDescription,
+        CategoryId: testCategory,
+        questions: questions,
+
+    }
+    const config = {
+      headers : {"jwt":'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTgsImlhdCI6MTYwOTY1Mzc0NywiZXhwIjoxNjEwNTE3NzQ3LCJpc3MiOiJzb3VuZFBpY2tlciJ9.uf1z0eea05zxJEWoHVCY3h6rLPZEj6P88MP58nEK4qA'}
+  }
+  console.log(testTitle,testDescription,testCategory)
+  if(testTitle.length !== 0 && testDescription.length !== 0 && testCategory.length !== 0){
+    for(let i = 0; i < questions.length; i++ ){
+      if(questions[i].questionYoutubeURL.length === 0 ||questions[i].questionStartsfrom.length === 0 ||questions[i].hint.length === 0 ||
+      questions[i].answer.length === 0 ||questions[i].answerYoutubeURL.length === 0){
+        send = false;
+      }else{
+        console.log('2번')
+      }
+    }
+    if(send===true){
+      try{
+        axios.post('http://3.35.187.65:3000/test',variable,config)
+        .then(response=> {
+          console.log(response);
+            if(response.data.success){
+              console.log("서버 전달 완료")
+              history.push("/");
+            }
+        })
+      }catch(e){
+        console.log("error :" + e)
+      }
+    }else{
+      console.log('3번')
+    }
+
+  }else{
+    console.log('1번')
+  }
+
+}
 
   const setTime0 = () => {
     setCurrentTime0(transTime(player0.getCurrentTime().toFixed()));
@@ -778,7 +812,7 @@ const TestMakingFormContainer = () => {
     }
 
     return(
-        <form>
+        <form method='post' onSubmit={onSubmitHandler} >
         <div id='player0'></div>
         <div id='player1'></div>
         <div id='player2'></div>
@@ -797,17 +831,17 @@ const TestMakingFormContainer = () => {
                 <BlankTop DesktopMargin='3.6' TabletMargin='2' MobileMargin='2.6'/>
                 <TopInputWrap>
                     <TopInputText text='제목'/>
-                    <TopInput inputName='title' inputPlaceholder='최대 20자' inputMaxLength='20' />
+                    <TopInput inputName='title' inputPlaceholder='최대 20자' inputMaxLength='20' changeHandler={changeTitle} value={testTitle} />
                 </TopInputWrap>
                 <BlankTop DesktopMargin='3.6' TabletMargin='3.4' MobileMargin='2.6'/>
                 <TopInputWrap>
                     <TopInputText text='내용'/>
-                    <TopInput inputName='description' inputPlaceholder='최대 40자' inputMaxLength='40'/>
+                    <TopInput inputName='description' inputPlaceholder='최대 40자' inputMaxLength='40' changeHandler={changeDescription} value={testDescription}/>
                 </TopInputWrap>
                 <BlankTop DesktopMargin='3.6' TabletMargin='3.7' MobileMargin='2.6'/>
                 <TopInputWrap>
                     <TopInputText text='카테고리'/>
-                    <InputCategoryContainer inputName='CategoryId' inputPlaceholder='오른쪽 화살표를 눌러 카테고리를 골라주세요'/>
+                    <InputCategoryContainer inputName='CategoryId' inputPlaceholder='오른쪽 화살표를 눌러 카테고리를 골라주세요' changeCategory={changeCategory} testCategory={testCategory}/>
                 </TopInputWrap>
             </TopInner>
             <BlankTop DesktopMargin='6.4' TabletMargin='8.7' MobileMargin ='6.2'/>
@@ -837,13 +871,13 @@ const TestMakingFormContainer = () => {
                             <BlankTop DesktopMargin='1.9' TabletMargin='3.9' MobileMargin='2.6'/>
                             <QuestionListInputWrap>
                                 <QuestionListInputText text='Youtube Link' />
-                                <QuestionListYoutubeInput inputName='questionYoutubeURL' inputPlaceholder='1초/3초간 나올 음악 주소를 넣어주세요'  getYoutubeId={getYoutubeId(i)} />
+                                <QuestionListYoutubeInput inputName='questionYoutubeURL' inputPlaceholder='1초/3초간 나올 음악 주소를 넣어주세요'  getYoutubeId={getYoutubeId(i)} value={questions[i].questionYoutubeURL} />
                             </QuestionListInputWrap>
                             <BlankTop DesktopMargin='1.9' TabletMargin='2' MobileMargin='1.6'/>
 
-                           {questions[i].questionYoutubeURL ? 
+                           {questions[i].questionYoutubeURL!==""||questions[i].questionYoutubeURL ? 
                             <PlayerWrap>
-                               {i===0? <PlayerContainer questionUrl={questions[i].questionYoutubeURL} 
+                               <PlayerContainer questionUrl={questions[i].questionYoutubeURL} 
                                                         player={
                                                             i===0?player0:
                                                             i===1?player1:
@@ -934,9 +968,9 @@ const TestMakingFormContainer = () => {
                                                             backClick9
 
                                                         }
-                                                        changeTotalTime={changeTotalTime(i)}/> 
-                                                            :
-                                                        ""} 
+                                                        /> 
+                                                            
+                                                      
                                 <StartTimeContainer  changeStartTime={changeStartTime(i)} 
                                                             totalTime={
                                                             i===0?totalTime0:
@@ -955,7 +989,7 @@ const TestMakingFormContainer = () => {
                             <BlankTop DesktopMargin='1.9' TabletMargin='2.4' MobileMargin='1.7'/>
                             <QuestionListInputWrap>
                                 <QuestionListInputText text='Youtube Link' />
-                                <QuestionListYoutubeInput inputName='answerYoutubeURL' inputPlaceholder='정답 공개 후 보여줄 영상을 넣어주세요'  changeText={getYoutubeId(i)} />
+                                <QuestionListYoutubeInput inputName='answerYoutubeURL' inputPlaceholder='정답 공개 후 보여줄 영상을 넣어주세요'  getYoutubeId={getYoutubeId(i)} value={questions[i].answerYoutubeURL}/>
                             </QuestionListInputWrap>
 
                         </QuestionListRightWrap>
@@ -966,7 +1000,7 @@ const TestMakingFormContainer = () => {
                 <BlankTop DesktopMargin='4.7' TabletMargin='5.2' MobileMargin='4.7'/>
                 <QuestionLustPlusButton addQuestions={addQuestions} />
                 <BlankTop DesktopMargin='3.6' TabletMargin='6' MobileMargin='3.5'/>
-                <QuestionSaveButton />
+                <QuestionSaveButton onSubmitHandler={onSubmitHandler} />
                 <BlankTop DesktopMargin='3.6' TabletMargin='9.1' MobileMargin='3.5'/>
                 <table></table>
             </QuestionListInner>     

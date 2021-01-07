@@ -3,8 +3,7 @@ import styled from "styled-components";
 import Wave from '../../../components/testmaking/questionlist/player/Wave';
 
 
-const PlayerContainer = ({questionUrl,i,isLoading,isPlaying,player,totalTime,currentTime,playHandler,backClick,changeTotalTime}) => {
-  let time;
+const PlayerContainer = ({questionUrl,i,isLoading,isPlaying,player,totalTime,currentTime,playHandler,backClick}) => {
   const [mouseDragX, setMouseDragX] = useState(false);
   const [activeButton, setactiveButton] = useState(false);
   const [containerWidth,setContainerWidth] = useState(307);
@@ -100,7 +99,7 @@ const PlayerContainer = ({questionUrl,i,isLoading,isPlaying,player,totalTime,cur
   </TotalWrap>
   );
 };
-export default React.memo(PlayerContainer);
+export default PlayerContainer;
 
 
 const ButtonCover = styled.div`

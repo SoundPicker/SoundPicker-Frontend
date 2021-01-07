@@ -76,18 +76,18 @@ const Verse = styled.div`
         font-size: 1.1rem;
   }
 `
-const StartTime = () => {
+const StartTime = ({maxLengthCheck,onChangeMinutes,onChangeSeconds}) => {
 
 
     return(
         <StyledStartWarp>
             <StyledText>시작시간</StyledText>
             <TimeWrap>
-                <Time type="number" name='min' placeholder="00" min={0} required/>
+                <Time type="number" name='min' placeholder="00" min={0} maxLength="2" onChange={onChangeMinutes} onInput={maxLengthCheck} required/>
                     <Verse>
                         :
                     </Verse>
-                <Time  type="number" name='sec' placeholder="00" min={0} max={60} required />
+                <Time  type="number" name='sec' placeholder="00" min={0} maxLength="2" max={60} onChange={onChangeSeconds} onInput={maxLengthCheck} required />
             </TimeWrap>
         </StyledStartWarp>
     )

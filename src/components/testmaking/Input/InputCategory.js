@@ -141,7 +141,7 @@ const InputCategory = ({chooseCategory,chooseCategoryHandler,isCategoryVisible, 
                 <CategoryLeftWrap>
             <CategoryRowWrap>
                 <CategoryItemWrap>
-                    <CategoryItemText onClick={chooseCategoryHandler} value='여자 아이돌'>
+                    <CategoryItemText onClick={chooseCategoryHandler} id={1}>
                         여자 아이돌
                     </CategoryItemText>
                 </CategoryItemWrap>
@@ -149,7 +149,7 @@ const InputCategory = ({chooseCategory,chooseCategoryHandler,isCategoryVisible, 
                         /
                     </CategoryItemText>
                 <CategoryItemWrap>
-                    <CategoryItemText onClick={chooseCategoryHandler} value='남자 아이돌'>
+                    <CategoryItemText onClick={chooseCategoryHandler} id={2}>
                         남자 아이돌
                     </CategoryItemText>
                 </CategoryItemWrap>
@@ -157,14 +157,14 @@ const InputCategory = ({chooseCategory,chooseCategoryHandler,isCategoryVisible, 
                         /
                 </CategoryItemText>
                 <CategoryItemWrap>
-                    <CategoryItemText onClick={chooseCategoryHandler} value='연도별'>
+                    <CategoryItemText onClick={chooseCategoryHandler} id={3}>
                         연도별
                     </CategoryItemText>
                 </CategoryItemWrap>
             </CategoryRowWrap>
             <CategoryRowWrap>
                 <CategoryItemWrap>
-                    <CategoryItemText onClick={chooseCategoryHandler} value='힙합'>
+                    <CategoryItemText onClick={chooseCategoryHandler} id={4}>
                         힙합
                     </CategoryItemText>
                 </CategoryItemWrap>
@@ -172,7 +172,7 @@ const InputCategory = ({chooseCategory,chooseCategoryHandler,isCategoryVisible, 
                         /
                 </CategoryItemText>
                 <CategoryItemWrap>
-                    <CategoryItemText onClick={chooseCategoryHandler} value='팝'>
+                    <CategoryItemText onClick={chooseCategoryHandler} id={5}>
                         팝
                     </CategoryItemText>
                 </CategoryItemWrap>
@@ -180,14 +180,14 @@ const InputCategory = ({chooseCategory,chooseCategoryHandler,isCategoryVisible, 
                         /
                 </CategoryItemText>
                 <CategoryItemWrap>
-                    <CategoryItemText onClick={chooseCategoryHandler} value='게임'>
+                    <CategoryItemText onClick={chooseCategoryHandler} id={6}>
                         게임
                     </CategoryItemText>
                 </CategoryItemWrap>
             </CategoryRowWrap>
             <CategoryLastRowWrap>
                 <CategoryItemWrap>
-                    <CategoryItemText onClick={chooseCategoryHandler} value='영화/드라마'>
+                    <CategoryItemText onClick={chooseCategoryHandler} id={7}>
                         영화/드라마
                     </CategoryItemText>
                 </CategoryItemWrap>
@@ -195,7 +195,7 @@ const InputCategory = ({chooseCategory,chooseCategoryHandler,isCategoryVisible, 
                         /
                 </CategoryItemText>
                 <CategoryItemWrap>
-                    <CategoryItemText onClick={chooseCategoryHandler} value='애니메이션'>
+                    <CategoryItemText onClick={chooseCategoryHandler} id={8}>
                         애니메이션
                     </CategoryItemText>
                 </CategoryItemWrap>
@@ -203,7 +203,7 @@ const InputCategory = ({chooseCategory,chooseCategoryHandler,isCategoryVisible, 
                         /
                 </CategoryItemText>
                 <CategoryItemWrap>
-                    <CategoryItemText onClick={chooseCategoryHandler} value='가타'>
+                    <CategoryItemText onClick={chooseCategoryHandler} id={9}>
                         기타
                     </CategoryItemText>
                 </CategoryItemWrap>

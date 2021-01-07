@@ -6,7 +6,7 @@ import TestMakingFormContainer from "../../containers/testmaking/form/TestMaking
 
 
 
-const TestMakingPage = () => {
+const TestMakingPage = ({history}) => {
     return(
         <>
             <TMBackground>
@@ -15,7 +15,7 @@ const TestMakingPage = () => {
                     <BlankTop DesktopMargin='10.2' TabletMargin='14.5' MobileMargin='8.9'/>
                     <Header/>
                     <BlankTop DesktopMargin='4.8' TabletMargin='11.6' MobileMargin='5.5'/>
-                    <TestMakingFormContainer />
+                    <TestMakingFormContainer history={history} />
                 </TMInner>
             </TMBackground>
         </>

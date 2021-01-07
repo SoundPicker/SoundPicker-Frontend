@@ -5,7 +5,7 @@ import InputCategory from '../../components/testmaking/Input/InputCategory';
 
 
 
-const InputCategoryContainer = ({inputName,inputPlaceholder}) => {
+const InputCategoryContainer = ({inputName,inputPlaceholder,testCategory,changeCategory}) => {
 
     const [isCategoryVisible, setIsCategoryVisible] = useState(false);
     const [chooseCategory, setChooseCategory] = useState()
@@ -16,9 +16,10 @@ const InputCategoryContainer = ({inputName,inputPlaceholder}) => {
 
     const chooseCategoryHandler = (e) => {
         const categoryValue = e.target.childNodes[0].data;
+        console.log(e.target.id);
         setChooseCategory(categoryValue)
         setIsCategoryVisible(!isCategoryVisible);
-
+        changeCategory(e.target.id)
     }
 
     return (
@@ -28,6 +29,8 @@ const InputCategoryContainer = ({inputName,inputPlaceholder}) => {
                 inputName={inputName}
                 inputPlaceholder={inputPlaceholder}
                 chooseCategoryHandler={chooseCategoryHandler}
+                testCategory={testCategory}
+                changeCategory={changeCategory}
                 chooseCategory={chooseCategory}
         />
         )
