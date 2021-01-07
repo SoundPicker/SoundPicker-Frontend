@@ -100,7 +100,8 @@ const CardContent = styled.div`
   }
 `;
 
-const RecommendCardList = () => {
+const RecommendCardList = ({ recommendList }) => {
+  console.log(recommendList);
   return (
     <CardWrap>
       <CardBox>

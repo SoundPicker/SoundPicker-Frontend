@@ -1,6 +1,6 @@
 // 카드 크기 때문에 breakpoint - 1440(추가), 768 -> 828로 변경
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import styled from "styled-components";
 import PlusDesktop from "../../../assets/desktop/button_add.png";
 import PlusTablet from "../../../assets/tablet/button_add.png";
@@ -17,7 +17,7 @@ const PlusBtn = styled.div`
   background-repeat: no-repeat;
   background-position: center center;
   border-radius: 8px;
-  border: 3px solid #ffffff;
+  border: 3px solid #60ffda;
   background-color: transparent;
   cursor: pointer;
   overflow: hidden;
@@ -38,17 +38,21 @@ const PlusBtn = styled.div`
   }
 `;
 
-const Card = styled.div`
+const Card = styled.button`
   display: block;
   width: 29.6rem;
   position: relative;
   padding: 3.6rem 2.1rem 2rem 2.7rem;
   border-radius: 8px;
-  border: 3px solid;
+  border: 3px solid #60ffda;
   cursor: pointer;
   color: #ffffff;
   background-color: transparent;
   overflow: hidden;
+
+  &:focus {
+    outline: none;
+  }
 
   &:hover {
     background: linear-gradient(
@@ -266,7 +270,8 @@ function useWindowDimensions() {
 }
 
 const CardList = ({ testList }) => {
-  console.log(testList);
+  const history = useHistory();
+
   const [count, setCount] = useState(2);
   const [height, setHeight] = useState(116.5);
   const countPlus = (e) => {
@@ -301,7 +306,10 @@ const CardList = ({ testList }) => {
               if (index < divided) {
                 return (
                   <>
-                    <Card key={index}>
+                    <Card
+                      key={index}
+                      onClick={() => history.push(`/test/${item["id"]}`)}
+                    >
                       <CardTitle>{item["title"]}</CardTitle>
                       <BlankTop
                         DesktopMargin={3}
@@ -337,7 +345,10 @@ const CardList = ({ testList }) => {
                 if (index >= divided) {
                   return (
                     <>
-                      <Card key={index}>
+                      <Card
+                        key={index}
+                        onClick={() => history.push(`/test/${item["id"]}`)}
+                      >
                         <CardTitle>{item["title"]}</CardTitle>
                         <BlankTop
                           DesktopMargin={3}
@@ -367,7 +378,10 @@ const CardList = ({ testList }) => {
                 if (index >= divided && index < 2 * divided) {
                   return (
                     <>
-                      <Card key={index}>
+                      <Card
+                        key={index}
+                        onClick={() => history.push(`/test/${item["id"]}`)}
+                      >
                         <CardTitle>{item["title"]}</CardTitle>
                         <BlankTop
                           DesktopMargin={3}
@@ -404,7 +418,10 @@ const CardList = ({ testList }) => {
                 if (index >= 2 * divided) {
                   return (
                     <>
-                      <Card key={index}>
+                      <Card
+                        key={index}
+                        onClick={() => history.push(`/test/${item["id"]}`)}
+                      >
                         <CardTitle>{item["title"]}</CardTitle>
                         <BlankTop
                           DesktopMargin={3}
@@ -434,7 +451,10 @@ const CardList = ({ testList }) => {
                 if (index >= 2 * divided && index < 3 * divided) {
                   return (
                     <>
-                      <Card key={index}>
+                      <Card
+                        key={index}
+                        onClick={() => history.push(`/test/${item["id"]}`)}
+                      >
                         <CardTitle>{item["title"]}</CardTitle>
                         <BlankTop
                           DesktopMargin={3}
@@ -470,7 +490,10 @@ const CardList = ({ testList }) => {
               if (index >= 3 * divided) {
                 return (
                   <>
-                    <Card key={index}>
+                    <Card
+                      key={index}
+                      onClick={() => history.push(`/test/${item["id"]}`)}
+                    >
                       <CardTitle>{item["title"]}</CardTitle>
                       <BlankTop
                         DesktopMargin={3}

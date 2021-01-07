@@ -17,7 +17,7 @@ const App = ({ match }) => {
         <Route component={StartLoading} path="/startloading" exact />
 
         <Route component={TestPage} path="/test/:id" />
-        <Route component={TestEndPage} path="/testend" exact />
+        <Route component={TestEndPage} path="/test/:id/recommendation" exact />
         <Route path="/*">404 Not Found</Route>
       </Switch>
     </Router>

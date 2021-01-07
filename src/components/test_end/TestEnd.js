@@ -8,8 +8,11 @@ import Divider from "../common/Divider";
 import RecommendText from "./RecommendText";
 import RecommendCardList from "./RecommendCardList";
 import BackToMain from "./BackToMain";
+import { useHistory } from "react-router-dom";
 
-const TestEnd = () => {
+const TestEnd = ({ recommendList }) => {
+  const history = useHistory();
+
   return (
     <Background>
       <Header />
@@ -24,7 +27,7 @@ const TestEnd = () => {
       <BlankTop DesktopMargin={5.5} TabletMargin={4.4} MobileMargin={3.5} />
       <RecommendText />
       <BlankTop DesktopMargin={5.4} TabletMargin={4.4} MobileMargin={3.5} />
-      <RecommendCardList />
+      <RecommendCardList recommendList={recommendList} />
       <BlankTop DesktopMargin={2.8} TabletMargin={3.7} MobileMargin={3} />
       <BackToMain />
     </Background>
