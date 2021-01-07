@@ -124,8 +124,8 @@ function LoginPage(props) {
           dispatch(loginUser(dataToSubmit))
             .then(response => {
               if (response.payload.success) {
-                window.localStorage.setItem('userId', response.payload.userId);
                 window.localStorage.setItem('isAuth','true');
+                window.localStorage.setItem('jwt',response.payload.data.accessToken);
                 props.history.push("/");
               } else {
                 setFormErrorMessage('Check out your Account or Password again');

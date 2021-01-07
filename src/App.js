@@ -19,7 +19,7 @@ const App = () => {
           <Route component={QuizLoading} path="/quizloading" exact/>
           <Route component={StartLoading} path="/startloading" exact/>
           <Route exact path="/register" component={Auth(RegisterPage,false)}/>
-          <Route exact path="/login" component={Auth(LoginPage,false)}/>
+          <Route exact path="/login" component={Auth(LoginPage,null)}/>
           <Route path='/*'>404 Not Found</Route>
         </Switch>
     </Router>
