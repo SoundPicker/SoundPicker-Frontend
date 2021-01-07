@@ -5,13 +5,14 @@ import styled from "styled-components";
 import BlankTop from '../../components/common/BlankTop';
 import UnderLineWrap from '../../components/common/UnderLineWrap';
 import TextComponent from '../../components/common/TextComponent';
-import Button from '../../components/common/Button';
+import Button from './Button';
 import BoldTextComponent from '../../components/common/BoldTextComponent';
 import Bg1 from '../../assets/images/mypage_background1.png';
 import Bg2 from '../../assets/images/mypage_background2.png';
 import logo1 from '../../assets/images/image_watermark.png';
 import MyPageButton from "./MyPageButton";
-import {auth} from "../../_actions/user_action";
+import {auth, changeName,changePassword} from "../../_actions/user_action";
+import { Input } from 'antd';
 
 
 const Background = styled.div`
@@ -116,10 +117,51 @@ function MyPage({props}) {
     })();
   },[]);
 
+  const onChangeInputs = async (evt) => {
+    const { name, value } = evt.target;
+    try {
+        await changeName( {
+            ...myState.member,
+            [name]: value,
+        });
+        setMyState({
+            status: 'resolved',
+            member: {
+                ...myState.member,
+                [name]: value,
+            }
+        });
+    } catch (e) {
+        console.error(e);
+    }
+};
+
+const onChangePassword = async (evt) => {
+  const { name, value } = evt.target;
+  try {
+      await changePassword( {
+          ...myState.member,
+          [name]: value,
+      });
+      setMyState({
+          status: 'resolved',
+          member: {
+              ...myState.member,
+              [name]: value,
+          }
+      });
+  } catch (e) {
+      console.error(e);
+  }
+};
+
+
+
+
 
 switch (myState.status) {
   case 'pending':
-      return <h1>로딩</h1>;
+      return <h1></h1>;
   case 'resolved':
       return (
         <Background>
@@ -130,24 +172,26 @@ switch (myState.status) {
                 <BlankTop DesktopMargin='5' TabletMargin='5' MobileMargin='5' />
                 <Content><BoldTextComponent title="개인정보 수정"  DesktopLength='25' TabletLength='20' MobileLength='15'/></Content>
                 <BlankTop DesktopMargin='5' TabletMargin='5' MobileMargin='5' />
-                <Content><TextComponent title={myState.member.nickname} DesktopLength='15' TabletLength='13' MobileLength='12'/>
+                <Content>
+                <Input  style={{ color: 'white'  }} bordered={false} name="nickname" value={myState.member.nickname} onChange={onChangeInputs}/>
                 <Button font='12' >닉네임 변경</Button>
                 </Content>
                 <BlankTop DesktopMargin='5' TabletMargin='5' MobileMargin='5' />
                 <Content>
-                <TextComponent title={myState.member.email}  DesktopLength='15' TabletLength='13' MobileLength='12'/>
+                <Input  style={{ color: 'white'  }} bordered={false} name="nickname" value={myState.member.email} disabled='true'/>
                 <Button font='12' color='gray'>이메일 변경불가</Button>
                 </Content>
                 <BlankTop DesktopMargin='5' TabletMargin='5' MobileMargin='5' />
                 <Content>
-                <TextComponent title="&emsp;"  DesktopLength='15' TabletLength='13' MobileLength='12'/>
+                <Input placeholder='******'
+                style={{ color: 'white'  }} bordered={false} name="password" onChange={onChangePassword}/>
                 <Button font='12' >비밀번호 변경</Button>
                 </Content>
                 <BlankTop DesktopMargin='8' TabletMargin='5' MobileMargin='5' />
                 <Content><BoldTextComponent title="마이테스트 수정"  DesktopLength='25' TabletLength='20' MobileLength='15'/></Content>
                 <BlankTop DesktopMargin='7' TabletMargin='3' MobileMargin='3' />
-                
-                  {myState.member.Tests.map((member,i)=>
+            
+                  {myState.member.Tests && myState?.member?.Tests.map((member,i)=>
                   <div>
                   <Detail>
                   <BoldTextComponent title={member.title}  DesktopLength='15' TabletLength='10' MobileLength='10'/>
@@ -157,7 +201,6 @@ switch (myState.status) {
                     </Detail> <BlankTop DesktopMargin='2' TabletMargin='2' MobileMargin='2' />
                     <UnderLineWrap  DesktopLength='130'BetweenLength='95' TabletLength='70' MobileLength='45' ></UnderLineWrap>
                     <BlankTop DesktopMargin='4' TabletMargin='2' MobileMargin='2' /> </div>
-                  
                   )}
                
               

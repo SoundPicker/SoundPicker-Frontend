@@ -1,5 +1,5 @@
 import axios from 'axios'
-import {LOGIN_USER,REGISTER_USER,AUTH_USER, LOGOUT_USER} from './types'
+import {LOGIN_USER,REGISTER_USER,AUTH_USER, LOGOUT_USER,NAME_USER,PASSWORD_USER} from './types'
 import { USER_SERVER } from '../components/config';
 
 
@@ -37,6 +37,33 @@ export const auth=()=>{
         payload: request
     }
 }
+
+export const changeName=(dataToSubmit)=>{
+    const request = axios.put(`${USER_SERVER}/nickname`,dataToSubmit, {
+        headers: {
+          jwt: window.localStorage.getItem('jwt') //the token is a variable which holds the token'
+        }
+       })
+    .then(response => response.data)
+    return{
+        type: NAME_USER,
+        payload: request
+    }
+}
+
+export const changePassword=(dataToSubmit)=>{
+    const request = axios.put(`${USER_SERVER}/password`,dataToSubmit, {
+        headers: {
+          jwt: window.localStorage.getItem('jwt') //the token is a variable which holds the token'
+        }
+       })
+    .then(response => response.data)
+    return{
+        type: PASSWORD_USER,
+        payload: request
+    }
+}
+
 
 export const logoutUser=()=>{
     const request = axios.get(`${USER_SERVER}/logout`)

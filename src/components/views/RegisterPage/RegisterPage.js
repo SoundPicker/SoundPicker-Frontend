@@ -80,6 +80,8 @@ border-radius:0px;
 border-color:rgba( 12, 26, 34, 0);
 width: 370px;
 color:white;
+outline:none;
+
 `
 
 const Content=styled.div`

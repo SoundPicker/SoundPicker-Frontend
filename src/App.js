@@ -15,7 +15,7 @@ const App = () => {
         <Switch>
           <Route exact path="/" component={MainPage}/>
           <Route exact path="/testmaking" component={Auth(TestMakingPage,true)}/>          
-          <Route component={MyPage} path="/mypage" exact/>
+          <Route component={Auth(MyPage,true)} path="/mypage" exact/>
           <Route component={QuizLoading} path="/quizloading" exact/>
           <Route component={StartLoading} path="/startloading" exact/>
           <Route exact path="/register" component={Auth(RegisterPage,false)}/>

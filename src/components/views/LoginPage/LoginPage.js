@@ -77,6 +77,7 @@ border-radius:0px;
 border-color:rgba( 12, 26, 34, 0);
 width: 400px;
 color:white;
+outline:none;
 `
 
 const Content=styled.div`
@@ -169,6 +170,7 @@ function LoginPage(props) {
                   value={values.email}
                   onChange={handleChange}
                   onBlur={handleBlur}
+                  
                   className={
                     errors.email && touched.email ? 'text-input error' : 'text-input'
                   }
