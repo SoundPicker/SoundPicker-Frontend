@@ -1,6 +1,7 @@
 // 중간에 너무 우겨져서 breakpoint를 1024->1089로 바꿈
 import styled from "styled-components";
 import BlankTop from "../common/BlankTop";
+import { Link } from "react-router-dom";
 
 const CardWrap = styled.div`
   display: flex;
@@ -26,7 +27,7 @@ const CardBox = styled.div`
   }
 `;
 
-const Card = styled.div`
+const Card = styled.button`
   width: 34.9rem;
   height: 20.7rem;
   padding: 3.2rem 4.8rem 2.1rem 2.9rem;
@@ -41,6 +42,10 @@ const Card = styled.div`
       rgba(96, 255, 205, 0.38) 0%,
       rgba(96, 255, 218, 0) 100%
     );
+  }
+
+  &:focus {
+    outline: none;
   }
 
   @media (max-width: 1089px) {
@@ -101,26 +106,22 @@ const CardContent = styled.div`
 `;
 
 const RecommendCardList = ({ recommendList }) => {
-  console.log(recommendList);
   return (
     <CardWrap>
       <CardBox>
-        {[...Array(6)].map((n, index) => {
+        {recommendList.map((item, index) => {
           return (
-            <Card>
-              <CardTitle>
-                오마이걸 찐팬 모여라 오마이걸 찐팬 모여라 오마이걸
-              </CardTitle>
-              <BlankTop
-                DesktopMargin={1.7}
-                TabletMargin={1.068}
-                MobileMargin={0.827}
-              />
-              <CardContent>
-                오마이걸 아린을 제일 사랑합니다. 오마이걸 아린을 제일
-                사랑합니다. 오마이걸 아린
-              </CardContent>
-            </Card>
+            <Link to={`/test/${item.id}`}>
+              <Card key={index}>
+                <CardTitle>{item["title"]}</CardTitle>
+                <BlankTop
+                  DesktopMargin={1.7}
+                  TabletMargin={1.068}
+                  MobileMargin={0.827}
+                />
+                <CardContent>{item["description"]}</CardContent>
+              </Card>
+            </Link>
           );
         })}
       </CardBox>

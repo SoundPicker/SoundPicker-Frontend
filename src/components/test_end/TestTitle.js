@@ -24,10 +24,11 @@ const Title = styled.strong`
   }
 `;
 
-const TestTitle = () => {
+const TestTitle = ({ title }) => {
+  console.log(title.data[0].testTitle);
   return (
     <Wrap>
-      <Title>레드벨벳 찐팬만 맞출 수 있는 정답 모음</Title>
+      <Title></Title>
     </Wrap>
   );
 };

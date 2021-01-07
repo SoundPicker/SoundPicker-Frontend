@@ -93,10 +93,20 @@ const CategoryList = ({ categoryList, startNum }) => {
   console.log(categoryList);
   const { width } = useWindowDimensions();
 
-  const categoryNum = width > 1024 ? 8 : width > 828 ? 6 : 4;
+  const categoryNum = width > 1024 ? 7 : width > 828 ? 5 : 3;
 
   return (
     <>
+      {categoryList.map((item, index) => {
+        if (index === 9) {
+          return (
+            <CategoryItem>
+              <CategoryName key={index}>{item["description"]}</CategoryName>
+              <CategoryBtn />
+            </CategoryItem>
+          );
+        }
+      })}
       {categoryList.map((item, index) => {
         if (index < startNum + categoryNum && index >= startNum) {
           return (

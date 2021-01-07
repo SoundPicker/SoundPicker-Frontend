@@ -1,10 +1,10 @@
 import BlankTop from "../../components/common/BlankTop";
 import TestEndContainer from "../../containers/test_end/TestEndContainer";
 
-const TestEndPage = () => {
+const TestEndPage = (match) => {
   return (
     <>
-      <TestEndContainer />
+      <TestEndContainer match={match} />
       <BlankTop DesktopMargin="20" TabletMargin="10" MobileMargin="5" />
     </>
   );
