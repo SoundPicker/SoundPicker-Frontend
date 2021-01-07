@@ -9,7 +9,7 @@ import { useHistory } from 'react-router-dom'
 import ProgressBar from '../testcd/ProgressBar'
 import ModalPage from '../../../pages/modal/ModalPage'
 
-const TestCd = ({ newList }) => {
+const TestCd = ({ newList, match }) => {
   //state정의
   const [hintText, setHintText] = useState('힌트 보기')
   const [buttonText, setButtonText] = useState('정답 보기') //클릭한 버튼명(버튼명으로 현재 상태비교)
@@ -22,7 +22,6 @@ const TestCd = ({ newList }) => {
   const [modalVisible, setModalVisible] = useState(false)
   const [isHint, setIsHint] = useState(false)
   const [modalIn, setModalIn] = useState(false)
-  const [modalOut, setModalOut] = useState(false)
 
   const history = useHistory()
 
@@ -79,7 +78,7 @@ const TestCd = ({ newList }) => {
         setActiveIndex(activeIndex + 1)
       }
     } else if (buttonText === '테스트 완료') {
-      history.push('/test/recommendation')
+      history.push(`/test/${match.params.id}/recommendation`)
       console.log(history)
     }
   }

@@ -15,7 +15,14 @@ const LayoutInner = styled.div`
     props.modalIn &&
     css`
       animation-timing-function: ease-in-out;
-      animation-duration: 0.6s;
+      animation-duration: 1s;
+      animation-name: ${FadeIn};
+    `}
+  ${props =>
+    props.modalOut &&
+    css`
+      animation-timing-function: ease-in-out;
+      animation-duration: 1s;
       animation-name: ${FadeIn};
     `}
   @media only screen and (max-width: 880px) {
