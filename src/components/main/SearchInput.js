@@ -76,7 +76,7 @@ const SearchBorder = styled.hr`
   }
 `;
 
-const SearchInput = () => {
+const SearchInput = (handleChange) => {
   return (
     <>
       <Wrap>
@@ -84,6 +84,7 @@ const SearchInput = () => {
         <Input
           type="text"
           placeholder="사용자들이 만들어놓은 다양한 테스트들을 검색해보세요!"
+          onChange={handleChange}
         />
       </Wrap>
       <SearchBorder />

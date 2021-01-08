@@ -17,7 +17,7 @@ const PlusBtn = styled.div`
   background-repeat: no-repeat;
   background-position: center center;
   border-radius: 8px;
-  border: 3px solid #60ffda;
+  // border: 3px solid transparent;
   background-color: transparent;
   cursor: pointer;
   overflow: hidden;
@@ -38,17 +38,33 @@ const PlusBtn = styled.div`
   }
 `;
 
-const Card = styled.button`
+const Card = styled.div`
   display: block;
   width: 29.6rem;
   position: relative;
   padding: 3.6rem 2.1rem 2rem 2.7rem;
   border-radius: 8px;
-  border: 3px solid #60ffda;
+  border: 2px solid transparent;
   cursor: pointer;
   color: #ffffff;
   background-color: transparent;
   overflow: hidden;
+
+  border-right-color: rgba(96, 121, 255, 0.4);
+  border-left-color: rgba(96, 255, 218, 1);
+  background: linear-gradient(
+        to left,
+        rgba(96, 121, 255, 0.4) 0%,
+        rgba(96, 255, 218, 1) 100%
+      )
+      top/100% 2px,
+    linear-gradient(
+        to left,
+        rgba(96, 121, 255, 0.4),
+        rgba(96, 255, 218, 1) 100%
+      )
+      bottom/100% 2px;
+  background-repeat: no-repeat;
 
   &:focus {
     outline: none;
@@ -57,8 +73,8 @@ const Card = styled.button`
   &:hover {
     background: linear-gradient(
       180deg,
-      rgba(96, 255, 205, 0.38) 0%,
-      rgba(96, 255, 218, 0) 100%
+      rgba(96, 255, 205, 0.38) 10%,
+      rgba(96, 255, 218, 0) 90%
     );
   }
 
@@ -69,6 +85,83 @@ const Card = styled.button`
   @media (max-width: 828px) {
     width: 27.6rem;
     padding: 3.4rem 2.5rem 2.9rem 2.4rem;
+  }
+`;
+
+const RotateBorder = styled.span`
+  position: absolute;
+  display: block;
+  filter: blur(3px);
+  &:nth-child(1) {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #60ffda);
+    animation: animate1 1s linear infinite;
+  }
+  @keyframes animate1 {
+    0% {
+      left: 100%;
+    }
+    50%,
+    100% {
+      left: -100%;
+    }
+  }
+  &:nth-child(2) {
+    top: -100%;
+    left: 0;
+    width: 3px;
+    height: 100%;
+    background: linear-gradient(180deg, transparent, #60ffda);
+    animation: animate2 1s linear infinite;
+    animation-delay: 0.25s;
+  }
+  @keyframes animate2 {
+    0% {
+      top: -100%;
+    }
+    50%,
+    100% {
+      top: 100%;
+    }
+  }
+  &:nth-child(3) {
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(270deg, transparent, #60ffda);
+    animation: animate3 1s linear infinite;
+    animation-delay: 0.5s;
+  }
+  @keyframes animate3 {
+    0% {
+      left: -100%;
+    }
+    50%,
+    100% {
+      left: 100%;
+    }
+  }
+  &:nth-child(4) {
+    bottom: -100%;
+    right: 0;
+    width: 3px;
+    height: 100%;
+    background: linear-gradient(360deg, transparent, #60ffda);
+    animation: animate4 1s linear infinite;
+    animation-delay: 0.75s;
+  }
+  @keyframes animate4 {
+    0% {
+      bottom: -100%;
+    }
+    50%,
+    100% {
+      bottom: 100%;
+    }
   }
 `;
 
@@ -215,10 +308,17 @@ const LoadMoreBtn = styled.div`
   font-weight: 700;
   letter-spacing: 0.025em;
   border-radius: 8px;
-  border: 3px solid;
+  border: 2px solid transparent;
   cursor: pointer;
   color: #ffffff;
   background-color: transparent;
+
+  border-radius: 8px;
+  border-right-color: #00ffa3;
+  border-left-color: #5200ff;
+  background: linear-gradient(to left, #00ffa3 0%, #5200ff 100%) top/100% 2px,
+    linear-gradient(to left, #00ffa3 0%, #5200ff 100%) bottom/100% 2px;
+  background-repeat: no-repeat;
 
   &:focus {
     outline: none;
@@ -287,31 +387,34 @@ const CardList = ({ testList }) => {
 
   const divideNum = width > 1440 ? 4 : width > 828 ? 3 : 2;
   const divided = parseInt(testList.length / divideNum);
-
-  const testNum = testList.length;
-
-  let one_dividedBy2 = parseInt(testNum / 2);
-  let two_divideBy2 = testNum - one_dividedBy2;
-  //one_devidedBy3, two_devidedBy3, three_devidedBy3
-  // one_devidedBy4, two_devidedBy4, three_devidedBy4, four_devidedBy4
+  const leftOver = testList.length % divideNum;
 
   return (
     <>
       <CardListWrap height={height}>
         <CardWrapOne>
           <Link to="/testmaking">
-            <PlusBtn />
+            <PlusBtn>
+              <RotateBorder />
+              <RotateBorder />
+              <RotateBorder />
+              <RotateBorder />
+            </PlusBtn>
           </Link>
           <BlankTop DesktopMargin={1.6} TabletMargin={1.6} MobileMargin={1.8} />
           <>
             {testList.map((item, index) => {
-              if (index < divided) {
+              if (index < divided + leftOver) {
                 return (
                   <>
                     <Card
                       key={index}
                       onClick={() => history.push(`/test/${item["id"]}`)}
                     >
+                      <RotateBorder />
+                      <RotateBorder />
+                      <RotateBorder />
+                      <RotateBorder />
                       <CardTitle>{item["title"]}</CardTitle>
                       <BlankTop
                         DesktopMargin={3}
@@ -344,13 +447,17 @@ const CardList = ({ testList }) => {
           <>
             {testList.map((item, index) => {
               if (width <= 828) {
-                if (index >= divided) {
+                if (index >= divided + leftOver) {
                   return (
                     <>
                       <Card
                         key={index}
                         onClick={() => history.push(`/test/${item["id"]}`)}
                       >
+                        <RotateBorder />
+                        <RotateBorder />
+                        <RotateBorder />
+                        <RotateBorder />
                         <CardTitle>{item["title"]}</CardTitle>
                         <BlankTop
                           DesktopMargin={3}
@@ -377,13 +484,20 @@ const CardList = ({ testList }) => {
                   );
                 }
               } else {
-                if (index >= divided && index < 2 * divided) {
+                if (
+                  index >= divided + leftOver &&
+                  index < 2 * divided + leftOver
+                ) {
                   return (
                     <>
                       <Card
                         key={index}
                         onClick={() => history.push(`/test/${item["id"]}`)}
                       >
+                        <RotateBorder />
+                        <RotateBorder />
+                        <RotateBorder />
+                        <RotateBorder />
                         <CardTitle>{item["title"]}</CardTitle>
                         <BlankTop
                           DesktopMargin={3}
@@ -417,7 +531,7 @@ const CardList = ({ testList }) => {
           <>
             {testList.map((item, index) => {
               if (width <= 1440) {
-                if (index >= 2 * divided) {
+                if (index >= 2 * divided + leftOver) {
                   return (
                     <>
                       <Card
@@ -450,7 +564,10 @@ const CardList = ({ testList }) => {
                   );
                 }
               } else {
-                if (index >= 2 * divided && index < 3 * divided) {
+                if (
+                  index >= 2 * divided + leftOver &&
+                  index < 3 * divided + leftOver
+                ) {
                   return (
                     <>
                       <Card
@@ -489,7 +606,7 @@ const CardList = ({ testList }) => {
         <CardWrapFour>
           <>
             {testList.map((item, index) => {
-              if (index >= 3 * divided) {
+              if (index >= 3 * divided + leftOver) {
                 return (
                   <>
                     <Card

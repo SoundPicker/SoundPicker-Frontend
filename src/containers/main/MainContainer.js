@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import Background from "../../components/main/Main";
 import axios from "axios";
+import StartLoading from "../../components/loading/StartLoading";
 
 const MainContainer = ({ match }) => {
   const [category, setCategory] = useState({
@@ -85,7 +86,6 @@ const MainContainer = ({ match }) => {
     onClick: false,
   });
 
-  let finalData = [];
   const onClickDisplay = useCallback(
     (id) => {
       const sortId = id;
@@ -142,11 +142,11 @@ const MainContainer = ({ match }) => {
 
   switch (category.status) {
     case "idle":
-      return <>idle</>;
+      return <StartLoading />;
     case "rejected":
       return <>Error</>;
     case "pending":
-      return <>pending</>;
+      return <StartLoading />;
     case "resolved":
     default:
       // ={category.item.data.tests}
