@@ -75,10 +75,8 @@ function useWindowDimensions() {
   return windowDimensions;
 }
 
-const Category = ({ categoryList }) => {
+const Category = ({ categoryList, onClickDisplay }) => {
   const [start, setStart] = useState(0);
-
-  useEffect(() => console.log(start));
 
   const { width } = useWindowDimensions();
 
@@ -90,7 +88,11 @@ const Category = ({ categoryList }) => {
         <LeftBtn
           onClick={() => start > 0 && setStart((start) => start - 1)}
         ></LeftBtn>
-        <CategoryList categoryList={categoryList} startNum={start} />
+        <CategoryList
+          categoryList={categoryList}
+          startNum={start}
+          onClickDisplay={onClickDisplay}
+        />
         <RightBtn
           onClick={() => start < maxLeft && setStart((start) => start + 1)}
         ></RightBtn>

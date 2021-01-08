@@ -7,7 +7,8 @@ import CardList from "../main/test_card/TestCard";
 import Footer from "../main/footer/Footer";
 import BlankTop from "../common/BlankTop";
 
-const Main = ({ categoryList, testList }) => {
+const Main = ({ categoryList, testList, onClickDisplay }) => {
+  console.log(testList);
   return (
     <Background>
       <Header />
@@ -16,7 +17,7 @@ const Main = ({ categoryList, testList }) => {
       <BlankTop DesktopMargin={8} TabletMargin={5.5} MobileMargin={7.4} />
       <SearchInput />
       <BlankTop DesktopMargin={9.7} TabletMargin={7.3} MobileMargin={7.3} />
-      <Category categoryList={categoryList} />
+      <Category categoryList={categoryList} onClickDisplay={onClickDisplay} />
       <CardList testList={testList} />
       <Footer />
     </Background>

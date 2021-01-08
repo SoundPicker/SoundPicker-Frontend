@@ -10,14 +10,13 @@ import RecommendCardList from "./RecommendCardList";
 import BackToMain from "./BackToMain";
 
 const TestEnd = ({ match, recommendList, title }) => {
-  console.log(title);
   return (
     <Background>
       <Header />
       <BlankTop DesktopMargin={12.3} TabletMargin={18.4} MobileMargin={6.7} />
       <LogoTitle />
       <BlankTop DesktopMargin={3.1} TabletMargin={2.8} MobileMargin={2.5} />
-      <TestTitle title={title} />
+      <TestTitle title={title["data"][0]["testTitle"]} />
       <BlankTop DesktopMargin={1.2} TabletMargin={1.2} MobileMargin={1.0} />
       <ThankYouText />
       <BlankTop DesktopMargin={5.6} TabletMargin={4.4} MobileMargin={3.3} />

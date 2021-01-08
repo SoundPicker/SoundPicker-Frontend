@@ -270,6 +270,7 @@ function useWindowDimensions() {
 }
 
 const CardList = ({ testList }) => {
+  console.log(testList);
   const history = useHistory();
 
   const [count, setCount] = useState(2);

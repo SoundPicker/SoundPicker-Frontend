@@ -89,7 +89,7 @@ function useWindowDimensions() {
   return windowDimensions;
 }
 
-const CategoryList = ({ categoryList, startNum }) => {
+const CategoryList = ({ categoryList, startNum, onClickDisplay }) => {
   console.log(categoryList);
   const { width } = useWindowDimensions();
 
@@ -102,7 +102,7 @@ const CategoryList = ({ categoryList, startNum }) => {
           return (
             <CategoryItem>
               <CategoryName key={index}>{item["description"]}</CategoryName>
-              <CategoryBtn />
+              <CategoryBtn onClick={() => onClickDisplay(item["id"])} />
             </CategoryItem>
           );
         }
@@ -112,7 +112,7 @@ const CategoryList = ({ categoryList, startNum }) => {
           return (
             <CategoryItem>
               <CategoryName key={index}>{item["description"]}</CategoryName>
-              <CategoryBtn />
+              <CategoryBtn onClick={() => onClickDisplay(item["id"])} />
             </CategoryItem>
           );
         }

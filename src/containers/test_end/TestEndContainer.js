@@ -10,6 +10,7 @@ const TestEndContainer = ({ match }) => {
     path: "/test/:id",
   });
   console.log(parentMatch);
+  console.log(parentMatch.params.id);
 
   const [recommend, setRecommend] = useState({
     status: "idle",
@@ -55,9 +56,9 @@ const TestEndContainer = ({ match }) => {
     })();
   }, []);
 
-  const getTitleAPI = async () => {
+  const getTitleAPI = async (id) => {
     // id 값 추가하기
-    const { data } = await axios.get(`${url}${parentMatch.url}`);
+    const { data } = await axios.get(`${url}/test/${id}`);
     try {
       console.log("[SUCCESS] GET TITLE", data);
       return data;
@@ -68,7 +69,7 @@ const TestEndContainer = ({ match }) => {
 
   useEffect(() => {
     (async () => {
-      const data = await getTitleAPI();
+      const data = await getTitleAPI(parentMatch.params.id);
       try {
         setTitle({
           status: "pending",
@@ -85,9 +86,10 @@ const TestEndContainer = ({ match }) => {
         });
       }
     })();
-  }, []);
+  }, [parentMatch.params.id]);
 
-  switch (recommend.status) {
+  /*
+  switch (recommend.status && title.status) {
     case "idle":
       return <>idle</>;
     case "rejected":
@@ -97,6 +99,16 @@ const TestEndContainer = ({ match }) => {
     case "resolved":
     default:
       return <TestEnd recommendList={recommend.item.data} title={title.item} />;
+  } */
+
+  if (recommend.status === "idle" || title.status === "idle") {
+    return <>idle</>;
+  } else if (recommend.status === "rejected" || title.status === "rejected") {
+    return <>Error</>;
+  } else if (recommend.status === "pending" || title.status === "pending") {
+    return <>pending</>;
+  } else if (recommend.status === "resolved" && title.status === "resolved") {
+    return <TestEnd recommendList={recommend.item.data} title={title.item} />;
   }
 };
 
