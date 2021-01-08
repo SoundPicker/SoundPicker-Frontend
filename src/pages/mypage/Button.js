@@ -19,11 +19,13 @@ const StyledButton = styled.button`
   font-size: ${props=> props.font || 0}px;
   margin-right:10px;
   width:140px;
+  cursor:pointer;
+  outline:none;
 `
 
-function Button({ children, border, color, background, font, width }) {
+function Button({ children, border, color, background, font, width,...rest }) {
   return (
-    <StyledButton border={border} color={color} background={background} font={font} width={width} >
+    <StyledButton border={border} color={color} background={background} font={font} width={width}{...rest} >
       {children}
     </StyledButton>
   )

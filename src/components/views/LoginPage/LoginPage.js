@@ -127,7 +127,7 @@ function LoginPage(props) {
               if (response.payload.success) {
                 window.localStorage.setItem('isAuth','true');
                 window.localStorage.setItem('jwt',response.payload.data.accessToken);
-                props.history.push("/");
+                props.history.push("/mypage");
               } else {
                 setFormErrorMessage('Check out your Account or Password again');
                 window.localStorage.setItem('isAuth','false');

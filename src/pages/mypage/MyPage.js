@@ -1,5 +1,5 @@
 import React from "react";
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from "styled-components";
 import BlankTop from '../../components/common/BlankTop';
@@ -91,11 +91,13 @@ MyIcon.defaultProps = {
 
 
 
+
 function MyPage({props}) {
 
   const [myState, setMyState] =useState({status: 'idle', member:null});
   const dispatch = useDispatch();
-
+  const nameInput = useRef();
+  const passwordInput = useRef();
   useEffect(()=>{
     dispatch(()=>{
       dispatch(auth()).then(response => {
@@ -173,19 +175,19 @@ switch (myState.status) {
                 <Content><BoldTextComponent title="개인정보 수정"  DesktopLength='25' TabletLength='20' MobileLength='15'/></Content>
                 <BlankTop DesktopMargin='5' TabletMargin='5' MobileMargin='5' />
                 <Content>
-                <Input  style={{ color: 'white'  }} bordered={false} name="nickname" value={myState.member.nickname} onChange={onChangeInputs}/>
-                <Button font='12' >닉네임 변경</Button>
+                <Input  style={{ color: 'white'  }} ref={nameInput} bordered={false} name="nickname" value={myState.member.nickname} onChange={onChangeInputs}/>
+                <Button font='12' onClick = {() => {nameInput.current.focus(); console.log("click"); }} >닉네임 변경</Button>
                 </Content>
                 <BlankTop DesktopMargin='5' TabletMargin='5' MobileMargin='5' />
                 <Content>
-                <Input  style={{ color: 'white'  }} bordered={false} name="nickname" value={myState.member.email} disabled='true'/>
+                <Input  style={{ color: 'white'  }} bordered={false} name="nickname" value={myState.member.email} disabled={true}/>
                 <Button font='12' color='gray'>이메일 변경불가</Button>
                 </Content>
                 <BlankTop DesktopMargin='5' TabletMargin='5' MobileMargin='5' />
                 <Content>
                 <Input placeholder='******'
-                style={{ color: 'white'  }} bordered={false} name="password" onChange={onChangePassword}/>
-                <Button font='12' >비밀번호 변경</Button>
+                style={{ color: 'white'  }} ref={passwordInput} bordered={false} name="password" onChange={onChangePassword}/>
+               <Button font='12' onClick = {() => {passwordInput.current.focus(); console.log("click"); }} >비밀번호 변경</Button>
                 </Content>
                 <BlankTop DesktopMargin='8' TabletMargin='5' MobileMargin='5' />
                 <Content><BoldTextComponent title="마이테스트 수정"  DesktopLength='25' TabletLength='20' MobileLength='15'/></Content>
