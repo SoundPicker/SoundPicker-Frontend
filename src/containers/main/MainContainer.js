@@ -79,16 +79,47 @@ const MainContainer = ({ match }) => {
     })();
   }, []);
 
-  const onClickDisplay = useCallback((id) => {
-    const sortId = id;
-    console.log("최상위 컴포넌트", sortId);
-    (async () => {
-      const data = await getSortAPI(sortId);
-      console.log(data);
-    })();
+  const [sort, setSort] = useState({
+    status: "idle",
+    item: null,
+    onClick: false,
   });
 
+  let finalData = [];
+  const onClickDisplay = useCallback(
+    (id) => {
+      const sortId = id;
+      console.log("최상위 컴포넌트", sortId);
+      (async () => {
+        const finalData = { ...(await getSortAPI(sortId)) };
+        console.log(finalData);
+        try {
+          setSort({
+            status: "pending",
+            item: null,
+            onClick: false,
+          });
+          setSort({
+            status: "resolved",
+            item: finalData,
+            onClick: true,
+          });
+        } catch (e) {
+          setSort({
+            status: "rejected",
+            item: null,
+            onClick: false,
+          });
+        }
+      })();
+
+      console.log(sort.item);
+    },
+    [sort]
+  );
+
   // 클릭한 카테고리 id를 받아와서, 해당하는 테스트만 return하는 메소드
+
   const getSortAPI = async (sortId) => {
     const { data } = await axios.get(`${url}/main`);
     console.log(data);
@@ -98,8 +129,11 @@ const MainContainer = ({ match }) => {
         finalData.push(req);
       }
     });
+    if (sortId === 10) {
+      finalData = data.data.tests;
+    }
     try {
-      console.log("[SUCCESS] GET SORT", finalData);
+      console.log("[SUCCESS] GET SORT", finalData, finalData.length);
       return finalData;
     } catch (e) {
       console.log("[FAIL] GET SORT");
@@ -115,10 +149,11 @@ const MainContainer = ({ match }) => {
       return <>pending</>;
     case "resolved":
     default:
+      // ={category.item.data.tests}
       return (
         <Background
           categoryList={category.item.data.categories}
-          testList={category.item.data.tests}
+          testList={!sort.onClick ? category.item.data.tests : sort.item}
           onClickDisplay={onClickDisplay}
         />
       );

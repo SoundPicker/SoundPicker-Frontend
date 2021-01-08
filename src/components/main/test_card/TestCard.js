@@ -270,6 +270,7 @@ function useWindowDimensions() {
 }
 
 const CardList = ({ testList }) => {
+  testList = Object.values(testList);
   console.log(testList);
   const history = useHistory();
 
