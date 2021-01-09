@@ -64,6 +64,7 @@ const Card = styled.div`
         rgba(93, 79, 255, 0.4) 100%
       )
       bottom/100% 3px;
+
   background-repeat: no-repeat;
 
   &:focus {
@@ -315,9 +316,11 @@ const LoadMoreBtn = styled.div`
 
   border-radius: 14px;
   border-right-color: #00ffa3;
-  border-left-color: #5200ff;
-  background: linear-gradient(to left, #00ffa3 0%, #5200ff 100%) top/100% 3px,
-    linear-gradient(to left, #00ffa3 0%, #5200ff 100%) bottom/100% 3px;
+  border-left-color: rgba(82, 0, 255, 0.8);
+  background: linear-gradient(to left, #00ffa3 0%, rgba(82, 0, 255, 0.8) 100%)
+      top/100% 3px,
+    linear-gradient(to left, #00ffa3 0%, rgba(82, 0, 255, 0.8) 100%) bottom/100%
+      3px;
   background-repeat: no-repeat;
 
   &:focus {
@@ -374,10 +377,6 @@ const CardList = ({ testList, testList2 }) => {
   console.log(testList);
   console.log(testList2, testList2.length);
 
-  if (testList2.length === 0) {
-    testList2 = testList;
-  }
-
   // testList와 testList2에 공통으로 있는 것만 리턴
   let finalList = [];
   testList.forEach((item) => {
@@ -410,9 +409,28 @@ const CardList = ({ testList, testList2 }) => {
   const divided = parseInt(testList.length / divideNum);
   const leftOver = testList.length % divideNum;
 
-  console.log(divided);
-  console.log(leftOver);
-  const maxHeight = 29 * (divided + leftOver);
+  let one = divided + leftOver,
+    two = divided,
+    three = divided,
+    four = divided;
+  if (leftOver === 2) {
+    two += 1;
+    one -= 1;
+  }
+  if (leftOver === 3) {
+    two += 1;
+    three += 1;
+    one -= 2;
+  }
+  if (leftOver === 4) {
+    two += 1;
+    three += 1;
+    four += 1;
+    one -= 3;
+  }
+
+  const maxHeight =
+    width > 1024 ? 35 * (divided + leftOver) : 29 * (divided + leftOver);
   console.log(maxHeight);
 
   return (
@@ -430,7 +448,7 @@ const CardList = ({ testList, testList2 }) => {
           <BlankTop DesktopMargin={1.6} TabletMargin={1.6} MobileMargin={1.8} />
           <>
             {finalList.map((item, index) => {
-              if (index < divided + leftOver) {
+              if (index < one) {
                 return (
                   <>
                     <Card
@@ -469,7 +487,7 @@ const CardList = ({ testList, testList2 }) => {
           <>
             {finalList.map((item, index) => {
               if (width <= 828) {
-                if (index >= divided + leftOver) {
+                if (index >= one) {
                   return (
                     <>
                       <Card
@@ -502,10 +520,7 @@ const CardList = ({ testList, testList2 }) => {
                   );
                 }
               } else {
-                if (
-                  index >= divided + leftOver &&
-                  index < 2 * divided + leftOver
-                ) {
+                if (index >= one && index < one + two) {
                   return (
                     <>
                       <Card
@@ -545,7 +560,7 @@ const CardList = ({ testList, testList2 }) => {
           <>
             {finalList.map((item, index) => {
               if (width <= 1440) {
-                if (index >= 2 * divided + leftOver) {
+                if (index >= one + two) {
                   return (
                     <>
                       <Card
@@ -578,10 +593,7 @@ const CardList = ({ testList, testList2 }) => {
                   );
                 }
               } else {
-                if (
-                  index >= 2 * divided + leftOver &&
-                  index < 3 * divided + leftOver
-                ) {
+                if (index >= one + two && index < one + two + three) {
                   return (
                     <>
                       <Card
@@ -620,7 +632,7 @@ const CardList = ({ testList, testList2 }) => {
         <CardWrapFour>
           <>
             {finalList.map((item, index) => {
-              if (index >= 3 * divided + leftOver) {
+              if (index >= one + two + three) {
                 return (
                   <>
                     <Card
