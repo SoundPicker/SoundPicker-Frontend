@@ -10,8 +10,9 @@ import styled from "styled-components"
 import TextComponent from '../../../components/common/TextComponent';
 import BlankTop from '../../../components/common/BlankTop';
 import UnderLineComponent from './UnderLineComponent';
-import Bg1 from '../../../assets/images/all_background.png';
-import Bg2 from '../../../assets/images/all_background2.png';
+import Bg1 from '../../../assets/images/login_background1.png';
+import Bg2 from '../../../assets/images/login_background2.png';
+import Bg3 from '../../../assets/images/login_background3.png';
 import logo1 from '../../../assets/images/image_watermark.png';
 import Text from './Text';
 import ColorButton from './ColorButton';
@@ -23,11 +24,14 @@ const Background = styled.div`
     background-position: center top;
     background-color:  rgba( 12, 26, 34, 1);
     background-size:contain;
- @media  (max-width:768px) {
-  background-image: url(${Bg2});
+    @media (min-width: 768px) and (max-width:1024px){
+      background-image: url(${Bg2});
     }
-    @media (min-width: 768px) {
-      background-image: url(${Bg1});
+ @media  (min-width:1024px) {
+  background-image: url(${Bg1});
+    }
+    @media (max-width: 768px) {
+      background-image: url(${Bg3});
     }
 `;
 const Wrapper=styled.div`
@@ -40,7 +44,7 @@ const Wrapper=styled.div`
   flex-wrap: wrap;
   align-items: center;
   @media (min-width: 768px) and (max-width:1024px) { //between
-    margin-top:12%;
+    margin-top:50%;
       width:100%auto;
     }
 
@@ -56,14 +60,14 @@ const Wrapper=styled.div`
 
 const MyIcon = styled.img`
   @media (min-width: 768px) and (max-width:1024px) { //between
-    width:221px;
+    width:180px;
     }
 
     @media (min-width: 1024px) { //desktop
     width:221px;
     }
     @media (max-width: 767px) { //iphone
-      width:150px;
+      width:300px;
   }
 `;
 
@@ -78,12 +82,18 @@ border-color:rgba( 12, 26, 34, 0);
 width: 400px;
 color:white;
 outline:none;
+@media (max-width: 767px) { //iphone
+      width:200px;
+  }
 `
 
 const Content=styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  @media (max-width: 767px) { //iphone
+    justify-content: center;
+  }
 `
 
 
@@ -100,8 +110,8 @@ function LoginPage(props) {
     <Background><Wrapper>
        <MyIcon></MyIcon>
   <BlankTop DesktopMargin='3' TabletMargin='3' MobileMargin='3' />
-  <TextComponent title="로그인"  DesktopLength='15' TabletLength='15' MobileLength='10'/> 
-  <BlankTop DesktopMargin='5' TabletMargin='3' MobileMargin='3' />
+  <TextComponent title="로그인"  DesktopLength='15' TabletLength='15' MobileLength='15'/> 
+  <BlankTop DesktopMargin='5' TabletMargin='3' MobileMargin='5' />
     <Formik
       initialValues={{
         email: '',
@@ -162,7 +172,7 @@ function LoginPage(props) {
 
               <Form.Item required>
               <Content>
-              <Text title="아이디&nbsp; &nbsp;"  DesktopLength='15' TabletLength='15' MobileLength='10'/> 
+              <Text title="아이디&nbsp; &nbsp;"  DesktopLength='15' TabletLength='15' MobileLength='15'/> 
                 <Input
                   id="email"
                   prefix={<UserOutlined style={{ color: 'rgba(0,0,0,.25)' }} />}
@@ -177,12 +187,12 @@ function LoginPage(props) {
                 />
                 
                  </Content>
-                <UnderLineComponent DesktopLength='45' BetweenLength='45' TabletLength='45' MobileLength='45' />
+                <UnderLineComponent DesktopLength='45' BetweenLength='45' TabletLength='45' MobileLength='30' />
               </Form.Item>
 
               <Form.Item required>
               <Content>
-              <Text title="패스워드&nbsp; &nbsp;"  DesktopLength='15' TabletLength='15' MobileLength='10'/> 
+              <Text title="패스워드&nbsp; &nbsp;"  DesktopLength='15' TabletLength='15' MobileLength='15'/> 
                 <Input
                   id="password"
                   prefix={<LockOutlined style={{ color: 'rgba(0,0,0,.25)' }} />}
@@ -195,7 +205,7 @@ function LoginPage(props) {
                   }
                 />
                 </Content>
-                <UnderLineComponent DesktopLength='45' BetweenLength='45' TabletLength='45' MobileLength='45' />
+                <UnderLineComponent DesktopLength='45' BetweenLength='45' TabletLength='45' MobileLength='30' />
               </Form.Item>
 
               {formErrorMessage && (
