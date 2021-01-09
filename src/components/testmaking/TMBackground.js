@@ -6,6 +6,7 @@ import Bg768 from '../../assets/images/testmaking/background/768TMBG.png';
 const Warp = styled.div`
     width:100%;
     height:100%;
+    min-height:100vh;
     background-image: url(${Bg1920});
     background-repeat: no-repeat;
     background-position: center top;

@@ -179,6 +179,7 @@ const ControlsWrap = styled.div`
   align-items: center;
   color: #909090;
   font-size: 12px;
+
 `;
 
 const LoadBar = styled.div`
@@ -229,6 +230,10 @@ const WaveWrap = styled.div`
     display:flex;
     align-items:center;
     position:relative;
+    @media only screen and (max-width: 560px) {
+        width:0rem;
+        display:none;
+    }
 `
 
 const WaveCenter = styled.div`
@@ -243,6 +248,10 @@ const WaveCenter = styled.div`
         width:31.4rem;
         height:3.6rem;
     }
+    @media only screen and (max-width: 560px) {
+        width:0rem;
+        display:none;
+    }
 
 `
 
@@ -250,6 +259,11 @@ const TotalWrap = styled.div`
   height: 28px;
   display: flex;
   align-items: center;
+    @media only screen and (max-width: 768px) {
+        justify-content:center;
 
+
+
+  }
 `;
 

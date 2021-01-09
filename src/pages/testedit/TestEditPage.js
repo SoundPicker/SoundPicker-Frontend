@@ -2,11 +2,11 @@ import BlankTop from "../../components/common/BlankTop";
 import Header from "../../components/testmaking/Header";
 import TMBackground from "../../components/testmaking/TMBackground";
 import TMInner from "../../components/testmaking/TMInner";
-import TestMakingFormContainer from "../../containers/testmaking/form/TestMakingFormContainer";
+import TestEditFormContainer from "../../containers/testedit/form/TestEditFormContainer";
 
 
 
-const TestMakingPage = ({history}) => {
+const TestEditPage = ({history,match}) => {
     return(
         <>
             <TMBackground>
@@ -25,11 +25,11 @@ const TestMakingPage = ({history}) => {
                     <div id='player8'></div>
                     <div id='player9'></div>
                     <BlankTop DesktopMargin='4.8' TabletMargin='11.6' MobileMargin='5.5'/>
-                    <TestMakingFormContainer history={history} />
+                    <TestEditFormContainer history={history} match={match}/>
                 </TMInner>
             </TMBackground>
         </>
     ) 
 }
 
-export default TestMakingPage;
+export default TestEditPage;

@@ -1,13 +1,17 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
 import BlankTop from "../../../components/common/BlankTop";
+import LoadingComponent from "../../../components/common/LoadingComponent";
+import TextComponent from "../../../components/common/TextComponent";
 import TopInput from "../../../components/testmaking/Input/TopInput";
 import TopInputText from "../../../components/testmaking/Input/TopInputText";
 import TopInputWrap from "../../../components/testmaking/Input/TopInputWrap";
-import QuestionListHeader from "../../../components/testmaking/questionlist/QuestionListHeader";
-import QuestionListInner from "../../../components/testmaking/questionlist/QuestionListInner";
-import QuestionListTitle from "../../../components/testmaking/questionlist/QuestionListTitle";
+import InputsWrap from "../../../components/testmaking/questionlist/input/InputsWrap";
+import PlayerWrap from "../../../components/testmaking/questionlist/player/PlayerWrap";
 import TopInner from "../../../components/testmaking/TopInner";
-import InputCategoryContainer from "../InputCategoryContainer";
-import InputsWrap from '../../../components/testmaking/questionlist/input/InputsWrap';
+import InputCategoryContainer from "../../testmaking/InputCategoryContainer";
+import PlayerContainer from "../../testmaking/player/PlayerContainer";
+import StartTimeContainer from "../../testmaking/player/StartTimeContainer";
 import QuestionListLeftWrap from "../../../components/testmaking/questionlist/input/QustionListInputLeftWrap";
 import QuestionListRightWrap from "../../../components/testmaking/questionlist/input/QustionListInputRightWrap";
 import QuestionListInputWrap from "../../../components/testmaking/questionlist/input/QustionListInputWrap";
@@ -15,15 +19,11 @@ import QuestionListInputText from "../../../components/testmaking/questionlist/i
 import QuestionListInput from "../../../components/testmaking/questionlist/input/QustionListInput";
 import QuestionListHintWrap from "../../../components/testmaking/questionlist/input/QustionListHintWrap";
 import QuestionListYoutubeInput from "../../../components/testmaking/questionlist/input/QusitonListYoutubeInput";
-import PlayerContainer from "../player/PlayerContainer";
-import PlayerWrap from "../../../components/testmaking/questionlist/player/PlayerWrap";
 import QuestionLustPlusButton from "../../../components/testmaking/questionlist/QuestionListPlusButton";
 import QuestionSaveButton from "../../../components/testmaking/questionlist/QuestionListSaveButton";
-import React,{useEffect, useState} from 'react';
-import StartTimeContainer from "../player/StartTimeContainer";
-import axios from "axios";
-import LoadingComponent from "../../../components/common/LoadingComponent";
-import TextComponent from "../../../components/common/TextComponent";
+import QuestionListHeader from "../../../components/testmaking/questionlist/QuestionListHeader";
+import QuestionListInner from "../../../components/testmaking/questionlist/QuestionListInner";
+import QuestionListTitle from "../../../components/testmaking/questionlist/QuestionListTitle";
 
 export let player0;
 export let player1;
@@ -37,7 +37,7 @@ export let player8;
 export let player9;
 export let send=true ;
 export let viewLoadingCount = 0;
-const TestMakingFormContainer = ({history}) => {
+const TestEditFormContainer = ({history,match}) => {
     let checkCurrentTime0;
     let checkCurrentTime1;
     let checkCurrentTime2;
@@ -49,7 +49,6 @@ const TestMakingFormContainer = ({history}) => {
     let checkCurrentTime8;
     let checkCurrentTime9;
 
-    const [timer, setTimer] = useState(0);
     const [testTitle,setTestTitle] = useState('');
     const [testDescription,setTestDescription] = useState('');
     const [testCategory,setTestCategory] = useState('');
@@ -63,6 +62,7 @@ const TestMakingFormContainer = ({history}) => {
         answerYoutubeURL: "",
     }]);
     const [viewLoading,setViewLoading] = useState(false);
+    const [timer, setTimer] = useState(0);
 
     const [isPlaying0, setPlaying0] = useState(false);
     const [isLoading0, setLoading0] = useState(false);
@@ -332,24 +332,24 @@ const TestMakingFormContainer = ({history}) => {
       }
     }
     if(send===true){
-      if (timer) {
-        console.log('clear timer');
-        clearTimeout(timer);
-      }
-      const newTimer = setTimeout(async () => {
-        try {
-          axios.post('http://3.35.187.65:3000/test',variable,config)
-        .then(response=> {
-            if(response.data.success){
-              history.push("/");
-            }
-        })
-        } catch (e) {
-          console.error('error', e);
+        if (timer) {
+            console.log('clear timer');
+            clearTimeout(timer);
         }
-      }, 5000);
-      setTimer(newTimer);
-      
+        const newTimer = setTimeout(async () => {
+            try {
+                axios.put(`http://3.35.187.65:3000/test/${match.params.id}`,variable,config)
+                .then(response=> {
+                    if(response.data.success){
+                      history.push("/");
+                    }
+                })
+            } catch (e) {
+              console.error('error', e);
+            }
+          }, 5000);
+          setTimer(newTimer);
+
     }
 
   }
@@ -726,10 +726,28 @@ const TestMakingFormContainer = ({history}) => {
           clearInterval(checkCurrentTime7);
           clearInterval(checkCurrentTime8);
           clearInterval(checkCurrentTime9);
-
         };
         
       }, []);
+      const getTestData = async id =>{
+          try{
+              await axios.get(`http://3.35.187.65:3000/test/${id}/updatepage`)
+              .then(response=> {
+                  if(response.data.success){
+                    setTestTitle(response.data.data.test.title);
+                    setTestDescription(response.data.data.test.description);
+                    setTestCategory(response.data.data.test.CategoryId)
+                    setQuestions(response.data.data.questions)
+                    setViewLoading(true)
+                    viewLoadingCount++;   
+                  }else{
+                    history.push("/");
+                  }
+              })
+          }catch(e){
+
+          }
+      }
 
       useEffect(()=>{
         if(viewLoadingCount===0){
@@ -743,8 +761,6 @@ const TestMakingFormContainer = ({history}) => {
             isLoading7&&
             isLoading8&&
             isLoading9){
-              setViewLoading(true)
-              viewLoadingCount++;   
               setLoading0(false);
               setLoading1(false);
               setLoading2(false);
@@ -755,7 +771,7 @@ const TestMakingFormContainer = ({history}) => {
               setLoading7(false);
               setLoading8(false);
               setLoading9(false);
-
+              getTestData(match.params.id)
               }
             }
         },[isLoading0, isLoading1, isLoading2, isLoading3, isLoading4, isLoading5, isLoading6, isLoading7, isLoading8, isLoading9]);
@@ -1004,7 +1020,7 @@ const TestMakingFormContainer = ({history}) => {
                                                             i===8?totalTime8:
                                                             totalTime9 }
                                                       questionStartsfrom={
-                                                            questions[i].questionStartsfrom
+                                                         questions[i].questionStartsfrom
                                                             }/>
                             </PlayerWrap>
                             : ""}
@@ -1037,4 +1053,4 @@ const TestMakingFormContainer = ({history}) => {
 
 }
 
-export default TestMakingFormContainer;
+export default TestEditFormContainer;
