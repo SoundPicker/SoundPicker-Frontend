@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import SearchIconImg from "../../assets/ic_search.png";
+import { useEffect, useState } from "react";
 
 const Wrap = styled.div`
   display: flex;
@@ -76,19 +77,43 @@ const SearchBorder = styled.hr`
   }
 `;
 
-const SearchInput = (handleChange) => {
+const SearchInput = (testList) => {
+  // first는 카테고리에서 1차 분류한 결과
+  const first = Object.values(testList.testList);
+
+  const [search, setSearch] = useState("");
+  const [result, setResult] = useState([]);
+  const handleChange = (event) => {
+    setSearch(event.target.value);
+  };
+
+  useEffect(() => {
+    // 제목, 내용에 해당되는 거
+    const title = first.filter((item) => {
+      // console.log(item.title.toLowerCase());
+      return (
+        item.title.toLowerCase().includes(search) ||
+        item.description.toLowerCase().includes(search)
+      );
+    });
+    setResult(title);
+  }, [search]);
+
+  console.log(result);
+
   return (
-    <>
+    <div filtered={result}>
       <Wrap>
         <SearchIcon />
         <Input
           type="text"
           placeholder="사용자들이 만들어놓은 다양한 테스트들을 검색해보세요!"
+          value={search}
           onChange={handleChange}
         />
       </Wrap>
       <SearchBorder />
-    </>
+    </div>
   );
 };
 

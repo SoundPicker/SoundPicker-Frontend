@@ -140,6 +140,10 @@ const MainContainer = ({ match }) => {
     }
   };
 
+  const filtered = useCallback((result) => {
+    console.log("filter 최상위 컴포넌트", result);
+  });
+
   switch (category.status) {
     case "idle":
       return <StartLoading />;
@@ -155,6 +159,7 @@ const MainContainer = ({ match }) => {
           categoryList={category.item.data.categories}
           testList={!sort.onClick ? category.item.data.tests : sort.item}
           onClickDisplay={onClickDisplay}
+          filtered={filtered}
         />
       );
   }

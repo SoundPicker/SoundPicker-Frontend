@@ -275,7 +275,7 @@ const CardListWrap = styled.div`
 
 const GradientBox = styled.div`
   width: 130.3rem;
-  height: 33.3rem;
+  height: 22.2rem;
   position: absolute;
   bottom: 0;
   left: -3.55rem;
@@ -388,6 +388,11 @@ const CardList = ({ testList }) => {
   const divideNum = width > 1440 ? 4 : width > 828 ? 3 : 2;
   const divided = parseInt(testList.length / divideNum);
   const leftOver = testList.length % divideNum;
+
+  console.log(divided);
+  console.log(leftOver);
+  const maxHeight = 29 * (divided + leftOver);
+  console.log(maxHeight);
 
   return (
     <>
@@ -643,7 +648,9 @@ const CardList = ({ testList }) => {
         </CardWrapFour>
         <GradientBox />
       </CardListWrap>
-      <LoadMoreBtn onClick={countPlus}>더보기</LoadMoreBtn>
+      {height < maxHeight && (
+        <LoadMoreBtn onClick={countPlus}>더보기</LoadMoreBtn>
+      )}
     </>
   );
 };
