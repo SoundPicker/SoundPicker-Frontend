@@ -19,7 +19,7 @@ const LayoutInner = styled.div`
       animation-name: ${FadeIn};
     `}
   ${props =>
-    props.modalOut &&
+    props.modalOn &&
     css`
       animation-timing-function: ease-in-out;
       animation-duration: 1s;
