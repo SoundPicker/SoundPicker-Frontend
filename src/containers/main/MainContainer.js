@@ -119,7 +119,6 @@ const MainContainer = ({ match }) => {
   );
 
   // 클릭한 카테고리 id를 받아와서, 해당하는 테스트만 return하는 메소드
-
   const getSortAPI = async (sortId) => {
     const { data } = await axios.get(`${url}/main`);
     console.log(data);
@@ -140,9 +139,7 @@ const MainContainer = ({ match }) => {
     }
   };
 
-  const filtered = useCallback((result) => {
-    console.log("filter 최상위 컴포넌트", result);
-  });
+  // input 관련 state
 
   switch (category.status) {
     case "idle":
@@ -154,12 +151,13 @@ const MainContainer = ({ match }) => {
     case "resolved":
     default:
       // ={category.item.data.tests}
+
       return (
         <Background
           categoryList={category.item.data.categories}
           testList={!sort.onClick ? category.item.data.tests : sort.item}
+          allList={category.item.data.tests}
           onClickDisplay={onClickDisplay}
-          filtered={filtered}
         />
       );
   }

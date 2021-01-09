@@ -43,27 +43,27 @@ const Card = styled.div`
   width: 29.6rem;
   position: relative;
   padding: 3.6rem 2.1rem 2rem 2.7rem;
-  border-radius: 8px;
-  border: 2px solid transparent;
+  border-radius: 10px;
+  border: 3px solid transparent;
   cursor: pointer;
   color: #ffffff;
   background-color: transparent;
   overflow: hidden;
 
-  border-right-color: rgba(96, 121, 255, 0.4);
-  border-left-color: rgba(96, 255, 218, 1);
+  border-right-color: rgba(93, 79, 255, 0.4);
+  border-left-color: rgba(96, 255, 218, 0.8);
   background: linear-gradient(
-        to left,
-        rgba(96, 121, 255, 0.4) 0%,
-        rgba(96, 255, 218, 1) 100%
+        135deg,
+        rgba(96, 255, 218, 1) 0%,
+        rgba(93, 79, 255, 0.4) 100%
       )
-      top/100% 2px,
+      top/100% 3px,
     linear-gradient(
-        to left,
-        rgba(96, 121, 255, 0.4),
-        rgba(96, 255, 218, 1) 100%
+        135deg,
+        rgba(96, 255, 218, 1) 0%,
+        rgba(93, 79, 255, 0.4) 100%
       )
-      bottom/100% 2px;
+      bottom/100% 3px;
   background-repeat: no-repeat;
 
   &:focus {
@@ -313,11 +313,11 @@ const LoadMoreBtn = styled.div`
   color: #ffffff;
   background-color: transparent;
 
-  border-radius: 8px;
+  border-radius: 14px;
   border-right-color: #00ffa3;
   border-left-color: #5200ff;
-  background: linear-gradient(to left, #00ffa3 0%, #5200ff 100%) top/100% 2px,
-    linear-gradient(to left, #00ffa3 0%, #5200ff 100%) bottom/100% 2px;
+  background: linear-gradient(to left, #00ffa3 0%, #5200ff 100%) top/100% 3px,
+    linear-gradient(to left, #00ffa3 0%, #5200ff 100%) bottom/100% 3px;
   background-repeat: no-repeat;
 
   &:focus {
@@ -369,9 +369,30 @@ function useWindowDimensions() {
   return windowDimensions;
 }
 
-const CardList = ({ testList }) => {
+const CardList = ({ testList, testList2 }) => {
   testList = Object.values(testList);
   console.log(testList);
+  console.log(testList2, testList2.length);
+
+  if (testList2.length === 0) {
+    testList2 = testList;
+  }
+
+  // testList와 testList2에 공통으로 있는 것만 리턴
+  let finalList = [];
+  testList.forEach((item) => {
+    testList2.forEach((item2) => {
+      if (
+        item.title.toLowerCase().includes(item2.title.toLowerCase()) &&
+        item.description.toLowerCase().includes(item2.description.toLowerCase())
+      ) {
+        finalList.push(item2);
+      }
+    });
+  });
+  console.log(finalList);
+  // testList = finalList;
+
   const history = useHistory();
 
   const [count, setCount] = useState(2);
@@ -408,7 +429,7 @@ const CardList = ({ testList }) => {
           </Link>
           <BlankTop DesktopMargin={1.6} TabletMargin={1.6} MobileMargin={1.8} />
           <>
-            {testList.map((item, index) => {
+            {finalList.map((item, index) => {
               if (index < divided + leftOver) {
                 return (
                   <>
@@ -416,10 +437,6 @@ const CardList = ({ testList }) => {
                       key={index}
                       onClick={() => history.push(`/test/${item["id"]}`)}
                     >
-                      <RotateBorder />
-                      <RotateBorder />
-                      <RotateBorder />
-                      <RotateBorder />
                       <CardTitle>{item["title"]}</CardTitle>
                       <BlankTop
                         DesktopMargin={3}
@@ -450,7 +467,7 @@ const CardList = ({ testList }) => {
         </CardWrapOne>
         <CardWrapTwo>
           <>
-            {testList.map((item, index) => {
+            {finalList.map((item, index) => {
               if (width <= 828) {
                 if (index >= divided + leftOver) {
                   return (
@@ -459,10 +476,6 @@ const CardList = ({ testList }) => {
                         key={index}
                         onClick={() => history.push(`/test/${item["id"]}`)}
                       >
-                        <RotateBorder />
-                        <RotateBorder />
-                        <RotateBorder />
-                        <RotateBorder />
                         <CardTitle>{item["title"]}</CardTitle>
                         <BlankTop
                           DesktopMargin={3}
@@ -499,10 +512,6 @@ const CardList = ({ testList }) => {
                         key={index}
                         onClick={() => history.push(`/test/${item["id"]}`)}
                       >
-                        <RotateBorder />
-                        <RotateBorder />
-                        <RotateBorder />
-                        <RotateBorder />
                         <CardTitle>{item["title"]}</CardTitle>
                         <BlankTop
                           DesktopMargin={3}
@@ -534,7 +543,7 @@ const CardList = ({ testList }) => {
         </CardWrapTwo>
         <CardWrapThree>
           <>
-            {testList.map((item, index) => {
+            {finalList.map((item, index) => {
               if (width <= 1440) {
                 if (index >= 2 * divided + leftOver) {
                   return (
@@ -610,7 +619,7 @@ const CardList = ({ testList }) => {
         </CardWrapThree>
         <CardWrapFour>
           <>
-            {testList.map((item, index) => {
+            {finalList.map((item, index) => {
               if (index >= 3 * divided + leftOver) {
                 return (
                   <>
