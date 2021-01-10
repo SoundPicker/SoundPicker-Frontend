@@ -37,7 +37,9 @@ export let player8;
 export let player9;
 export let send=true ;
 export let viewLoadingCount = 0;
+
 const TestEditFormContainer = ({history,match}) => {
+    const jwt = window.localStorage.getItem('jwt');
     let checkCurrentTime0;
     let checkCurrentTime1;
     let checkCurrentTime2;
@@ -322,7 +324,7 @@ const TestEditFormContainer = ({history,match}) => {
 
     }
     const config = {
-      headers : {"jwt":'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTgsImlhdCI6MTYwOTY1Mzc0NywiZXhwIjoxNjEwNTE3NzQ3LCJpc3MiOiJzb3VuZFBpY2tlciJ9.uf1z0eea05zxJEWoHVCY3h6rLPZEj6P88MP58nEK4qA'}
+      headers : {"jwt":jwt}
   }
   if(testTitle.length !== 0 && testDescription.length !== 0 && testCategory.length !== 0){
     for(let i = 0; i < questions.length; i++ ){
@@ -386,7 +388,7 @@ const TestEditFormContainer = ({history,match}) => {
   const setTime9 = () => {
     setCurrentTime9(transTime(player9.getCurrentTime().toFixed()));
   };
-  let readyCount = 0;
+
   const onReadyAPI0 = () => {
       setLoading0(true);
       setPlaying0(false);
