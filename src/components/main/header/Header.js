@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+import {Link} from "react-router-dom";
 const HeaderDiv = styled.div`
   display: flex;
   justify-content: flex-end;
@@ -18,7 +18,7 @@ const LoginDiv = styled.div`
   justify-content: center;
   align-items: center;
   width: 8.2rem;
-  height: 4rem
+  height: 4rem;
   margin-right: 1.1rem;
   cursor: pointer;
   @media(max-width: 768px){
@@ -55,15 +55,20 @@ const SignUp = styled.strong`
 
 const Header = () => {
   return (
-    <HeaderDiv>
-      <LoginDiv>
-        <Login>로그인</Login>
-      </LoginDiv>
-      <SignUpDiv>
-        <SignUp>회원가입</SignUp>
-      </SignUpDiv>
-    </HeaderDiv>
-  );
+      <HeaderDiv>
+        <LoginDiv>
+          <Link to="/login">
+            <Login>로그인</Login>
+          </Link>
+        </LoginDiv>
+  
+        <SignUpDiv>
+          <Link to="/register">
+            <SignUp>회원가입</SignUp>
+          </Link>
+        </SignUpDiv>
+      </HeaderDiv>
+    );
 };
 
 export default Header;

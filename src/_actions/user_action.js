@@ -1,5 +1,5 @@
 import axios from 'axios'
-import {LOGIN_USER,REGISTER_USER,AUTH_USER, LOGOUT_USER,NAME_USER,PASSWORD_USER} from './types'
+import {LOGIN_USER,REGISTER_USER,AUTH_USER, LOGOUT_USER,NAME_USER,PASSWORD_USER,DELETE_TEST} from './types'
 import { USER_SERVER } from '../components/config';
 
 
@@ -64,6 +64,18 @@ export const changePassword=(dataToSubmit)=>{
     }
 }
 
+export const deleteTest=(id)=>{
+    const request = axios.delete(`http://3.35.187.65:3000/test/${id}`, {
+        headers: {
+          jwt: window.localStorage.getItem('jwt') //the token is a variable which holds the token'
+        }
+       })
+    .then(response => response.data)
+    return{
+        type: DELETE_TEST,
+        payload: request
+    }
+}
 
 export const logoutUser=()=>{
     const request = axios.get(`${USER_SERVER}/logout`)
