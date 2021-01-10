@@ -1,29 +1,33 @@
-import React, { useEffect, useState } from "react";
-import styled, { css, keyframes } from "styled-components";
-import recordImg from "../../../assets/images/test/graphic_black_cd.png";
-import cdImg from "../../../assets/images/test/blackcd_house-1.png";
-import BlankTop from "../../common/BlankTop";
-import logo from "../../../assets/images/test/image_watermark.png";
-import TextComponent from "../../common/test/TextComponent";
-import { useHistory } from "react-router-dom";
-import ProgressBar from "../testcd/ProgressBar";
-import ModalPage from "../../../pages/modal/ModalPage";
+
+import React, { useEffect, useState } from 'react'
+import styled, { css, keyframes } from 'styled-components'
+import recordImg from '../../../assets/images/test/graphic_black_cd.png'
+import cdImg from '../../../assets/images/test/blackcd_house-1.png'
+import defaultCdImg from '../../../assets/images/test/blackcd_house.png'
+import BlankTop from '../../common/BlankTop'
+import logo from '../../../assets/images/test/image_watermark.png'
+import TextComponent from '../../common/test/TextComponent'
+import { useHistory } from 'react-router-dom'
+import ProgressBar from '../testcd/ProgressBar'
+import ModalPage from '../../../pages/modal/ModalPage'
+import QuizHeader from '../../common/QuizHeader'
 
 const TestCd = ({ newList, match }) => {
   //state정의
-  const [hintText, setHintText] = useState("힌트 보기");
-  const [buttonText, setButtonText] = useState("정답 보기"); //클릭한 버튼명(버튼명으로 현재 상태비교)
-  const [rotateSecond, setRotateSecond] = useState(0); //1초재생인지 3초재생인지 상태값(0일때는 애니메이션 없음)
-  const [recordInside, isRecordInside] = useState(false); //레코드판을 넣는 애니메이션 트리거
-  const [activeIndex, setActiveIndex] = useState(0); //현재 선택된 레코드판 index넘버
-  const [answer, setAnswer] = useState(); //정답 text state
-  const [sound1Url, setSound1Url] = useState();
-  const [sound3Url, setSound3Url] = useState();
-  const [modalVisible, setModalVisible] = useState(false);
-  const [isHint, setIsHint] = useState(false);
-  const [modalIn, setModalIn] = useState(false);
+  const [hintText, setHintText] = useState('힌트 보기')
+  const [buttonText, setButtonText] = useState('정답 보기') //클릭한 버튼명(버튼명으로 현재 상태비교)
+  const [rotateSecond, setRotateSecond] = useState(0) //1초재생인지 3초재생인지 상태값(0일때는 애니메이션 없음)
+  const [recordInside, isRecordInside] = useState(false) //레코드판을 넣는 애니메이션 트리거
+  const [activeIndex, setActiveIndex] = useState(0) //현재 선택된 레코드판 index넘버
+  const [answer, setAnswer] = useState() //정답 text state
+  const [sound1Url, setSound1Url] = useState()
+  const [sound3Url, setSound3Url] = useState()
+  const [modalVisible, setModalVisible] = useState(false)
+  const [isHint, setIsHint] = useState(false)
+  const [modalIn, setModalIn] = useState(false)
+  const [modalOut, setModalOut] = useState(false)
 
-  const history = useHistory();
+  const history = useHistory()
 
   // const hintBtn = document.getElementById('hintBtn')
 
@@ -36,12 +40,16 @@ const TestCd = ({ newList, match }) => {
   }, [activeIndex]);
 
   const openModal = () => {
-    setModalVisible(true);
-  };
+
+    setModalVisible(true)
+    setModalOut(false)
+  }
 
   const closeModal = () => {
-    setModalVisible(false);
-  };
+    setModalOut(true)
+    setModalVisible(false)
+  }
+
 
   //다음문제 버튼 이벤트 정의
   const handleHintButton = () => {
@@ -107,13 +115,15 @@ const TestCd = ({ newList, match }) => {
       {modalVisible && (
         <ModalPage
           modalIn={modalIn}
+          modalOut={modalOut}
           urlId={newList[activeIndex].answerYoutubeURL}
           visible={modalVisible}
           maskClosable={true}
           closeModal={closeModal}
         />
       )}
-      <BlankTop DesktopMargin="19" TabletMargin="32" MobileMargin="21" />
+      <QuizHeader />
+      <BlankTop DesktopMargin="15" TabletMargin="32" MobileMargin="21" />
       <IconWrapper>
         <MyIcon />
       </IconWrapper>
@@ -121,6 +131,7 @@ const TestCd = ({ newList, match }) => {
       <TitleWrapper>
         <TextComponent
           title={newList[activeIndex].testTitle}
+          // title="quiztitle 수정중"
           DesktopLength="2"
           TabletLength="2"
           MobileLength="1.8"
@@ -138,8 +149,8 @@ const TestCd = ({ newList, match }) => {
                 thisIndex={index}
               >
                 <CaseImg
-                  // src={activeIndex === index ? cdImg : recordList[index].thumb}
-                  src={cdImg}
+                  src={activeIndex === index ? cdImg : defaultCdImg}
+                  // src={cdImg}
                 />
                 {index === activeIndex && (
                   <>
@@ -236,7 +247,8 @@ const TextInside = keyframes`
   margin-left: -25%
 }
 100% {
-  margin-left: 0%
+  
+  margin-left: 0;
 }
 `;
 
@@ -305,7 +317,7 @@ const UnActiveAnimation768 = keyframes`
 }
 100% {
     opacity: .5; /*여기*/ 
-    transform: translateX(-130%) scale(0.7);
+    transform: translateX(-130%) scale(0.6);
 }
 `;
 /* 키프레임 종료 */
@@ -345,19 +357,19 @@ const Container = styled.div`
   height: auto;
   position: relative;
   display: flex;
-  /* border: 1px solid red; */
-`;
+
+  /* border: 1px solid blue; */
+`
+
 const ContentContainer = styled.div`
   width: 100%;
   display: flex;
   flex: 1;
   justify-content: center;
   align-items: center;
-  /* position: absolute; */
-  /* border: 1px solid blue; */
-  /* 이부분 크기 조정하기~ */
   height: 41rem;
-  padding-right: 12rem; // 1920 기준
+  padding-right: 11rem;
+  // 1920 기준
   @media only screen and (max-width: 1024px) {
     height: 38rem;
     padding-right: 8rem; // 여기
@@ -372,9 +384,11 @@ const AnswerText = styled.p`
   font-weight: bold;
   color: #030f2c;
   position: absolute;
-  z-index: 11;
+  z-index: 10;
+  padding-left: 40px;
+  /* border: 1px solid red; */
   object-fit: contain;
-  margin-left: -25%;
+  margin-left: -25%; // -25%
   animation-fill-mode: forwards;
   ${(props) =>
     props.inside && //레코드판을 집어넣는 css애니메이션 추가 트리거가 true일때 실행.
@@ -451,12 +465,12 @@ const SwiperContainer = styled.div`
       opacity: .5;
       width: 40rem;
       overflow: hidden;        
-      transform: translateX(101%) scale(.6);
+      transform: translateX(101%) scale(0.6);
       @media only screen and (max-width: 1024px) {
-        transform: translateX(89%) scale(.6);
+        transform: translateX(89%) scale(0.6);
       }
       @media only screen and (max-width: 768px) {
-        transform: translateX(100%) scale(.7);
+        transform: translateX(100%) scale(0.7);
       }
     `;
     }
@@ -493,6 +507,8 @@ const RecordImg = styled.img`
 
 const CaseImg = styled.img`
   margin-left: 30%;
+  overflow: hidden;
+
   object-fit: contain;
   z-index: 2;
   /* border: 1px solid red; */
