@@ -49,7 +49,7 @@ const Wrapper=styled.div`
     }
 
     @media (min-width: 1024px) { //desktop 
-      margin-top:20%;
+      margin-top:17%;
       width:100%auto;
     }
     @media (max-width: 767px) { //iphone
@@ -92,7 +92,7 @@ const Content=styled.div`
   flex-direction: row;
   justify-content: space-between;
   @media (max-width: 767px) { //iphone
-    justify-content: center;
+    margin-left:20%;
   }
 `
 

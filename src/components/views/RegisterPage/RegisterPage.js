@@ -7,8 +7,9 @@ import { useDispatch } from "react-redux";
 import TextComponent from '../../../components/common/TextComponent';
 import BlankTop from '../../../components/common/BlankTop';
 import UnderLineComponent from './UnderLineComponent';
-import Bg1 from '../../../assets/images/all_background.png';
-import Bg2 from '../../../assets/images/all_background2.png';
+import Bg1 from '../../../assets/images/login_background1.png';
+import Bg2 from '../../../assets/images/login_background2.png';
+import Bg3 from '../../../assets/images/login_background3.png';
 import logo1 from '../../../assets/images/image_watermark.png';
 import Text from './Text';
 import ColorButton from './ColorButton';
@@ -26,11 +27,14 @@ const Background = styled.div`
     background-position: center top;
     background-color:  #081923;
     background-size:contain;
- @media  (max-width:768px) {
-  background-image: url(${Bg2});
+    @media (min-width: 768px) and (max-width:1024px){
+      background-image: url(${Bg2});
     }
-    @media (min-width: 768px) {
-      background-image: url(${Bg1});
+ @media  (min-width:1024px) {
+  background-image: url(${Bg1});
+    }
+    @media (max-width: 768px) {
+      background-image: url(${Bg3});
     }
 `;
 const Wrapper=styled.div`
@@ -43,7 +47,7 @@ const Wrapper=styled.div`
   flex-wrap: wrap;
   align-items: center;
   @media (min-width: 768px) and (max-width:1024px) { //between
-    margin-top:12%;
+    margin-top:35%;
       width:100%auto;
     }
 
@@ -59,14 +63,14 @@ const Wrapper=styled.div`
 
 const MyIcon = styled.img`
   @media (min-width: 768px) and (max-width:1024px) { //between
-    width:221px;
+    width:180px;
     }
 
     @media (min-width: 1024px) { //desktop
     width:221px;
     }
     @media (max-width: 767px) { //iphone
-      width:150px;
+      width:300px;
   }
 `;
 
@@ -81,6 +85,9 @@ border-color:rgba( 12, 26, 34, 0);
 width: 370px;
 color:white;
 outline:none;
+@media (max-width: 767px) { //iphone
+      width:240px;
+  }
 
 `
 
@@ -88,6 +95,9 @@ const Content=styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  @media (max-width: 767px) { //iphone
+    margin-left:20%
+  }
 `
 
 function RegisterPage(props) {
@@ -96,8 +106,8 @@ function RegisterPage(props) {
 <Background>
   <Wrapper>
   <MyIcon></MyIcon>
-  <BlankTop DesktopMargin='3' TabletMargin='3' MobileMargin='3' />
-  <TextComponent title="회원가입"  DesktopLength='15' TabletLength='15' MobileLength='10'/> 
+  <BlankTop DesktopMargin='3' TabletMargin='3' MobileMargin='2' />
+  <TextComponent title="회원가입"  DesktopLength='15' TabletLength='15' MobileLength='13'/> 
   <BlankTop DesktopMargin='5' TabletMargin='3' MobileMargin='3' />
     <Formik
       initialValues={{
@@ -156,7 +166,7 @@ function RegisterPage(props) {
             <form style={{ minWidth: '150px' }}  onSubmit={handleSubmit} > 
               <Form.Item  requiredMark="optional"  hasFeedback validateStatus={errors.email && touched.email ? "error" : 'success'}>
                 <Content>
-              <Text title="이메일"  DesktopLength='15' TabletLength='15' MobileLength='10'/> 
+              <Text title="이메일"  DesktopLength='15' TabletLength='15' MobileLength='13'/> 
                 <Input
                   id="email"
                   type="email"
@@ -168,12 +178,12 @@ function RegisterPage(props) {
                   }
                 />
                 </Content>
-                <UnderLineComponent DesktopLength='45' BetweenLength='45' TabletLength='45' MobileLength='45' />
+                <UnderLineComponent DesktopLength='45' BetweenLength='45' TabletLength='45' MobileLength='30' />
               </Form.Item>
              
               <Form.Item requiredMark="optional" hasFeedback >
                  <Content>
-              <Text title="패스워드"  DesktopLength='15' TabletLength='15' MobileLength='10'/>
+              <Text title="패스워드"  DesktopLength='15' TabletLength='15' MobileLength='13'/>
                 <Input
                   id="password"
                   type="password"
@@ -185,12 +195,12 @@ function RegisterPage(props) {
                   }
                 />
                 </Content>
-                <UnderLineComponent DesktopLength='45' BetweenLength='45' TabletLength='45' MobileLength='45' />
+                <UnderLineComponent DesktopLength='45' BetweenLength='45' TabletLength='45' MobileLength='30' />
               </Form.Item>
               
               <Form.Item requiredMark="optional"  hasFeedback validateStatus={errors.confirmPassword && touched.confirmPassword ? "error" : 'success'}>
               <Content>
-              <Text title="패스워드확인"  DesktopLength='15' TabletLength='15' MobileLength='10'/>
+              <Text title="패스워드확인"  DesktopLength='15' TabletLength='15' MobileLength='13'/>
                 <Input
                   id="confirmPassword"
                   type="password"
@@ -202,12 +212,12 @@ function RegisterPage(props) {
                   
                 
                 </Content>
-                <UnderLineComponent DesktopLength='45' BetweenLength='45' TabletLength='45' MobileLength='45' />
+                <UnderLineComponent DesktopLength='45' BetweenLength='45' TabletLength='45' MobileLength='30' />
               </Form.Item>
 
               <Form.Item  requiredMark="optional"   validateStatus={errors.nickname && touched.nickname ? "error" : 'success'}>
               <Content>
-              <Text title="닉네임"  DesktopLength='15' TabletLength='15' MobileLength='10'/>
+              <Text title="닉네임"  DesktopLength='15' TabletLength='15' MobileLength='13'/>
               <Input 
                   id="nickname"
                   type="text"
@@ -219,7 +229,7 @@ function RegisterPage(props) {
                   }
                 />
                 </Content>
-                <UnderLineComponent DesktopLength='45' BetweenLength='45' TabletLength='45' MobileLength='45' /> 
+                <UnderLineComponent DesktopLength='45' BetweenLength='45' TabletLength='45' MobileLength='30' /> 
                 </Form.Item>
 
                 <BlankTop DesktopMargin='3' TabletMargin='1' MobileMargin='1' />
