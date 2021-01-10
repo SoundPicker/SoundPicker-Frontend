@@ -256,7 +256,18 @@ const TestMakingFormContainer = ({history}) => {
 
             return question;
 
-        });  
+        }
+        
+        );  
+        const tempsLinks = links.map(link => {
+          if( link.questionNumber === questionNumber+1 ){
+            link[name] = "";
+          }
+
+          return link;
+
+      });  
+      setLinks(tempsLinks);
         setQuestions(tempsQustios);
         }
         
@@ -567,8 +578,8 @@ const TestMakingFormContainer = ({history}) => {
         window.onYouTubeIframeAPIReady = () => {
           // eslint-disable-next-line react-hooks/exhaustive-deps
           player0 = new window.YT.Player(`player0`, {
-            height: "100",
-            width: "100",
+            height: "0",
+            width: "0",
             videoId: "7y7roXhpK-8",
             host: 'https://www.youtube.com',
             playerVars: {

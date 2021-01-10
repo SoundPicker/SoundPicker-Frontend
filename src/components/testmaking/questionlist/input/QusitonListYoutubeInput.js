@@ -32,7 +32,7 @@ const QustionListYoutubeInput = ({inputName,inputPlaceholder,inputMaxLength,getY
         {videoId ? 
         <StyledInput type='text' placeholder={inputPlaceholder} maxLength={inputMaxLength} name={inputName} value={`https://www.youtube.com/watch?v=${videoId}`} onChange={getYoutubeId} required/>        
     :
-    <StyledInput type='text' placeholder={inputPlaceholder} maxLength={inputMaxLength} name={inputName} value={questionURL} onChange={getYoutubeId} required/>
+    <StyledInput type='text' placeholder={inputPlaceholder} maxLength={inputMaxLength} name={inputName} value={questionURL?questionURL:""} onChange={getYoutubeId} required/>
 
     }
 
