@@ -5,6 +5,7 @@ const Inner = styled.div`
     height: 100%;
     margin: 0 auto;
 
+
     @media only screen and (max-width: 1024px) {
         width:71.5rem;
   }
@@ -15,6 +16,7 @@ const Inner = styled.div`
         width:100%;
         padding:0 0.5rem;
     }
+
 `
 
 

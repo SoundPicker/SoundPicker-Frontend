@@ -52,12 +52,12 @@ const SaveButtonInner = styled.button`
 
 
 
-const QuestionSaveButton = () => {
+const QuestionSaveButton = ({onSubmitHandler}) => {
     
     
     return(
         <SaveButtonWrap>
-            <SaveButtonInner>
+            <SaveButtonInner onSubmit={onSubmitHandler}>
                 저장하기
             </SaveButtonInner>
         </SaveButtonWrap>
