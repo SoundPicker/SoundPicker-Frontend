@@ -39,7 +39,6 @@ export let send=true ;
 export let viewLoadingCount = 0;
 const TestMakingFormContainer = ({history}) => {
   const jwt = window.localStorage.getItem('jwt');
-  console.log(jwt)
     let checkCurrentTime0;
     let checkCurrentTime1;
     let checkCurrentTime2;
@@ -64,6 +63,12 @@ const TestMakingFormContainer = ({history}) => {
         answer: "",
         answerYoutubeURL: "",
     }]);
+    const [links,setLinks] = useState([{
+      questionNumber : 1,
+      questionYoutubeURL : "",
+      answerYoutubeURL: "",
+    }]);
+
     const [viewLoading,setViewLoading] = useState(false);
 
     const [isPlaying0, setPlaying0] = useState(false);
@@ -173,6 +178,12 @@ const TestMakingFormContainer = ({history}) => {
         };
 
         setQuestions([...questions, data]);
+        let data2 = {
+          questionNumber : questions.length +1,
+          questionYoutubeURL : "",
+          answerYoutubeURL: ""
+        }
+        setLinks([...links,data2]);
     }
 
     const deleteQuestions = questionNumber => () => {
@@ -187,6 +198,17 @@ const TestMakingFormContainer = ({history}) => {
         })
 
         setQuestions(reTempQuestions);
+        let tempLinks = links.filter(link => {
+          return link.questionNumber !== questionNumber + 1;
+      })
+      let l = 1;
+      const reTempLinks = tempLinks.map(link => {
+          link.questionNumber = l;
+          l++;
+          return link;
+      })
+
+      setLinks(reTempLinks);
     }
 
     const getYoutubeId = questionNumber => e => {
@@ -216,6 +238,15 @@ const TestMakingFormContainer = ({history}) => {
         
                 });  
                 setQuestions(tempsQustios);
+                const tempsLinks = links.map(link => {
+                  if( link.questionNumber === questionNumber+1 ){
+                    link[name] = value;
+                  }
+      
+                  return link;
+      
+              });  
+              setLinks(tempsLinks);
             }
         }else{
           const tempsQustios = questions.map(question => {
@@ -536,8 +567,8 @@ const TestMakingFormContainer = ({history}) => {
         window.onYouTubeIframeAPIReady = () => {
           // eslint-disable-next-line react-hooks/exhaustive-deps
           player0 = new window.YT.Player(`player0`, {
-            height: "0",
-            width: "0",
+            height: "100",
+            width: "100",
             videoId: "7y7roXhpK-8",
             host: 'https://www.youtube.com',
             playerVars: {
@@ -893,7 +924,7 @@ const TestMakingFormContainer = ({history}) => {
                             <BlankTop DesktopMargin='1.9' TabletMargin='3.9' MobileMargin='2.6'/>
                             <QuestionListInputWrap>
                                 <QuestionListInputText text='Youtube Link' />
-                                <QuestionListYoutubeInput inputName='questionYoutubeURL' inputPlaceholder='1초/3초간 나올 음악 주소를 넣어주세요'  getYoutubeId={getYoutubeId(i)} value={questions[i].questionYoutubeURL} />
+                                <QuestionListYoutubeInput inputName='questionYoutubeURL' inputPlaceholder='1초/3초간 나올 음악 주소를 넣어주세요'  getYoutubeId={getYoutubeId(i)} videoId={questions[i].questionYoutubeURL} questionURL={links[i].questionYoutubeURL} />
                             </QuestionListInputWrap>
                             <BlankTop DesktopMargin='1.9' TabletMargin='2' MobileMargin='1.6'/>
 
@@ -993,7 +1024,7 @@ const TestMakingFormContainer = ({history}) => {
                                                         /> 
                                                             
                                                       
-                                <StartTimeContainer  changeStartTime={changeStartTime(i)} 
+                                 <StartTimeContainer  changeStartTime={changeStartTime(i)} 
                                                       totalTime={
                                                             i===0?totalTime0:
                                                             i===1?totalTime1:
@@ -1006,7 +1037,7 @@ const TestMakingFormContainer = ({history}) => {
                                                             i===8?totalTime8:
                                                             totalTime9 }
                                                       questionStartsfrom={
-                                                            questions[i].questionStartsfrom
+                                                         questions[i].questionStartsfrom
                                                             }/>
                             </PlayerWrap>
                             : ""}
@@ -1014,7 +1045,7 @@ const TestMakingFormContainer = ({history}) => {
                             <BlankTop DesktopMargin='1.9' TabletMargin='2.4' MobileMargin='1.7'/>
                             <QuestionListInputWrap>
                                 <QuestionListInputText text='Youtube Link' />
-                                <QuestionListYoutubeInput inputName='answerYoutubeURL' inputPlaceholder='정답 공개 후 보여줄 영상을 넣어주세요'  getYoutubeId={getYoutubeId(i)} value={questions[i].answerYoutubeURL}/>
+                                <QuestionListYoutubeInput inputName='answerYoutubeURL' inputPlaceholder='정답 공개 후 보여줄 영상을 넣어주세요'  getYoutubeId={getYoutubeId(i)} videoId={questions[i].answerYoutubeURL} questionURL={links[i].answerYoutubeURL}/>
                             </QuestionListInputWrap>
 
                         </QuestionListRightWrap>
