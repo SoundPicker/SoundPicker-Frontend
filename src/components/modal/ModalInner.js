@@ -19,11 +19,11 @@ const LayoutInner = styled.div`
       animation-name: ${FadeIn};
     `}
   ${props =>
-    props.modalOn &&
+    props.modalOut &&
     css`
       animation-timing-function: ease-in-out;
       animation-duration: 1s;
-      animation-name: ${FadeIn};
+      animation-name: ${FadeOut};
     `}
   @media only screen and (max-width: 880px) {
     width: 95vw;
@@ -43,7 +43,7 @@ const FadeOut = keyframes`{
    opacity: 1;
   }
   100% {
-  opacity: 1;
+  opacity: 0;
   }
 `
 // min-height: 50%;

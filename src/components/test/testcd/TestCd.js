@@ -9,6 +9,7 @@ import TextComponent from '../../common/test/TextComponent'
 import { useHistory } from 'react-router-dom'
 import ProgressBar from '../testcd/ProgressBar'
 import ModalPage from '../../../pages/modal/ModalPage'
+import QuizHeader from '../../common/QuizHeader'
 
 const TestCd = ({ newList, match }) => {
   //state정의
@@ -23,6 +24,7 @@ const TestCd = ({ newList, match }) => {
   const [modalVisible, setModalVisible] = useState(false)
   const [isHint, setIsHint] = useState(false)
   const [modalIn, setModalIn] = useState(false)
+  const [modalOut, setModalOut] = useState(false)
 
   const history = useHistory()
 
@@ -38,9 +40,11 @@ const TestCd = ({ newList, match }) => {
 
   const openModal = () => {
     setModalVisible(true)
+    setModalOut(false)
   }
 
   const closeModal = () => {
+    setModalOut(true)
     setModalVisible(false)
   }
 
@@ -108,13 +112,15 @@ const TestCd = ({ newList, match }) => {
       {modalVisible && (
         <ModalPage
           modalIn={modalIn}
+          modalOut={modalOut}
           urlId={newList[activeIndex].answerYoutubeURL}
           visible={modalVisible}
           maskClosable={true}
           closeModal={closeModal}
         />
       )}
-      <BlankTop DesktopMargin="19" TabletMargin="32" MobileMargin="21" />
+      <QuizHeader />
+      <BlankTop DesktopMargin="15" TabletMargin="32" MobileMargin="21" />
       <IconWrapper>
         <MyIcon />
       </IconWrapper>
@@ -131,7 +137,7 @@ const TestCd = ({ newList, match }) => {
       <BlankTop DesktopMargin="4.2" TabletMargin="5" MobileMargin="9" />
       <Container>
         <ContentContainer>
-          {/* <ProgressBar percentual={(100 / newList.length) * activeIndex} /> */}
+          <ProgressBar percentual={(100 / newList.length) * activeIndex} />
           {newList.map((item, index) => {
             return (
               <SwiperContainer

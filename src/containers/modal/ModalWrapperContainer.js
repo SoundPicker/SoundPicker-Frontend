@@ -12,13 +12,16 @@ const ModalWrapperContainer = ({
       closeModal(e)
     }
   }
+
   return (
-    <ModalWrapper
-      children={children}
-      onMaskClick={onMaskClick}
-      maskClosable={maskClosable}
-      visible={visible}
-    />
+    <>
+      <ModalWrapper
+        children={children}
+        onMaskClick={onMaskClick}
+        maskClosable={maskClosable}
+        visible={visible}
+      />
+    </>
   )
 }
 
