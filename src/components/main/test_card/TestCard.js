@@ -238,7 +238,11 @@ const PlayFooter = styled.div`
 
 const CardWrapOne = styled.div``;
 
-const CardWrapTwo = styled.div``;
+const CardWrapTwo = styled.div`
+  & > ${Card} {
+    // 컬러 뒤집어서 주기
+  }
+`;
 
 const CardWrapThree = styled.div`
   @media (max-width: 828px) {
@@ -247,6 +251,10 @@ const CardWrapThree = styled.div`
 `;
 
 const CardWrapFour = styled.div`
+  & > ${Card} {
+    // 컬러 뒤집어서 주기
+  }
+
   @media (max-width: 1440px) {
     display: none;
   }
