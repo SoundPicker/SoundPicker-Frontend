@@ -6,19 +6,25 @@ import QuizLoading from "./components/loading/QuizLoading";
 import StartLoading from "./components/loading/StartLoading";
 import TestPage from "./pages/test/TestPage";
 import TestEndPage from "./pages/test_end/TestEndPage";
+import LoginPage from './components/views/LoginPage/LoginPage';
+import RegisterPage from './components/views/RegisterPage/RegisterPage';
+import Auth from './hoc/auth';
 const App = ({ match }) => {
   return (
     <Router>
       <Switch>
         <Route exact path="/" component={MainPage} />
-        <Route exact path="/testmaking" component={TestMakingPage} />
-        <Route component={MyPage} path="/mypage" exact />
+        <Route exact path="/testmaking" component={Auth(TestMakingPage,true)}/>    
+        <Route component={Auth(MyPage,true)} path="/mypage" exact/>
         <Route component={QuizLoading} path="/quizloading" exact />
         <Route component={StartLoading} path="/startloading" exact />
         <Route component={TestEndPage} path="/test/:id/recommendation" exact />
+        <Route exact path="/register" component={Auth(RegisterPage,null)}/>
+        <Route exact path="/login" component={Auth(LoginPage,null)}/>
         <Route component={TestPage} path="/test/:id" />
         <Route path="/*">404 Not Found</Route>
       </Switch>
+
     </Router>
   );
 };
