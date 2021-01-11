@@ -8,6 +8,7 @@ import { useDispatch } from 'react-redux'
 import { auth } from '../../_actions/user_action'
 
 function QuizHeader() {
+  window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
   const [clickOpenArrow, setClickOpenArrow] = useState(false)
   const [clickCloseArrow, setClickCloseArrow] = useState(false)
   // useEffect(() => console.log(clickArrow), [clickArrow])
