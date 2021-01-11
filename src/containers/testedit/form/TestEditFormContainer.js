@@ -64,6 +64,8 @@ const TestEditFormContainer = ({history,match}) => {
         answerYoutubeURL: "",
     }]);
     const [viewLoading,setViewLoading] = useState(false);
+    const [serverLoading,setServerLoading] = useState(true);
+
     const [timer, setTimer] = useState(0);
 
     const [isPlaying0, setPlaying0] = useState(false);
@@ -326,6 +328,7 @@ const TestEditFormContainer = ({history,match}) => {
     const config = {
       headers : {"jwt":jwt}
   }
+  setServerLoading(false);
   if(testTitle.length !== 0 && testDescription.length !== 0 && testCategory.length !== 0){
     for(let i = 0; i < questions.length; i++ ){
       if(questions[i].questionYoutubeURL.length === 0 ||questions[i].questionStartsfrom.length === 0 ||questions[i].hint.length === 0 ||
@@ -348,12 +351,18 @@ const TestEditFormContainer = ({history,match}) => {
                 })
             } catch (e) {
               console.error('error', e);
+              setServerLoading(true);
+
             }
           }, 5000);
           setTimer(newTimer);
 
+    }else{
+      setServerLoading(true);
     }
 
+  }else{
+    setServerLoading(true);
   }
 
 }
@@ -1041,8 +1050,14 @@ const TestEditFormContainer = ({history,match}) => {
                 <BlankTop DesktopMargin='4.7' TabletMargin='5.2' MobileMargin='4.7'/>
                 <QuestionLustPlusButton addQuestions={addQuestions} />
                 <BlankTop DesktopMargin='3.6' TabletMargin='6' MobileMargin='3.5'/>
-                <QuestionSaveButton onSubmitHandler={onSubmitHandler} />
-                <BlankTop DesktopMargin='3.6' TabletMargin='9.1' MobileMargin='3.5'/>
+                { serverLoading? 
+                    <QuestionSaveButton onSubmitHandler={onSubmitHandler} /> 
+                  :
+                  <div style={{display:"flex", justifyContent:"center",alignItems:'center'}}>
+                    <LoadingComponent/>
+                  </div>
+
+                }                    <BlankTop DesktopMargin='3.6' TabletMargin='9.1' MobileMargin='3.5'/>
                 <table></table>
             </QuestionListInner>     
 
