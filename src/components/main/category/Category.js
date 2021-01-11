@@ -9,6 +9,18 @@ import { useState, useEffect } from "react";
 const Wrap = styled.div`
   display: flex;
   justify-content: center;
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  animation: fadeIn 1600ms 1;
+  animation-timing-function: ease-in;
 `;
 
 const LeftBtn = styled.button`

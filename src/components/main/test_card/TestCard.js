@@ -38,6 +38,13 @@ const PlusBtn = styled.div`
   }
 `;
 
+let ran = Math.floor(Math.random() * 10); //0-9까지 난수 리턴
+if (ran >= 0 && ran <= 5) {
+  ran = 0;
+} else {
+  ran = 1;
+}
+
 const Card = styled.div`
   display: block;
   width: 29.6rem;
@@ -48,24 +55,22 @@ const Card = styled.div`
   cursor: pointer;
   color: #ffffff;
   background-color: transparent;
-  overflow: hidden;
+  // overflow: hidden;
 
-  border-right-color: rgba(93, 79, 255, 0.4);
-  border-left-color: rgba(96, 255, 218, 0.8);
-  background: linear-gradient(
-        135deg,
-        rgba(96, 255, 218, 1) 0%,
-        rgba(93, 79, 255, 0.4) 100%
-      )
+  border-right-color: rgba(96, 121, 255, 1);
+  border-left-color: #60ffda;
+  background: linear-gradient(to left, rgba(96, 121, 255, 1) 0%, #60ffda 100%)
       top/100% 3px,
-    linear-gradient(
-        135deg,
-        rgba(96, 255, 218, 1) 0%,
-        rgba(93, 79, 255, 0.4) 100%
-      )
-      bottom/100% 3px;
+    linear-gradient(to left, rgba(96, 121, 255, 1) 0%, #60ffda 100%) bottom/100%
+      3px;
 
   background-repeat: no-repeat;
+
+  /*
+  // 카드 테두리 div로 실험
+  box-sizing: content-box;
+  width: 24.2rem;
+  */
 
   &:focus {
     outline: none;
@@ -88,6 +93,57 @@ const Card = styled.div`
     padding: 3.4rem 2.5rem 2.9rem 2.4rem;
   }
 `;
+
+/*
+//GradientOne, Two, Three, Four
+const GradientOne = styled.div`
+  box-sizing: content-box;
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  width: 29.6rem;
+  height: 0.3rem;
+  border: 3px;
+  border-radius: 20%;
+  background-color: transparent;
+  overflow: hidden;
+
+  &:after {
+    display: block;
+    content: "";
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(180deg, #60ffda, #60beec);
+    z-index: -1;
+  }
+`;
+
+const GradientTwo = styled.div`
+  box-sizing: content-box;
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  width: 0.3rem;
+  height: 100%;
+  border: 3px;
+  border-radius: 20%;
+  background-color: transparent;
+  overflow: hidden;
+
+  &:after {
+    display: block;
+    content: "";
+    width: 3px;
+    height: 100%;
+    background: linear-gradient(90deg, #60ffda, #60beec);
+    z-index: -1;
+  }
+`;
+
+const GradientThree = styled.div``;
+
+const GradientFour = styled.div``;
+*/
 
 const RotateBorder = styled.span`
   position: absolute;
@@ -236,7 +292,12 @@ const PlayFooter = styled.div`
   align-items: center;
 `;
 
-const CardWrapOne = styled.div``;
+const CardWrapOne = styled.div`
+  //카드 테두리때문에
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 
 const CardWrapTwo = styled.div``;
 
@@ -260,6 +321,18 @@ const CardListWrap = styled.div`
   position: relative;
   margin: 0 auto;
   overflow: hidden;
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  animation: fadeIn 1700ms 1;
+  animation-timing-function: ease-in;
 
   @media (max-width: 1440px) {
     width: 92rem;
@@ -314,14 +387,24 @@ const LoadMoreBtn = styled.div`
   color: #ffffff;
   background-color: transparent;
 
-  border-radius: 14px;
-  border-right-color: #00ffa3;
-  border-left-color: rgba(82, 0, 255, 0.8);
-  background: linear-gradient(to left, #00ffa3 0%, rgba(82, 0, 255, 0.8) 100%)
-      top/100% 3px,
-    linear-gradient(to left, #00ffa3 0%, rgba(82, 0, 255, 0.8) 100%) bottom/100%
-      3px;
+  border-radius: 8px;
+  border-right-color: #00fff0;
+  border-left-color: #00c2ff;
+  background: linear-gradient(to left, #00fff0 0%, #00c2ff 100%) top/100% 3px,
+    linear-gradient(to left, #00fff0 0%, #00c2ff 100%) bottom/100% 3px;
   background-repeat: no-repeat;
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  animation: fadeIn 3500ms 1;
+  animation-timing-function: ease-in;
 
   &:focus {
     outline: none;
@@ -406,8 +489,8 @@ const CardList = ({ testList, testList2 }) => {
   const { width } = useWindowDimensions();
 
   const divideNum = width > 1440 ? 4 : width > 828 ? 3 : 2;
-  const divided = parseInt(testList.length / divideNum);
-  const leftOver = testList.length % divideNum;
+  const divided = parseInt(finalList.length / divideNum);
+  const leftOver = finalList.length % divideNum;
 
   let one = divided + leftOver,
     two = divided,

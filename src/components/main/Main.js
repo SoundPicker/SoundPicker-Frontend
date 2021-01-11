@@ -15,6 +15,19 @@ const Wrap = styled.div`
   width: 52.4rem;
   position: relative;
   margin: 0 auto 1.3rem;
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  animation: fadeIn 1500ms 1;
+  animation-timing-function: ease-in;
+
   @media (max-width: 1024px) {
     width: 46.5rem;
     margin-bottom: 1rem;
@@ -33,6 +46,19 @@ const SearchIcon = styled.img.attrs({
   height: 2rem;
   position: absolute;
   left: -1.2rem;
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  animation: fadeIn 1500ms 1;
+  animation-timing-function: ease-in;
+
   @media (max-width: 768px) {
     left: -5.6rem;
   }
@@ -76,6 +102,19 @@ const SearchBorder = styled.hr`
     rgba(255, 255, 255, 0.85) 0%,
     rgba(255, 255, 255, 0) 57.29%
   );
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  animation: fadeIn 1300ms 1;
+  animation-timing-function: ease-in;
+
   @media (max-width: 1024px) {
     width: 72.4rem;
   }

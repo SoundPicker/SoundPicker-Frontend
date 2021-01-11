@@ -6,6 +6,18 @@ import BannerImageMobile from "../../../assets/mobile/main_title.png";
 const Wrap = styled.div`
   display: flex;
   justify-content: center;
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  animation: fadeIn 1000ms 1;
+  animation-timing-function: ease-in;
 `;
 
 const WrapImage = styled.div`

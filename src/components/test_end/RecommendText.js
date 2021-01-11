@@ -5,6 +5,18 @@ const Wrap = styled.div`
   height: 2rem;
   justify-content: center;
 
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  animation: fadeIn 1300ms 1;
+  animation-timing-function: ease-in;
+
   @media (max-width: 1089px) {
     height: 1.6rem;
   }
@@ -30,7 +42,7 @@ const Title = styled.span`
 const RecommendText = () => {
   return (
     <Wrap>
-      <Title>리니꿍님, 이런 테스트들은 어떤가요?</Title>
+      <Title>이런 테스트들은 어떤가요?</Title>
     </Wrap>
   );
 };

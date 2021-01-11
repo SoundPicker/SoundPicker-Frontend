@@ -8,6 +8,20 @@ import DesktopWaterMark from "../../../assets/desktop/image_watermark.png";
 import TabletWaterMark from "../../../assets/tablet/image_watermark.png";
 import MobileWaterMark from "../../../assets/mobile/mobile_image_watermark.png";
 
+const OuterWrap = styled.div`
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  animation: fadeIn 2000ms 1;
+  animation-timing-function: ease-in;
+`;
+
 const Wrap = styled.div`
   display: flex;
   justify-content: center;
@@ -117,7 +131,7 @@ const Member = styled.div`
 const Footer = () => {
   return (
     // Desktop은 중간 구분선 없이 BlankTop만 191px 있음 주의
-    <>
+    <OuterWrap>
       <BlankTop DesktopMargin={19.1} TabletMargin={6.2} MobileMargin={5.9} />
       <Divider DesktopLength={0} TabletLength={7.1} MobileLength={6.2} />
       <BlankTop DesktopMargin={0} TabletMargin={5.3} MobileMargin={6} />
@@ -180,7 +194,7 @@ const Footer = () => {
           <NameTitle>홍혜림</NameTitle>
         </Server>
       </Member>
-    </>
+    </OuterWrap>
   );
 };
 

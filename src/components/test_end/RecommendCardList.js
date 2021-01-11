@@ -6,6 +6,18 @@ import { Link } from "react-router-dom";
 const CardWrap = styled.div`
   display: flex;
   justify-content: center;
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  animation: fadeIn 1500ms 1;
+  animation-timing-function: ease-in;
 `;
 
 const CardBox = styled.div`
@@ -69,6 +81,10 @@ const CardTitle = styled.div`
   line-height: 1.25;
   text-align: left;
   color: #ffffff;
+  overflow: auto;
+  ::-webkit-scrollbar {
+    display: none;
+  }
 
   @media (max-width: 1089px) {
     width: 30.662rem;
@@ -93,6 +109,10 @@ const CardContent = styled.div`
   line-height: 1.5;
   text-align: left;
   color: #ffffff;
+  overflow: auto;
+  ::-webkit-scrollbar {
+    display: none;
+  }
 
   @media (max-width: 1089px) {
     width: 30.662rem;

@@ -158,7 +158,7 @@ html {
 body,
 button,
 input {
-  font-family: "Nanum Gothic", sans-serif;
+  font-family: "Nanum Gothic", sans-serif !important;
 }
 
 /* 스크롤 막대 숨기기 */

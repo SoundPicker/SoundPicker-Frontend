@@ -5,6 +5,18 @@ const Wrap = styled.div`
   height: 1.6rem;
   justify-content: center;
 
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  animation: fadeIn 900ms 1;
+  animation-timing-function: ease-in;
+
   @media (max-width: 1089px) {
     height: 1.8rem;
   }

@@ -4,6 +4,18 @@ const Wrap = styled.div`
   display: flex;
   height: 1.6rem;
   justify-content: center;
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  animation: fadeIn 1100ms 1;
+  animation-timing-function: ease-in;
 `;
 
 const Text = styled.p`

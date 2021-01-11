@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 // 서버랑 통신해서 카테고리 이름 받아오기
 const CategoryName = styled.span`
-  font-size: 1.3rem;
+  font-size: 1.28rem;
   line-height: 1.035;
   color: #dadada;
   @media (max-width: 1440px) {

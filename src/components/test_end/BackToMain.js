@@ -17,8 +17,18 @@ const BackBtn = styled.button`
   box-shadow: 0 0 10px #60ffcd;
   background: linear-gradient(90.66deg, #60ffcd -8.61%, #60f5ff 112.74%);
 
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+
   &:focus {
     outline: none;
+    animation: fadeOut 500ms;
   }
 
   &:after {
