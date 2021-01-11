@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react'
 import styled, { css, keyframes } from 'styled-components'
 import recordImg from '../../../assets/images/test/graphic_black_cd.png'
@@ -29,18 +28,15 @@ const TestCd = ({ newList, match }) => {
 
   const history = useHistory()
 
-  // const hintBtn = document.getElementById('hintBtn')
-
   useEffect(() => {
-    isRecordInside(false);
-    setButtonText("정답 보기");
-    setAnswer(undefined);
-    setSound1Url(newList[activeIndex].sound1URL);
-    setSound3Url(newList[activeIndex].sound3URL);
-  }, [activeIndex]);
+    isRecordInside(false)
+    setButtonText('정답 보기')
+    setAnswer(undefined)
+    setSound1Url(newList[activeIndex].sound1URL)
+    setSound3Url(newList[activeIndex].sound3URL)
+  }, [activeIndex])
 
   const openModal = () => {
-
     setModalVisible(true)
     setModalOut(false)
   }
@@ -50,64 +46,62 @@ const TestCd = ({ newList, match }) => {
     setModalVisible(false)
   }
 
-
   //다음문제 버튼 이벤트 정의
   const handleHintButton = () => {
-    if (hintText === "힌트 보기") {
-      setIsHint(true);
+    if (hintText === '힌트 보기') {
+      setIsHint(true)
       setTimeout(() => {
-        setHintText(`${newList[activeIndex].hint}`);
-      }, 500);
-    } else if (hintText === "관련 영상 보기") {
-      console.log("여기서 모달을 띄울거에요");
-      setModalIn(true);
-      openModal();
+        setHintText(`${newList[activeIndex].hint}`)
+      }, 500)
+    } else if (hintText === '관련 영상 보기') {
+      setModalIn(true)
+      openModal()
     }
-  };
+  }
 
   const handleNextButton = () => {
     //버튼 텍스트가 '정답보기' 일때 버튼명을 '다음문제'로 변경 후 레코드 집어넣는 트리거를true로 바꿔줌
-    if (buttonText === "정답 보기") {
-      isRecordInside(true);
-      setHintText("관련 영상 보기");
+    if (buttonText === '정답 보기') {
+      isRecordInside(true)
+      setHintText('관련 영상 보기')
 
       if (activeIndex + 1 < newList.length) {
-        setButtonText("다음 문제");
-        setAnswer(newList[activeIndex].answer);
-        setIsHint(false);
+        setButtonText('다음 문제')
+        setAnswer(newList[activeIndex].answer)
+        setIsHint(false)
       } else {
-        setAnswer(newList[activeIndex].answer);
-        setButtonText("테스트 완료");
+        setAnswer(newList[activeIndex].answer)
+        setButtonText('테스트 완료')
       }
-    } else if (buttonText === "다음 문제") {
+    } else if (buttonText === '다음 문제') {
       //버튼 텍스트가 '다음문제'일때 선택된 레코드를 1증가하여 다음 레코드를 불러옴
-      setHintText("힌트 보기");
+      setHintText('힌트 보기')
       if (activeIndex + 1 < newList.length) {
-        setActiveIndex(activeIndex + 1);
+        setActiveIndex(activeIndex + 1)
       }
-    } else if (buttonText === "테스트 완료") {
-      history.push(`/test/${match.params.id}/recommendation`);
-      console.log(history);
+    } else if (buttonText === '테스트 완료') {
+      history.push(`/test/${match.params.id}/recommendation`)
+      console.log(history)
     }
-  };
+  }
 
   //레코드판 돌아가는 애니메이션 핸들러
-  const handleRotateAnimation = (second) => {
+  const handleRotateAnimation = second => {
     //레코드판 재생시간이 0초일때만 에니메이션 실행을 하여 마구 연타하였을때 애니메이션 꼬이는것을 방지
     if (rotateSecond === 0) {
-      setRotateSecond(second);
+      setRotateSecond(second)
       //이곳에 사운드 재생
       if (second === 1) {
         // 1초 사운드
-        var audio = new Audio(sound1Url);
-        audio.play();
+        var audio = new Audio(sound1Url)
+        audio.play()
       } else {
         // 3초 사운드
-        var audio = new Audio(sound3Url);
-        audio.play();
+        var audio = new Audio(sound3Url)
+        audio.play()
       }
     }
-  };
+  }
 
   return (
     <>
@@ -131,7 +125,6 @@ const TestCd = ({ newList, match }) => {
       <TitleWrapper>
         <TextComponent
           title={newList[activeIndex].testTitle}
-          // title="quiztitle 수정중"
           DesktopLength="2"
           TabletLength="2"
           MobileLength="1.8"
@@ -155,7 +148,7 @@ const TestCd = ({ newList, match }) => {
                 {index === activeIndex && (
                   <>
                     <AnswerText inside={recordInside}>
-                      {answer ?? "정답은?"}
+                      {answer ?? '정답은?'}
                     </AnswerText>
                     <RecordImg
                       src={recordImg}
@@ -166,7 +159,7 @@ const TestCd = ({ newList, match }) => {
                   </>
                 )}
               </SwiperContainer>
-            );
+            )
           })}
         </ContentContainer>
       </Container>
@@ -196,8 +189,8 @@ const TestCd = ({ newList, match }) => {
         </BigButtonWrapper>
       </ButtonContainer>
     </>
-  );
-};
+  )
+}
 
 /**키프레임 시작 */
 
@@ -212,7 +205,7 @@ const HintFade = keyframes`{
   100% {
   opacity: 1;
   }
-`;
+`
 
 //1초 레코드판 돌리는 키프레임
 const Rotate1Record = keyframes`
@@ -222,7 +215,7 @@ const Rotate1Record = keyframes`
   100% {
     transform: rotate( 360deg )
   }
-`;
+`
 //3초 레코드판 돌리는 키프레임
 const Rotate3Record = keyframes`
   0% {
@@ -231,7 +224,7 @@ const Rotate3Record = keyframes`
   100% {
     transform: rotate( 1080deg )
   }
-`;
+`
 //레코드판을 집어넣는 키프레임
 const RecordInside = keyframes`
   0% {
@@ -240,7 +233,7 @@ const RecordInside = keyframes`
   100% {
     margin-left: -50%
   }
-  `;
+  `
 
 const TextInside = keyframes`
 0% {
@@ -250,7 +243,7 @@ const TextInside = keyframes`
   
   margin-left: 0;
 }
-`;
+`
 
 //신규 레코드판이 선택될때 나오는 애니메이션 키프레임
 const ActiveAnimation = keyframes`
@@ -263,7 +256,7 @@ const ActiveAnimation = keyframes`
     transform: translateX(0%) scale(1);
     opacity: 1;
 }
-`;
+`
 const ActiveAnimation1024 = keyframes`
 0% {
     opacity: .5;
@@ -274,7 +267,7 @@ const ActiveAnimation1024 = keyframes`
     transform: translateX(0%) scale(1);
     opacity: 1;
 }
-`;
+`
 const ActiveAnimation768 = keyframes`
 0% {
     opacity: .5;
@@ -285,7 +278,7 @@ const ActiveAnimation768 = keyframes`
     transform: translateX(0%) scale(1);
     opacity: 1;
 }
-`;
+`
 
 //레코드판이 왼쪽으로 들어갈때 나오는 애니메이션 키프레임
 const UnActiveAnimation = keyframes`
@@ -294,10 +287,10 @@ const UnActiveAnimation = keyframes`
     opacity: 1;
 }
 100% {
-    opacity: .5; /*여기*/ 
+    opacity: .5; 
     transform: translateX(-65%) scale(0.6);
 }
-`;
+`
 
 const UnActiveAnimation1024 = keyframes`
 0% {
@@ -305,10 +298,10 @@ const UnActiveAnimation1024 = keyframes`
     opacity: 1;
 }
 100% {
-    opacity: .5; /*여기*/ 
+    opacity: .5; 
     transform: translateX(-60%) scale(0.6);
 }
-`;
+`
 
 const UnActiveAnimation768 = keyframes`
 0% {
@@ -316,10 +309,10 @@ const UnActiveAnimation768 = keyframes`
     opacity: 1;
 }
 100% {
-    opacity: .5; /*여기*/ 
+    opacity: .5; 
     transform: translateX(-130%) scale(0.6);
 }
-`;
+`
 /* 키프레임 종료 */
 
 /* Start Logo */
@@ -328,7 +321,7 @@ const IconWrapper = styled.div`
   height: auto;
   display: flex;
   justify-content: center;
-`;
+`
 
 const MyIcon = styled.img`
   width: 19rem;
@@ -338,18 +331,18 @@ const MyIcon = styled.img`
   @media only screen and (max-width: 768px) {
     width: 18.5rem;
   }
-`;
+`
 
 MyIcon.defaultProps = {
   src: logo,
-};
+}
 /* End Logo */
 
 /* Start Title  */
 const TitleWrapper = styled.div`
   width: 100%;
   height: auto;
-`;
+`
 /* End Title */
 
 const Container = styled.div`
@@ -357,8 +350,6 @@ const Container = styled.div`
   height: auto;
   position: relative;
   display: flex;
-
-  /* border: 1px solid blue; */
 `
 
 const ContentContainer = styled.div`
@@ -372,13 +363,13 @@ const ContentContainer = styled.div`
   // 1920 기준
   @media only screen and (max-width: 1024px) {
     height: 38rem;
-    padding-right: 8rem; // 여기
+    padding-right: 8rem;
   }
   @media only screen and (max-width: 768px) {
     height: 26rem;
     padding-left: 5rem;
   }
-`;
+`
 const AnswerText = styled.p`
   font-size: 1.4rem;
   font-weight: bold;
@@ -388,9 +379,9 @@ const AnswerText = styled.p`
   padding-left: 40px;
   /* border: 1px solid red; */
   object-fit: contain;
-  margin-left: -25%; // -25%
+  margin-left: -25%;
   animation-fill-mode: forwards;
-  ${(props) =>
+  ${props =>
     props.inside && //레코드판을 집어넣는 css애니메이션 추가 트리거가 true일때 실행.
     css`
       animation-timing-function: ease-in-out;
@@ -398,7 +389,7 @@ const AnswerText = styled.p`
       animation-iteration-count: 1;
       animation-name: ${TextInside};
     `}
-`;
+`
 
 const SwiperContainer = styled.div`
   & > img {
@@ -414,7 +405,7 @@ const SwiperContainer = styled.div`
   animation-fill-mode: forwards;
   ${({ activeIndex, thisIndex }) => {
     // 선택된 index와 각요소의 index를 비교해서 애니메이션과 위치를 처리해줌
-    const compare = Math.abs(activeIndex - thisIndex); //index비교 절대값
+    const compare = Math.abs(activeIndex - thisIndex) //index비교 절대값
     if (activeIndex === thisIndex) {
       //선택된index와 현재요소의 값이 같다면(즉 active상태의 요소일때) 오른쪽에서 가운데로 나오는 애니메이션을 넣어줌
       return css`
@@ -429,7 +420,7 @@ const SwiperContainer = styled.div`
           animation-name: ${ActiveAnimation768};
         }
         z-index: 10;
-      `;
+      `
     } else if (activeIndex > thisIndex) {
       //선택된index가 현재요소의 값보다 크다면(즉 active상태의 요소보다 왼쪽에 있을때)
       if (compare === 1) {
@@ -445,7 +436,7 @@ const SwiperContainer = styled.div`
           @media only screen and (max-width: 768px) {
             animation-name: ${UnActiveAnimation768};
           }
-        `;
+        `
       }
       //그이외 그냥 위치만 잡아줌
       return css`
@@ -458,7 +449,7 @@ const SwiperContainer = styled.div`
         @media only screen and (max-width: 768px) {
           transform: translateX(-130%) scale(0.7);
         }
-      `;
+      `
     } else if (activeIndex < thisIndex) {
       //선택된index가 현재요소의 값보다 작다면(즉 active상태의 요소보다 오른쪽에 있을때)위치만 잡아줌
       return `
@@ -472,10 +463,10 @@ const SwiperContainer = styled.div`
       @media only screen and (max-width: 768px) {
         transform: translateX(100%) scale(0.7);
       }
-    `;
+    `
     }
   }}
-`;
+`
 
 const RecordImg = styled.img`
   /* border: 1px solid orange; */
@@ -483,7 +474,7 @@ const RecordImg = styled.img`
   z-index: 1;
   margin-left: -25%;
   animation-fill-mode: forwards;
-  ${(props) =>
+  ${props =>
     props.rotateSecond > 0 && //레코드판을 돌리는 css애니메이션 추가 0초 이상일때만 작동하도록 한다.
     css`
       animation-timing-function: ease-in-out;
@@ -493,7 +484,7 @@ const RecordImg = styled.img`
         ? Rotate1Record
         : Rotate3Record}; //1초일때 3초일때 분기해서 키프레임을 넣어줌
     `}
-  ${(props) =>
+  ${props =>
     props.inside && //레코드판을 집어넣는 css애니메이션 추가 트리거가 true일때 실행.
     css`
       animation-timing-function: ease-in-out;
@@ -501,9 +492,7 @@ const RecordImg = styled.img`
       animation-iteration-count: 1;
       animation-name: ${RecordInside};
     `}
-`;
-
-/* activeIndex={activeIndex} thisIndex={index} */
+`
 
 const CaseImg = styled.img`
   margin-left: 30%;
@@ -511,23 +500,19 @@ const CaseImg = styled.img`
 
   object-fit: contain;
   z-index: 2;
-  /* border: 1px solid red; */
-  /* width: 28rem; */
-`;
+`
 
 /* Start button */
-
 const ButtonContainer = styled.div`
-  /* border: 1px solid orange; */
   display: flex;
   flex-direction: column;
   width: 100%;
-`;
+`
 const RowContainer = styled.div`
   display: flex;
   flex-direction: row;
   flex: 1;
-`;
+`
 
 const ListenButtonWrapper = styled.div`
   width: 100%;
@@ -535,7 +520,7 @@ const ListenButtonWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-`;
+`
 
 const ListenButtonDisinguish = styled.span`
   color: #fff;
@@ -551,12 +536,12 @@ const ListenButtonDisinguish = styled.span`
     font-size: 3rem;
     padding: 0 6rem;
   }
-`;
+`
 
 const ListenButtonStyle = styled.button`
   color: #ffffff;
   font-size: 1.8rem;
-  font-family: "Nanum Gothic";
+  font-family: 'Nanum Gothic';
   font-weight: 100;
   border: none;
   outline: none;
@@ -575,7 +560,7 @@ const ListenButtonStyle = styled.button`
   &:hover {
     color: #60ffc6;
   }
-`;
+`
 
 const BigButtonWrapper = styled.div`
   width: 100%;
@@ -584,8 +569,7 @@ const BigButtonWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* border: 1px solid orange; */
-`;
+`
 
 const HintButtonStyle = styled.button`
   cursor: pointer;
@@ -613,15 +597,14 @@ const HintButtonStyle = styled.button`
     color: #49fff2;
     transition: color 0.1s ease-in-out;
   }
-  ${(props) =>
+  ${props =>
     props.hint &&
     css`
       animation-timing-function: ease-in-out;
       animation-duration: 0.6s;
-      /* animation-iteration-count: 1; */
       animation-name: ${HintFade};
     `}
-`;
+`
 
 const AnswerButtonStyle = styled.button`
   cursor: pointer;
@@ -651,6 +634,6 @@ const AnswerButtonStyle = styled.button`
     transition: box-shadow 0.5s ease-in-out;
     box-shadow: 0px 0px 40px -6px #49fff2;
   }
-`;
+`
 /* End button */
-export default TestCd;
+export default TestCd
