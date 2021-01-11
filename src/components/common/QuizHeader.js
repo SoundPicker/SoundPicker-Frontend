@@ -8,10 +8,10 @@ import { useDispatch } from 'react-redux'
 import { auth } from '../../_actions/user_action'
 
 function QuizHeader() {
-  window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
+  useEffect(() => window.scrollTo({ top: 0, left: 0, behavior: 'auto' }), [])
   const [clickOpenArrow, setClickOpenArrow] = useState(false)
   const [clickCloseArrow, setClickCloseArrow] = useState(false)
-  // useEffect(() => console.log(clickArrow), [clickArrow])
+
   const history = useHistory()
   const [myState, setMyState] = useState({ status: 'idle', member: null })
   const dispatch = useDispatch()
@@ -239,6 +239,7 @@ const ContentWrapper = styled.div`
 
 const LineWrapper = styled.div`
   display: flex;
+  /* border: 1px solid red; */
   justify-content: center;
   font-size: 1.4rem;
   color: #fff;
