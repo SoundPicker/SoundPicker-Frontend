@@ -437,7 +437,6 @@ const TestMakingFormContainer = ({history}) => {
   const setTime9 = () => {
     setCurrentTime9(transTime(player9.getCurrentTime().toFixed()));
   };
-  let readyCount = 0;
   const onReadyAPI0 = () => {
       setLoading0(true);
       setPlaying0(false);
@@ -879,11 +878,11 @@ const TestMakingFormContainer = ({history}) => {
            player8?.pauseVideo();
       }
     }
-    if (isLoading8) {
-        if (isPlaying8) {
-            player8?.playVideo();
+    if (isLoading9) {
+        if (isPlaying9) {
+            player9?.playVideo();
           } else {
-           player8?.pauseVideo();
+           player9?.pauseVideo();
       }
     }
 

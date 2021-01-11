@@ -921,11 +921,11 @@ const TestEditFormContainer = ({history,match}) => {
            player8?.pauseVideo();
       }
     }
-    if (isLoading8) {
-        if (isPlaying8) {
-            player8?.playVideo();
+    if (isLoading9) {
+        if (isPlaying9) {
+            player9?.playVideo();
           } else {
-           player8?.pauseVideo();
+           player9?.pauseVideo();
       }
     }
 
