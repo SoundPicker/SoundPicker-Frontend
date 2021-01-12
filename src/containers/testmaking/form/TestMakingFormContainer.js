@@ -901,12 +901,12 @@ const TestMakingFormContainer = ({history}) => {
                 <BlankTop DesktopMargin='3.6' TabletMargin='2' MobileMargin='2.6'/>
                 <TopInputWrap>
                     <TopInputText text='제목'/>
-                    <TopInput inputName='title' inputPlaceholder='최대 20자' inputMaxLength='20' changeHandler={changeTitle} value={testTitle} />
+                    <TopInput inputName='title' inputPlaceholder='최대 25자' inputMaxLength='25' changeHandler={changeTitle} value={testTitle} />
                 </TopInputWrap>
                 <BlankTop DesktopMargin='3.6' TabletMargin='3.4' MobileMargin='2.6'/>
                 <TopInputWrap>
                     <TopInputText text='내용'/>
-                    <TopInput inputName='description' inputPlaceholder='최대 40자' inputMaxLength='40' changeHandler={changeDescription} value={testDescription}/>
+                    <TopInput inputName='description' inputPlaceholder='최대 45자' inputMaxLength='45' changeHandler={changeDescription} value={testDescription}/>
                 </TopInputWrap>
                 <BlankTop DesktopMargin='3.6' TabletMargin='3.7' MobileMargin='2.6'/>
                 <TopInputWrap>
@@ -927,7 +927,7 @@ const TestMakingFormContainer = ({history}) => {
                             <BlankTop DesktopMargin='1.9' TabletMargin='2' MobileMargin='2.6'/>
                             <QuestionListInputWrap>
                                 <QuestionListInputText text={i!==9?"Qustion00"+(i+1):"Qustion010"} />
-                                <QuestionListInput inputName='answer' inputPlaceholder='정답을 적어주세요'  changeText={changeText(i)} value={d.answer}/>
+                                <QuestionListInput inputName='answer' inputMaxLength="20" inputPlaceholder='정답을 적어주세요 (최대 20자)'  changeText={changeText(i)} value={d.answer}/>
                             </QuestionListInputWrap>
                             <BlankTop DesktopMargin='1.9' TabletMargin='3.9' MobileMargin='2.6'/>
                             <QuestionListHintWrap>
