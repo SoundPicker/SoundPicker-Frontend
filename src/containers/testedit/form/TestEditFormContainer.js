@@ -975,7 +975,7 @@ const TestEditFormContainer = ({history,match}) => {
                             <BlankTop DesktopMargin='1.9' TabletMargin='3.9' MobileMargin='2.6'/>
                             <QuestionListHintWrap>
                                 <QuestionListInputText text='Hint' />
-                                <QuestionListInput inputName='hint' inputPlaceholder='힌트를 자유롭게 적어주세요'  changeText={changeText(i)} value={d.hint} />
+                                <QuestionListInput inputName='hint' inputMaxLength="10" inputPlaceholder='힌트를 적어주세요 (최대 10자)'  changeText={changeText(i)} value={d.hint} />
                             </QuestionListHintWrap>
                         </QuestionListLeftWrap>
 
