@@ -1,38 +1,37 @@
-import React from "react";
-import { useEffect, useState, useRef } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import styled from "styled-components";
-import BlankTop from '../../components/common/BlankTop';
-import UnderLineWrap from '../../components/common/UnderLineWrap';
-import TextComponent from '../../components/common/TextComponent';
-import Button from './Button';
-import BoldTextComponent from '../../components/common/BoldTextComponent';
-import Bg1 from '../../assets/images/mypage_background1.png';
-import Bg2 from '../../assets/images/mypage_background2.png';
-import logo1 from '../../assets/images/image_watermark.png';
-import MyPageButton from "./MyPageButton";
-import {auth, changeName,changePassword} from "../../_actions/user_action";
-import { Input } from 'antd';
-
+import React from 'react'
+import { useEffect, useState, useRef } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import styled from 'styled-components'
+import BlankTop from '../../components/common/BlankTop'
+import UnderLineWrap from '../../components/common/UnderLineWrap'
+import TextComponent from '../../components/common/TextComponent'
+import Button from './Button'
+import BoldTextComponent from '../../components/common/BoldTextComponent'
+import Bg1 from '../../assets/images/mypage_background1.png'
+import Bg2 from '../../assets/images/mypage_background2.png'
+import logo1 from '../../assets/images/image_watermark.png'
+import MyPageButton from './MyPageButton'
+import { auth, changeName, changePassword } from '../../_actions/user_action'
+import { Input } from 'antd'
 
 const Background = styled.div`
-    width:100vw;
-    height:200vh;
-    background-repeat: no-repeat;
-    background-position: center top;
-    background-color: rgba( 12, 26, 34, 1);
-    background-size:contain;
-    @media  (max-width:768px) {
+  width: 100vw;
+  height: 200vh;
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-color: rgba(12, 26, 34, 1);
+  background-size: contain;
+  overflow: hidden;
+  @media (max-width: 768px) {
     background-image: url(${Bg2});
-    }
-    @media (min-width: 768px) {
-      background-image: url(${Bg1});
-    }
-`;
+  }
+  @media (min-width: 768px) {
+    background-image: url(${Bg1});
+  }
+`
 
-
-const Wrapper=styled.div`
- position: absolute;
+const Wrapper = styled.div`
+  position: absolute;
   width: 100%;
   height: 200%;
   background-size: cover;
@@ -40,132 +39,128 @@ const Wrapper=styled.div`
   flex-direction: column;
   flex-wrap: wrap;
   align-items: center;
-  
 
-  @media (min-width: 768px) and (max-width:1024px) { //between
-    margin-top:3%;
-      width:100%auto;
-    }
-
-    @media (min-width: 1024px) { //desktop
-      margin-top:3%;
-      width:100%auto;
-    }
-    @media (max-width: 767px) { //iphone
-      width:100%auto;
-        margin-top:3%;
+  @media (min-width: 768px) and (max-width: 1024px) {
+    //between
+    margin-top: 3%;
+    width: 100%auto;
   }
 
-`;
+  @media (min-width: 1024px) {
+    //desktop
+    margin-top: 3%;
+    width: 100%auto;
+  }
+  @media (max-width: 767px) {
+    //iphone
+    width: 100%auto;
+    margin-top: 3%;
+  }
+`
 
-const Content=styled.div`
-    display: flex;
+const Content = styled.div`
+  display: flex;
   flex-direction: row;
   width: 70%;
   justify-content: space-between;
-  `
+`
 
-const Detail=styled.div`
-    display: flex;
+const Detail = styled.div`
+  display: flex;
   flex-direction: row;
   width: 100%;
   justify-content: space-between;
 `
 
 const MyIcon = styled.img`
-  @media (min-width: 768px) and (max-width:1024px) { //between
-    width:221px;
-    }
-
-    @media (min-width: 1024px) { //desktop
-    width:297px;
-    }
-    @media (max-width: 767px) { //iphone
-      width:150px;
+  @media (min-width: 768px) and (max-width: 1024px) {
+    //between
+    width: 221px;
   }
-`;
+
+  @media (min-width: 1024px) {
+    //desktop
+    width: 297px;
+  }
+  @media (max-width: 767px) {
+    //iphone
+    width: 150px;
+  }
+`
 
 MyIcon.defaultProps = {
   src: logo1,
-};
+}
 
-
-
-
-function MyPage({props}) {
-
-  const [myState, setMyState] =useState({status: 'idle', member:null});
-  const dispatch = useDispatch();
-  const nameInput = useRef();
-  const passwordInput = useRef();
-  useEffect(()=>{
-    dispatch(()=>{
+function MyPage({ props }) {
+  const [myState, setMyState] = useState({ status: 'idle', member: null })
+  const dispatch = useDispatch()
+  const nameInput = useRef()
+  const passwordInput = useRef()
+  useEffect(() => {
+    dispatch(() => {
       dispatch(auth()).then(response => {
-        setMyState({status:'pending'});
-        const data=response.payload.data;
-        setTimeout(() => setMyState({ status: 'resolved' , member:data}), 600);
-         })});
-
-
-    (async()=>{
-      try{
+        setMyState({ status: 'pending' })
+        const data = response.payload.data
+        setTimeout(() => setMyState({ status: 'resolved', member: data }), 600)
+      })
+    })
+    ;(async () => {
+      try {
         //setMyState({status:'pending'});
         //const result=await auth().payload;
         //console.log(result);
-       // setTimeout(() => setMyState({ status: 'resolved' , member:data}), 600);
-      }catch(e){
-       // setMyState({status:'rejected', member:null});
+        // setTimeout(() => setMyState({ status: 'resolved' , member:data}), 600);
+      } catch (e) {
+        // setMyState({status:'rejected', member:null});
       }
-    })();
-  },[]);
+    })()
+  }, [])
 
-  const onChangeInputs = async (evt) => {
-    const { name, value } = evt.target;
+  const onChangeInputs = async evt => {
+    const { name, value } = evt.target
     try {
-        await changeName( {
-            ...myState.member,
-            [name]: value,
-        });
-        setMyState({
-            status: 'resolved',
-            member: {
-                ...myState.member,
-                [name]: value,
-            }
-        });
-    } catch (e) {
-        console.error(e);
-    }
-};
-
-const onChangePassword = async (evt) => {
-  const { name, value } = evt.target;
-  try {
-      await changePassword( {
+      await changeName({
+        ...myState.member,
+        [name]: value,
+      })
+      setMyState({
+        status: 'resolved',
+        member: {
           ...myState.member,
           [name]: value,
-      });
-      setMyState({
-          status: 'resolved',
-          member: {
-              ...myState.member,
-              [name]: value,
-          }
-      });
-  } catch (e) {
-      console.error(e);
+        },
+      })
+    } catch (e) {
+      console.error(e)
+    }
   }
-};
 
+  const onChangePassword = async evt => {
+    const { name, value } = evt.target
+    try {
+      await changePassword({
+        ...myState.member,
+        [name]: value,
+      })
+      setMyState({
+        status: 'resolved',
+        member: {
+          ...myState.member,
+          [name]: value,
+        },
+      })
+    } catch (e) {
+      console.error(e)
+    }
+  }
 
-
-
-
-switch (myState.status) {
-  case 'pending':
-      return <h1></h1>;
-  case 'resolved':
+  switch (myState.status) {
+    case 'pending':
+      return <h1></h1>
+    case 'resolved':
       return (
+
         myState.member&&
         <Background>
             <Wrapper>
@@ -216,15 +211,12 @@ switch (myState.status) {
               
                 </Wrapper>
           </Background> 
-       
-
-      );
-  case 'rejected':
-      return <h1>해당 멤버가 없습니다</h1>;
-  case 'idle':
-  default: 
+      )
+    case 'rejected':
+      return <h1>해당 멤버가 없습니다</h1>
+    case 'idle':
+    default:
       return <div></div>
+  }
 }
-
-};
-export default MyPage;
+export default MyPage
