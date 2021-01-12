@@ -2,7 +2,7 @@ import styled from "styled-components";
 import {Link} from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useEffect, useState, useRef } from 'react';
-import {  useHistory } from "react-router-dom";
+import { logoutUser } from "../../../_actions/user_action";
 const HeaderDiv = styled.div`
   display: flex;
   justify-content: flex-end;
@@ -75,22 +75,11 @@ function Header() {
   const LogOut = async(evt) => {
     window.localStorage.setItem('isAuth','false');
     window.localStorage.setItem('jwt','');
-
-    const { name, value } = evt.target;
-    try {
-        
-        setMyState({
-            status: 'resolved',
-            member: {
-                ...myState.member,
-                [name]: null,
-            }
-        });
-    } catch (e) {
-        console.error(e);
-    }
-  }
-
+      dispatch(logoutUser());
+      setMyState({status:'pending'});
+      setTimeout(() => setMyState({ status: 'resolved' , member:null}), 600);
+    };
+    
   switch (window.localStorage.getItem('isAuth')) {
     case 'false':
       return (
@@ -113,7 +102,7 @@ function Header() {
         <HeaderDiv>
         <SignUpDiv>
           <Link to="/">
-            <SignOut onClick={LogOut} >로그아웃</SignOut>
+            <SignOut onClick={(LogOut)} >로그아웃</SignOut>
             </Link>
         </SignUpDiv>
         </HeaderDiv>

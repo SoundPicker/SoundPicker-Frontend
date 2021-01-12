@@ -100,13 +100,13 @@ function MyPage({props}) {
   
   const nameInput = useRef();
   const passwordInput = useRef();
+
   useEffect(()=>{
-    dispatch(()=>{
       dispatch(auth()).then(response => {
         setMyState({status:'pending'});
         const data=response.payload.data;
         setTimeout(() => setMyState({ status: 'resolved' , member:data}), 600);
-         })});
+         });
   },[]);
 
   const onChangeInputs = async (evt) => {

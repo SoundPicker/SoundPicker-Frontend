@@ -78,11 +78,8 @@ export const deleteTest=(id)=>{
 }
 
 export const logoutUser=()=>{
-    const request = axios.get(`${USER_SERVER}/logout`)
-    .then(response => response.data);
-
     return {
         type: LOGOUT_USER,
-        payload: request
+        payload: null
     }
 }
