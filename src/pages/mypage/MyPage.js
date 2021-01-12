@@ -8,8 +8,8 @@ import UnderLineWrap from '../../components/common/UnderLineWrap';
 import TextComponent from '../../components/common/TextComponent';
 import Button from './Button';
 import BoldTextComponent from './BoldTextComponent';
-import Bg1 from '../../assets/images/mypage_background1.png';
-import Bg2 from '../../assets/images/mypage_background2.png';
+import Bg1 from '../../assets/images/mypage_background1.jpg';
+import Bg2 from '../../assets/images/mypage_background2.jpg';
 import logo1 from '../../assets/images/image_watermark.png';
 
 import {auth, changeName,changePassword,deleteTest} from "../../_actions/user_action";
@@ -24,11 +24,14 @@ const Background = styled.div`
     background-position: center top;
     background-color: rgba( 12, 26, 34, 1);
     background-size:contain;
-    @media  (max-width:768px) {
-    background-image: url(${Bg2});
+    @media (min-width: 768px) and (max-width:1024px){
+      background-image: url(${Bg2});
     }
-    @media (min-width: 768px) {
-      background-image: url(${Bg1});
+ @media  (min-width:1024px) {
+  background-image: url(${Bg1});
+    }
+    @media (max-width: 768px) {
+      background-image: url(${Bg2});
     }
 `;
 

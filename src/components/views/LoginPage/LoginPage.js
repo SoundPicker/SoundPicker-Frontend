@@ -10,9 +10,9 @@ import styled from "styled-components"
 import TextComponent from '../../../components/common/TextComponent';
 import BlankTop from '../../../components/common/BlankTop';
 import UnderLineComponent from './UnderLineComponent';
-import Bg1 from '../../../assets/images/login_background1.png';
-import Bg2 from '../../../assets/images/login_background2.png';
-import Bg3 from '../../../assets/images/login_background3.png';
+import Bg1 from '../../../assets/images/login_background1.jpg';
+import Bg2 from '../../../assets/images/login_background2.jpg';
+import Bg3 from '../../../assets/images/login_background3.jpg';
 import logo1 from '../../../assets/images/image_watermark.png';
 import Text from './Text';
 import ColorButton from './ColorButton';

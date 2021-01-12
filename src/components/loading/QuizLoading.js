@@ -4,8 +4,8 @@ import TitleComponent from './TitleComponent'
 import ContentComponent from './ContentComponent'
 import BlankTop from '../common/BlankTop'
 import LoadingComponent from '../common/LoadingComponent'
-import Bg1 from '../../assets/images/all_background.png'
-import Bg2 from '../../assets/images/all_background2.png'
+import Bg1 from '../../assets/images/quizloading_background1.jpg'
+import Bg2 from '../../assets/images/quizloading_background2.jpg'
 
 const Background = styled.div`
   width: 100vw;
@@ -14,12 +14,15 @@ const Background = styled.div`
   background-position: center top;
   background-color: rgba(12, 26, 34, 1);
   background-size: contain;
-  @media (max-width: 768px) {
-    background-image: url(${Bg2});
-  }
-  @media (min-width: 768px) {
-    background-image: url(${Bg1});
-  }
+  @media (min-width: 768px) and (max-width:1024px){
+      background-image: url(${Bg2});
+    }
+ @media  (min-width:1024px) {
+  background-image: url(${Bg1});
+    }
+    @media (max-width: 768px) {
+      background-image: url(${Bg2});
+    }
 `
 
 const Wrapper = styled.div`
@@ -33,7 +36,7 @@ const Wrapper = styled.div`
   align-items: center;
   @media (min-width: 768px) and (max-width: 1024px) {
     //between
-    margin-top: 12%;
+    margin-top: 45%;
     width: 100%auto;
   }
 
@@ -45,7 +48,7 @@ const Wrapper = styled.div`
   @media (max-width: 767px) {
     //iphone
     width: 100%auto;
-    margin-top: 30%;
+    margin-top: 40%;
   }
 `
 const QuizLoading = () => {
