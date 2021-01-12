@@ -16,6 +16,9 @@ const CategoryName = styled.span`
     font-size: 1.2rem;
     line-height: 1.035;
   }
+  @media (max-width: 568px) {
+    font-size: 0.8rem;
+  }
 `;
 
 const CategoryBtn = styled.button`
@@ -33,12 +36,33 @@ const CategoryBtn = styled.button`
     outline: none;
     box-shadow: 0 0 12px 0 #60ffda;
     background-color: #60ffda;
+
+    @media (max-width: 568px) {
+      width: 0.6rem;
+      height: 0.6rem;
+      padding: 0;
+      box-shadow: 0 0 8px 0 #60ffda;
+    }
   }
   &:hover {
     width: 2rem;
     height: 2rem;
     box-shadow: 0 0 12px 0 #ffffff;
     outline: none;
+
+    @media (max-width: 568px) {
+      width: 0.6rem;
+      height: 0.6rem;
+      padding: 0;
+      box-shadow: 0 0 8px 0 #ffffff;
+    }
+  }
+
+  @media (max-width: 568px) {
+    width: 0.5rem;
+    height: 0.5rem;
+    padding: 0;
+    box-shadow: 0 0 4px 0 #ffffff;
   }
 `;
 
@@ -62,6 +86,10 @@ const CategoryItem = styled.div`
     &:nth-child(5) {
       margin-right: 3.2rem;
     }
+  }
+  @media (max-width: 568px) {
+    width: 6rem;
+    margin-right: 2rem;
   }
 `;
 

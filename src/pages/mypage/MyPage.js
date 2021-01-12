@@ -11,7 +11,7 @@ import BoldTextComponent from './BoldTextComponent';
 import Bg1 from '../../assets/images/mypage_background1.jpg';
 import Bg2 from '../../assets/images/mypage_background2.jpg';
 import logo1 from '../../assets/images/image_watermark.png';
-
+import StartLoading from "../../components/loading/StartLoading";
 import {auth, changeName,changePassword,deleteTest} from "../../_actions/user_action";
 import { Input } from 'antd';
 
@@ -180,7 +180,7 @@ const onDeleteTest = async (evt) => {
 
 switch (myState.status) {
   case 'pending':
-      return <h1></h1>;
+      return <StartLoading/>;
   case 'resolved':
       return (
         myState.member&&
@@ -207,7 +207,7 @@ switch (myState.status) {
                 <Content>
                   <Input placeholder='******'
                     style={{ color: 'white'  }} ref={passwordInput} bordered={false} name="password" onChange={onChangePassword}/>
-                  <Button font='12' onClick = {() => {passwordInput.current.focus(); console.log("click"); }} >비밀번호 변경</Button>
+                  <Button font='12' onClick = {() => {passwordInput.current.focus(); }} >비밀번호 변경</Button>
                 </Content>
                 <BlankTop DesktopMargin='8' TabletMargin='5' MobileMargin='5' />
                 <Content>
@@ -221,7 +221,7 @@ switch (myState.status) {
                   <Detail>
                   <BoldTextComponent title={member.title}  DesktopLength='15' TabletLength='10' MobileLength='7'/>
                   <div>
-                  <Button font='12' >수정</Button>
+                  <Button font='12' onClick={() => history.push(`/testedit/${member.id}`)}>수정</Button>
                    <Button font='12' onClick={()=>onDeleteTest(member)}>삭제</Button>
                   <Button font='12'  color="#60FFDA" border="#60FFDA"  onClick={() => history.push(`/test/${member.id}`)} > 플레이</Button> </div></Detail>  
                   <Detail>
@@ -238,7 +238,7 @@ switch (myState.status) {
           </Background> 
       )
     case 'rejected':
-      return <h1>해당 멤버가 없습니다</h1>
+      return <h1>해당 페이지가 없습니다. </h1>
     case 'idle':
     default:
       return <div></div>

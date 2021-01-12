@@ -24,6 +24,11 @@ const Wrap = styled.div`
   @media (max-width: 768px) {
     height: 1.4rem;
   }
+
+  @media (max-width: 503px) {
+    height: 2.2rem;
+    align-items: center;
+  }
 `;
 
 const Title = styled.strong`
@@ -33,6 +38,12 @@ const Title = styled.strong`
 
   @media (max-width: 768px) {
     font-size: 1.4rem;
+  }
+
+  @media (max-width: 503px) {
+    font-size: 1.2rem;
+    font-weight: 500;
+    line-height: 2.5rem;
   }
 `;
 

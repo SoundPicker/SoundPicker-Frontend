@@ -21,6 +21,9 @@ const Wrap = styled.div`
   @media (max-width: 1089px) {
     height: 6.8rem;
   }
+  @media (max-width: 503px) {
+    height: 6rem;
+  }
 `;
 
 const Header = () => {

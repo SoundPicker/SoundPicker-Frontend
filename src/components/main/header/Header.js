@@ -28,7 +28,8 @@ const HeaderDiv = styled.div`
   }
 
   @media (max-width: 568px) {
-    padding: 1.2rem 1.2rem;
+    height: 3.4rem;
+    padding: 1.1rem 1.4rem;
   }
 `;
 
@@ -44,8 +45,9 @@ const LoginDiv = styled.div`
     margin-right: 0.9rem;
   }
   @media (max-width: 568px) {
-    width: 5.6rem;
-    margin-right: 0;
+    width: 3.7rem;
+    height: 1.2rem;
+    margin-right: 0.8rem;
   }
 `;
 
@@ -57,7 +59,7 @@ const Login = styled.strong`
     font-size: 1.4rem;
   }
   @media (max-width: 568px) {
-    font-size: 1.2rem;
+    font-size: 0.8rem;
   }
 `;
 
@@ -70,7 +72,8 @@ const SignUpDiv = styled.div`
   cursor: pointer;
 
   @media (max-width: 568px) {
-    width: 6rem;
+    width: 4.3rem;
+    height: 1.2rem;
   }
 `;
 
@@ -82,7 +85,7 @@ const SignUp = styled.strong`
     font-size: 1.4rem;
   }
   @media (max-width: 568px) {
-    font-size: 1.2rem;
+    font-size: 0.8rem;
   }
 `;
 

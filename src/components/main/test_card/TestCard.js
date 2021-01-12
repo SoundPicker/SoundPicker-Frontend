@@ -5,8 +5,10 @@ import styled, { css } from "styled-components";
 import PlusDesktop from "../../../assets/desktop/button_add.png";
 import PlusTablet from "../../../assets/tablet/button_add.png";
 import PlusMobile from "../../../assets/mobile/button_add.png";
+import PlusSmallMobile from "../../../assets/small_mobile/button_add.png";
 import BlankTop from "../../common/BlankTop";
 import PlayImg from "../../../assets/play.png";
+import MainBlankTop from "../MainBlankTop";
 
 const PlusBtn = styled.div`
   display: block;
@@ -35,6 +37,11 @@ const PlusBtn = styled.div`
     width: 27.6rem;
     height: 5.5rem;
     background-image: url(${PlusMobile});
+  }
+  @media (max-width: 568px) {
+    width: 14.6rem;
+    height: 2.8rem;
+    background-image: url(${PlusSmallMobile});
   }
 `;
 
@@ -81,14 +88,6 @@ const Card = styled.div`
           bottom/100% 3px;
     `}
 
-  /*  
-  border-right-color: rgba(96, 121, 255, 1);
-  border-left-color: #60ffda;
-  background: linear-gradient(to left, rgba(96, 121, 255, 1) 0%, #60ffda 100%)
-      top/100% 3px,
-    linear-gradient(to left, rgba(96, 121, 255, 1) 0%, #60ffda 100%) bottom/100%
-      3px;
-  */ 
   background-repeat: no-repeat;
 
   &:focus {
@@ -135,82 +134,9 @@ const Card = styled.div`
     width: 27.6rem;
     padding: 3.4rem 2.4rem 2.9rem 2.4rem;
   }
-`;
-
-const RotateBorder = styled.span`
-  position: absolute;
-  display: block;
-  filter: blur(3px);
-  &:nth-child(1) {
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background: linear-gradient(90deg, transparent, #60ffda);
-    animation: animate1 1s linear infinite;
-  }
-  @keyframes animate1 {
-    0% {
-      left: 100%;
-    }
-    50%,
-    100% {
-      left: -100%;
-    }
-  }
-  &:nth-child(2) {
-    top: -100%;
-    left: 0;
-    width: 3px;
-    height: 100%;
-    background: linear-gradient(180deg, transparent, #60ffda);
-    animation: animate2 1s linear infinite;
-    animation-delay: 0.25s;
-  }
-  @keyframes animate2 {
-    0% {
-      top: -100%;
-    }
-    50%,
-    100% {
-      top: 100%;
-    }
-  }
-  &:nth-child(3) {
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background: linear-gradient(270deg, transparent, #60ffda);
-    animation: animate3 1s linear infinite;
-    animation-delay: 0.5s;
-  }
-  @keyframes animate3 {
-    0% {
-      left: -100%;
-    }
-    50%,
-    100% {
-      left: 100%;
-    }
-  }
-  &:nth-child(4) {
-    bottom: -100%;
-    right: 0;
-    width: 3px;
-    height: 100%;
-    background: linear-gradient(360deg, transparent, #60ffda);
-    animation: animate4 1s linear infinite;
-    animation-delay: 0.75s;
-  }
-  @keyframes animate4 {
-    0% {
-      bottom: -100%;
-    }
-    50%,
-    100% {
-      bottom: 100%;
-    }
+  @media (max-width: 568px) {
+    width: 14.6rem;
+    padding: 1.8rem 1.3rem 1.3rem;
   }
 `;
 
@@ -231,6 +157,11 @@ const CardTitle = styled.div`
     font-size: 2.4rem;
     line-height: 3.4rem;
   }
+  @media (max-width: 568px) {
+    width: 11.4rem;
+    font-size: 1.4rem;
+    line-height: 2.1rem;
+  }
 `;
 
 const CardContent = styled.div`
@@ -247,16 +178,29 @@ const CardContent = styled.div`
     width: 22.2rem;
     line-height: 2.2rem;
   }
+  @media (max-width: 568px) {
+    width: 11.4rem;
+    font-size: 0.8rem;
+    line-height: 1.2rem;
+  }
 `;
 
 const TestNumber = styled.div`
   font-size: 1.2rem;
   line-height: 1.8rem;
+
+  @media (max-width: 568px) {
+    font-size: 0.8rem;
+  }
 `;
 
 const Play = styled.span`
   font-size: 1.2rem;
   line-height: 1.8rem;
+
+  @media (max-width: 568px) {
+    font-size: 0.8rem;
+  }
 `;
 
 const PlayBtn = styled.div`
@@ -264,12 +208,13 @@ const PlayBtn = styled.div`
   height: 2.8rem;
   background-image: url(${PlayImg});
   background-repeat: no-repeat;
-  background-position: center center;
+  background-position: right center;
 `;
 
 const PlayBtnBox = styled.div`
   display: flex;
   width: 6.6rem;
+  justify-content: flex-end;
   align-items: center;
 `;
 
@@ -295,11 +240,7 @@ const CardWrapOne = styled.div`
   align-items: center;
 `;
 
-const CardWrapTwo = styled.div`
-  @media (max-width: 568px) {
-    display: none;
-  }
-`;
+const CardWrapTwo = styled.div``;
 
 const CardWrapThree = styled.div`
   @media (max-width: 828px) {
@@ -347,8 +288,7 @@ const CardListWrap = styled.div`
   }
 
   @media (max-width: 568px) {
-    width: 27.6rem;
-    justify-content: center;
+    width: 30.4rem;
   }
 `;
 
@@ -373,6 +313,12 @@ const GradientBox = styled.div`
   @media (max-width: 828px) {
     width: 60.1rem;
     left: -1.55rem;
+  }
+
+  @media (max-width: 568px) {
+    width: 32.2rem;
+    height: 19.8rem;
+    left: -0.9rem;
   }
 `;
 
@@ -432,6 +378,13 @@ const LoadMoreBtn = styled.div`
     height: 4.8rem;
     margin: 0.7rem auto 0;
     letter-spacing: 0.005em;
+  }
+
+  @media (max-width: 568px) {
+    width: 30.4rem;
+    height: 3.6rem;
+    margin: 1.2rem auto 0;
+    font-size: 1.2rem;
   }
 `;
 
@@ -516,8 +469,9 @@ const CardList = ({ testList, testList2 }) => {
     one -= 3;
   }
 
-  const maxHeight =
-    width > 1024 ? 35 * (divided + leftOver) : 29 * (divided + leftOver);
+  const max = Math.max(one, two, three, four);
+
+  const maxHeight = 30 * max;
   console.log(maxHeight);
 
   return (
@@ -539,26 +493,29 @@ const CardList = ({ testList, testList2 }) => {
                       random={Math.floor(Math.random() * 10)}
                     >
                       <CardTitle>{item["title"]}</CardTitle>
-                      <BlankTop
+                      <MainBlankTop
                         DesktopMargin={3}
                         TabletMargin={2.7}
                         MobileMargin={2.4}
+                        SmallMobileMargin={1.9}
                       />
                       <CardContent>{item["description"]}</CardContent>
-                      <BlankTop
-                        DesktopMargin={3.8}
-                        TabletMargin={3.3}
-                        MobileMargin={4.8}
+                      <MainBlankTop
+                        DesktopMargin={3}
+                        TabletMargin={2.7}
+                        MobileMargin={2.4}
+                        SmallMobileMargin={1.9}
                       />
                       <PlayFooter>
                         <TestNumber>{item["questionCount"]}문제</TestNumber>
                         <PlayBox />
                       </PlayFooter>
                     </Card>
-                    <BlankTop
+                    <MainBlankTop
                       DesktopMargin={1.6}
                       TabletMargin={1.6}
                       MobileMargin={1.8}
+                      SmallMobileMargin={1.2}
                     />
                   </>
                 );
@@ -579,26 +536,29 @@ const CardList = ({ testList, testList2 }) => {
                         random={Math.floor(Math.random() * 10)}
                       >
                         <CardTitle>{item["title"]}</CardTitle>
-                        <BlankTop
+                        <MainBlankTop
                           DesktopMargin={3}
                           TabletMargin={2.7}
                           MobileMargin={2.4}
+                          SmallMobileMargin={1.9}
                         />
                         <CardContent>{item["description"]}</CardContent>
-                        <BlankTop
-                          DesktopMargin={3.8}
-                          TabletMargin={3.3}
-                          MobileMargin={4.8}
+                        <MainBlankTop
+                          DesktopMargin={3}
+                          TabletMargin={2.7}
+                          MobileMargin={2.4}
+                          SmallMobileMargin={1.9}
                         />
                         <PlayFooter>
                           <TestNumber>{item["questionCount"]}문제</TestNumber>
                           <PlayBox />
                         </PlayFooter>
                       </Card>
-                      <BlankTop
+                      <MainBlankTop
                         DesktopMargin={1.6}
                         TabletMargin={1.6}
                         MobileMargin={1.8}
+                        SmallMobileMargin={1.2}
                       />
                     </>
                   );
@@ -613,26 +573,29 @@ const CardList = ({ testList, testList2 }) => {
                         random={Math.floor(Math.random() * 10)}
                       >
                         <CardTitle>{item["title"]}</CardTitle>
-                        <BlankTop
+                        <MainBlankTop
                           DesktopMargin={3}
                           TabletMargin={2.7}
                           MobileMargin={2.4}
+                          SmallMobileMargin={1.9}
                         />
                         <CardContent>{item["description"]}</CardContent>
-                        <BlankTop
-                          DesktopMargin={3.8}
-                          TabletMargin={3.3}
-                          MobileMargin={4.8}
+                        <MainBlankTop
+                          DesktopMargin={3}
+                          TabletMargin={2.7}
+                          MobileMargin={2.4}
+                          SmallMobileMargin={1.9}
                         />
                         <PlayFooter>
                           <TestNumber>{item["questionCount"]}문제</TestNumber>
                           <PlayBox />
                         </PlayFooter>
                       </Card>
-                      <BlankTop
+                      <MainBlankTop
                         DesktopMargin={1.6}
                         TabletMargin={1.6}
                         MobileMargin={1.8}
+                        SmallMobileMargin={1.2}
                       />
                     </>
                   );

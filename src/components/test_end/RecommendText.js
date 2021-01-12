@@ -37,6 +37,10 @@ const Title = styled.span`
   @media (max-width: 768px) {
     font-size: 1.4rem;
   }
+
+  @media (max-width: 503px) {
+    font-size: 1.2rem;
+  }
 `;
 
 const RecommendText = () => {

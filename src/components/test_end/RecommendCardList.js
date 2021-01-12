@@ -37,6 +37,10 @@ const CardBox = styled.div`
     width: 52.3rem;
     height: 52.9rem;
   }
+
+  @media (max-width: 503px) {
+    width: 30.4rem;
+  }
 `;
 
 const Card = styled.button`
@@ -71,6 +75,11 @@ const Card = styled.button`
     height: 16.5rem;
     padding: 2.2rem 1.591rem 1.678rem 1.782rem;
   }
+
+  @media (max-width: 503px) {
+    width: 14.6rem;
+    padding: 1.8rem 1.3rem 1.3rem;
+  }
 `;
 
 const CardTitle = styled.div`
@@ -99,6 +108,12 @@ const CardTitle = styled.div`
     font-size: 1.8rem;
     line-height: 1.5;
   }
+
+  @media (max-width: 503px) {
+    width: 11.4rem;
+    font-size: 1.4rem;
+    line-height: 2.1rem;
+  }
 `;
 
 const CardContent = styled.div`
@@ -122,6 +137,12 @@ const CardContent = styled.div`
   @media (max-width: 768px) {
     width: 21.357rem;
     height: 4.195rem;
+  }
+
+  @media (max-width: 503px) {
+    width: 11.4rem;
+    font-size: 0.8rem;
+    line-height: 1.2rem;
   }
 `;
 

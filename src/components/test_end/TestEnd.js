@@ -5,26 +5,53 @@ import LogoTitle from "./LogoTitle";
 import TestTitle from "./TestTitle";
 import ThankYouText from "./ThankYouText";
 import Divider from "../common/Divider";
+import TestEndDivider from "../test_end/TestEndDivider";
 import RecommendText from "./RecommendText";
 import RecommendCardList from "./RecommendCardList";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import MainBlankTop from "../main/MainBlankTop";
 
 const TestEnd = ({ match, recommendList, title }) => {
   return (
     <Background>
       <Header />
-      <BlankTop DesktopMargin={12.3} TabletMargin={18.4} MobileMargin={6.7} />
+      <MainBlankTop
+        DesktopMargin={12.3}
+        TabletMargin={18.4}
+        MobileMargin={6.7}
+        SmallMobileMargin={5.6}
+      />
       <LogoTitle />
-      <BlankTop DesktopMargin={3.1} TabletMargin={2.8} MobileMargin={2.5} />
+      <MainBlankTop
+        DesktopMargin={3.1}
+        TabletMargin={2.8}
+        MobileMargin={2.5}
+        SmallMobileMargin={1}
+      />
       <TestTitle title={title["data"][0]["testTitle"]} />
       <BlankTop DesktopMargin={1.2} TabletMargin={1.2} MobileMargin={1.0} />
       <ThankYouText />
-      <BlankTop DesktopMargin={5.6} TabletMargin={4.4} MobileMargin={3.3} />
-      <Divider DesktopLength={6} TabletLength={6} MobileLength={4.8} />
-      <BlankTop DesktopMargin={5.5} TabletMargin={4.4} MobileMargin={3.5} />
+      <MainBlankTop
+        DesktopMargin={5.6}
+        TabletMargin={4.4}
+        MobileMargin={3.3}
+        SmallMobileMargin={2.7}
+      />
+      <TestEndDivider DesktopLength={6} TabletLength={6} MobileLength={0} />
+      <MainBlankTop
+        DesktopMargin={5.5}
+        TabletMargin={4.4}
+        MobileMargin={3.5}
+        SmallMobileMargin={2.7}
+      />
       <RecommendText />
-      <BlankTop DesktopMargin={5.4} TabletMargin={4.4} MobileMargin={3.5} />
+      <MainBlankTop
+        DesktopMargin={5.4}
+        TabletMargin={4.4}
+        MobileMargin={3.5}
+        SmallMobileMargin={1.9}
+      />
       <RecommendCardList recommendList={recommendList} />
       <BlankTop DesktopMargin={2.8} TabletMargin={3.7} MobileMargin={3} />
       <>

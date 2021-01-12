@@ -2,6 +2,7 @@ import styled from "styled-components";
 import BgDesktop from "../../assets/desktop/test_end_all_background.png";
 import BgTablet from "../../assets/tablet/test_end_all_background.png";
 import BgMobile from "../../assets/mobile/test_end_all_background.png";
+import BgSmallMobile from "../../assets/small_mobile/all_background.png";
 
 const Warp = styled.div`
   width: 100vw;
@@ -20,6 +21,7 @@ const Warp = styled.div`
   }
   @media (max-width: 503px) {
     height: 150rem;
+    background-image: url(${BgSmallMobile});
   }
 `;
 const Background = ({ children }) => {

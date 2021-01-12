@@ -9,17 +9,26 @@ const BlankDiv = styled.div`
   @media only screen and (max-width: 768px) {
     margin-top: ${(props) => props.MobileMargin || 0}rem;
   }
+  @media only screen and (max-width: 568px) {
+    margin-top: ${(props) => props.SmallMobileMargin || 0}rem;
+  }
 `;
 
-const BlankTop = ({ DesktopMargin, TabletMargin, MobileMargin }) => {
+const MainBlankTop = ({
+  DesktopMargin,
+  TabletMargin,
+  MobileMargin,
+  SmallMobileMargin,
+}) => {
   // 이 친구는 마진을 담당하는 친구야... 예시로 만들어 놨지만 유용하게 써주길 바래
   return (
     <BlankDiv
       DesktopMargin={DesktopMargin}
       TabletMargin={TabletMargin}
       MobileMargin={MobileMargin}
+      SmallMobileMargin={SmallMobileMargin}
     ></BlankDiv>
   );
 };
 
-export default BlankTop;
+export default MainBlankTop;

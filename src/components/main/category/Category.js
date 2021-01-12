@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import BtnLeft from "../../../assets/button_left.png";
 import BtnRight from "../../../assets/button_right.png";
+import BtnLeftMobile from "../../../assets/small_mobile/button_left.png";
+import BtnRightMobile from "../../../assets/small_mobile/button_right.png";
 import BlankTop from "../../common/BlankTop";
 import CategoryList from "../category/CategoryList";
 
@@ -45,6 +47,12 @@ const LeftBtn = styled.button`
   @media (max-width: 768px) {
     margin-right: 2.6rem;
   }
+  @media (max-width: 568px) {
+    width: 4.8rem;
+    height: 4.8rem;
+    margin-right: 1.3rem;
+    background-image: url(${BtnLeftMobile});
+  }
 `;
 
 const RightBtn = styled.button`
@@ -60,6 +68,12 @@ const RightBtn = styled.button`
 
   &:focus {
     outline: none;
+  }
+
+  @media (max-width: 568px) {
+    width: 4.8rem;
+    height: 4.8rem;
+    background-image: url(${BtnRightMobile});
   }
 `;
 
