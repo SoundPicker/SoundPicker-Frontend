@@ -26,6 +26,10 @@ const HeaderDiv = styled.div`
     height: 6.4rem;
     padding: 1.2rem 1.8rem;
   }
+
+  @media (max-width: 568px) {
+    padding: 1.2rem 1.2rem;
+  }
 `;
 
 const LoginDiv = styled.div`
@@ -39,6 +43,10 @@ const LoginDiv = styled.div`
   @media (max-width: 768px) {
     margin-right: 0.9rem;
   }
+  @media (max-width: 568px) {
+    width: 5.6rem;
+    margin-right: 0;
+  }
 `;
 
 const Login = styled.strong`
@@ -47,6 +55,9 @@ const Login = styled.strong`
   color: #ffffff;
   @media (max-width: 768px) {
     font-size: 1.4rem;
+  }
+  @media (max-width: 568px) {
+    font-size: 1.2rem;
   }
 `;
 
@@ -57,6 +68,10 @@ const SignUpDiv = styled.div`
   width: 8.2rem;
   height: 4rem;
   cursor: pointer;
+
+  @media (max-width: 568px) {
+    width: 6rem;
+  }
 `;
 
 const SignUp = styled.strong`
@@ -65,6 +80,9 @@ const SignUp = styled.strong`
   color: #ffffff;
   @media (max-width: 768px) {
     font-size: 1.4rem;
+  }
+  @media (max-width: 568px) {
+    font-size: 1.2rem;
   }
 `;
 

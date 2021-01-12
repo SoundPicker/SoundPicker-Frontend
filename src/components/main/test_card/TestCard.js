@@ -296,8 +296,8 @@ const CardWrapOne = styled.div`
 `;
 
 const CardWrapTwo = styled.div`
-  & > ${Card} {
-    // 컬러 뒤집어서 주기
+  @media (max-width: 568px) {
+    display: none;
   }
 `;
 
@@ -308,10 +308,6 @@ const CardWrapThree = styled.div`
 `;
 
 const CardWrapFour = styled.div`
-  & > ${Card} {
-    // 컬러 뒤집어서 주기
-  }
-
   @media (max-width: 1440px) {
     display: none;
   }
@@ -348,6 +344,11 @@ const CardListWrap = styled.div`
 
   @media (max-width: 828px) {
     width: 57rem;
+  }
+
+  @media (max-width: 568px) {
+    width: 27.6rem;
+    justify-content: center;
   }
 `;
 

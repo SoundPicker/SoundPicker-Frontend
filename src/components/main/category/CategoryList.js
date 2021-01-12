@@ -93,7 +93,7 @@ const CategoryList = ({ categoryList, startNum, onClickDisplay }) => {
   console.log(categoryList);
   const { width } = useWindowDimensions();
 
-  const categoryNum = width > 1024 ? 7 : width > 828 ? 5 : 3;
+  const categoryNum = width > 1024 ? 7 : width > 828 ? 5 : width > 568 ? 3 : 2;
 
   return (
     <>

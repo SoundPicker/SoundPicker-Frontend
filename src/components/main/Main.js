@@ -62,6 +62,11 @@ const SearchIcon = styled.img.attrs({
   @media (max-width: 768px) {
     left: -5.6rem;
   }
+
+  @media (max-width: 568px) {
+    top: -0.4rem;
+    left: 3rem;
+  }
 `;
 
 const Input = styled.input`
@@ -86,6 +91,11 @@ const Input = styled.input`
     width: 33.9rem;
     font-size: 1.4rem;
     line-height: 1;
+  }
+
+  @media (max-width: 568px) {
+    width: 20.4rem;
+    font-size: 1rem;
   }
 `;
 
@@ -120,6 +130,9 @@ const SearchBorder = styled.hr`
   }
   @media (max-width: 768px) {
     width: 54.9rem;
+  }
+  @media (max-width: 568px) {
+    width: 35.8rem;
   }
 `;
 
