@@ -1,13 +1,13 @@
 import React from "react";
 import { useEffect, useState, useRef } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import {  useHistory } from "react-router-dom";
+import { useDispatch } from 'react-redux';
 import styled from "styled-components";
 import BlankTop from '../../components/common/BlankTop';
 import UnderLineWrap from '../../components/common/UnderLineWrap';
 import TextComponent from '../../components/common/TextComponent';
 import Button from './Button';
-import Button2 from "../../components/common/Button";
-import BoldTextComponent from '../../components/common/BoldTextComponent';
+import BoldTextComponent from './BoldTextComponent';
 import Bg1 from '../../assets/images/mypage_background1.png';
 import Bg2 from '../../assets/images/mypage_background2.png';
 import logo1 from '../../assets/images/image_watermark.png';
@@ -66,7 +66,7 @@ const Content=styled.div`
   `
 
 const Detail=styled.div`
-    display: flex;
+  display: flex;
   flex-direction: row;
   width: 100%;
   justify-content: space-between;
@@ -93,9 +93,11 @@ MyIcon.defaultProps = {
 
 
 function MyPage({props}) {
+  
 
   const [myState, setMyState] =useState({status: 'idle', member:null});
   const dispatch = useDispatch();
+  
   const nameInput = useRef();
   const passwordInput = useRef();
   useEffect(()=>{
@@ -105,18 +107,6 @@ function MyPage({props}) {
         const data=response.payload.data;
         setTimeout(() => setMyState({ status: 'resolved' , member:data}), 600);
          })});
-
-
-    (async()=>{ 
-      try{ 
-        //setMyState({status:'pending'}); 
-        //const result=await auth().payload; 
-        //console.log(result);
-       // setTimeout(() => setMyState({ status: 'resolved' , member:data}), 600);
-      }catch(e){
-       // setMyState({status:'rejected', member:null});
-      }
-    })();
   },[]);
 
   const onChangeInputs = async (evt) => {
@@ -158,7 +148,7 @@ const onChangePassword = async (evt) => {
 };
 
 
-  
+
 
 const onDeleteTest = async (evt) => {
   console.log(evt);
@@ -180,7 +170,7 @@ const onDeleteTest = async (evt) => {
   }
 };
 
-
+  const history = useHistory();
 
 switch (myState.status) {
   case 'pending':
@@ -219,11 +209,11 @@ switch (myState.status) {
                   
                   <div>
                   <Detail>
-                  <BoldTextComponent title={member.title}  DesktopLength='15' TabletLength='10' MobileLength='10'/>
+                  <BoldTextComponent title={member.title}  DesktopLength='15' TabletLength='10' MobileLength='7'/>
                   <div>
                   <Button font='12' >수정</Button>
                    <Button font='12' onClick={()=>onDeleteTest(member)}>삭제</Button>
-                  <Button font='12'  color="#60FFDA" border="#60FFDA"> 플레이</Button> </div></Detail>  
+                  <Button font='12'  color="#60FFDA" border="#60FFDA"  onClick={() => history.push(`/test/${member.id}`)} > 플레이</Button> </div></Detail>  
                   <Detail>
                   <TextComponent title={member.description}  DesktopLength='10' TabletLength='10' MobileLength='10'/>
                     </Detail> <BlankTop DesktopMargin='2' TabletMargin='2' MobileMargin='2' />
