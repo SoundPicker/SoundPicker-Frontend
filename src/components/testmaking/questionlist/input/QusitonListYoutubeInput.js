@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import React from 'react';
 
 const StyledInput = styled.input`
     width:100%;
@@ -26,18 +27,19 @@ const StyledInput = styled.input`
 
 
 
-const QustionListYoutubeInput = ({inputName,inputPlaceholder,inputMaxLength,getYoutubeId,value}) => {
+const QustionListYoutubeInput = ({inputName,inputPlaceholder,inputMaxLength,getYoutubeId,videoId,questionURL}) => {
+    console.log(videoId)
+    console.log(questionURL)
     return(
         <>
-        {value ? 
-        <StyledInput type='text' placeholder={inputPlaceholder} maxLength={inputMaxLength} name={inputName} value={`https://www.youtube.com/watch?v=${value}`} onChange={getYoutubeId} required/>        
-    :
-    <StyledInput type='text' placeholder={inputPlaceholder} maxLength={inputMaxLength} name={inputName} onChange={getYoutubeId} required/>
+ 
+        <StyledInput type='text' placeholder={inputPlaceholder} maxLength={inputMaxLength} name={inputName} value={videoId&&videoId.length===11 ? `https://www.youtube.com/watch?v=${videoId}`:questionURL} onChange={getYoutubeId} required/>        
+    
 
-    }
+    
 
         </>
     )
 }
 
-export default QustionListYoutubeInput;
+export default React.memo(QustionListYoutubeInput);

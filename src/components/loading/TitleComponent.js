@@ -8,11 +8,11 @@ const Title = styled.div`
     
     text-align:center;
     @media  (max-width:1024px) {
-        width:200px;
+        width:300px;
         margin-left:10px;
         margin-right:10px;
-        font-size:15px;
-        line-height: 25px;
+        font-size:20px;
+        line-height: 30px;
     }
 
     @media (min-width: 1024px) {

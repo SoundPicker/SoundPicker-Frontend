@@ -91,7 +91,7 @@ const StartTime = ({maxLengthCheck,onChangeMinutes,onChangeSeconds,questionStart
                     <Verse>
                         :
                     </Verse>
-                <Time  type="number" name='sec' placeholder="00" min={0} maxLength="2" value={questionStartsfrom||questionStartsfrom===0 ? questionStartsfrom%60:""} max={60} onChange={onChangeSeconds} onInput={maxLengthCheck} required />
+                <Time  type="number" name='sec' placeholder="00" min={0} maxLength="2" value={questionStartsfrom||questionStartsfrom===0 ? parseInt(questionStartsfrom % 60):""} max={60} onChange={onChangeSeconds} onInput={maxLengthCheck} required />
             </TimeWrap>
         </StyledStartWarp>
     )

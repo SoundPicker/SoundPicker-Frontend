@@ -1,11 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import ContentComponent from "./ContentComponent";
 import BlankTop from '../common/BlankTop';
 import LoadingComponent from '../common/LoadingComponent';
-import UnderLineWrap from '../common/UnderLineWrap';
-import Bg1 from '../../assets/images/start_background1.png';
-import Bg2 from '../../assets/images/all_background2.png';
+import Bg1 from '../../assets/images/startloading_background2.jpg';
+import Bg2 from '../../assets/images/startloading_background1.jpg';
 import logo1 from '../../assets/images/image_watermark.png';
 
 
@@ -16,11 +15,14 @@ const Background = styled.div`
     background-position: center top;
     background-color: rgba( 12, 26, 34, 1);
     background-size:contain;
-    @media  (max-width:768px) {
-  background-image: url(${Bg2});
+    @media (min-width: 768px) and (max-width:1024px){
+      background-image: url(${Bg2});
     }
-    @media (min-width: 768px) {
-      background-image: url(${Bg1});
+ @media  (min-width:1024px) {
+  background-image: url(${Bg1});
+    }
+    @media (max-width: 768px) {
+      background-image: url(${Bg2});
     }
 `;
 
@@ -35,7 +37,7 @@ const Wrapper=styled.div`
   flex-wrap: wrap;
   align-items: center;
   @media (min-width: 768px) and (max-width:1024px) { //between
-    margin-top:15%;
+    margin-top:45%;
       width:100%auto;
     }
 
@@ -45,7 +47,7 @@ const Wrapper=styled.div`
     }
     @media (max-width: 767px) { //iphone
       width:100%auto;
-        margin-top:30%;
+        margin-top:40%;
   }
 
 `;
@@ -67,7 +69,10 @@ MyIcon.defaultProps = {
   src: logo1,
 };
 
+
+
 const StartLoading = () => {
+
 
     return(
         <div>

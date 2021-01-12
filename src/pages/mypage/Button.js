@@ -6,9 +6,12 @@ const StyledButton = styled.button`
   padding-left: 15px;
   padding-right:15px;
   @media (max-width: 767px) { //iphone
-    padding-left: 10px;
-    padding-right:10px;
-    font-size:10px;
+    font-size:8px;
+    width:110px;
+    margin-left: 1px;
+    margin-right:1px;
+  padding-right:1px;
+  padding-left:1px;
   }
   padding-top:5px;
   padding-bottom:5px;
@@ -21,6 +24,7 @@ const StyledButton = styled.button`
   width:140px;
   cursor:pointer;
   outline:none;
+
 `
 
 function Button({ children, border, color, background, font, width,...rest }) {

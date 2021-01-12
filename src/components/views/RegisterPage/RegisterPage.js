@@ -7,9 +7,9 @@ import { useDispatch } from "react-redux";
 import TextComponent from "../../../components/common/TextComponent";
 import BlankTop from "../../../components/common/BlankTop";
 import UnderLineComponent from "./UnderLineComponent";
-import Bg1 from "../../../assets/images/login_background1.png";
-import Bg2 from "../../../assets/images/login_background2.png";
-import Bg3 from "../../../assets/images/login_background3.png";
+import Bg1 from "../../../assets/images/login_background1.jpg";
+import Bg2 from "../../../assets/images/login_background2.jpg";
+import Bg3 from "../../../assets/images/login_background3.jpg";
 import logo1 from "../../../assets/images/image_watermark.png";
 import Text from "./Text";
 import ColorButton from "./ColorButton";
@@ -23,6 +23,7 @@ const Background = styled.div`
   background-position: center top;
   background-color: #081923;
   background-size: contain;
+  border: 1px solid rgba(0, 0, 0, 0);
   @media (min-width: 768px) and (max-width: 1024px) {
     background-image: url(${Bg2});
   }
@@ -34,9 +35,6 @@ const Background = styled.div`
   }
 `;
 const Wrapper = styled.div`
-  position: absolute;
-  width: 100%;
-  height: 100%;
   background-size: cover;
   display: flex;
   flex-direction: column;
