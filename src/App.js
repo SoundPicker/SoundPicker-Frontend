@@ -10,7 +10,9 @@ import LoginPage from './components/views/LoginPage/LoginPage';
 import RegisterPage from './components/views/RegisterPage/RegisterPage';
 import TestEditPage from "./pages/testedit/TestEditPage";
 import Auth from './hoc/auth';
+
 const App = ({ match }) => {
+
   return (
     <Router>
       <Switch>

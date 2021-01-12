@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import Bg1920 from '../../assets/images/testmaking/background/1920TMBG.png';
-import Bg1024 from '../../assets/images/testmaking/background/1024TMBG.png';
-import Bg768 from '../../assets/images/testmaking/background/768TMBG.png';
+import Bg1920 from '../../assets/images/testmaking/background/1920TMBG.jpg';
+import Bg1024 from '../../assets/images/testmaking/background/1024TMBG.jpg';
+import Bg768 from '../../assets/images/testmaking/background/768TMBG.jpg';
 
 const Warp = styled.div`
     width:100%;
