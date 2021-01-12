@@ -1,39 +1,43 @@
-import React from 'react'
-import { useEffect, useState, useRef } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import styled from 'styled-components'
-import BlankTop from '../../components/common/BlankTop'
-import UnderLineWrap from '../../components/common/UnderLineWrap'
-import TextComponent from '../../components/common/TextComponent'
-import Button from './Button'
-import BoldTextComponent from '../../components/common/BoldTextComponent'
-import Bg1 from '../../assets/images/mypage_background1.png'
-import Bg2 from '../../assets/images/mypage_background2.png'
-import logo1 from '../../assets/images/image_watermark.png'
-import MyPageButton from './MyPageButton'
-import { auth, changeName, changePassword } from '../../_actions/user_action'
-import { Input } from 'antd'
+import React from "react";
+import { useEffect, useState, useRef } from 'react';
+import {  useHistory } from "react-router-dom";
+import { useDispatch } from 'react-redux';
+import styled from "styled-components";
+import BlankTop from '../../components/common/BlankTop';
+import UnderLineWrap from '../../components/common/UnderLineWrap';
+import TextComponent from '../../components/common/TextComponent';
+import Button from './Button';
+import BoldTextComponent from './BoldTextComponent';
+import Bg1 from '../../assets/images/mypage_background1.jpg';
+import Bg2 from '../../assets/images/mypage_background2.jpg';
+import logo1 from '../../assets/images/image_watermark.png';
+
+import {auth, changeName,changePassword,deleteTest} from "../../_actions/user_action";
+import { Input } from 'antd';
+
 
 const Background = styled.div`
-  width: 100vw;
-  height: 200vh;
-  background-repeat: no-repeat;
-  background-position: center top;
-  background-color: rgba(12, 26, 34, 1);
-  background-size: contain;
-  overflow: hidden;
-  @media (max-width: 768px) {
-    background-image: url(${Bg2});
-  }
-  @media (min-width: 768px) {
-    background-image: url(${Bg1});
-  }
-`
+    width:100vw;
+    height:2000vh;
+    border:1px solid rgba(0,0,0,0);
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-color: rgba( 12, 26, 34, 1);
+    background-size:contain;
+    @media (min-width: 768px) and (max-width:1024px){
+      background-image: url(${Bg2});
+    }
+ @media  (min-width:1024px) {
+  background-image: url(${Bg1});
+    }
+    @media (max-width: 768px) {
+      background-image: url(${Bg2});
+    }
+`;
 
-const Wrapper = styled.div`
-  position: absolute;
-  width: 100%;
-  height: 200%;
+
+const Wrapper=styled.div`
+
   background-size: cover;
   display: flex;
   flex-direction: column;
@@ -65,7 +69,7 @@ const Content = styled.div`
   justify-content: space-between;
 `
 
-const Detail = styled.div`
+const Detail=styled.div`
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -90,32 +94,27 @@ const MyIcon = styled.img`
 
 MyIcon.defaultProps = {
   src: logo1,
-}
+};
 
-function MyPage({ props }) {
-  const [myState, setMyState] = useState({ status: 'idle', member: null })
-  const dispatch = useDispatch()
-  const nameInput = useRef()
-  const passwordInput = useRef()
-  useEffect(() => {
-    dispatch(() => {
+
+
+
+function MyPage({props}) {
+  
+
+  const [myState, setMyState] =useState({status: 'idle', member:null});
+  const dispatch = useDispatch();
+  
+  const nameInput = useRef();
+  const passwordInput = useRef();
+
+  useEffect(()=>{
       dispatch(auth()).then(response => {
-        setMyState({ status: 'pending' })
-        const data = response.payload.data
-        setTimeout(() => setMyState({ status: 'resolved', member: data }), 600)
-      })
-    })
-    ;(async () => {
-      try {
-        //setMyState({status:'pending'});
-        //const result=await auth().payload;
-        //console.log(result);
-        // setTimeout(() => setMyState({ status: 'resolved' , member:data}), 600);
-      } catch (e) {
-        // setMyState({status:'rejected', member:null});
-      }
-    })()
-  }, [])
+        setMyState({status:'pending'});
+        const data=response.payload.data;
+        setTimeout(() => setMyState({ status: 'resolved' , member:data}), 600);
+         });
+  },[]);
 
   const onChangeInputs = async evt => {
     const { name, value } = evt.target
@@ -155,12 +154,35 @@ function MyPage({ props }) {
     }
   }
 
-  switch (myState.status) {
-    case 'pending':
-      return <h1></h1>
-    case 'resolved':
-      return (
 
+
+const onDeleteTest = async (evt) => {
+  console.log(evt);
+  try {
+      await deleteTest(evt.id);
+      console.log(myState)
+      const tests = myState.member.Tests.filter(test =>{
+          return test.id !== evt.id
+      })
+      setMyState({
+        status: 'resolved',
+        member: {
+          ...myState.member,
+          Tests:tests
+        }
+    });
+  } catch (e) {
+      console.error(e);
+  }
+};
+
+  const history = useHistory();
+
+switch (myState.status) {
+  case 'pending':
+      return <h1></h1>;
+  case 'resolved':
+      return (
         myState.member&&
         <Background>
             <Wrapper>
@@ -178,8 +200,8 @@ function MyPage({ props }) {
                 </Content>
                 <BlankTop DesktopMargin='5' TabletMargin='5' MobileMargin='5' />
                 <Content>
-                  <Input  style={{ color: 'white'  }} bordered={false} name="nickname" value={myState.member.email} disabled={true}/>
-                  <Button font='12' color='gray'>이메일 변경불가</Button>
+                <Input  style={{ color: 'white'  }} bordered={false} name="email" value={myState.member.email} disabled={true}/>
+                <Button font='12' color='gray'>이메일 변경불가</Button>
                 </Content>
                 <BlankTop DesktopMargin='5' TabletMargin='5' MobileMargin='5' />
                 <Content>
@@ -192,13 +214,16 @@ function MyPage({ props }) {
                   <BoldTextComponent title="마이테스트 수정"  DesktopLength='25' TabletLength='20' MobileLength='15'/>
                 </Content>
                 <BlankTop DesktopMargin='7' TabletMargin='3' MobileMargin='3' />
-
-                {myState.member.Tests && myState?.member?.Tests.map((member,i)=>
-                <div>
+            
+                  {myState.member.Tests && myState?.member?.Tests.map((member,i)=>
+                  
+                  <div>
                   <Detail>
-                    <BoldTextComponent title={member.title}  DesktopLength='15' TabletLength='10' MobileLength='10'/>
-                    <MyPageButton />  
-                  </Detail>  
+                  <BoldTextComponent title={member.title}  DesktopLength='15' TabletLength='10' MobileLength='7'/>
+                  <div>
+                  <Button font='12' >수정</Button>
+                   <Button font='12' onClick={()=>onDeleteTest(member)}>삭제</Button>
+                  <Button font='12'  color="#60FFDA" border="#60FFDA"  onClick={() => history.push(`/test/${member.id}`)} > 플레이</Button> </div></Detail>  
                   <Detail>
                     <TextComponent title={member.description}  DesktopLength='10' TabletLength='10' MobileLength='10'/>
                   </Detail> 
