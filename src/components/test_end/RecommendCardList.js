@@ -120,7 +120,7 @@ const CardContent = styled.div`
   }
 
   @media (max-width: 768px) {
-    width: 21.827rem;
+    width: 21.357rem;
     height: 4.195rem;
   }
 `;

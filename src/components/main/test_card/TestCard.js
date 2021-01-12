@@ -1,7 +1,7 @@
 // 카드 크기 때문에 breakpoint - 1440(추가), 768 -> 828로 변경
 import React, { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import PlusDesktop from "../../../assets/desktop/button_add.png";
 import PlusTablet from "../../../assets/tablet/button_add.png";
 import PlusMobile from "../../../assets/mobile/button_add.png";
@@ -17,7 +17,7 @@ const PlusBtn = styled.div`
   background-repeat: no-repeat;
   background-position: center center;
   border-radius: 8px;
-  // border: 3px solid transparent;
+  border: 3px solid transparent;
   background-color: transparent;
   cursor: pointer;
   overflow: hidden;
@@ -38,112 +38,104 @@ const PlusBtn = styled.div`
   }
 `;
 
-let ran = Math.floor(Math.random() * 10); //0-9까지 난수 리턴
-if (ran >= 0 && ran <= 5) {
-  ran = 0;
-} else {
-  ran = 1;
-}
-
 const Card = styled.div`
   display: block;
   width: 29.6rem;
   position: relative;
-  padding: 3.6rem 2.1rem 2rem 2.7rem;
+  padding: 3.6rem 2.7rem 2rem 2.7rem;
   border-radius: 10px;
   border: 3px solid transparent;
   cursor: pointer;
   color: #ffffff;
   background-color: transparent;
-  // overflow: hidden;
 
+  ${(props) =>
+    props.random >= 0 &&
+    props.random <= 4 &&
+    css`
+      border-right-color: #60ffda;
+      border-left-color: rgba(96, 121, 255, 1);
+      background: linear-gradient(
+            to left,
+            #60ffda 0%,
+            rgba(96, 121, 255, 1) 100%
+          )
+          top/100% 3px,
+        linear-gradient(to left, #60ffda 0%, rgba(96, 121, 255, 1) 100%)
+          bottom/100% 3px;
+    `}
+
+  ${(props) =>
+    props.random >= 5 &&
+    props.random <= 9 &&
+    css`
+      border-right-color: rgba(96, 121, 255, 1);
+      border-left-color: #60ffda;
+      background: linear-gradient(
+            to left,
+            rgba(96, 121, 255, 1) 0%,
+            #60ffda 100%
+          )
+          top/100% 3px,
+        linear-gradient(to left, rgba(96, 121, 255, 1) 0%, #60ffda 100%)
+          bottom/100% 3px;
+    `}
+
+  /*  
   border-right-color: rgba(96, 121, 255, 1);
   border-left-color: #60ffda;
   background: linear-gradient(to left, rgba(96, 121, 255, 1) 0%, #60ffda 100%)
       top/100% 3px,
     linear-gradient(to left, rgba(96, 121, 255, 1) 0%, #60ffda 100%) bottom/100%
       3px;
-
+  */ 
   background-repeat: no-repeat;
-
-  /*
-  // 카드 테두리 div로 실험
-  box-sizing: content-box;
-  width: 24.2rem;
-  */
 
   &:focus {
     outline: none;
   }
 
   &:hover {
+    ${(props) =>
+      props.random >= 0 &&
+      props.random <= 4 &&
+      css`
+        background: linear-gradient(
+          to left,
+          #60ffda 0%,
+          rgba(96, 121, 255, 1) 100%
+        );
+      `}
+    ${(props) =>
+      props.random >= 5 &&
+      props.random <= 9 &&
+      css`
+        background: linear-gradient(
+          to left,
+          rgba(96, 121, 255, 1) 0%,
+          #60ffda 100%
+        );
+      `}
+
+    /*
+    border: none; 
     background: linear-gradient(
       180deg,
       rgba(96, 255, 205, 0.38) 10%,
       rgba(96, 255, 218, 0) 90%
     );
+    */
   }
 
   @media (max-width: 1024px) {
     width: 26.2rem;
-    padding: 3.2rem 1.9rem 1.8rem 2.4rem;
+    padding: 3.2rem 2.4rem 1.8rem 2.4rem;
   }
   @media (max-width: 828px) {
     width: 27.6rem;
-    padding: 3.4rem 2.5rem 2.9rem 2.4rem;
+    padding: 3.4rem 2.4rem 2.9rem 2.4rem;
   }
 `;
-
-/*
-//GradientOne, Two, Three, Four
-const GradientOne = styled.div`
-  box-sizing: content-box;
-  position: absolute;
-  top: -3px;
-  left: -3px;
-  width: 29.6rem;
-  height: 0.3rem;
-  border: 3px;
-  border-radius: 20%;
-  background-color: transparent;
-  overflow: hidden;
-
-  &:after {
-    display: block;
-    content: "";
-    width: 100%;
-    height: 3px;
-    background: linear-gradient(180deg, #60ffda, #60beec);
-    z-index: -1;
-  }
-`;
-
-const GradientTwo = styled.div`
-  box-sizing: content-box;
-  position: absolute;
-  top: -3px;
-  left: -3px;
-  width: 0.3rem;
-  height: 100%;
-  border: 3px;
-  border-radius: 20%;
-  background-color: transparent;
-  overflow: hidden;
-
-  &:after {
-    display: block;
-    content: "";
-    width: 3px;
-    height: 100%;
-    background: linear-gradient(90deg, #60ffda, #60beec);
-    z-index: -1;
-  }
-`;
-
-const GradientThree = styled.div``;
-
-const GradientFour = styled.div``;
-*/
 
 const RotateBorder = styled.span`
   position: absolute;
@@ -223,32 +215,36 @@ const RotateBorder = styled.span`
 `;
 
 const CardTitle = styled.div`
-  width: 22.5rem;
+  width: 23.6rem;
   text-align: left;
   font-size: 3.2rem;
   font-weight: 700;
   line-height: 4.65rem;
 
   @media (max-width: 1024px) {
+    width: 20.8rem;
     font-size: 2.8rem;
     line-height: 4rem;
   }
   @media (max-width: 828px) {
+    width: 22.2rem;
     font-size: 2.4rem;
     line-height: 3.4rem;
   }
 `;
 
 const CardContent = styled.div`
-  width: 22.2rem;
+  width: 23.6rem;
   text-align: left;
   font-size: 1.2rem;
   line-height: 1.8rem;
 
   @media (max-width: 1024px) {
+    width: 20.8rem;
     line-height: 1.8rem;
   }
   @media (max-width: 828px) {
+    width: 22.2rem;
     line-height: 2.2rem;
   }
 `;
@@ -387,7 +383,6 @@ const LoadMoreBtn = styled.div`
   color: #ffffff;
   background-color: transparent;
 
-  border-radius: 8px;
   border-right-color: #00fff0;
   border-left-color: #00c2ff;
   background: linear-gradient(to left, #00fff0 0%, #00c2ff 100%) top/100% 3px,
@@ -521,12 +516,7 @@ const CardList = ({ testList, testList2 }) => {
       <CardListWrap height={height}>
         <CardWrapOne>
           <Link to="/testmaking">
-            <PlusBtn>
-              <RotateBorder />
-              <RotateBorder />
-              <RotateBorder />
-              <RotateBorder />
-            </PlusBtn>
+            <PlusBtn />
           </Link>
           <BlankTop DesktopMargin={1.6} TabletMargin={1.6} MobileMargin={1.8} />
           <>
@@ -537,12 +527,13 @@ const CardList = ({ testList, testList2 }) => {
                     <Card
                       key={index}
                       onClick={() => history.push(`/test/${item["id"]}`)}
+                      random={Math.floor(Math.random() * 10)}
                     >
                       <CardTitle>{item["title"]}</CardTitle>
                       <BlankTop
                         DesktopMargin={3}
                         TabletMargin={2.7}
-                        MobileMargin={0.4}
+                        MobileMargin={2.4}
                       />
                       <CardContent>{item["description"]}</CardContent>
                       <BlankTop
@@ -576,12 +567,13 @@ const CardList = ({ testList, testList2 }) => {
                       <Card
                         key={index}
                         onClick={() => history.push(`/test/${item["id"]}`)}
+                        random={Math.floor(Math.random() * 10)}
                       >
                         <CardTitle>{item["title"]}</CardTitle>
                         <BlankTop
                           DesktopMargin={3}
                           TabletMargin={2.7}
-                          MobileMargin={0.4}
+                          MobileMargin={2.4}
                         />
                         <CardContent>{item["description"]}</CardContent>
                         <BlankTop
@@ -609,12 +601,13 @@ const CardList = ({ testList, testList2 }) => {
                       <Card
                         key={index}
                         onClick={() => history.push(`/test/${item["id"]}`)}
+                        random={Math.floor(Math.random() * 10)}
                       >
                         <CardTitle>{item["title"]}</CardTitle>
                         <BlankTop
                           DesktopMargin={3}
                           TabletMargin={2.7}
-                          MobileMargin={0.4}
+                          MobileMargin={2.4}
                         />
                         <CardContent>{item["description"]}</CardContent>
                         <BlankTop
@@ -649,12 +642,13 @@ const CardList = ({ testList, testList2 }) => {
                       <Card
                         key={index}
                         onClick={() => history.push(`/test/${item["id"]}`)}
+                        random={Math.floor(Math.random() * 10)}
                       >
                         <CardTitle>{item["title"]}</CardTitle>
                         <BlankTop
                           DesktopMargin={3}
                           TabletMargin={2.7}
-                          MobileMargin={0.4}
+                          MobileMargin={2.4}
                         />
                         <CardContent>{item["description"]}</CardContent>
                         <BlankTop
@@ -682,12 +676,13 @@ const CardList = ({ testList, testList2 }) => {
                       <Card
                         key={index}
                         onClick={() => history.push(`/test/${item["id"]}`)}
+                        random={Math.floor(Math.random() * 10)}
                       >
                         <CardTitle>{item["title"]}</CardTitle>
                         <BlankTop
                           DesktopMargin={3}
                           TabletMargin={2.7}
-                          MobileMargin={0.4}
+                          MobileMargin={2.4}
                         />
                         <CardContent>{item["description"]}</CardContent>
                         <BlankTop
@@ -721,12 +716,13 @@ const CardList = ({ testList, testList2 }) => {
                     <Card
                       key={index}
                       onClick={() => history.push(`/test/${item["id"]}`)}
+                      random={Math.floor(Math.random() * 10)}
                     >
                       <CardTitle>{item["title"]}</CardTitle>
                       <BlankTop
                         DesktopMargin={3}
                         TabletMargin={2.7}
-                        MobileMargin={0.4}
+                        MobileMargin={2.4}
                       />
                       <CardContent>{item["description"]}</CardContent>
                       <BlankTop

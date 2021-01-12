@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import BgDesktop from "../../assets/desktop/main_all_background.png";
+import BgDesktop from "../../assets/desktop/main_all_background.jpg";
 import BgTablet from "../../assets/tablet/main_all_background.png";
 import BgMobile from "../../assets/mobile/main_all_background.png";
 
