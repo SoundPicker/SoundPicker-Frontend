@@ -166,47 +166,56 @@ switch (myState.status) {
       return <h1></h1>;
   case 'resolved':
       return (
+        myState.member&&
         <Background>
             <Wrapper>
                 <MyIcon></MyIcon>
                 <BlankTop DesktopMargin='3' TabletMargin='3' MobileMargin='3' />
                 <TextComponent title="마이페이지"  DesktopLength='20' TabletLength='15' MobileLength='10'/>  
                 <BlankTop DesktopMargin='5' TabletMargin='5' MobileMargin='5' />
-                <Content><BoldTextComponent title="개인정보 수정"  DesktopLength='25' TabletLength='20' MobileLength='15'/></Content>
-                <BlankTop DesktopMargin='5' TabletMargin='5' MobileMargin='5' />
                 <Content>
-                <Input  style={{ color: 'white'  }} ref={nameInput} bordered={false} name="nickname" value={myState.member.nickname} onChange={onChangeInputs}/>
-                <Button font='12' onClick = {() => {nameInput.current.focus(); console.log("click"); }} >닉네임 변경</Button>
+                  <BoldTextComponent title="개인정보 수정"  DesktopLength='25' TabletLength='20' MobileLength='15'/>
                 </Content>
                 <BlankTop DesktopMargin='5' TabletMargin='5' MobileMargin='5' />
                 <Content>
-                <Input  style={{ color: 'white'  }} bordered={false} name="nickname" value={myState.member.email} disabled={true}/>
-                <Button font='12' color='gray'>이메일 변경불가</Button>
+                  <Input  style={{ color: 'white'  }} ref={nameInput} bordered={false} name="nickname" value={myState.member.nickname} onChange={onChangeInputs}/>
+                  <Button font='12' onClick = {() => {nameInput.current.focus(); console.log("click"); }} >닉네임 변경</Button>
                 </Content>
                 <BlankTop DesktopMargin='5' TabletMargin='5' MobileMargin='5' />
                 <Content>
-                <Input placeholder='******'
-                style={{ color: 'white'  }} ref={passwordInput} bordered={false} name="password" onChange={onChangePassword}/>
-               <Button font='12' onClick = {() => {passwordInput.current.focus(); console.log("click"); }} >비밀번호 변경</Button>
+                  <Input  style={{ color: 'white'  }} bordered={false} name="nickname" value={myState.member.email} disabled={true}/>
+                  <Button font='12' color='gray'>이메일 변경불가</Button>
+                </Content>
+                <BlankTop DesktopMargin='5' TabletMargin='5' MobileMargin='5' />
+                <Content>
+                  <Input placeholder='******'
+                    style={{ color: 'white'  }} ref={passwordInput} bordered={false} name="password" onChange={onChangePassword}/>
+                  <Button font='12' onClick = {() => {passwordInput.current.focus(); console.log("click"); }} >비밀번호 변경</Button>
                 </Content>
                 <BlankTop DesktopMargin='8' TabletMargin='5' MobileMargin='5' />
-                <Content><BoldTextComponent title="마이테스트 수정"  DesktopLength='25' TabletLength='20' MobileLength='15'/></Content>
+                <Content>
+                  <BoldTextComponent title="마이테스트 수정"  DesktopLength='25' TabletLength='20' MobileLength='15'/>
+                </Content>
                 <BlankTop DesktopMargin='7' TabletMargin='3' MobileMargin='3' />
-            
-                  {myState.member.Tests && myState?.member?.Tests.map((member,i)=>
-                  <div>
+
+                {myState.member.Tests && myState?.member?.Tests.map((member,i)=>
+                <div>
                   <Detail>
-                  <BoldTextComponent title={member.title}  DesktopLength='15' TabletLength='10' MobileLength='10'/>
-                  <MyPageButton />  </Detail>  
+                    <BoldTextComponent title={member.title}  DesktopLength='15' TabletLength='10' MobileLength='10'/>
+                    <MyPageButton />  
+                  </Detail>  
                   <Detail>
-                  <TextComponent title={member.description}  DesktopLength='10' TabletLength='10' MobileLength='10'/>
-                    </Detail> <BlankTop DesktopMargin='2' TabletMargin='2' MobileMargin='2' />
-                    <UnderLineWrap  DesktopLength='130'BetweenLength='95' TabletLength='70' MobileLength='45' ></UnderLineWrap>
-                    <BlankTop DesktopMargin='4' TabletMargin='2' MobileMargin='2' /> </div>
-                  )}
+                    <TextComponent title={member.description}  DesktopLength='10' TabletLength='10' MobileLength='10'/>
+                  </Detail> 
+                  <BlankTop DesktopMargin='2' TabletMargin='2' MobileMargin='2' />
+                  <UnderLineWrap  DesktopLength='130'BetweenLength='95' TabletLength='70' MobileLength='45' ></UnderLineWrap>
+                  <BlankTop DesktopMargin='4' TabletMargin='2' MobileMargin='2' /> 
+                </div>
+                )}
                
               
-                </Wrapper></Background> 
+                </Wrapper>
+          </Background> 
        
 
       );

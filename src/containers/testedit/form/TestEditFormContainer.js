@@ -37,7 +37,9 @@ export let player8;
 export let player9;
 export let send=true ;
 export let viewLoadingCount = 0;
+
 const TestEditFormContainer = ({history,match}) => {
+    const jwt = window.localStorage.getItem('jwt');
     let checkCurrentTime0;
     let checkCurrentTime1;
     let checkCurrentTime2;
@@ -61,7 +63,11 @@ const TestEditFormContainer = ({history,match}) => {
         answer: "",
         answerYoutubeURL: "",
     }]);
+    const [links,setLinks] = useState();
+
     const [viewLoading,setViewLoading] = useState(false);
+    const [serverLoading,setServerLoading] = useState(true);
+
     const [timer, setTimer] = useState(0);
 
     const [isPlaying0, setPlaying0] = useState(false);
@@ -171,63 +177,114 @@ const TestEditFormContainer = ({history,match}) => {
         };
 
         setQuestions([...questions, data]);
+        let data2 = {
+          questionNumber : questions.length +1,
+          questionYoutubeURL : "",
+          answerYoutubeURL: ""
+        }
+        setLinks([...links,data2]);
     }
 
     const deleteQuestions = questionNumber => () => {
-        let tempQuestions = questions.filter(question => {
-            return question.questionNumber !== questionNumber + 1;
-        })
-        let i = 1;
-        const reTempQuestions = tempQuestions.map(question => {
-            question.questionNumber = i;
-            i++;
-            return question;
-        })
+      let tempQuestions = questions.filter(question => {
+          return question.questionNumber !== questionNumber + 1;
+      })
+      let i = 1;
+      const reTempQuestions = tempQuestions.map(question => {
+          question.questionNumber = i;
+          i++;
+          return question;
+      })
 
-        setQuestions(reTempQuestions);
-    }
+      setQuestions(reTempQuestions);
+      let tempLinks = links.filter(link => {
+        return link.questionNumber !== questionNumber + 1;
+    })
+    let l = 1;
+    const reTempLinks = tempLinks.map(link => {
+        link.questionNumber = l;
+        l++;
+        return link;
+    })
 
-    const getYoutubeId = questionNumber => e => {
-        const { target: { value } } = e;
-        const { target: { name } } = e;
-        if(value)  {
-            const regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
-            const matchs = value.match(regExp);
-            if(value!==''&&matchs&&matchs[7].length===11){
+    setLinks(reTempLinks);
+  }
 
-                const tempsQustios = questions.map(question => {
-                    if( question.questionNumber === questionNumber+1 ){
-                        question[name] = matchs[7];
-                    }
-        
-                    return question;
-        
-                });  
-                setQuestions(tempsQustios);
-            }else{
-                const tempsQustios = questions.map(question => {
-                    if( question.questionNumber === questionNumber+1 ){
-                        question[name] = "";
-                    }
-        
-                    return question;
-        
-                });  
-                setQuestions(tempsQustios);
-            }
+  const getYoutubeId = questionNumber => e => {
+    const { target: { value } } = e;
+    const { target: { name } } = e;
+    console.log(value)
+    if(value)  {
+        const regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
+        const matchs = value.match(regExp);
+        console.log("matches:",matchs)
+        if(value!==''&&matchs&&matchs[7].length===11){
+
+            const tempsQustios = questions.map(question => {
+                if( question.questionNumber === questionNumber+1 ){
+                    question[name] = matchs[7];
+                }
+    
+                return question;
+    
+            });  
+            setQuestions(tempsQustios);
+            const tempsLinks = links.map(link => {
+              if( link.questionNumber === questionNumber+1 ){
+                link[name] = matchs.input;
+              }
+  
+              return link;
+  
+          });  
+          setLinks(tempsLinks);
+          console.log("links2" ,tempsLinks);
+          console.log("questions2" ,tempsQustios)
         }else{
-          const tempsQustios = questions.map(question => {
-            if( question.questionNumber === questionNumber+1 ){
-                question[name] = "";
-            }
-
-            return question;
-
-        });  
-        setQuestions(tempsQustios);
+            const tempsQustios = questions.map(question => {
+                if( question.questionNumber === questionNumber+1 ){
+                    question[name] = "";
+                }
+    
+                return question;
+    
+            });  
+            setQuestions(tempsQustios); 
+            const tempsLinks = links.map(link => {
+              if( link.questionNumber === questionNumber+1 ){
+                link[name] = value;
+              }
+  
+              return link;
+  
+          });  
+          setLinks(tempsLinks);
+            
+          console.log("links" ,tempsLinks);
+          console.log("questions" ,tempsQustios)
         }
-        
+    }else{
+      const tempsQustios = questions.map(question => {
+        if( question.questionNumber === questionNumber+1 ){
+            question[name] = "";
+        }
+
+        return question;
+
+      });  
+    const tempsLinks = links.map(link => {
+      if( link.questionNumber === questionNumber+1 ){
+        link[name] = "";
+      }
+
+      return link;
+
+      });  
+    setLinks(tempsLinks);
+    setQuestions(tempsQustios);
     }
+    
+}
 
   const playerState0 = (e) => {
     if (e.data === 1) {
@@ -322,8 +379,9 @@ const TestEditFormContainer = ({history,match}) => {
 
     }
     const config = {
-      headers : {"jwt":'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTgsImlhdCI6MTYwOTY1Mzc0NywiZXhwIjoxNjEwNTE3NzQ3LCJpc3MiOiJzb3VuZFBpY2tlciJ9.uf1z0eea05zxJEWoHVCY3h6rLPZEj6P88MP58nEK4qA'}
+      headers : {"jwt":jwt}
   }
+  setServerLoading(false);
   if(testTitle.length !== 0 && testDescription.length !== 0 && testCategory.length !== 0){
     for(let i = 0; i < questions.length; i++ ){
       if(questions[i].questionYoutubeURL.length === 0 ||questions[i].questionStartsfrom.length === 0 ||questions[i].hint.length === 0 ||
@@ -346,12 +404,18 @@ const TestEditFormContainer = ({history,match}) => {
                 })
             } catch (e) {
               console.error('error', e);
+              setServerLoading(true);
+
             }
           }, 5000);
           setTimer(newTimer);
 
+    }else{
+      setServerLoading(true);
     }
 
+  }else{
+    setServerLoading(true);
   }
 
 }
@@ -386,7 +450,7 @@ const TestEditFormContainer = ({history,match}) => {
   const setTime9 = () => {
     setCurrentTime9(transTime(player9.getCurrentTime().toFixed()));
   };
-  let readyCount = 0;
+
   const onReadyAPI0 = () => {
       setLoading0(true);
       setPlaying0(false);
@@ -738,6 +802,19 @@ const TestEditFormContainer = ({history,match}) => {
                     setTestDescription(response.data.data.test.description);
                     setTestCategory(response.data.data.test.CategoryId)
                     setQuestions(response.data.data.questions)
+                    console.log(response.data.data.questions)
+                    const linkArray=[]
+                    for(let i=0; i<response.data.data.questions.length; i++){
+                      let data2 = {
+                        questionNumber : response.data.data.questions[i].questionNumber,
+                        questionYoutubeURL : `https://www.youtube.com/watch?v=${response.data.data.questions[i].questionYoutubeURL}`,
+                        answerYoutubeURL:`https://www.youtube.com/watch?v=${response.data.data.questions[i].answerYoutubeURL}`
+                      }
+                      linkArray.push(data2)
+                    }
+                    setLinks(linkArray);       
+
+                  
                     setViewLoading(true)
                     viewLoadingCount++;   
                   }else{
@@ -844,11 +921,11 @@ const TestEditFormContainer = ({history,match}) => {
            player8?.pauseVideo();
       }
     }
-    if (isLoading8) {
-        if (isPlaying8) {
-            player8?.playVideo();
+    if (isLoading9) {
+        if (isPlaying9) {
+            player9?.playVideo();
           } else {
-           player8?.pauseVideo();
+           player9?.pauseVideo();
       }
     }
 
@@ -867,12 +944,12 @@ const TestEditFormContainer = ({history,match}) => {
                 <BlankTop DesktopMargin='3.6' TabletMargin='2' MobileMargin='2.6'/>
                 <TopInputWrap>
                     <TopInputText text='제목'/>
-                    <TopInput inputName='title' inputPlaceholder='최대 20자' inputMaxLength='20' changeHandler={changeTitle} value={testTitle} />
+                    <TopInput inputName='title' inputPlaceholder='최대 25자' inputMaxLength='25' changeHandler={changeTitle} value={testTitle} />
                 </TopInputWrap>
                 <BlankTop DesktopMargin='3.6' TabletMargin='3.4' MobileMargin='2.6'/>
                 <TopInputWrap>
                     <TopInputText text='내용'/>
-                    <TopInput inputName='description' inputPlaceholder='최대 40자' inputMaxLength='40' changeHandler={changeDescription} value={testDescription}/>
+                    <TopInput inputName='description' inputPlaceholder='최대 45자' inputMaxLength='45' changeHandler={changeDescription} value={testDescription}/>
                 </TopInputWrap>
                 <BlankTop DesktopMargin='3.6' TabletMargin='3.7' MobileMargin='2.6'/>
                 <TopInputWrap>
@@ -893,12 +970,12 @@ const TestEditFormContainer = ({history,match}) => {
                             <BlankTop DesktopMargin='1.9' TabletMargin='2' MobileMargin='2.6'/>
                             <QuestionListInputWrap>
                                 <QuestionListInputText text={i!==9?"Qustion00"+(i+1):"Qustion010"} />
-                                <QuestionListInput inputName='answer' inputPlaceholder='정답을 적어주세요'  changeText={changeText(i)} value={d.answer}/>
+                                <QuestionListInput inputName='answer' inputMaxLength="20" inputPlaceholder='정답을 적어주세요 (최대 20자)'  changeText={changeText(i)} value={d.answer}/>
                             </QuestionListInputWrap>
                             <BlankTop DesktopMargin='1.9' TabletMargin='3.9' MobileMargin='2.6'/>
                             <QuestionListHintWrap>
                                 <QuestionListInputText text='Hint' />
-                                <QuestionListInput inputName='hint' inputPlaceholder='힌트를 자유롭게 적어주세요'  changeText={changeText(i)} value={d.hint} />
+                                <QuestionListInput inputName='hint' inputMaxLength="10" inputPlaceholder='힌트를 적어주세요 (최대 10자)'  changeText={changeText(i)} value={d.hint} />
                             </QuestionListHintWrap>
                         </QuestionListLeftWrap>
 
@@ -907,7 +984,7 @@ const TestEditFormContainer = ({history,match}) => {
                             <BlankTop DesktopMargin='1.9' TabletMargin='3.9' MobileMargin='2.6'/>
                             <QuestionListInputWrap>
                                 <QuestionListInputText text='Youtube Link' />
-                                <QuestionListYoutubeInput inputName='questionYoutubeURL' inputPlaceholder='1초/3초간 나올 음악 주소를 넣어주세요'  getYoutubeId={getYoutubeId(i)} value={questions[i].questionYoutubeURL} />
+                                <QuestionListYoutubeInput inputName='questionYoutubeURL' inputPlaceholder='1초/3초간 나올 음악 주소를 넣어주세요'  getYoutubeId={getYoutubeId(i)} videoId={questions[i].questionYoutubeURL} questionURL={links[i]?.questionYoutubeURL} />
                             </QuestionListInputWrap>
                             <BlankTop DesktopMargin='1.9' TabletMargin='2' MobileMargin='1.6'/>
 
@@ -1028,7 +1105,7 @@ const TestEditFormContainer = ({history,match}) => {
                             <BlankTop DesktopMargin='1.9' TabletMargin='2.4' MobileMargin='1.7'/>
                             <QuestionListInputWrap>
                                 <QuestionListInputText text='Youtube Link' />
-                                <QuestionListYoutubeInput inputName='answerYoutubeURL' inputPlaceholder='정답 공개 후 보여줄 영상을 넣어주세요'  getYoutubeId={getYoutubeId(i)} value={questions[i].answerYoutubeURL}/>
+                                <QuestionListYoutubeInput inputName='answerYoutubeURL' inputPlaceholder='정답 공개 후 보여줄 영상을 넣어주세요'  getYoutubeId={getYoutubeId(i)} videoId={questions[i].answerYoutubeURL} questionURL={links[i]?.answerYoutubeURL}/>
                             </QuestionListInputWrap>
 
                         </QuestionListRightWrap>
@@ -1039,8 +1116,14 @@ const TestEditFormContainer = ({history,match}) => {
                 <BlankTop DesktopMargin='4.7' TabletMargin='5.2' MobileMargin='4.7'/>
                 <QuestionLustPlusButton addQuestions={addQuestions} />
                 <BlankTop DesktopMargin='3.6' TabletMargin='6' MobileMargin='3.5'/>
-                <QuestionSaveButton onSubmitHandler={onSubmitHandler} />
-                <BlankTop DesktopMargin='3.6' TabletMargin='9.1' MobileMargin='3.5'/>
+                { serverLoading? 
+                    <QuestionSaveButton onSubmitHandler={onSubmitHandler} /> 
+                  :
+                  <div style={{display:"flex", justifyContent:"center",alignItems:'center'}}>
+                    <LoadingComponent/>
+                  </div>
+
+                }                    <BlankTop DesktopMargin='3.6' TabletMargin='9.1' MobileMargin='3.5'/>
                 <table></table>
             </QuestionListInner>     
 

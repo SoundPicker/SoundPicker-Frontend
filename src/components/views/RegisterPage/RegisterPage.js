@@ -27,6 +27,7 @@ const Background = styled.div`
     background-position: center top;
     background-color:  #081923;
     background-size:contain;
+    border:1px solid rgba(0,0,0,0);
     @media (min-width: 768px) and (max-width:1024px){
       background-image: url(${Bg2});
     }
@@ -38,9 +39,7 @@ const Background = styled.div`
     }
 `;
 const Wrapper=styled.div`
- position: absolute;
-  width: 100%;
-  height: 100%;
+
   background-size: cover;
   display: flex;
   flex-direction: column;

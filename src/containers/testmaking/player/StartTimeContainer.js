@@ -11,7 +11,6 @@ const StartTimeContainer = ({questionStartsfrom,changeStartTime,totalTime}) => {
 
     const [minutes,setMinutes] = useState(0);
     const [seconds,setSeconds] = useState(0);
-
     const onChangeMinutes = e => {
         const minute = e.target.value;
         if(!minute){
@@ -28,7 +27,12 @@ const StartTimeContainer = ({questionStartsfrom,changeStartTime,totalTime}) => {
             setSeconds(0);
 
         }else{
-            setSeconds(second);
+            if(second >= 60){
+                setMinutes(minutes+1);
+                setSeconds(second%60);
+            }else{
+                setSeconds(second);
+            }
         }
     }
     const maxLengthCheck = (object) => {
@@ -36,19 +40,24 @@ const StartTimeContainer = ({questionStartsfrom,changeStartTime,totalTime}) => {
          object.target.value = object.target.value.slice(0, object.target.maxLength)
           }
         }
-        useEffect(()=>{
-            if (questionStartsfrom){
-               setMinutes( parseInt(questionStartsfrom/60));
-               setSeconds(questionStartsfrom%60);
-            }
-        },[])
+    
     useEffect(()=>{
+        if (questionStartsfrom){
+            setMinutes( parseInt(questionStartsfrom/60));
+            setSeconds( parseInt(questionStartsfrom%60));
+        }
+    },[])
+
+    useEffect(()=>{
+        console.log(minutes, seconds);
 
         const inputTime =  parseInt(minutes*60) + parseInt(seconds);
         if(parseInt(totalTime-4) >= inputTime){
             changeStartTime(inputTime);
         }else if(totalTime===170){
             changeStartTime(inputTime);
+        }else{
+            setMinutes(String(minutes).slice(0,1))
         }
     },[minutes,seconds])
 

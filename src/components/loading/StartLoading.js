@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import ContentComponent from "./ContentComponent";
 import BlankTop from '../common/BlankTop';
@@ -67,7 +67,10 @@ MyIcon.defaultProps = {
   src: logo1,
 };
 
+
+
 const StartLoading = () => {
+
 
     return(
         <div>
