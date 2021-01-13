@@ -171,6 +171,12 @@ a {
   text-decoration: none;
 }
 
+.cateBtn.cateAll {
+  width: 2rem;
+  height: 2rem;
+  background-color: #60ffda;
+}
+
 .cateBtn {
   display: block;
   width: 1.2rem;
@@ -207,5 +213,10 @@ a {
     height: 0.6rem;
     padding: 0;
     box-shadow: 0 0 8px 0 #60ffda;
+  }
+
+  .cateBtn.cateAll {
+    width: 0.6rem;
+    height: 0.6rem;
   }
 }

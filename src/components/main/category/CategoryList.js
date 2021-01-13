@@ -95,12 +95,22 @@ function handleClick(event) {
   // console.log(this);
   // 콘솔창을 보면 둘다 동일한 값이 나온다
 
-  console.log(event.target.classList);
+  console.log(event.target.classList.contains("cateAll"));
+
+  if (!event.target.classList.contains("cateAll")) {
+    div[0].classList.remove("cateAll");
+  }
 
   if (event.target.classList[1] === "clicked") {
     event.target.classList.remove("clicked");
   } else {
     for (var i = 0; i < div.length; i++) {
+      /*
+      if (div[0].classList === "cateAll") {
+        console.log(div[0].classList);
+        div[0].classList.remove("cateAll");
+      }
+      */
       div[i].classList.remove("clicked");
     }
 
@@ -129,7 +139,7 @@ const CategoryList = ({ categoryList, startNum, onClickDisplay }) => {
             <CategoryItem>
               <CategoryName key={index}>{item["description"]}</CategoryName>
               <CategoryBtn
-                className="cateBtn"
+                className="cateBtn cateAll"
                 onClick={(evt) => {
                   onClickDisplay(item["id"]);
                   handleClick(evt);
