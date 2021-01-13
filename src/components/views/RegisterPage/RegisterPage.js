@@ -6,6 +6,7 @@ import { registerUser } from "../../../_actions/user_action";
 import { useDispatch } from "react-redux";
 import TextComponent from '../../../components/common/TextComponent';
 import BlankTop from '../../../components/common/BlankTop';
+import QuizHeader from '../../common/QuizHeader';
 import UnderLineComponent from './UnderLineComponent';
 import Bg1 from '../../../assets/images/login_background1.jpg';
 import Bg2 from '../../../assets/images/login_background2.jpg';
@@ -31,7 +32,7 @@ const Background = styled.div`
     @media (min-width: 768px) and (max-width:1024px){
       background-image: url(${Bg2});
     }
- @media  (min-width:1024px) {
+ @media  (min-width:1025px) {
   background-image: url(${Bg1});
     }
     @media (max-width: 768px) {
@@ -50,7 +51,7 @@ const Wrapper=styled.div`
       width:100%auto;
     }
 
-    @media (min-width: 1024px) { //desktop 
+    @media (min-width: 1025px) { //desktop 
       margin-top:17%;
       width:100%auto;
     }
@@ -102,7 +103,7 @@ const Content=styled.div`
 function RegisterPage(props) {
   const dispatch = useDispatch();
   return (
-<Background>
+<Background> <QuizHeader/>
   <Wrapper>
   <MyIcon></MyIcon>
   <BlankTop DesktopMargin='3' TabletMargin='3' MobileMargin='2' />

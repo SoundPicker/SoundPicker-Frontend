@@ -9,6 +9,7 @@ import { useDispatch } from "react-redux";
 import styled from "styled-components"
 import TextComponent from '../../../components/common/TextComponent';
 import BlankTop from '../../../components/common/BlankTop';
+import QuizHeader from '../../common/QuizHeader';
 import UnderLineComponent from './UnderLineComponent';
 import Bg1 from '../../../assets/images/login_background1.jpg';
 import Bg2 from '../../../assets/images/login_background2.jpg';
@@ -24,15 +25,13 @@ const Background = styled.div`
     background-position: center top;
     background-color:  rgba( 12, 26, 34, 1);
     background-size:contain;
-    @media (min-width: 768px) and (max-width:1024px){
+    background-image: url(${Bg1});
+    @media only screen and (max-width: 1024px) {
       background-image: url(${Bg2});
-    }
- @media  (min-width:1024px) {
-  background-image: url(${Bg1});
-    }
-    @media (max-width: 768px) {
-      background-image: url(${Bg3});
-    }
+      }
+      @media only screen and (max-width: 769px) {
+        background-image: url(${Bg3});
+      }
 `;
 const Wrapper=styled.div`
  position: absolute;
@@ -48,13 +47,13 @@ const Wrapper=styled.div`
       width:100%auto;
     }
 
-    @media (min-width: 1024px) { //desktop 
-      margin-top:17%;
+    @media (min-width: 1025px) { //desktop 
+      margin-top:20%;
       width:100%auto;
     }
-    @media (max-width: 767px) { //iphone
+    @media (max-width: 768px) { //iphone
       width:100%auto;
-        margin-top:30%;
+        margin-top:35%;
   }` 
 
 
@@ -63,10 +62,10 @@ const MyIcon = styled.img`
     width:180px;
     }
 
-    @media (min-width: 1024px) { //desktop
+    @media (min-width: 1025px) { //desktop
     width:221px;
     }
-    @media (max-width: 767px) { //iphone
+    @media (max-width: 768px) { //iphone
       width:300px;
   }
 `;
@@ -82,6 +81,9 @@ border-color:rgba( 12, 26, 34, 0);
 width: 400px;
 color:white;
 outline:none;
+@media (min-width: 768px) and (max-width:1024px) { //between
+    width:300px;
+    }
 @media (max-width: 767px) { //iphone
       width:200px;
   }
@@ -91,8 +93,8 @@ const Content=styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  @media (max-width: 767px) { //iphone
-    margin-left:20%;
+  @media (max-width: 768px) { //iphone
+    margin-left:15%;
   }
 `
 
@@ -107,7 +109,7 @@ function LoginPage(props) {
     props.history.push('/register');}
 
   return (
-    <Background><Wrapper>
+    <Background><QuizHeader/><Wrapper>
        <MyIcon></MyIcon>
   <BlankTop DesktopMargin='3' TabletMargin='3' MobileMargin='3' />
   <TextComponent title="로그인"  DesktopLength='15' TabletLength='15' MobileLength='15'/> 
@@ -172,7 +174,7 @@ function LoginPage(props) {
 
               <Form.Item required>
               <Content>
-              <Text title="아이디&nbsp; &nbsp;"  DesktopLength='15' TabletLength='15' MobileLength='15'/> 
+              <Text title="아이디&nbsp; &nbsp;"  DesktopLength='15' TabletLength='13' MobileLength='15'/> 
                 <Input
                   id="email"
                   prefix={<UserOutlined style={{ color: 'rgba(0,0,0,.25)' }} />}
