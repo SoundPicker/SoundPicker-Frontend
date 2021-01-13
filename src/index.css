@@ -170,3 +170,42 @@ body::-webkit-scrollbar {
 a {
   text-decoration: none;
 }
+
+.cateBtn {
+  display: block;
+  width: 1.2rem;
+  height: 1.2rem;
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 0 9px 0 #ffffff;
+  background-color: #ffffff;
+  cursor: pointer;
+}
+
+.clicked {
+  display: block;
+  width: 2rem;
+  height: 2rem;
+  outline: none;
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 0 12px 0 #60ffda;
+  background-color: #60ffda;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 568px) {
+  .cateBtn {
+    width: 0.5rem;
+    height: 0.5rem;
+    padding: 0;
+    box-shadow: 0 0 4px 0 #ffffff;
+  }
+
+  .clicked {
+    width: 0.6rem;
+    height: 0.6rem;
+    padding: 0;
+    box-shadow: 0 0 8px 0 #60ffda;
+  }
+}

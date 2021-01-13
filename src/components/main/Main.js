@@ -140,10 +140,7 @@ const SearchBorder = styled.hr`
 
 // testList는 내가 선택한 카테고리에 따라 오게됨.
 const Main = ({ categoryList, testList, onClickDisplay, allList }) => {
-  console.log(testList);
-
   const first = Object.values(allList);
-  console.log(first);
 
   const [search, setSearch] = useState("");
 
@@ -164,8 +161,6 @@ const Main = ({ categoryList, testList, onClickDisplay, allList }) => {
     });
     setResult(title);
   }, [search]);
-
-  console.log(result);
 
   return (
     <Background>

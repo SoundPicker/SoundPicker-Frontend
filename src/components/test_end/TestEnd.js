@@ -10,50 +10,59 @@ import RecommendText from "./RecommendText";
 import RecommendCardList from "./RecommendCardList";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import MainBlankTop from "../main/MainBlankTop";
+import TestEndBlankTop from "../test_end/TestEndBlankTop";
 
 const TestEnd = ({ match, recommendList, title }) => {
   return (
     <Background>
       <Header />
-      <MainBlankTop
-        DesktopMargin={12.3}
-        TabletMargin={18.4}
-        MobileMargin={6.7}
+      <TestEndBlankTop
+        DesktopMargin={7.5}
+        TabletMargin={16.4}
+        MobileMargin={4.7}
         SmallMobileMargin={5.6}
       />
       <LogoTitle />
-      <MainBlankTop
+      <TestEndBlankTop
         DesktopMargin={3.1}
         TabletMargin={2.8}
         MobileMargin={2.5}
         SmallMobileMargin={1}
       />
       <TestTitle title={title["data"][0]["testTitle"]} />
-      <BlankTop DesktopMargin={1.2} TabletMargin={1.2} MobileMargin={1.0} />
+      <TestEndBlankTop
+        DesktopMargin={1.2}
+        TabletMargin={1.2}
+        MobileMargin={1.0}
+      />
       <ThankYouText />
-      <MainBlankTop
+      <TestEndBlankTop
         DesktopMargin={5.6}
         TabletMargin={4.4}
         MobileMargin={3.3}
         SmallMobileMargin={2.7}
       />
       <TestEndDivider DesktopLength={6} TabletLength={6} MobileLength={0} />
-      <MainBlankTop
+      <TestEndBlankTop
         DesktopMargin={5.5}
         TabletMargin={4.4}
         MobileMargin={3.5}
         SmallMobileMargin={2.7}
       />
       <RecommendText />
-      <MainBlankTop
+      <TestEndBlankTop
         DesktopMargin={5.4}
         TabletMargin={4.4}
         MobileMargin={3.5}
         SmallMobileMargin={1.9}
       />
       <RecommendCardList recommendList={recommendList} />
-      <BlankTop DesktopMargin={2.8} TabletMargin={3.7} MobileMargin={3} />
+      <TestEndBlankTop
+        DesktopMargin={2.8}
+        TabletMargin={3.7}
+        MobileMargin={3}
+        SmallMobileMargin={3}
+      />
       <>
         <Link to="/">
           <Wrap>

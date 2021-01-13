@@ -95,6 +95,7 @@ const Card = styled.div`
   }
 
   &:hover {
+    /*Gradation
     ${(props) =>
       props.random >= 0 &&
       props.random <= 4 &&
@@ -115,15 +116,15 @@ const Card = styled.div`
           #60ffda 100%
         );
       `}
+    */
 
-    /*
-    border: none; 
+    border: 3px solid transparent;
+    border-bottom: 3px solid #071923;
     background: linear-gradient(
       180deg,
       rgba(96, 255, 205, 0.38) 10%,
       rgba(96, 255, 218, 0) 90%
     );
-    */
   }
 
   @media (max-width: 1024px) {
@@ -414,8 +415,6 @@ function useWindowDimensions() {
 
 const CardList = ({ testList, testList2 }) => {
   testList = Object.values(testList);
-  console.log(testList);
-  console.log(testList2, testList2.length);
 
   // testList와 testList2에 공통으로 있는 것만 리턴
   let finalList = [];
@@ -429,19 +428,10 @@ const CardList = ({ testList, testList2 }) => {
       }
     });
   });
-  console.log(finalList);
-  // testList = finalList;
 
   const history = useHistory();
 
   const [count, setCount] = useState(2);
-  const [height, setHeight] = useState(116.5);
-  const countPlus = (e) => {
-    setCount(count + 1);
-    console.log(count);
-    setHeight(count * 116.5);
-    console.log(height);
-  };
 
   const { width } = useWindowDimensions();
 
@@ -469,9 +459,19 @@ const CardList = ({ testList, testList2 }) => {
     one -= 3;
   }
 
+  const defaultHeight = width > 568 ? 116.5 : 61.2;
+  console.log(defaultHeight);
+  const [height, setHeight] = useState(defaultHeight);
+  const countPlus = (e) => {
+    setCount(count + 1);
+    console.log(count);
+    setHeight(count * defaultHeight);
+    console.log(height);
+  };
+
   const max = Math.max(one, two, three, four);
 
-  const maxHeight = 30 * max;
+  const maxHeight = width > 828 ? 30 * max : width > 568 ? 28 * max : 20 * max;
   console.log(maxHeight);
 
   return (

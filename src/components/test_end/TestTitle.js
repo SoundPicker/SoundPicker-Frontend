@@ -41,7 +41,7 @@ const Title = styled.strong`
   }
 
   @media (max-width: 503px) {
-    font-size: 1.2rem;
+    font-size: 1.05rem;
     font-weight: 500;
     line-height: 2.5rem;
   }

@@ -3,18 +3,18 @@ import styled from "styled-components";
 const BlankDiv = styled.div`
   width: 100%;
   margin-top: ${(props) => props.DesktopMargin || 0}rem;
-  @media only screen and (max-width: 1024px) {
+  @media only screen and (max-width: 1089px) {
     margin-top: ${(props) => props.TabletMargin || 0}rem;
   }
-  @media only screen and (max-width: 828px) {
+  @media only screen and (max-width: 768px) {
     margin-top: ${(props) => props.MobileMargin || 0}rem;
   }
-  @media only screen and (max-width: 568px) {
+  @media only screen and (max-width: 503px) {
     margin-top: ${(props) => props.SmallMobileMargin || 0}rem;
   }
 `;
 
-const MainBlankTop = ({
+const TestEndBlankTop = ({
   DesktopMargin,
   TabletMargin,
   MobileMargin,
@@ -31,4 +31,4 @@ const MainBlankTop = ({
   );
 };
 
-export default MainBlankTop;
+export default TestEndBlankTop;

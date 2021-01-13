@@ -106,7 +106,7 @@ const Category = ({ categoryList, onClickDisplay }) => {
 
   const { width } = useWindowDimensions();
 
-  const maxLeft = width > 1024 ? 2 : width > 828 ? 4 : 6;
+  const maxLeft = width > 1024 ? 2 : width > 828 ? 4 : width > 568 ? 6 : 7;
 
   return (
     <>

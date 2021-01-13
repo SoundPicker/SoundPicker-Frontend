@@ -22,28 +22,6 @@ const CategoryName = styled.span`
 `;
 
 const CategoryBtn = styled.button`
-  display: block;
-  width: 1.2rem;
-  height: 1.2rem;
-  border: none;
-  border-radius: 50%;
-  box-shadow: 0 0 9px 0 #ffffff;
-  background-color: #ffffff;
-  cursor: pointer;
-  &:focus {
-    width: 2rem;
-    height: 2rem;
-    outline: none;
-    box-shadow: 0 0 12px 0 #60ffda;
-    background-color: #60ffda;
-
-    @media (max-width: 568px) {
-      width: 0.6rem;
-      height: 0.6rem;
-      padding: 0;
-      box-shadow: 0 0 8px 0 #60ffda;
-    }
-  }
   &:hover {
     width: 2rem;
     height: 2rem;
@@ -56,13 +34,6 @@ const CategoryBtn = styled.button`
       padding: 0;
       box-shadow: 0 0 8px 0 #ffffff;
     }
-  }
-
-  @media (max-width: 568px) {
-    width: 0.5rem;
-    height: 0.5rem;
-    padding: 0;
-    box-shadow: 0 0 4px 0 #ffffff;
   }
 `;
 
@@ -117,8 +88,35 @@ function useWindowDimensions() {
   return windowDimensions;
 }
 
+const div = document.getElementsByClassName("cateBtn");
+
+function handleClick(event) {
+  console.log(event.target);
+  // console.log(this);
+  // 콘솔창을 보면 둘다 동일한 값이 나온다
+
+  console.log(event.target.classList);
+
+  if (event.target.classList[1] === "clicked") {
+    event.target.classList.remove("clicked");
+  } else {
+    for (var i = 0; i < div.length; i++) {
+      div[i].classList.remove("clicked");
+    }
+
+    event.target.classList.add("clicked");
+  }
+}
+
+function init() {
+  for (var i = 0; i < div.length; i++) {
+    div[i].addEventListener("click", handleClick);
+  }
+}
+
+init();
+
 const CategoryList = ({ categoryList, startNum, onClickDisplay }) => {
-  console.log(categoryList);
   const { width } = useWindowDimensions();
 
   const categoryNum = width > 1024 ? 7 : width > 828 ? 5 : width > 568 ? 3 : 2;
@@ -130,7 +128,13 @@ const CategoryList = ({ categoryList, startNum, onClickDisplay }) => {
           return (
             <CategoryItem>
               <CategoryName key={index}>{item["description"]}</CategoryName>
-              <CategoryBtn onClick={() => onClickDisplay(item["id"])} />
+              <CategoryBtn
+                className="cateBtn"
+                onClick={(evt) => {
+                  onClickDisplay(item["id"]);
+                  handleClick(evt);
+                }}
+              />
             </CategoryItem>
           );
         }
@@ -140,7 +144,13 @@ const CategoryList = ({ categoryList, startNum, onClickDisplay }) => {
           return (
             <CategoryItem>
               <CategoryName key={index}>{item["description"]}</CategoryName>
-              <CategoryBtn onClick={() => onClickDisplay(item["id"])} />
+              <CategoryBtn
+                className="cateBtn"
+                onClick={(evt) => {
+                  onClickDisplay(item["id"]);
+                  handleClick(evt);
+                }}
+              />
             </CategoryItem>
           );
         }
