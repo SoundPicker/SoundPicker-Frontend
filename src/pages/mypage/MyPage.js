@@ -4,6 +4,7 @@ import {  useHistory } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 import styled from "styled-components";
 import BlankTop from '../../components/common/BlankTop';
+import QuizHeader from '../../components/common/QuizHeader';
 import UnderLineWrap from '../../components/common/UnderLineWrap';
 import TextComponent from '../../components/common/TextComponent';
 import Button from './Button';
@@ -185,7 +186,9 @@ switch (myState.status) {
       return (
         myState.member&&
         <Background>
+          <QuizHeader />
             <Wrapper>
+              
                 <MyIcon></MyIcon>
                 <BlankTop DesktopMargin='3' TabletMargin='3' MobileMargin='3' />
                 <TextComponent title="마이페이지"  DesktopLength='20' TabletLength='15' MobileLength='10'/>  
