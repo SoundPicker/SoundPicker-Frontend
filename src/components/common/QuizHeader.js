@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styled, { css, keyframes } from 'styled-components'
-import ham from '../../assets/menu.png'
-import arrow from '../../assets/button_back.png'
+import ham from '../../assets/images/hammenu/menu.jpg'
+import arrow from '../../assets/images/hammenu/button_back.jpg'
 import BlankTop from './BlankTop'
 import { useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
@@ -59,7 +59,11 @@ function QuizHeader() {
               <BlankTop DesktopMargin="7" TabletMargin="8" MobileMargin="7" />
               <ContentWrapper>
                 <UserInfo>
-                  <span>Hi, {myState.member.nickname}</span>
+                  {myState.member.nickname ? ( // 로그인 한 경우 : 로그아웃인 상태로 게임 하는경우
+                    <span>Hi, {myState.member.nickname}</span>
+                  ) : (
+                    <span>Hi, User</span>
+                  )}
                 </UserInfo>
               </ContentWrapper>
               <BlankTop DesktopMargin="3" TabletMargin="3" MobileMargin="2.6" />
@@ -111,19 +115,19 @@ function QuizHeader() {
               clickCloseArrow={clickCloseArrow}
               clickOpenArrow={clickOpenArrow}
             >
-              {/* <ArrowWrapper> */}
-              <ArrowImg
-                src={arrow}
-                onClick={() => {
-                  setClickCloseArrow(true)
-                  setClickOpenArrow(false)
-                }}
-              />
-              {/* </ArrowWrapper> */}
-              <BlankTop DesktopMargin="7" TabletMargin="3" MobileMargin="2.6" />
+              <ArrowWrapper>
+                <ArrowImg
+                  src={arrow}
+                  onClick={() => {
+                    setClickCloseArrow(true)
+                    setClickOpenArrow(false)
+                  }}
+                />
+              </ArrowWrapper>
+              <BlankTop DesktopMargin="7" TabletMargin="8" MobileMargin="7" />
               <ContentWrapper>
                 <UserInfo>
-                  <span>Hi, User!</span>
+                  <span>Hi, User</span>
                 </UserInfo>
               </ContentWrapper>
               <BlankTop DesktopMargin="3" TabletMargin="3" MobileMargin="2.6" />
@@ -152,7 +156,7 @@ function QuizHeader() {
                       history.push('/mypage')
                     }}
                   >
-                    My page
+                    My Page
                   </li>
                 </ul>
               </PageWrapper>
@@ -263,7 +267,6 @@ const ContentWrapper = styled.div`
   color: #fff;
   width: 100%;
   padding: 0 4rem;
-  /* border: 1px solid orange; */
 `
 
 const LineWrapper = styled.div`
@@ -280,7 +283,6 @@ const LineWrapper = styled.div`
   @media only screen and (max-width: 768px) {
     padding: 0 4rem;
   }
-  /* border-bottom: 1px solid #fff; */
 `
 
 const ContentLine = styled.div`
@@ -295,7 +297,6 @@ const UserInfo = styled.div`
 `
 
 const PageWrapper = styled.div`
-  /* border: 1px solid blue; */
   padding: 0 4rem;
   overflow: ellipsis;
   display: flex;
@@ -359,5 +360,3 @@ const MenuBox = styled.div`
 `
 
 export default QuizHeader
-
-//
