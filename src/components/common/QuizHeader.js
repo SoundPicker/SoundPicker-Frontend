@@ -31,7 +31,7 @@ function QuizHeader() {
 
   switch (myState.status) {
     case 'pending':
-      return <h1></h1>
+      return <h1>ㅁㄴ</h1>
     case 'resolved':
       return (
         <>
@@ -166,7 +166,69 @@ function QuizHeader() {
       )
     case 'idle':
     default:
-      return <div></div>
+      return (
+        <>
+          <QuizWrapper>
+            <HamImg
+              onClick={() => {
+                setClickOpenArrow(true)
+                setClickCloseArrow(false)
+              }}
+              src={ham}
+            />
+            <MenuBox
+              clickCloseArrow={clickCloseArrow}
+              clickOpenArrow={clickOpenArrow}
+            >
+              <ArrowWrapper>
+                <ArrowImg
+                  src={arrow}
+                  onClick={() => {
+                    setClickCloseArrow(true)
+                    setClickOpenArrow(false)
+                  }}
+                />
+              </ArrowWrapper>
+              <BlankTop DesktopMargin="7" TabletMargin="8" MobileMargin="7" />
+              <ContentWrapper>
+                <UserInfo>
+                  <span>Hi, User</span>
+                </UserInfo>
+              </ContentWrapper>
+              <BlankTop DesktopMargin="3" TabletMargin="3" MobileMargin="2.6" />
+              <LineWrapper>
+                <ContentLine />
+              </LineWrapper>
+              <BlankTop DesktopMargin="5" TabletMargin="3" MobileMargin="2.6" />
+              <PageWrapper>
+                <ul>
+                  <li
+                    onClick={() => {
+                      history.push('/')
+                    }}
+                  >
+                    Main
+                  </li>
+                  <li
+                    onClick={() => {
+                      history.push('/testmaking')
+                    }}
+                  >
+                    Make
+                  </li>
+                  <li
+                    onClick={() => {
+                      history.push('/mypage')
+                    }}
+                  >
+                    My Page
+                  </li>
+                </ul>
+              </PageWrapper>
+            </MenuBox>
+          </QuizWrapper>
+        </>
+      )
   }
 }
 
