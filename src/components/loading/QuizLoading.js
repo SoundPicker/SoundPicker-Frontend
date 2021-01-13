@@ -51,7 +51,28 @@ const Wrapper = styled.div`
     margin-top: 50%;
   }
 `
-const QuizLoading = () => {
+function QuizLoading() {
+  const e = Math.floor(Math.random()*6+1);
+  var text="";
+  if(e===1){
+    text="음향 체크 중...";
+  }
+  if(e===2){
+    text="우주에서 음원을 불러오는 중...";
+  }
+  if(e===3){
+    text="개발자가 X튜브 보는 중...";
+  }
+  if(e===4){
+    text="얼마나 틀리게 할 지 고민중...";
+  }
+  if(e===5){
+    text="속이 뻔한 속임수를 생각하는 중...";
+  }
+  if(e===6){
+    text="CD 장착 중...";
+  }
+
   return (
     <div>
       <Background>
@@ -62,7 +83,7 @@ const QuizLoading = () => {
           <BlankTop DesktopMargin="3" TabletMargin="2" MobileMargin="2" />
           <LoadingComponent></LoadingComponent>
           <BlankTop DesktopMargin="5" TabletMargin="2" MobileMargin="2" />
-          <ContentComponent title="음향 체크 중...." />
+          <ContentComponent title={`${text}`}/>;
         </Wrapper>
       </Background>
     </div>

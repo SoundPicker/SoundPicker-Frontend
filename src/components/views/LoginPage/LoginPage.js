@@ -81,6 +81,7 @@ border-color:rgba( 12, 26, 34, 0);
 width: 400px;
 color:white;
 outline:none;
+margin-bottom:5px;
 @media (min-width: 768px) and (max-width:1024px) { //between
     width:300px;
     }
