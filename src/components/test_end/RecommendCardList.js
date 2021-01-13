@@ -1,5 +1,5 @@
 // 중간에 너무 우겨져서 breakpoint를 1024->1089로 바꿈
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import BlankTop from "../common/BlankTop";
 import { Link } from "react-router-dom";
 
@@ -44,19 +44,64 @@ const CardBox = styled.div`
 `;
 
 const Card = styled.button`
+  display: block;
   width: 34.9rem;
   height: 20.7rem;
   padding: 3.2rem 4.8rem 2.1rem 2.9rem;
-  border: 3px solid #60ffda;
+  border: 3px solid transparent;
   border-radius: 8px;
   cursor: pointer;
   background-color: transparent;
 
+  ${(props) =>
+    props.random >= 0 &&
+    props.random <= 4 &&
+    css`
+      border-right-color: rgba(96, 255, 218, 0.88);
+      border-left-color: rgba(94, 207, 255, 0.5);
+      background: linear-gradient(
+            to left,
+            rgba(96, 255, 218, 0.88) 0%,
+            rgba(94, 207, 255, 0.5) 100%
+          )
+          top/100% 3px,
+        linear-gradient(
+            to left,
+            rgba(96, 255, 218, 0.88) 0%,
+            rgba(94, 207, 255, 0.5) 100%
+          )
+          bottom/100% 3px;
+    `}
+
+  ${(props) =>
+    props.random >= 5 &&
+    props.random <= 9 &&
+    css`
+      border-right-color: rgba(94, 207, 255, 0.5);
+      border-left-color: rgba(96, 255, 218, 0.88);
+      background: linear-gradient(
+            to left,
+            rgba(94, 207, 255, 0.5) 0%,
+            rgba(96, 255, 218, 0.88) 100%
+          )
+          top/100% 3px,
+        linear-gradient(
+            to left,
+            rgba(94, 207, 255, 0.5) 0%,
+            rgba(96, 255, 218, 0.88) 100%
+          )
+          bottom/100% 3px;
+    `}
+
+    background-repeat: no-repeat;
+
   &:hover {
+    border: 3px solid transparent;
+    border-bottom: 3px solid #081923;
     background: linear-gradient(
       180deg,
-      rgba(96, 255, 205, 0.38) 0%,
-      rgba(96, 255, 218, 0) 100%
+      rgba(96, 255, 205, 0.38) 10%,
+      rgba(96, 255, 218, 0) 90%
     );
   }
 
@@ -153,7 +198,7 @@ const RecommendCardList = ({ recommendList }) => {
         {recommendList.map((item, index) => {
           return (
             <Link to={`/test/${item.id}`}>
-              <Card key={index}>
+              <Card key={index} random={Math.floor(Math.random() * 10)}>
                 <CardTitle>{item["title"]}</CardTitle>
                 <BlankTop
                   DesktopMargin={1.7}

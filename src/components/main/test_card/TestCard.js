@@ -19,7 +19,7 @@ const PlusBtn = styled.div`
   background-repeat: no-repeat;
   background-position: center center;
   border-radius: 8px;
-  border: 3px solid transparent;
+  border: 3px solid rgba(96, 255, 218, 0.88);
   background-color: transparent;
   cursor: pointer;
   overflow: hidden;
@@ -41,6 +41,7 @@ const PlusBtn = styled.div`
   @media (max-width: 568px) {
     width: 14.6rem;
     height: 2.8rem;
+    border-width: 2px;
     background-image: url(${PlusSmallMobile});
   }
 `;
@@ -60,15 +61,19 @@ const Card = styled.div`
     props.random >= 0 &&
     props.random <= 4 &&
     css`
-      border-right-color: #60ffda;
-      border-left-color: rgba(96, 121, 255, 1);
+      border-right-color: rgba(96, 255, 218, 0.88);
+      border-left-color: rgba(94, 207, 255, 0.5);
       background: linear-gradient(
             to left,
-            #60ffda 0%,
-            rgba(96, 121, 255, 1) 100%
+            rgba(96, 255, 218, 0.88) 0%,
+            rgba(94, 207, 255, 0.5) 100%
           )
           top/100% 3px,
-        linear-gradient(to left, #60ffda 0%, rgba(96, 121, 255, 1) 100%)
+        linear-gradient(
+            to left,
+            rgba(96, 255, 218, 0.88) 0%,
+            rgba(94, 207, 255, 0.5) 100%
+          )
           bottom/100% 3px;
     `}
 
@@ -76,15 +81,19 @@ const Card = styled.div`
     props.random >= 5 &&
     props.random <= 9 &&
     css`
-      border-right-color: rgba(96, 121, 255, 1);
-      border-left-color: #60ffda;
+      border-right-color: rgba(94, 207, 255, 0.5);
+      border-left-color: rgba(96, 255, 218, 0.88);
       background: linear-gradient(
             to left,
-            rgba(96, 121, 255, 1) 0%,
-            #60ffda 100%
+            rgba(94, 207, 255, 0.5) 0%,
+            rgba(96, 255, 218, 0.88) 100%
           )
           top/100% 3px,
-        linear-gradient(to left, rgba(96, 121, 255, 1) 0%, #60ffda 100%)
+        linear-gradient(
+            to left,
+            rgba(94, 207, 255, 0.5) 0%,
+            rgba(96, 255, 218, 0.88) 100%
+          )
           bottom/100% 3px;
     `}
 
@@ -95,29 +104,6 @@ const Card = styled.div`
   }
 
   &:hover {
-    /*Gradation
-    ${(props) =>
-      props.random >= 0 &&
-      props.random <= 4 &&
-      css`
-        background: linear-gradient(
-          to left,
-          #60ffda 0%,
-          rgba(96, 121, 255, 1) 100%
-        );
-      `}
-    ${(props) =>
-      props.random >= 5 &&
-      props.random <= 9 &&
-      css`
-        background: linear-gradient(
-          to left,
-          rgba(96, 121, 255, 1) 0%,
-          #60ffda 100%
-        );
-      `}
-    */
-
     border: 3px solid transparent;
     border-bottom: 3px solid #071923;
     background: linear-gradient(
@@ -125,6 +111,9 @@ const Card = styled.div`
       rgba(96, 255, 205, 0.38) 10%,
       rgba(96, 255, 218, 0) 90%
     );
+    @media (max-width: 568px) {
+      border-width: 2px;
+    }
   }
 
   @media (max-width: 1024px) {
@@ -138,6 +127,8 @@ const Card = styled.div`
   @media (max-width: 568px) {
     width: 14.6rem;
     padding: 1.8rem 1.3rem 1.3rem;
+    border-width: 2px;
+    background-size: 100% 2px, 100% 2px;
   }
 `;
 
@@ -386,6 +377,8 @@ const LoadMoreBtn = styled.div`
     height: 3.6rem;
     margin: 1.2rem auto 0;
     font-size: 1.2rem;
+    border-width: 2px;
+    background-size: 100% 2px, 100% 2px;
   }
 `;
 
@@ -479,7 +472,7 @@ const CardList = ({ testList, testList2 }) => {
       <CardListWrap height={height}>
         <CardWrapOne>
           <Link to="/testmaking">
-            <PlusBtn />
+            <PlusBtn random={Math.floor(Math.random() * 10)} />
           </Link>
           <BlankTop DesktopMargin={1.6} TabletMargin={1.6} MobileMargin={1.8} />
           <>
