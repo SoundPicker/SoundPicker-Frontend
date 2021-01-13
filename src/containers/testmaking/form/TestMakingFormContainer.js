@@ -185,6 +185,7 @@ const TestMakingFormContainer = ({history}) => {
           answerYoutubeURL: ""
         }
         setLinks([...links,data2]);
+        console.log(questions);
     }
 
     const deleteQuestions = questionNumber => () => {

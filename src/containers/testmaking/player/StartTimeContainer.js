@@ -28,8 +28,13 @@ const StartTimeContainer = ({questionStartsfrom,changeStartTime,totalTime}) => {
 
         }else{
             if(second >= 60){
-                setMinutes(minutes+1);
-                setSeconds(second%60);
+                if(totalTime> parseInt(minutes*60) + parseInt(second)){
+                    setMinutes(minutes+1);
+                    setSeconds(second%60);
+                }else{
+                    setSeconds(second%60);
+                }
+
             }else{
                 setSeconds(second);
             }
