@@ -88,6 +88,7 @@ const TestCd = ({ newList, match }) => {
   //레코드판 돌아가는 애니메이션 핸들러
   const handleRotateAnimation = second => {
     //레코드판 재생시간이 0초일때만 에니메이션 실행을 하여 마구 연타하였을때 애니메이션 꼬이는것을 방지
+    console.log(rotateSecond)
     if (rotateSecond === 0) {
       setRotateSecond(second)
       //이곳에 사운드 재생
@@ -95,11 +96,13 @@ const TestCd = ({ newList, match }) => {
         // 1초 사운드
         var audio = new Audio(sound1Url)
         audio.play()
+        // setRotateSecond(0)
       } else {
         // 3초 사운드
         var audio = new Audio(sound3Url)
         audio.play()
       }
+      // setRotateSecond(second)
     }
   }
 
@@ -153,7 +156,8 @@ const TestCd = ({ newList, match }) => {
                     <RecordImg
                       src={recordImg}
                       rotateSecond={rotateSecond}
-                      onAnimationEnd={() => setRotateSecond(0)} // 해당요소의 애니메이션이 종료됐을때 레코드판 돌리는 재생시간을 다시 0초로 초기화
+                      onAnimationEnd={() => setRotateSecond(0)}
+                      // 해당요소의 애니메이션이 종료됐을때 레코드판 돌리는 재생시간을 다시 0초로 초기화
                       inside={recordInside} //레코드가 들어가는 애니메이션을위한 트리거 변수
                     />
                   </>

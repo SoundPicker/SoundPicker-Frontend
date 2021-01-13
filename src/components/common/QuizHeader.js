@@ -8,9 +8,9 @@ import { useDispatch } from 'react-redux'
 import { auth } from '../../_actions/user_action'
 
 function QuizHeader() {
-  useEffect(() => window.scrollTo({ top: 0, left: 0, behavior: 'auto' }), [])
-  const [clickOpenArrow, setClickOpenArrow] = useState(false)
-  const [clickCloseArrow, setClickCloseArrow] = useState(false)
+  useEffect(() => window.scrollTo({ top: 0, left: 0, behavior: 'auto' }), []) // 처음 들어왔을때만 스크롤 맨위로 + 메뉴 열어도 위치 고정
+  const [clickOpenArrow, setClickOpenArrow] = useState(false) // 여는 트리거
+  const [clickCloseArrow, setClickCloseArrow] = useState(false) // 닫는 트리거
 
   const history = useHistory()
   const [myState, setMyState] = useState({ status: 'idle', member: null })
@@ -37,7 +37,6 @@ function QuizHeader() {
         <>
           <QuizWrapper>
             <HamImg
-              // onClick={() => setClickArrow(false)}
               onClick={() => {
                 setClickOpenArrow(true)
                 setClickCloseArrow(false)
@@ -56,12 +55,8 @@ function QuizHeader() {
                     setClickOpenArrow(false)
                   }}
                 />
-                <BlankTop
-                  DesktopMargin="7"
-                  TabletMargin="3"
-                  MobileMargin="2.6"
-                />
               </ArrowWrapper>
+              <BlankTop DesktopMargin="7" TabletMargin="8" MobileMargin="7" />
               <ContentWrapper>
                 <UserInfo>
                   <span>Hi, {myState.member.nickname}</span>
@@ -93,7 +88,7 @@ function QuizHeader() {
                       history.push('/mypage')
                     }}
                   >
-                    My page
+                    My Page
                   </li>
                 </ul>
               </PageWrapper>
@@ -116,20 +111,16 @@ function QuizHeader() {
               clickCloseArrow={clickCloseArrow}
               clickOpenArrow={clickOpenArrow}
             >
-              <ArrowWrapper>
-                <ArrowImg
-                  src={arrow}
-                  onClick={() => {
-                    setClickCloseArrow(true)
-                    setClickOpenArrow(false)
-                  }}
-                />
-                <BlankTop
-                  DesktopMargin="7"
-                  TabletMargin="3"
-                  MobileMargin="2.6"
-                />
-              </ArrowWrapper>
+              {/* <ArrowWrapper> */}
+              <ArrowImg
+                src={arrow}
+                onClick={() => {
+                  setClickCloseArrow(true)
+                  setClickOpenArrow(false)
+                }}
+              />
+              {/* </ArrowWrapper> */}
+              <BlankTop DesktopMargin="7" TabletMargin="3" MobileMargin="2.6" />
               <ContentWrapper>
                 <UserInfo>
                   <span>Hi, User!</span>
@@ -183,6 +174,22 @@ const SlideOff = keyframes`
     width: 0%;
   }
 `
+const SlideOff1024 = keyframes`
+  from {
+    width: 30%;
+  }
+  to {
+    width: 0%;
+  }
+`
+const SlideOff768 = keyframes`
+  from {
+    width: 30%;
+  }
+  to {
+    width: 0%;
+  }
+`
 
 const SlideOn = keyframes`
   from {
@@ -192,13 +199,23 @@ const SlideOn = keyframes`
     width: 20%;
   }
 `
-
-const ContentLine = styled.div`
-  margin: 0 auto;
-  white-space: nowrap;
-  width: 85%;
-  border-bottom: 1px solid #fff;
+const SlideOn1024 = keyframes`
+  from {
+    width: 0%;
+  }
+  to {
+    width: 30%;
+  }
 `
+const SlideOn768 = keyframes`
+  from {
+    width: 0%;
+  }
+  to {
+    width: 30%;
+  }
+`
+
 const QuizWrapper = styled.div`
   width: 100%;
   height: 4rem;
@@ -206,55 +223,84 @@ const QuizWrapper = styled.div`
   z-index: 999999;
 `
 const HamImg = styled.img`
+  display: block;
   margin-left: 2rem;
+  margin-top: 1.5rem;
   cursor: pointer;
   height: 4rem;
+  width: 4rem;
+  @media only screen and (max-width: 1024px) {
+    width: 3rem;
+    height: 3rem;
+  }
+  @media only screen and (max-width: 768px) {
+    width: 3rem;
+    height: 3rem;
+  }
 `
 const ArrowImg = styled.img`
+  overflow: hidden;
   display: block;
   width: 3rem;
-  margin-right: 2rem;
   cursor: pointer;
   position: fixed;
 `
 
 const ArrowWrapper = styled.div`
-  margin-top: 1rem;
-  padding-right: 2rem;
+  overflow: hidden;
+  margin-top: 2rem;
   display: flex;
   justify-content: flex-end;
-  width: 100%;
-  /* border: 1px solid red; */
+  padding-right: 2rem;
 `
 const ContentWrapper = styled.div`
+  overflow: hidden;
   white-space: nowrap;
   margin-top: 1rem;
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
   font-size: 1.4rem;
   color: #fff;
   width: 100%;
-  padding-right: 68%;
+  padding: 0 4rem;
+  /* border: 1px solid orange; */
 `
 
 const LineWrapper = styled.div`
+  overflow: hidden;
+  padding: 0 4rem;
   display: flex;
-  /* border: 1px solid red; */
   justify-content: center;
   font-size: 1.4rem;
   color: #fff;
   width: 100%;
+  @media only screen and (max-width: 1024px) {
+    padding: 0 4rem;
+  }
+  @media only screen and (max-width: 768px) {
+    padding: 0 4rem;
+  }
+  /* border-bottom: 1px solid #fff; */
 `
+
+const ContentLine = styled.div`
+  margin: 0 auto;
+  width: 100%;
+  white-space: nowrap;
+  border: 1px solid #fff;
+`
+
 const UserInfo = styled.div`
   display: block;
-  /* border: 1px solid orange; */
 `
 
 const PageWrapper = styled.div`
+  /* border: 1px solid blue; */
+  padding: 0 4rem;
+  overflow: ellipsis;
   display: flex;
   white-space: nowrap;
-  justify-content: flex-end;
-  padding-right: 73%;
+  justify-content: flex-start;
   font-size: 1.4rem;
   color: #fff;
   width: 100%;
@@ -271,21 +317,28 @@ const PageWrapper = styled.div`
 `
 
 const MenuBox = styled.div`
-  /* width: 0%; */
+  overflow: hidden;
   height: 100vh;
   flex: 1;
   background-color: rgba(0, 0, 0, 0.5);
   position: fixed;
+
   top: 0;
   width: 0%;
   ${props =>
     props.clickCloseArrow &&
     css`
+      width: 0%;
+      padding: 0;
       animation-timing-function: ease-in-out;
       animation-duration: 0.5s;
       animation-name: ${SlideOff};
-      width: 0%;
-      padding: 0;
+      @media only screen and (max-width: 1024px) {
+        animation-name: ${SlideOff1024};
+      }
+      @media only screen and (max-width: 768px) {
+        animation-name: ${SlideOff768};
+      }
     `}
   ${props =>
     props.clickOpenArrow &&
@@ -294,6 +347,14 @@ const MenuBox = styled.div`
       animation-duration: 0.5s;
       animation-name: ${SlideOn};
       width: 20%;
+      @media only screen and (max-width: 1024px) {
+        width: 30%;
+        animation-name: ${SlideOn1024};
+      }
+      @media only screen and (max-width: 768px) {
+        width: 30%;
+        animation-name: ${SlideOn768};
+      }
     `}
 `
 

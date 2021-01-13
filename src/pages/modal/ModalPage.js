@@ -14,8 +14,6 @@ function ModalPage({
   modalOut,
 }) {
   const [data, setData] = useState('')
-  //   const [modalOut, setModalOut] = useState(false)
-
   useEffect(() => {
     setData(urlId)
     document.body.style.cssText = `position: fixed; top: -${window.scrollY}px`
@@ -79,11 +77,11 @@ const AnswerButtonStyle = styled.button`
   padding: 0px;
   width: 44rem;
   height: 5rem;
-  position: fixed;
+  /* position: fixed; */
+  display: block;
   margin: 0 auto;
-  left: 0;
-  right: 0;
-  bottom: 50px;
+  /* margin-bottom: 10rem; */
+
   z-index: 1000;
   overflow: auto;
 
