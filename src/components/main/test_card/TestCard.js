@@ -114,6 +114,7 @@ const Card = styled.div`
     @media (max-width: 568px) {
       border-width: 2px;
     }
+    transition: background 500ms ease-in-out;
   }
 
   @media (max-width: 1024px) {
@@ -453,19 +454,15 @@ const CardList = ({ testList, testList2 }) => {
   }
 
   const defaultHeight = width > 568 ? 116.5 : 61.2;
-  console.log(defaultHeight);
   const [height, setHeight] = useState(defaultHeight);
   const countPlus = (e) => {
     setCount(count + 1);
-    console.log(count);
     setHeight(count * defaultHeight);
-    console.log(height);
   };
 
   const max = Math.max(one, two, three, four);
 
   const maxHeight = width > 828 ? 30 * max : width > 568 ? 28 * max : 20 * max;
-  console.log(maxHeight);
 
   return (
     <>

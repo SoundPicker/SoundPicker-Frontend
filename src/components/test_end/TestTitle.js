@@ -48,11 +48,6 @@ const Title = styled.strong`
 `;
 
 const TestTitle = ({ title }) => {
-  console.log(title);
-  //const titleName = title[0]["testTitle"];
-  // console.log(title["data"][0]["testTitle"]);
-  // console.log(title["data"][0]);
-  //console.log(titleName);
   return (
     <Wrap>
       <Title>{title}</Title>

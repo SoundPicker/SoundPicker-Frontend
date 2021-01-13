@@ -9,8 +9,6 @@ const TestEndContainer = ({ match }) => {
   const parentMatch = matchPath(history.location.pathname, {
     path: "/test/:id",
   });
-  console.log(parentMatch);
-  console.log(parentMatch.params.id);
 
   const [recommend, setRecommend] = useState({
     status: "idle",

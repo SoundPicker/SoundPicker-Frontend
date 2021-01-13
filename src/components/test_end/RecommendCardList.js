@@ -103,6 +103,7 @@ const Card = styled.button`
       rgba(96, 255, 205, 0.38) 10%,
       rgba(96, 255, 218, 0) 90%
     );
+    transition: background 500ms ease-in-out;
   }
 
   &:focus {

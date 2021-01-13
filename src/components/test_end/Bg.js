@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import BgDesktop from "../../assets/desktop/test_end_all_background.png";
-import BgTablet from "../../assets/tablet/test_end_all_background.png";
-import BgMobile from "../../assets/mobile/test_end_all_background.png";
-import BgSmallMobile from "../../assets/small_mobile/all_background.png";
+import BgDesktop from "../../assets/desktop/test_end_all_background.jpg";
+import BgTablet from "../../assets/tablet/test_end_all_background.jpg";
+import BgMobile from "../../assets/mobile/test_end_all_background.jpg";
+import BgSmallMobile from "../../assets/small_mobile/test_end_all_background.jpg";
 
 const Warp = styled.div`
   width: 100vw;

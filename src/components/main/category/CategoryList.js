@@ -91,12 +91,6 @@ function useWindowDimensions() {
 const div = document.getElementsByClassName("cateBtn");
 
 function handleClick(event) {
-  console.log(event.target);
-  // console.log(this);
-  // 콘솔창을 보면 둘다 동일한 값이 나온다
-
-  console.log(event.target.classList.contains("cateAll"));
-
   if (!event.target.classList.contains("cateAll")) {
     div[0].classList.remove("cateAll");
   }
