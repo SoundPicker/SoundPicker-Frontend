@@ -197,7 +197,7 @@ const TestCd = ({ newList, match }) => {
 
 /**키프레임 시작 */
 
-const HintFade = keyframes`{
+const HintFade = keyframes`
   0% { 
    opacity: 1;
   }
@@ -208,6 +208,7 @@ const HintFade = keyframes`{
   100% {
   opacity: 1;
   }
+
 `
 
 //1초 레코드판 돌리는 키프레임
