@@ -16,7 +16,7 @@ const Bar = styled.div`
     right: 21.5rem;
   }
   @media only screen and (max-width: 768px) {
-    height: 26rem;
+    height: 23rem;
     right: 18rem;
   }
 `

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import styled, { css, keyframes } from 'styled-components'
-import recordImg from '../../../assets/images/test/graphic_black_cd.png'
-import cdImg from '../../../assets/images/test/blackcd_house-1.png'
-import defaultCdImg from '../../../assets/images/test/blackcd_house.png'
+import recordImg from '../../../assets/images/test/graphic_black_cd.jpg'
+import cdImg from '../../../assets/images/test/blackcd_house-1.jpg'
+import defaultCdImg from '../../../assets/images/test/blackcd_house.jpg'
 import BlankTop from '../../common/BlankTop'
-import logo from '../../../assets/images/test/image_watermark.png'
+import logo from '../../../assets/images/test/image_watermark-1.jpg'
 import TextComponent from '../../common/test/TextComponent'
 import { useHistory } from 'react-router-dom'
 import ProgressBar from '../testcd/ProgressBar'
@@ -88,6 +88,7 @@ const TestCd = ({ newList, match }) => {
   //레코드판 돌아가는 애니메이션 핸들러
   const handleRotateAnimation = second => {
     //레코드판 재생시간이 0초일때만 에니메이션 실행을 하여 마구 연타하였을때 애니메이션 꼬이는것을 방지
+    console.log(rotateSecond)
     if (rotateSecond === 0) {
       setRotateSecond(second)
       //이곳에 사운드 재생
@@ -95,6 +96,7 @@ const TestCd = ({ newList, match }) => {
         // 1초 사운드
         var audio = new Audio(sound1Url)
         audio.play()
+        // setRotateSecond(0)
       } else {
         // 3초 사운드
         var audio = new Audio(sound3Url)
@@ -153,7 +155,8 @@ const TestCd = ({ newList, match }) => {
                     <RecordImg
                       src={recordImg}
                       rotateSecond={rotateSecond}
-                      onAnimationEnd={() => setRotateSecond(0)} // 해당요소의 애니메이션이 종료됐을때 레코드판 돌리는 재생시간을 다시 0초로 초기화
+                      onAnimationEnd={() => setRotateSecond(0)}
+                      // 해당요소의 애니메이션이 종료됐을때 레코드판 돌리는 재생시간을 다시 0초로 초기화
                       inside={recordInside} //레코드가 들어가는 애니메이션을위한 트리거 변수
                     />
                   </>
@@ -237,11 +240,11 @@ const RecordInside = keyframes`
 
 const TextInside = keyframes`
 0% {
-  margin-left: -25%
+  margin-left: -35%
 }
 100% {
   
-  margin-left: 0;
+  margin-left: 0%;
 }
 `
 
@@ -299,7 +302,7 @@ const UnActiveAnimation1024 = keyframes`
 }
 100% {
     opacity: .5; 
-    transform: translateX(-60%) scale(0.6);
+    transform: translateX(-60%) scale(0.7);
 }
 `
 
@@ -310,7 +313,7 @@ const UnActiveAnimation768 = keyframes`
 }
 100% {
     opacity: .5; 
-    transform: translateX(-130%) scale(0.6);
+    transform: translateX(-130%) scale(1);
 }
 `
 /* 키프레임 종료 */
@@ -377,10 +380,15 @@ const AnswerText = styled.p`
   position: absolute;
   z-index: 10;
   padding-left: 40px;
-  /* border: 1px solid red; */
   object-fit: contain;
-  margin-left: -25%;
+  margin-left: -35%;
   animation-fill-mode: forwards;
+  @media only screen and (max-width: 1024px) {
+    font-size: 1.3rem;
+  }
+  @media only screen and (max-width: 768px) {
+    font-size: 1.1rem;
+  }
   ${props =>
     props.inside && //레코드판을 집어넣는 css애니메이션 추가 트리거가 true일때 실행.
     css`
@@ -395,7 +403,6 @@ const SwiperContainer = styled.div`
   & > img {
     height: 100%;
   }
-  /* border: 1px solid green; */
   margin-right: 10rem;
   display: flex;
   height: 100%;
@@ -440,14 +447,13 @@ const SwiperContainer = styled.div`
       }
       //그이외 그냥 위치만 잡아줌
       return css`
-        /* border: 1px solid blue; */
         opacity: 0.5;
         transform: translateX(-65%) scale(0.6);
         @media only screen and (max-width: 1024px) {
-          transform: translateX(-60%) scale(0.6);
+          transform: translateX(-60%) scale(0.7);
         }
         @media only screen and (max-width: 768px) {
-          transform: translateX(-130%) scale(0.7);
+          transform: translateX(-130%) scale(1);
         }
       `
     } else if (activeIndex < thisIndex) {
@@ -458,7 +464,7 @@ const SwiperContainer = styled.div`
       overflow: hidden;        
       transform: translateX(101%) scale(0.6);
       @media only screen and (max-width: 1024px) {
-        transform: translateX(89%) scale(0.6);
+        transform: translateX(89%) scale(0.68);
       }
       @media only screen and (max-width: 768px) {
         transform: translateX(100%) scale(0.7);
@@ -469,13 +475,12 @@ const SwiperContainer = styled.div`
 `
 
 const RecordImg = styled.img`
-  /* border: 1px solid orange; */
   object-fit: contain;
   z-index: 1;
   margin-left: -25%;
   animation-fill-mode: forwards;
   ${props =>
-    props.rotateSecond > 0 && //레코드판을 돌리는 css애니메이션 추가 0초 이상일때만 작동하도록 한다.
+    props.rotateSecond > 0 && //레코드판을 돌리는 css애니메이션 추가 0초 초과일때만 작동하도록 한다.
     css`
       animation-timing-function: ease-in-out;
       animation-duration: ${props.rotateSecond}s;
@@ -495,11 +500,15 @@ const RecordImg = styled.img`
 `
 
 const CaseImg = styled.img`
-  margin-left: 30%;
   overflow: hidden;
-
+  position: relative;
   object-fit: contain;
   z-index: 2;
+  margin-left: 30%;
+  @media only screen and (max-width: 1024px) {
+  }
+  @media only screen and (max-width: 768px) {
+  }
 `
 
 /* Start button */
