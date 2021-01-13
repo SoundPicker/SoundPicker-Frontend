@@ -71,8 +71,8 @@ MyIcon.defaultProps = {
 
 
 
-const StartLoading = () => {
 
+function StartLoading(){
 
     return(
         <div>
@@ -85,7 +85,7 @@ const StartLoading = () => {
             <BlankTop DesktopMargin='3' TabletMargin='2' MobileMargin='2' />
             <LoadingComponent></LoadingComponent>
             <BlankTop DesktopMargin='5' TabletMargin='2' MobileMargin='2' />
-            <ContentComponent title="오늘밤 사픽 주인공은 나야나~ 나야나~ " />
+            <ContentComponent title='모든 테스트를 불러오는 중... '/>;
             <div></div>
             
             </Wrapper>

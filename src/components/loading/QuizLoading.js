@@ -36,19 +36,19 @@ const Wrapper = styled.div`
   align-items: center;
   @media (min-width: 768px) and (max-width: 1024px) {
     //between
-    margin-top: 45%;
+    margin-top: 50%;
     width: 100%auto;
   }
 
   @media (min-width: 1024px) {
     //desktop
-    margin-top: 15%;
+    margin-top: 20%;
     width: 100%auto;
   }
   @media (max-width: 767px) {
     //iphone
     width: 100%auto;
-    margin-top: 40%;
+    margin-top: 50%;
   }
 `
 const QuizLoading = () => {
@@ -56,14 +56,13 @@ const QuizLoading = () => {
     <div>
       <Background>
         <Wrapper>
-          <BlankTop DesktopMargin="5" TabletMargin="5" MobileMargin="5" />
-          <ContentComponent title="by 리니꿍 " />
-          <BlankTop DesktopMargin="2" TabletMargin="2" MobileMargin="2" />
-          <TitleComponent title="레드벨벳 찐팬만 맞출 수 있는 정답모음" />
-          <BlankTop DesktopMargin="2" TabletMargin="2" MobileMargin="2" />
+          <TitleComponent title="순간의 센스가" />
+          <BlankTop DesktopMargin="2" TabletMargin="1" MobileMargin="1" />
+          <TitleComponent title="정답을 좌우한다" />
+          <BlankTop DesktopMargin="3" TabletMargin="2" MobileMargin="2" />
           <LoadingComponent></LoadingComponent>
           <BlankTop DesktopMargin="5" TabletMargin="2" MobileMargin="2" />
-          <ContentComponent title="아 빌리빈유 아빌리빈마라잎 벌써 일초가 지났지마-한~" />
+          <ContentComponent title="음향 체크 중...." />
         </Wrapper>
       </Background>
     </div>
