@@ -432,16 +432,23 @@ const AnswerText = styled.p`
 `
 
 const SwiperContainer = styled.div`
+  /* border: 1px solid red; */
   & > img {
     height: 100%;
   }
-  margin-right: 10rem;
   display: flex;
   height: 100%;
   position: absolute;
   align-items: center;
   justify-content: center;
   animation-fill-mode: forwards;
+  margin-right: 10rem;
+  @media only screen and (max-width: 1024px) {
+  }
+  @media only screen and (max-width: 768px) {
+  }
+  @media only screen and (max-width: 375px) {
+  }
   ${({ activeIndex, thisIndex }) => {
     // 선택된 index와 각요소의 index를 비교해서 애니메이션과 위치를 처리해줌
     const compare = Math.abs(activeIndex - thisIndex) //index비교 절대값
@@ -523,11 +530,9 @@ const RecordImg = styled.img`
   width:45rem;
   @media only screen and (max-width: 1024px) {
     width: 40rem;
-    /* margin-left: -25%; */
   }
   @media only screen and (max-width: 768px) {
     width: 26rem;
-    /* width: 18.5rem; */
   }
   @media only screen and (max-width: 375px) {
     width: 28rem;
@@ -547,7 +552,7 @@ const CaseImg = styled.img`
     margin-left: 30%;
   }
   @media only screen and (max-width: 375px) {
-    margin-left: 25%;
+    margin-left: 26%;
   }
 `
 
