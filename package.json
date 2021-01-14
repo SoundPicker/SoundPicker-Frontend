@@ -33,7 +33,7 @@
       "react-app/jest"
     ]
   },
-  "homepage": "https://boring-wilson-c19003.netlify.app/",
+  "homepage": "https://soundpicker.kr/",
   "browserslist": {
     "production": [
       ">0.2%",
