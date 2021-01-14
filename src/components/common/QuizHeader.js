@@ -251,7 +251,7 @@ const SlideOff1024 = keyframes`
 `
 const SlideOff768 = keyframes`
   from {
-    width: 30%;
+    width: 43%;
   }
   to {
     width: 0%;
