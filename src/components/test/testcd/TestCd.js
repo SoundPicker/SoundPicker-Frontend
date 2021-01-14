@@ -60,7 +60,7 @@ const TestCd = ({ newList, match }) => {
   }
 
   const handleNextButton = () => {
-    //버튼 텍스트가 '정답보기' 일때 버튼명을 '다음문제'로 변경 후 레코드 집어넣는 트리거를true로 바꿔줌
+    //버튼 텍스트가 '정답보기' 일때 버튼명을 '다음문제'로 변경 후 레코드 집어넣는 트리거를true로 바꿔줌 //
     if (buttonText === '정답 보기') {
       isRecordInside(true)
       setHintText('관련 영상 보기')

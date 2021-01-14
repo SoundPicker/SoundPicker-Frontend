@@ -10,7 +10,7 @@ import { auth } from '../../_actions/user_action'
 function QuizHeader() {
   useEffect(() => window.scrollTo({ top: 0, left: 0, behavior: 'auto' }), []) // 처음 들어왔을때만 스크롤 맨위로 + 메뉴 열어도 위치 고정
   const [clickOpenArrow, setClickOpenArrow] = useState(false) // 여는 트리거
-  const [clickCloseArrow, setClickCloseArrow] = useState(false) // 닫는 트리거
+  const [clickCloseArrow, setClickCloseArrow] = useState(false) // 닫는 트리거 //
 
   const history = useHistory()
   const [myState, setMyState] = useState({ status: 'idle', member: null })
@@ -31,7 +31,7 @@ function QuizHeader() {
 
   switch (myState.status) {
     case 'pending':
-      return <h1></h1>
+      return <></>
     case 'resolved':
       return (
         <>
