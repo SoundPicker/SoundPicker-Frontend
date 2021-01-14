@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import BannerImageDesktop from "../../../assets/desktop/main_title.png";
-import BannerImageTablet from "../../../assets/tablet/main_title.png";
-import BannerImageMobile from "../../../assets/mobile/main_title.png";
-import BannerImageSmallMobile from "../../../assets/small_mobile/main_title.png";
+import BannerImageDesktop from "../../../assets/desktop/main_title.svg";
+import BannerImageTablet from "../../../assets/tablet/main_title.svg";
+import BannerImageMobile from "../../../assets/mobile/main_title.svg";
+import BannerImageSmallMobile from "../../../assets/small_mobile/main_title.svg";
 
 const Wrap = styled.div`
   display: flex;

@@ -5,6 +5,7 @@ const Title = styled.div`
     font-family: NanumGothic;
     color:#ffffff;
     line-height: 30px;
+    width:80px;
     font-size: ${props=> props.DesktopLength || 0}px;
     @media only screen and (max-width: 1024px) {
     font-size: ${props=> props.TabletLength || 0}px;
@@ -14,7 +15,6 @@ const Title = styled.div`
     }
     @media (max-width: 767px) { //iphone
     font-size:10px;
-    line-height: 10px;
     width:60px;
   }
 `

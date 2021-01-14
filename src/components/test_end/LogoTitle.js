@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import LogoImage from "../../assets/image_watermark.png";
-import LogoImage768 from "../../assets/tablet/tablet_image_watermark.png";
-import LogoImage503 from "../../assets/small_mobile/small_mobile_image_watermark.png";
+import LogoImage from "../../assets/image_watermark.svg";
+import LogoImage768 from "../../assets/tablet/tablet_image_watermark.svg";
+import LogoImage503 from "../../assets/small_mobile/small_mobile_image_watermark.svg";
 
 const Wrap = styled.div`
   display: flex;

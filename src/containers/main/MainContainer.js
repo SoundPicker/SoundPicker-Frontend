@@ -9,7 +9,7 @@ const MainContainer = ({ match }) => {
     item: null,
   })
 
-  const url = 'https://soundpicker.ga'
+  const url = "https://soundpicker.ga";
 
   // categoryList
   const getCategoryAPI = async () => {
