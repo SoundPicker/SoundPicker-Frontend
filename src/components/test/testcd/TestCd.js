@@ -201,7 +201,6 @@ const TestCd = ({ newList, match }) => {
 
 /**키프레임 시작 */
 
-
 const RecordWrapper = styled.div`
   z-index: 1;
   margin-left: -26%;
@@ -221,7 +220,6 @@ const RecordWrapper = styled.div`
       animation-name: ${RecordInside};
     `}
 `
-
 
 const HintFade = keyframes`
   0% { 
@@ -415,6 +413,9 @@ const AnswerText = styled.p`
   }
   @media only screen and (max-width: 768px) {
     font-size: 1.1rem;
+  }
+  @media only screen and (max-width: 375px) {
+    margin-left: -15%;
   }
   ${props =>
     props.inside && //레코드판을 집어넣는 css애니메이션 추가 트리거가 true일때 실행.
