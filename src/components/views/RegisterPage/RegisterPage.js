@@ -19,52 +19,51 @@ import {
   Form, Button,
 } from 'antd';
 
+const Fix =styled.div`
+min-height:100vh;
+background-color:  #081923;
+`;
 
 const Background = styled.div`
-    width:100vw;
-    height:1000vh;
+    width:100%;
+    height:100%;
     background-repeat: no-repeat;
     background-position: center top;
     background-color:  #081923;
-    background-size:contain;
-    border:1px solid rgba(0,0,0,0);
-    @media (min-width: 768px) and (max-width:1024px){
+    background-image: url(${Bg1});
+    @media  (min-width:1024px) {
+      min-height:1080px;
+    }
+    @media only screen and (max-width: 1024px) {
       background-image: url(${Bg2});
+      min-height:1336px;
+
     }
- @media  (min-width:1024px) {
-  background-image: url(${Bg1});
-    }
+
     @media (max-width: 768px) {
       background-image: url(${Bg3});
+      min-height:1024px;
     }
 `;
-const Wrapper = styled.div`
-position: absolute;
-  width: 100%;
+const Wrapper=styled.div`
+  width:97.1rem;
   height: 100%;
-  background-size: cover;
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
   align-items: center;
-
-
-  @media (min-width: 768px) and (max-width:1024px) { //between
-    margin-top:35%;
-      width:100%auto;
-    }
-
-    @media (min-width: 1024px) { //desktop 
-      margin-top:17%;
-      width:100%auto;
-    }
-    @media (max-width: 768px) { //iphone
-      width:100%auto;
-        margin-top:30%;
+  margin: 0 auto;
+  @media only screen and (max-width: 1024px) {
+        width:71.5rem;
   }
+    @media only screen and (max-width: 768px) {
+        width:54.8rem;
+  }
+    @media only screen and (max-width: 548px) {
+        width:100%;
+        padding:0 0.5rem;
+    }
 
-
-`;
+  ` 
 
 const MyIcon = styled.img`
   @media (min-width: 768px) and (max-width: 1024px) {
@@ -125,13 +124,17 @@ const Center=styled.div`
 function RegisterPage(props) {
   const dispatch = useDispatch();
   return (
-
+<Fix>
 <Background> <QuizHeader/>
   <Wrapper>
-  <MyIcon></MyIcon>
+  <div>
+      <BlankTop DesktopMargin='38' TabletMargin='48.5' MobileMargin='26.5' />
+
+      <MyIcon></MyIcon>
+    </div>  
   <BlankTop DesktopMargin='3' TabletMargin='3' MobileMargin='2' />
   <TextComponent title="회원가입"  DesktopLength='15' TabletLength='15' MobileLength='13'/> 
-  <BlankTop DesktopMargin='5' TabletMargin='3' MobileMargin='3' />
+  <BlankTop DesktopMargin='5' TabletMargin='3' MobileMargin='1' />
     <Formik
       initialValues={{
         email: '',
@@ -329,9 +332,9 @@ function RegisterPage(props) {
                   >
                   
                     
-                     &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
-                    &nbsp;&nbsp; 회원가입 &nbsp; &nbsp; &nbsp;
-                    &nbsp;&nbsp;
+                    &nbsp; 
+                    &nbsp;&nbsp; 회원가입 &nbsp; &nbsp; 
+                   
                   </Button>
                 </ColorButton></Center>
               </form>
@@ -339,7 +342,7 @@ function RegisterPage(props) {
           }}
         </Formik>
       </Wrapper>
-    </Background>
+    </Background></Fix>
   );
 }
 

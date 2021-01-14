@@ -224,13 +224,13 @@ switch (myState.status) {
                   
                   <div>
                   <Detail>
-                  <BoldTextComponent key={i} title={member.title}  DesktopLength='15' TabletLength='10' MobileLength='7'/>
+                  <BoldTextComponent key={i} title={member.title}  DesktopLength='15' TabletLength='12' MobileLength='8'/>
                   <div>
                   <Button font='12' onClick={() => history.push(`/testedit/${member.id}`)}>수정</Button>
                    <Button font='12' onClick={()=>onDeleteTest(member)}>삭제</Button>
                   <Button font='12'  color="#60FFDA" border="#60FFDA"  onClick={() => history.push(`/test/${member.id}`)} > 플레이</Button> </div></Detail>  
                   <Detail>
-                    <TextComponent title={member.description}  DesktopLength='10' TabletLength='10' MobileLength='10'/>
+                    <TextComponent title={member.description}  DesktopLength='10' TabletLength='9' MobileLength='5'/>
                   </Detail> 
                   <BlankTop DesktopMargin='2' TabletMargin='2' MobileMargin='2' />
                   <UnderLineWrap  DesktopLength='130'BetweenLength='95' TabletLength='70' MobileLength='36' ></UnderLineWrap>

@@ -383,7 +383,7 @@ const TestMakingFormContainer = ({history}) => {
       }
       const newTimer = setTimeout(async () => {
         try {
-          axios.post('http://3.35.187.65:3000/test',variable,config)
+          axios.post('https://soundpicker.ga/test',variable,config)
         .then(response=> {
             if(response.data.success){
               history.push("/");
@@ -594,7 +594,7 @@ const TestMakingFormContainer = ({history}) => {
               fs: 0,
               showinfo:0,
               enablejsapi: 1,
-              origin:'http://localhost:3001'
+              origin:'https://soundpicker.kr'
             },
             events: {
               onReady: onReadyAPI0,
@@ -612,7 +612,7 @@ const TestMakingFormContainer = ({history}) => {
               fs: 0,
               showinfo:0,
               enablejsapi: 1,
-              origin:'http://localhost:3000'
+              origin:'https://soundpicker.kr'
             },
             events: {
               onReady: onReadyAPI1,
@@ -630,7 +630,7 @@ const TestMakingFormContainer = ({history}) => {
               fs: 0,
               showinfo:0,
               enablejsapi: 1,
-              origin:'http://localhost:3000'
+              origin:'https://soundpicker.kr'
             },
             events: {
               onReady: onReadyAPI2,
@@ -648,7 +648,7 @@ const TestMakingFormContainer = ({history}) => {
               fs: 0,
               showinfo:0,
               enablejsapi: 1,
-              origin:'http://localhost:3000'
+              origin:'https://soundpicker.kr'
             },
             events: {
               onReady: onReadyAPI3,
@@ -666,7 +666,7 @@ const TestMakingFormContainer = ({history}) => {
               fs: 0,
               showinfo:0,
               enablejsapi: 1,
-              origin:'http://localhost:3000'
+              origin:'https://soundpicker.kr'
             },
             events: {
               onReady: onReadyAPI4,
@@ -684,7 +684,7 @@ const TestMakingFormContainer = ({history}) => {
               fs: 0,
               showinfo:0,
               enablejsapi: 1,
-              origin:'http://localhost:3000'
+              origin:'https://soundpicker.kr'
             },
             events: {
               onReady: onReadyAPI5,
@@ -702,7 +702,7 @@ const TestMakingFormContainer = ({history}) => {
               fs: 0,
               showinfo:0,
               enablejsapi: 1,
-              origin:'http://localhost:3000'
+              origin:'https://soundpicker.kr'
             },
             events: {
               onReady: onReadyAPI6,
@@ -720,7 +720,7 @@ const TestMakingFormContainer = ({history}) => {
               fs: 0,
               showinfo:0,
               enablejsapi: 1,
-              origin:'http://localhost:3000'
+              origin:'https://soundpicker.kr'
             },
             events: {
               onReady: onReadyAPI7,
@@ -738,7 +738,7 @@ const TestMakingFormContainer = ({history}) => {
               fs: 0,
               showinfo:0,
               enablejsapi: 1,
-              origin:'http://localhost:3000'
+              origin:'https://soundpicker.kr'
             },
             events: {
               onReady: onReadyAPI8,
@@ -756,7 +756,7 @@ const TestMakingFormContainer = ({history}) => {
               fs: 0,
               showinfo:0,
               enablejsapi: 1,
-              origin:'http://localhost:3000'
+              origin:'https://soundpicker.kr'
             },
             events: {
               onReady: onReadyAPI9,

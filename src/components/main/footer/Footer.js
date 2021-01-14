@@ -1,14 +1,14 @@
 import styled from "styled-components";
 import BlankTop from "../../common/BlankTop";
 import MainDivider from "../MainDivider";
-import DesktopMotoText from "../../../assets/desktop/image_moto.png";
-import TabletMotoText from "../../../assets/tablet/image_moto.png";
-import MobileMotoText from "../../../assets/mobile/mobile_text_moto.png";
-import SmallMobileMotoText from "../../../assets/small_mobile/text_moto.png";
-import DesktopWaterMark from "../../../assets/desktop/image_watermark.png";
-import TabletWaterMark from "../../../assets/tablet/image_watermark.png";
-import MobileWaterMark from "../../../assets/mobile/mobile_image_watermark.png";
-import SmallMobileWaterMark from "../../../assets/small_mobile/image_watermark.png";
+import DesktopMotoText from "../../../assets/desktop/image_moto.svg";
+import TabletMotoText from "../../../assets/tablet/image_moto.svg";
+import MobileMotoText from "../../../assets/mobile/text_moto.svg";
+import SmallMobileMotoText from "../../../assets/small_mobile/text_moto.svg";
+import DesktopWaterMark from "../../../assets/desktop/image_watermark.svg";
+import TabletWaterMark from "../../../assets/tablet/image_watermark.svg";
+import MobileWaterMark from "../../../assets/mobile/image_watermark.svg";
+import SmallMobileWaterMark from "../../../assets/small_mobile/image_watermark.svg";
 import MainBlankTop from "../MainBlankTop";
 
 const OuterWrap = styled.div`
@@ -79,6 +79,7 @@ const WaterMark = styled.div`
 const TextIntroduction = styled.div`
   display: flex;
   justify-content: center;
+  margin-bottom: 0.9rem;
   font-size: 1.6rem;
   color: #ffffff;
 
@@ -87,6 +88,7 @@ const TextIntroduction = styled.div`
   }
   @media (max-width: 568px) {
     font-size: 0.8rem;
+    margin-bottom: 0.4rem;
   }
 `;
 
@@ -218,7 +220,6 @@ const Footer = () => {
         SmallMobileMargin={1.8}
       />
       <TextIntroduction>소리로 하는 모든 즐거움을 지향합니다.</TextIntroduction>
-
       <TextIntroduction>
         사운드피커를 통해 함께하는 사람들과의 즐거운 시간을 경험해보세요.
       </TextIntroduction>
