@@ -17,7 +17,7 @@ const LayoutInner = styled.div`
     min-width: 40rem;
   }
   @media only screen and (max-width: 375px) {
-    max-width: 80rem;
+    max-width: 30rem;
     min-width: 20rem;
   }
   margin: 7.2rem auto;
