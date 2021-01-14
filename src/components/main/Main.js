@@ -8,6 +8,8 @@ import BlankTop from "../common/BlankTop";
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 import SearchIconImg from "../../assets/ic_search.png";
+import SearchIconMobileImg from "../../assets/small_mobile/ic_search.png";
+import MainBlankTop from "../main/MainBlankTop";
 
 const Wrap = styled.div`
   display: flex;
@@ -15,6 +17,19 @@ const Wrap = styled.div`
   width: 52.4rem;
   position: relative;
   margin: 0 auto 1.3rem;
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  animation: fadeIn 1500ms 1;
+  animation-timing-function: ease-in;
+
   @media (max-width: 1024px) {
     width: 46.5rem;
     margin-bottom: 1rem;
@@ -25,16 +40,34 @@ const Wrap = styled.div`
   }
 `;
 
-const SearchIcon = styled.img.attrs({
-  src: SearchIconImg,
-})`
-  display: block;
+const SearchIcon = styled.div`
   width: 2rem;
   height: 2rem;
   position: absolute;
   left: -1.2rem;
+  background-image: url(${SearchIconImg});
+  background-repeat: no-repeat;
+  background-position: center top;
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  animation: fadeIn 1500ms 1;
+  animation-timing-function: ease-in;
+
   @media (max-width: 768px) {
     left: -5.6rem;
+  }
+
+  @media (max-width: 568px) {
+    left: 3.5rem;
+    background-image: url(${SearchIconMobileImg});
   }
 `;
 
@@ -61,6 +94,11 @@ const Input = styled.input`
     font-size: 1.4rem;
     line-height: 1;
   }
+
+  @media (max-width: 568px) {
+    width: 20.4rem;
+    font-size: 0.8rem;
+  }
 `;
 
 const SearchBorder = styled.hr`
@@ -76,20 +114,33 @@ const SearchBorder = styled.hr`
     rgba(255, 255, 255, 0.85) 0%,
     rgba(255, 255, 255, 0) 57.29%
   );
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  animation: fadeIn 1300ms 1;
+  animation-timing-function: ease-in;
+
   @media (max-width: 1024px) {
     width: 72.4rem;
   }
   @media (max-width: 768px) {
     width: 54.9rem;
   }
+  @media (max-width: 568px) {
+    width: 35.8rem;
+  }
 `;
 
 // testList는 내가 선택한 카테고리에 따라 오게됨.
 const Main = ({ categoryList, testList, onClickDisplay, allList }) => {
-  console.log(testList);
-
   const first = Object.values(allList);
-  console.log(first);
 
   const [search, setSearch] = useState("");
 
@@ -111,14 +162,22 @@ const Main = ({ categoryList, testList, onClickDisplay, allList }) => {
     setResult(title);
   }, [search]);
 
-  console.log(result);
-
   return (
     <Background>
       <Header />
-      <BlankTop DesktopMargin={11} TabletMargin={12} MobileMargin={8.8} />
+      <MainBlankTop
+        DesktopMargin={20.2}
+        TabletMargin={14.198}
+        MobileMargin={14.5}
+        SmallMobileMargin={5.5}
+      />
       <Banner />
-      <BlankTop DesktopMargin={8} TabletMargin={5.5} MobileMargin={7.4} />
+      <MainBlankTop
+        DesktopMargin={8}
+        TabletMargin={5.5}
+        MobileMargin={7.4}
+        SmallMobileMargin={3.3}
+      />
       <>
         <Wrap>
           <SearchIcon />
@@ -131,7 +190,12 @@ const Main = ({ categoryList, testList, onClickDisplay, allList }) => {
         </Wrap>
         <SearchBorder />
       </>
-      <BlankTop DesktopMargin={9.7} TabletMargin={7.3} MobileMargin={7.3} />
+      <MainBlankTop
+        DesktopMargin={9.7}
+        TabletMargin={7.3}
+        MobileMargin={7.3}
+        SmallMobileMargin={4.3}
+      />
       <Category categoryList={categoryList} onClickDisplay={onClickDisplay} />
       <CardList testList={testList} testList2={result} />
       <Footer />

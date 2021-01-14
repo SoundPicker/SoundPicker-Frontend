@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import BtnLeft from "../../../assets/button_left.png";
 import BtnRight from "../../../assets/button_right.png";
+import BtnLeftMobile from "../../../assets/small_mobile/button_left.png";
+import BtnRightMobile from "../../../assets/small_mobile/button_right.png";
 import BlankTop from "../../common/BlankTop";
 import CategoryList from "../category/CategoryList";
 
@@ -9,6 +11,18 @@ import { useState, useEffect } from "react";
 const Wrap = styled.div`
   display: flex;
   justify-content: center;
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  animation: fadeIn 1600ms 1;
+  animation-timing-function: ease-in;
 `;
 
 const LeftBtn = styled.button`
@@ -33,6 +47,12 @@ const LeftBtn = styled.button`
   @media (max-width: 768px) {
     margin-right: 2.6rem;
   }
+  @media (max-width: 568px) {
+    width: 4.8rem;
+    height: 4.8rem;
+    margin-right: 1.3rem;
+    background-image: url(${BtnLeftMobile});
+  }
 `;
 
 const RightBtn = styled.button`
@@ -48,6 +68,12 @@ const RightBtn = styled.button`
 
   &:focus {
     outline: none;
+  }
+
+  @media (max-width: 568px) {
+    width: 4.8rem;
+    height: 4.8rem;
+    background-image: url(${BtnRightMobile});
   }
 `;
 
@@ -80,7 +106,7 @@ const Category = ({ categoryList, onClickDisplay }) => {
 
   const { width } = useWindowDimensions();
 
-  const maxLeft = width > 1024 ? 2 : width > 828 ? 4 : 6;
+  const maxLeft = width > 1024 ? 2 : width > 828 ? 4 : width > 568 ? 6 : 7;
 
   return (
     <>

@@ -16,6 +16,11 @@ const Icon = styled.button`
   &:focus {
     outline: none;
   }
+
+  @media (max-width: 503px) {
+    top: 1rem;
+    left: 1rem;
+  }
 `;
 
 const MenuIcon = () => {

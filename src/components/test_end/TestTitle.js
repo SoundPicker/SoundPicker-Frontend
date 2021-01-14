@@ -5,12 +5,29 @@ const Wrap = styled.div`
   height: 1.6rem;
   justify-content: center;
 
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  animation: fadeIn 900ms 1;
+  animation-timing-function: ease-in;
+
   @media (max-width: 1089px) {
     height: 1.8rem;
   }
 
   @media (max-width: 768px) {
     height: 1.4rem;
+  }
+
+  @media (max-width: 503px) {
+    height: 2.2rem;
+    align-items: center;
   }
 `;
 
@@ -22,14 +39,15 @@ const Title = styled.strong`
   @media (max-width: 768px) {
     font-size: 1.4rem;
   }
+
+  @media (max-width: 503px) {
+    font-size: 1.05rem;
+    font-weight: 500;
+    line-height: 2.5rem;
+  }
 `;
 
 const TestTitle = ({ title }) => {
-  console.log(title);
-  //const titleName = title[0]["testTitle"];
-  // console.log(title["data"][0]["testTitle"]);
-  // console.log(title["data"][0]);
-  //console.log(titleName);
   return (
     <Wrap>
       <Title>{title}</Title>
