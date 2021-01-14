@@ -16,11 +16,9 @@ import Text from './Text';
 import ColorButton from './ColorButton';
 
 import {
-  Form,
-  Button,
+  Form, Button,
 } from 'antd';
 
-import { Form, Button } from "antd";
 
 const Background = styled.div`
     width:100vw;
