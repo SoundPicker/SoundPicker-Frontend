@@ -279,7 +279,7 @@ const SlideOn768 = keyframes`
     width: 0%;
   }
   to {
-    width: 30%;
+    width: 43%;
   }
 `
 
@@ -416,7 +416,7 @@ const MenuBox = styled.div`
         animation-name: ${SlideOn1024};
       }
       @media only screen and (max-width: 768px) {
-        width: 30%;
+        width: 43%;
         animation-name: ${SlideOn768};
       }
     `}
