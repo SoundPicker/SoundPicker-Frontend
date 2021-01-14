@@ -8,12 +8,13 @@ import TestMakingFormContainer from "../../containers/testmaking/form/TestMaking
 
 
 const TestMakingPage = ({history}) => {
-    if (window.location.href.indexOf('#reload') === -1)
-    {
-      window.location.href += '#reload'
-      window.location.reload(true);
-  }
-
+    if(window.localStorage.getItem('isAuth')!=='false'){
+            if (window.location.href.indexOf('#reload') === -1)
+            {
+            window.location.href += '#reload'
+            window.location.reload(true);
+        }
+    }
     return(
         <>
             <TMBackground>
