@@ -5,14 +5,22 @@ const StyledButton = styled.button`
   line-height: 1.5;
   padding-left: 15px;
   padding-right:15px;
-  @media (max-width: 767px) { //iphone
-    font-size:8px;
-    width:110px;
+  @media only screen and (max-width: 768px){ //iphone
+    font-size:6px;
+    width:50px;
     margin-left: 1px;
     margin-right:1px;
   padding-right:1px;
   padding-left:1px;
   }
+  @media only screen and (max-width: 1024px) {
+    font-size:8px;
+    width:90px;
+    margin-left: 1px;
+    margin-right:1px;
+  padding-right:1px;
+  padding-left:1px;
+      }
   padding-top:5px;
   padding-bottom:5px;
   height: ${(props) => props.width || 10 } px ;

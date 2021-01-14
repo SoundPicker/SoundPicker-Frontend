@@ -152,13 +152,17 @@ const TestCd = ({ newList, match }) => {
                     <AnswerText inside={recordInside}>
                       {answer ?? '정답은?'}
                     </AnswerText>
-                    <RecordImg
-                      src={recordImg}
-                      rotateSecond={rotateSecond}
-                      onAnimationEnd={() => setRotateSecond(0)}
-                      // 해당요소의 애니메이션이 종료됐을때 레코드판 돌리는 재생시간을 다시 0초로 초기화
-                      inside={recordInside} //레코드가 들어가는 애니메이션을위한 트리거 변수
-                    />
+
+                    <RecordWrapper inside={recordInside}>
+                      <RecordImg
+                        src={recordImg}
+                        rotateSecond={rotateSecond}
+                        onAnimationEnd={() => setRotateSecond(0)}
+                        // 해당요소의 애니메이션이 종료됐을때 레코드판 돌리는 재생시간을 다시 0초로 초기화
+                        // inside={recordInside}
+                        //레코드가 들어가는 애니메이션을위한 트리거 변수
+                      />
+                    </RecordWrapper>
                   </>
                 )}
               </SwiperContainer>
@@ -197,7 +201,21 @@ const TestCd = ({ newList, match }) => {
 
 /**키프레임 시작 */
 
-const HintFade = keyframes`{
+const RecordWrapper = styled.div`
+  z-index: 1;
+  margin-left: -25%;
+  animation-fill-mode: forwards;
+  ${props =>
+    props.inside && //레코드판을 집어넣는 css애니메이션 추가 트리거가 true일때 실행.
+    css`
+      animation-timing-function: ease-in-out;
+      animation-duration: 0.5s;
+      animation-iteration-count: 1;
+      animation-name: ${RecordInside};
+    `}
+`
+
+const HintFade = keyframes`
   0% { 
    opacity: 1;
   }
@@ -476,8 +494,6 @@ const SwiperContainer = styled.div`
 
 const RecordImg = styled.img`
   object-fit: contain;
-  z-index: 1;
-  margin-left: -25%;
   animation-fill-mode: forwards;
   ${props =>
     props.rotateSecond > 0 && //레코드판을 돌리는 css애니메이션 추가 0초 초과일때만 작동하도록 한다.
@@ -488,14 +504,6 @@ const RecordImg = styled.img`
       animation-name: ${props.rotateSecond === 1
         ? Rotate1Record
         : Rotate3Record}; //1초일때 3초일때 분기해서 키프레임을 넣어줌
-    `}
-  ${props =>
-    props.inside && //레코드판을 집어넣는 css애니메이션 추가 트리거가 true일때 실행.
-    css`
-      animation-timing-function: ease-in-out;
-      animation-duration: 0.5s;
-      animation-iteration-count: 1;
-      animation-name: ${RecordInside};
     `}
 `
 

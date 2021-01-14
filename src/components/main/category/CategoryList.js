@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 // 서버랑 통신해서 카테고리 이름 받아오기
 const CategoryName = styled.span`
-  font-size: 1.3rem;
+  font-size: 1.28rem;
   line-height: 1.035;
   color: #dadada;
   @media (max-width: 1440px) {
@@ -16,29 +16,24 @@ const CategoryName = styled.span`
     font-size: 1.2rem;
     line-height: 1.035;
   }
+  @media (max-width: 568px) {
+    font-size: 0.8rem;
+  }
 `;
 
 const CategoryBtn = styled.button`
-  display: block;
-  width: 1.2rem;
-  height: 1.2rem;
-  border: none;
-  border-radius: 50%;
-  box-shadow: 0 0 9px 0 #ffffff;
-  background-color: #ffffff;
-  cursor: pointer;
-  &:focus {
-    width: 2rem;
-    height: 2rem;
-    outline: none;
-    box-shadow: 0 0 12px 0 #60ffda;
-    background-color: #60ffda;
-  }
   &:hover {
     width: 2rem;
     height: 2rem;
     box-shadow: 0 0 12px 0 #ffffff;
     outline: none;
+
+    @media (max-width: 568px) {
+      width: 0.6rem;
+      height: 0.6rem;
+      padding: 0;
+      box-shadow: 0 0 8px 0 #ffffff;
+    }
   }
 `;
 
@@ -62,6 +57,10 @@ const CategoryItem = styled.div`
     &:nth-child(5) {
       margin-right: 3.2rem;
     }
+  }
+  @media (max-width: 568px) {
+    width: 6rem;
+    margin-right: 2rem;
   }
 `;
 
@@ -89,11 +88,42 @@ function useWindowDimensions() {
   return windowDimensions;
 }
 
+const div = document.getElementsByClassName("cateBtn");
+
+function handleClick(event) {
+  if (!event.target.classList.contains("cateAll")) {
+    div[0].classList.remove("cateAll");
+  }
+
+  if (event.target.classList[1] === "clicked") {
+    event.target.classList.remove("clicked");
+  } else {
+    for (var i = 0; i < div.length; i++) {
+      /*
+      if (div[0].classList === "cateAll") {
+        console.log(div[0].classList);
+        div[0].classList.remove("cateAll");
+      }
+      */
+      div[i].classList.remove("clicked");
+    }
+
+    event.target.classList.add("clicked");
+  }
+}
+
+function init() {
+  for (var i = 0; i < div.length; i++) {
+    div[i].addEventListener("click", handleClick);
+  }
+}
+
+init();
+
 const CategoryList = ({ categoryList, startNum, onClickDisplay }) => {
-  console.log(categoryList);
   const { width } = useWindowDimensions();
 
-  const categoryNum = width > 1024 ? 7 : width > 828 ? 5 : 3;
+  const categoryNum = width > 1024 ? 7 : width > 828 ? 5 : width > 568 ? 3 : 2;
 
   return (
     <>
@@ -102,7 +132,13 @@ const CategoryList = ({ categoryList, startNum, onClickDisplay }) => {
           return (
             <CategoryItem>
               <CategoryName key={index}>{item["description"]}</CategoryName>
-              <CategoryBtn onClick={() => onClickDisplay(item["id"])} />
+              <CategoryBtn
+                className="cateBtn cateAll"
+                onClick={(evt) => {
+                  onClickDisplay(item["id"]);
+                  handleClick(evt);
+                }}
+              />
             </CategoryItem>
           );
         }
@@ -112,7 +148,13 @@ const CategoryList = ({ categoryList, startNum, onClickDisplay }) => {
           return (
             <CategoryItem>
               <CategoryName key={index}>{item["description"]}</CategoryName>
-              <CategoryBtn onClick={() => onClickDisplay(item["id"])} />
+              <CategoryBtn
+                className="cateBtn"
+                onClick={(evt) => {
+                  onClickDisplay(item["id"]);
+                  handleClick(evt);
+                }}
+              />
             </CategoryItem>
           );
         }

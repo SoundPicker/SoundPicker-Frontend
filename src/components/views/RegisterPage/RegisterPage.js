@@ -1,11 +1,12 @@
 import React from "react";
 import styled from "styled-components";
-import { Formik } from 'formik';
-import * as Yup from 'yup';
+import { Formik } from "formik";
+import * as Yup from "yup";
 import { registerUser } from "../../../_actions/user_action";
 import { useDispatch } from "react-redux";
 import TextComponent from '../../../components/common/TextComponent';
 import BlankTop from '../../../components/common/BlankTop';
+import QuizHeader from '../../common/QuizHeader';
 import UnderLineComponent from './UnderLineComponent';
 import Bg1 from '../../../assets/images/login_background1.jpg';
 import Bg2 from '../../../assets/images/login_background2.jpg';
@@ -15,8 +16,7 @@ import Text from './Text';
 import ColorButton from './ColorButton';
 
 import {
-  Form,
-  Button,
+  Form, Button,
 } from 'antd';
 
 
@@ -31,45 +31,58 @@ const Background = styled.div`
     @media (min-width: 768px) and (max-width:1024px){
       background-image: url(${Bg2});
     }
- @media  (min-width:1024px) {
+ @media  (min-width:1025px) {
   background-image: url(${Bg1});
     }
     @media (max-width: 768px) {
       background-image: url(${Bg3});
     }
 `;
-const Wrapper=styled.div`
-
+const Wrapper = styled.div`
   background-size: cover;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   align-items: center;
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    //between
+    margin-top: 35%;
+    width: 100%auto;
+  }
+
   @media (min-width: 768px) and (max-width:1024px) { //between
     margin-top:35%;
       width:100%auto;
     }
 
-    @media (min-width: 1024px) { //desktop 
+    @media (min-width: 1025px) { //desktop 
       margin-top:17%;
       width:100%auto;
     }
     @media (max-width: 767px) { //iphone
       width:100%auto;
         margin-top:30%;
-  }` 
-
+  }
+  @media (max-width: 767px) {
+    //iphone
+    width: 100%auto;
+    margin-top: 30%;
+  }
+`;
 
 const MyIcon = styled.img`
-  @media (min-width: 768px) and (max-width:1024px) { //between
-    width:180px;
-    }
-
-    @media (min-width: 1024px) { //desktop
-    width:221px;
-    }
-    @media (max-width: 767px) { //iphone
-      width:300px;
+  @media (min-width: 768px) and (max-width: 1024px) {
+    //between
+    width: 180px;
+  }
+  @media (min-width: 1024px) {
+    //desktop
+    width: 221px;
+  }
+  @media (max-width: 767px) {
+    //iphone
+    width: 300px;
   }
 `;
 
@@ -77,32 +90,34 @@ MyIcon.defaultProps = {
   src: logo1,
 };
 
-const Input =styled.input`
-background-color:  rgba( 12, 26, 34, 0);
-border-radius:0px;
-border-color:rgba( 12, 26, 34, 0);
-width: 370px;
-color:white;
-outline:none;
-@media (max-width: 767px) { //iphone
-      width:240px;
+const Input = styled.input`
+  background-color: rgba(12, 26, 34, 0);
+  border-radius: 0px;
+  border-color: rgba(12, 26, 34, 0);
+  width: 370px;
+  color: white;
+  outline: none;
+  @media (max-width: 767px) {
+    //iphone
+    width: 240px;
   }
+`;
 
-`
-
-const Content=styled.div`
+const Content = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  @media (max-width: 767px) { //iphone
-    margin-left:20%
+  @media (max-width: 767px) {
+    //iphone
+    margin-left: 20%;
   }
-`
+`;
 
 function RegisterPage(props) {
   const dispatch = useDispatch();
   return (
-<Background>
+
+<Background> <QuizHeader/>
   <Wrapper>
   <MyIcon></MyIcon>
   <BlankTop DesktopMargin='3' TabletMargin='3' MobileMargin='2' />
@@ -176,79 +191,148 @@ function RegisterPage(props) {
                     errors.email && touched.email ? 'text-input error' : 'text-input'
                   }
                 />
-                </Content>
-                <UnderLineComponent DesktopLength='45' BetweenLength='45' TabletLength='45' MobileLength='30' />
-              </Form.Item>
-             
-              <Form.Item requiredMark="optional" hasFeedback >
-                 <Content>
-              <Text title="패스워드"  DesktopLength='15' TabletLength='15' MobileLength='13'/>
-                <Input
-                  id="password"
-                  type="password"
-                  value={values.password}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  className={
-                    errors.password && touched.password ? 'text-input error' : 'text-input'
-                  }
-                />
-                </Content>
-                <UnderLineComponent DesktopLength='45' BetweenLength='45' TabletLength='45' MobileLength='30' />
-              </Form.Item>
-              
-              <Form.Item requiredMark="optional"  hasFeedback validateStatus={errors.confirmPassword && touched.confirmPassword ? "error" : 'success'}>
-              <Content>
-              <Text title="패스워드확인"  DesktopLength='15' TabletLength='15' MobileLength='13'/>
-                <Input
-                  id="confirmPassword"
-                  type="password"
-                  value={values.confirmPassword}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  className={'form-control' + (errors.confirmPassword && touched.confirmPassword ? ' is-invalid' : '')}
+                 
+                  </Content>
+                  <UnderLineComponent
+                    DesktopLength="45"
+                    BetweenLength="45"
+                    TabletLength="45"
+                    MobileLength="30"
                   />
-                  
-                
-                </Content>
-                <UnderLineComponent DesktopLength='45' BetweenLength='45' TabletLength='45' MobileLength='30' />
-              </Form.Item>
-
-              <Form.Item  requiredMark="optional"   validateStatus={errors.nickname && touched.nickname ? "error" : 'success'}>
-              <Content>
-              <Text title="닉네임"  DesktopLength='15' TabletLength='15' MobileLength='13'/>
-              <Input 
-                  id="nickname"
-                  type="text"
-                  value={values.name}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  className={
-                    errors.name && touched.name ? 'text-input error' : 'text-input'
-                  }
-                />
-                </Content>
-                <UnderLineComponent DesktopLength='45' BetweenLength='45' TabletLength='45' MobileLength='30' /> 
                 </Form.Item>
 
-                <BlankTop DesktopMargin='3' TabletMargin='1' MobileMargin='1' />
-                <ColorButton font='12' background="#60FFDA" color="#000000" border="#60FFDA"  > <Button size='large' ghost='true' type='text' onClick={handleSubmit}  disabled={isSubmitting}>
-                &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;
-                &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
-                &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; 회원가입 &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; 
-                &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
-                &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
-                </Button></ColorButton> 
+                <Form.Item requiredMark="optional" hasFeedback>
+                  <Content>
+                    <Text
+                      title="패스워드"
+                      DesktopLength="15"
+                      TabletLength="15"
+                      MobileLength="13"
+                    />
+                    <Input
+                      id="password"
+                      type="password"
+                      value={values.password}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      className={
+                        errors.password && touched.password
+                          ? "text-input error"
+                          : "text-input"
+                      }
+                    />
+                  </Content>
+                  <UnderLineComponent
+                    DesktopLength="45"
+                    BetweenLength="45"
+                    TabletLength="45"
+                    MobileLength="30"
+                  />
+                </Form.Item>
 
-            </form>
-         
-        );
-      }}
-    </Formik>
-    </Wrapper>
+                <Form.Item
+                  requiredMark="optional"
+                  hasFeedback
+                  validateStatus={
+                    errors.confirmPassword && touched.confirmPassword
+                      ? "error"
+                      : "success"
+                  }
+                >
+                  <Content>
+                    <Text
+                      title="패스워드확인"
+                      DesktopLength="15"
+                      TabletLength="15"
+                      MobileLength="13"
+                    />
+                    <Input
+                      id="confirmPassword"
+                      type="password"
+                      value={values.confirmPassword}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      className={
+                        "form-control" +
+                        (errors.confirmPassword && touched.confirmPassword
+                          ? " is-invalid"
+                          : "")
+                      }
+                    />
+                  </Content>
+                  <UnderLineComponent
+                    DesktopLength="45"
+                    BetweenLength="45"
+                    TabletLength="45"
+                    MobileLength="30"
+                  />
+                </Form.Item>
+
+                <Form.Item
+                  requiredMark="optional"
+                  validateStatus={
+                    errors.nickname && touched.nickname ? "error" : "success"
+                  }
+                >
+                  <Content>
+                    <Text
+                      title="닉네임"
+                      DesktopLength="15"
+                      TabletLength="15"
+                      MobileLength="13"
+                    />
+                    <Input
+                      id="nickname"
+                      type="text"
+                      value={values.name}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      className={
+                        errors.name && touched.name
+                          ? "text-input error"
+                          : "text-input"
+                      }
+                    />
+                  </Content>
+                  <UnderLineComponent
+                    DesktopLength="45"
+                    BetweenLength="45"
+                    TabletLength="45"
+                    MobileLength="30"
+                  />
+                </Form.Item>
+
+                <BlankTop DesktopMargin="3" TabletMargin="1" MobileMargin="1" />
+                <ColorButton
+                  font="12"
+                  background="#60FFDA"
+                  color="#000000"
+                  border="#60FFDA"
+                >
+                  {" "}
+                  <Button
+                    size="large"
+                    ghost="true"
+                    type="text"
+                    onClick={handleSubmit}
+                    disabled={isSubmitting}
+                  >
+                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp; 회원가입 &nbsp; &nbsp; &nbsp;
+                    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+                  </Button>
+                </ColorButton>
+              </form>
+            );
+          }}
+        </Formik>
+      </Wrapper>
     </Background>
   );
-};
-
+}
 
 export default RegisterPage;

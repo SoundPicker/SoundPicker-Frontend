@@ -1,12 +1,14 @@
 // 카드 크기 때문에 breakpoint - 1440(추가), 768 -> 828로 변경
 import React, { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import PlusDesktop from "../../../assets/desktop/button_add.png";
 import PlusTablet from "../../../assets/tablet/button_add.png";
 import PlusMobile from "../../../assets/mobile/button_add.png";
+import PlusSmallMobile from "../../../assets/small_mobile/button_add.png";
 import BlankTop from "../../common/BlankTop";
 import PlayImg from "../../../assets/play.png";
+import MainBlankTop from "../MainBlankTop";
 
 const PlusBtn = styled.div`
   display: block;
@@ -17,7 +19,7 @@ const PlusBtn = styled.div`
   background-repeat: no-repeat;
   background-position: center center;
   border-radius: 8px;
-  // border: 3px solid transparent;
+  border: 3px solid rgba(96, 255, 218, 0.88);
   background-color: transparent;
   cursor: pointer;
   overflow: hidden;
@@ -36,34 +38,64 @@ const PlusBtn = styled.div`
     height: 5.5rem;
     background-image: url(${PlusMobile});
   }
+  @media (max-width: 568px) {
+    width: 14.6rem;
+    height: 2.8rem;
+    border-width: 2px;
+    background-image: url(${PlusSmallMobile});
+  }
 `;
 
 const Card = styled.div`
   display: block;
   width: 29.6rem;
   position: relative;
-  padding: 3.6rem 2.1rem 2rem 2.7rem;
+  padding: 3.6rem 2.7rem 2rem 2.7rem;
   border-radius: 10px;
   border: 3px solid transparent;
   cursor: pointer;
   color: #ffffff;
   background-color: transparent;
-  overflow: hidden;
 
-  border-right-color: rgba(93, 79, 255, 0.4);
-  border-left-color: rgba(96, 255, 218, 0.8);
-  background: linear-gradient(
-        135deg,
-        rgba(96, 255, 218, 1) 0%,
-        rgba(93, 79, 255, 0.4) 100%
-      )
-      top/100% 3px,
-    linear-gradient(
-        135deg,
-        rgba(96, 255, 218, 1) 0%,
-        rgba(93, 79, 255, 0.4) 100%
-      )
-      bottom/100% 3px;
+  ${(props) =>
+    props.random >= 0 &&
+    props.random <= 4 &&
+    css`
+      border-right-color: rgba(96, 255, 218, 0.88);
+      border-left-color: rgba(94, 207, 255, 0.5);
+      background: linear-gradient(
+            to left,
+            rgba(96, 255, 218, 0.88) 0%,
+            rgba(94, 207, 255, 0.5) 100%
+          )
+          top/100% 3px,
+        linear-gradient(
+            to left,
+            rgba(96, 255, 218, 0.88) 0%,
+            rgba(94, 207, 255, 0.5) 100%
+          )
+          bottom/100% 3px;
+    `}
+
+  ${(props) =>
+    props.random >= 5 &&
+    props.random <= 9 &&
+    css`
+      border-right-color: rgba(94, 207, 255, 0.5);
+      border-left-color: rgba(96, 255, 218, 0.88);
+      background: linear-gradient(
+            to left,
+            rgba(94, 207, 255, 0.5) 0%,
+            rgba(96, 255, 218, 0.88) 100%
+          )
+          top/100% 3px,
+        linear-gradient(
+            to left,
+            rgba(94, 207, 255, 0.5) 0%,
+            rgba(96, 255, 218, 0.88) 100%
+          )
+          bottom/100% 3px;
+    `}
 
   background-repeat: no-repeat;
 
@@ -72,139 +104,96 @@ const Card = styled.div`
   }
 
   &:hover {
+    border: 3px solid transparent;
+    border-bottom: 3px solid #071923;
     background: linear-gradient(
       180deg,
       rgba(96, 255, 205, 0.38) 10%,
       rgba(96, 255, 218, 0) 90%
     );
+    @media (max-width: 568px) {
+      border-width: 2px;
+    }
+    transition: background 500ms ease-in-out;
   }
 
   @media (max-width: 1024px) {
     width: 26.2rem;
-    padding: 3.2rem 1.9rem 1.8rem 2.4rem;
+    padding: 3.2rem 2.4rem 1.8rem 2.4rem;
   }
   @media (max-width: 828px) {
     width: 27.6rem;
-    padding: 3.4rem 2.5rem 2.9rem 2.4rem;
+    padding: 3.4rem 2.4rem 2.9rem 2.4rem;
   }
-`;
-
-const RotateBorder = styled.span`
-  position: absolute;
-  display: block;
-  filter: blur(3px);
-  &:nth-child(1) {
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background: linear-gradient(90deg, transparent, #60ffda);
-    animation: animate1 1s linear infinite;
-  }
-  @keyframes animate1 {
-    0% {
-      left: 100%;
-    }
-    50%,
-    100% {
-      left: -100%;
-    }
-  }
-  &:nth-child(2) {
-    top: -100%;
-    left: 0;
-    width: 3px;
-    height: 100%;
-    background: linear-gradient(180deg, transparent, #60ffda);
-    animation: animate2 1s linear infinite;
-    animation-delay: 0.25s;
-  }
-  @keyframes animate2 {
-    0% {
-      top: -100%;
-    }
-    50%,
-    100% {
-      top: 100%;
-    }
-  }
-  &:nth-child(3) {
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background: linear-gradient(270deg, transparent, #60ffda);
-    animation: animate3 1s linear infinite;
-    animation-delay: 0.5s;
-  }
-  @keyframes animate3 {
-    0% {
-      left: -100%;
-    }
-    50%,
-    100% {
-      left: 100%;
-    }
-  }
-  &:nth-child(4) {
-    bottom: -100%;
-    right: 0;
-    width: 3px;
-    height: 100%;
-    background: linear-gradient(360deg, transparent, #60ffda);
-    animation: animate4 1s linear infinite;
-    animation-delay: 0.75s;
-  }
-  @keyframes animate4 {
-    0% {
-      bottom: -100%;
-    }
-    50%,
-    100% {
-      bottom: 100%;
-    }
+  @media (max-width: 568px) {
+    width: 14.6rem;
+    padding: 1.8rem 1.3rem 1.3rem;
+    border-width: 2px;
+    background-size: 100% 2px, 100% 2px;
   }
 `;
 
 const CardTitle = styled.div`
-  width: 22.5rem;
+  width: 23.6rem;
   text-align: left;
   font-size: 3.2rem;
   font-weight: 700;
   line-height: 4.65rem;
 
   @media (max-width: 1024px) {
+    width: 20.8rem;
     font-size: 2.8rem;
     line-height: 4rem;
   }
   @media (max-width: 828px) {
+    width: 22.2rem;
     font-size: 2.4rem;
     line-height: 3.4rem;
+  }
+  @media (max-width: 568px) {
+    width: 11.4rem;
+    font-size: 1.4rem;
+    line-height: 2.1rem;
   }
 `;
 
 const CardContent = styled.div`
-  width: 22.2rem;
+  width: 23.6rem;
   text-align: left;
   font-size: 1.2rem;
   line-height: 1.8rem;
 
   @media (max-width: 1024px) {
+    width: 20.8rem;
     line-height: 1.8rem;
   }
   @media (max-width: 828px) {
+    width: 22.2rem;
     line-height: 2.2rem;
+  }
+  @media (max-width: 568px) {
+    width: 11.4rem;
+    font-size: 0.8rem;
+    line-height: 1.2rem;
   }
 `;
 
 const TestNumber = styled.div`
   font-size: 1.2rem;
   line-height: 1.8rem;
+
+  @media (max-width: 568px) {
+    font-size: 0.8rem;
+  }
 `;
 
 const Play = styled.span`
   font-size: 1.2rem;
   line-height: 1.8rem;
+
+  @media (max-width: 568px) {
+    font-size: 0.8rem;
+  }
 `;
 
 const PlayBtn = styled.div`
@@ -212,12 +201,13 @@ const PlayBtn = styled.div`
   height: 2.8rem;
   background-image: url(${PlayImg});
   background-repeat: no-repeat;
-  background-position: center center;
+  background-position: right center;
 `;
 
 const PlayBtnBox = styled.div`
   display: flex;
   width: 6.6rem;
+  justify-content: flex-end;
   align-items: center;
 `;
 
@@ -236,13 +226,14 @@ const PlayFooter = styled.div`
   align-items: center;
 `;
 
-const CardWrapOne = styled.div``;
-
-const CardWrapTwo = styled.div`
-  & > ${Card} {
-    // 컬러 뒤집어서 주기
-  }
+const CardWrapOne = styled.div`
+  //카드 테두리때문에
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
+
+const CardWrapTwo = styled.div``;
 
 const CardWrapThree = styled.div`
   @media (max-width: 828px) {
@@ -251,10 +242,6 @@ const CardWrapThree = styled.div`
 `;
 
 const CardWrapFour = styled.div`
-  & > ${Card} {
-    // 컬러 뒤집어서 주기
-  }
-
   @media (max-width: 1440px) {
     display: none;
   }
@@ -269,6 +256,18 @@ const CardListWrap = styled.div`
   margin: 0 auto;
   overflow: hidden;
 
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  animation: fadeIn 1700ms 1;
+  animation-timing-function: ease-in;
+
   @media (max-width: 1440px) {
     width: 92rem;
   }
@@ -279,6 +278,10 @@ const CardListWrap = styled.div`
 
   @media (max-width: 828px) {
     width: 57rem;
+  }
+
+  @media (max-width: 568px) {
+    width: 30.4rem;
   }
 `;
 
@@ -304,6 +307,12 @@ const GradientBox = styled.div`
     width: 60.1rem;
     left: -1.55rem;
   }
+
+  @media (max-width: 568px) {
+    width: 32.2rem;
+    height: 19.8rem;
+    left: -0.9rem;
+  }
 `;
 
 const LoadMoreBtn = styled.div`
@@ -322,14 +331,23 @@ const LoadMoreBtn = styled.div`
   color: #ffffff;
   background-color: transparent;
 
-  border-radius: 14px;
-  border-right-color: #00ffa3;
-  border-left-color: rgba(82, 0, 255, 0.8);
-  background: linear-gradient(to left, #00ffa3 0%, rgba(82, 0, 255, 0.8) 100%)
-      top/100% 3px,
-    linear-gradient(to left, #00ffa3 0%, rgba(82, 0, 255, 0.8) 100%) bottom/100%
-      3px;
+  border-right-color: #00fff0;
+  border-left-color: #00c2ff;
+  background: linear-gradient(to left, #00fff0 0%, #00c2ff 100%) top/100% 3px,
+    linear-gradient(to left, #00fff0 0%, #00c2ff 100%) bottom/100% 3px;
   background-repeat: no-repeat;
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  animation: fadeIn 3500ms 1;
+  animation-timing-function: ease-in;
 
   &:focus {
     outline: none;
@@ -353,6 +371,15 @@ const LoadMoreBtn = styled.div`
     height: 4.8rem;
     margin: 0.7rem auto 0;
     letter-spacing: 0.005em;
+  }
+
+  @media (max-width: 568px) {
+    width: 30.4rem;
+    height: 3.6rem;
+    margin: 1.2rem auto 0;
+    font-size: 1.2rem;
+    border-width: 2px;
+    background-size: 100% 2px, 100% 2px;
   }
 `;
 
@@ -382,8 +409,6 @@ function useWindowDimensions() {
 
 const CardList = ({ testList, testList2 }) => {
   testList = Object.values(testList);
-  console.log(testList);
-  console.log(testList2, testList2.length);
 
   // testList와 testList2에 공통으로 있는 것만 리턴
   let finalList = [];
@@ -397,25 +422,16 @@ const CardList = ({ testList, testList2 }) => {
       }
     });
   });
-  console.log(finalList);
-  // testList = finalList;
 
   const history = useHistory();
 
   const [count, setCount] = useState(2);
-  const [height, setHeight] = useState(116.5);
-  const countPlus = (e) => {
-    setCount(count + 1);
-    console.log(count);
-    setHeight(count * 116.5);
-    console.log(height);
-  };
 
   const { width } = useWindowDimensions();
 
   const divideNum = width > 1440 ? 4 : width > 828 ? 3 : 2;
-  const divided = parseInt(testList.length / divideNum);
-  const leftOver = testList.length % divideNum;
+  const divided = parseInt(finalList.length / divideNum);
+  const leftOver = finalList.length % divideNum;
 
   let one = divided + leftOver,
     two = divided,
@@ -437,21 +453,23 @@ const CardList = ({ testList, testList2 }) => {
     one -= 3;
   }
 
-  const maxHeight =
-    width > 1024 ? 35 * (divided + leftOver) : 29 * (divided + leftOver);
-  console.log(maxHeight);
+  const defaultHeight = width > 568 ? 116.5 : 61.2;
+  const [height, setHeight] = useState(defaultHeight);
+  const countPlus = (e) => {
+    setCount(count + 1);
+    setHeight(count * defaultHeight);
+  };
+
+  const max = Math.max(one, two, three, four);
+
+  const maxHeight = width > 828 ? 30 * max : width > 568 ? 28 * max : 20 * max;
 
   return (
     <>
       <CardListWrap height={height}>
         <CardWrapOne>
           <Link to="/testmaking">
-            <PlusBtn>
-              <RotateBorder />
-              <RotateBorder />
-              <RotateBorder />
-              <RotateBorder />
-            </PlusBtn>
+            <PlusBtn random={Math.floor(Math.random() * 10)} />
           </Link>
           <BlankTop DesktopMargin={1.6} TabletMargin={1.6} MobileMargin={1.8} />
           <>
@@ -462,28 +480,32 @@ const CardList = ({ testList, testList2 }) => {
                     <Card
                       key={index}
                       onClick={() => history.push(`/test/${item["id"]}`)}
+                      random={Math.floor(Math.random() * 10)}
                     >
                       <CardTitle>{item["title"]}</CardTitle>
-                      <BlankTop
+                      <MainBlankTop
                         DesktopMargin={3}
                         TabletMargin={2.7}
-                        MobileMargin={0.4}
+                        MobileMargin={2.4}
+                        SmallMobileMargin={1.9}
                       />
                       <CardContent>{item["description"]}</CardContent>
-                      <BlankTop
-                        DesktopMargin={3.8}
-                        TabletMargin={3.3}
-                        MobileMargin={4.8}
+                      <MainBlankTop
+                        DesktopMargin={3}
+                        TabletMargin={2.7}
+                        MobileMargin={2.4}
+                        SmallMobileMargin={1.9}
                       />
                       <PlayFooter>
                         <TestNumber>{item["questionCount"]}문제</TestNumber>
                         <PlayBox />
                       </PlayFooter>
                     </Card>
-                    <BlankTop
+                    <MainBlankTop
                       DesktopMargin={1.6}
                       TabletMargin={1.6}
                       MobileMargin={1.8}
+                      SmallMobileMargin={1.2}
                     />
                   </>
                 );
@@ -501,28 +523,32 @@ const CardList = ({ testList, testList2 }) => {
                       <Card
                         key={index}
                         onClick={() => history.push(`/test/${item["id"]}`)}
+                        random={Math.floor(Math.random() * 10)}
                       >
                         <CardTitle>{item["title"]}</CardTitle>
-                        <BlankTop
+                        <MainBlankTop
                           DesktopMargin={3}
                           TabletMargin={2.7}
-                          MobileMargin={0.4}
+                          MobileMargin={2.4}
+                          SmallMobileMargin={1.9}
                         />
                         <CardContent>{item["description"]}</CardContent>
-                        <BlankTop
-                          DesktopMargin={3.8}
-                          TabletMargin={3.3}
-                          MobileMargin={4.8}
+                        <MainBlankTop
+                          DesktopMargin={3}
+                          TabletMargin={2.7}
+                          MobileMargin={2.4}
+                          SmallMobileMargin={1.9}
                         />
                         <PlayFooter>
                           <TestNumber>{item["questionCount"]}문제</TestNumber>
                           <PlayBox />
                         </PlayFooter>
                       </Card>
-                      <BlankTop
+                      <MainBlankTop
                         DesktopMargin={1.6}
                         TabletMargin={1.6}
                         MobileMargin={1.8}
+                        SmallMobileMargin={1.2}
                       />
                     </>
                   );
@@ -534,28 +560,32 @@ const CardList = ({ testList, testList2 }) => {
                       <Card
                         key={index}
                         onClick={() => history.push(`/test/${item["id"]}`)}
+                        random={Math.floor(Math.random() * 10)}
                       >
                         <CardTitle>{item["title"]}</CardTitle>
-                        <BlankTop
+                        <MainBlankTop
                           DesktopMargin={3}
                           TabletMargin={2.7}
-                          MobileMargin={0.4}
+                          MobileMargin={2.4}
+                          SmallMobileMargin={1.9}
                         />
                         <CardContent>{item["description"]}</CardContent>
-                        <BlankTop
-                          DesktopMargin={3.8}
-                          TabletMargin={3.3}
-                          MobileMargin={4.8}
+                        <MainBlankTop
+                          DesktopMargin={3}
+                          TabletMargin={2.7}
+                          MobileMargin={2.4}
+                          SmallMobileMargin={1.9}
                         />
                         <PlayFooter>
                           <TestNumber>{item["questionCount"]}문제</TestNumber>
                           <PlayBox />
                         </PlayFooter>
                       </Card>
-                      <BlankTop
+                      <MainBlankTop
                         DesktopMargin={1.6}
                         TabletMargin={1.6}
                         MobileMargin={1.8}
+                        SmallMobileMargin={1.2}
                       />
                     </>
                   );
@@ -574,12 +604,13 @@ const CardList = ({ testList, testList2 }) => {
                       <Card
                         key={index}
                         onClick={() => history.push(`/test/${item["id"]}`)}
+                        random={Math.floor(Math.random() * 10)}
                       >
                         <CardTitle>{item["title"]}</CardTitle>
                         <BlankTop
                           DesktopMargin={3}
                           TabletMargin={2.7}
-                          MobileMargin={0.4}
+                          MobileMargin={2.4}
                         />
                         <CardContent>{item["description"]}</CardContent>
                         <BlankTop
@@ -607,12 +638,13 @@ const CardList = ({ testList, testList2 }) => {
                       <Card
                         key={index}
                         onClick={() => history.push(`/test/${item["id"]}`)}
+                        random={Math.floor(Math.random() * 10)}
                       >
                         <CardTitle>{item["title"]}</CardTitle>
                         <BlankTop
                           DesktopMargin={3}
                           TabletMargin={2.7}
-                          MobileMargin={0.4}
+                          MobileMargin={2.4}
                         />
                         <CardContent>{item["description"]}</CardContent>
                         <BlankTop
@@ -646,12 +678,13 @@ const CardList = ({ testList, testList2 }) => {
                     <Card
                       key={index}
                       onClick={() => history.push(`/test/${item["id"]}`)}
+                      random={Math.floor(Math.random() * 10)}
                     >
                       <CardTitle>{item["title"]}</CardTitle>
                       <BlankTop
                         DesktopMargin={3}
                         TabletMargin={2.7}
-                        MobileMargin={0.4}
+                        MobileMargin={2.4}
                       />
                       <CardContent>{item["description"]}</CardContent>
                       <BlankTop

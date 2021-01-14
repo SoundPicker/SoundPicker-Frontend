@@ -74,6 +74,25 @@ MyIcon.defaultProps = {
 
 function StartLoading(){
 
+  const e = Math.floor(Math.random()*5+1);
+  var text="";
+  if(e===1){
+    text="모든 테스트를 불러오는 중...";
+  }
+  if(e===2){
+    text="아이돌과 팬미팅 하러 가는 중...";
+  }
+  if(e===3){
+    text="게임 음악 들으러 가는 중...";
+  }
+  if(e===4){
+    text="영화 보고 테스트 만드는 중...";
+  }
+  if(e===5){
+    text="애니 브금 듣고 가슴이 웅장해지는 중...";
+  }
+
+
     return(
         <div>
           <Background>
@@ -85,7 +104,8 @@ function StartLoading(){
             <BlankTop DesktopMargin='3' TabletMargin='2' MobileMargin='2' />
             <LoadingComponent></LoadingComponent>
             <BlankTop DesktopMargin='5' TabletMargin='2' MobileMargin='2' />
-            <ContentComponent title='모든 테스트를 불러오는 중... '/>;
+            <ContentComponent title={`${text}`}/>;
+            
             <div></div>
             
             </Wrapper>

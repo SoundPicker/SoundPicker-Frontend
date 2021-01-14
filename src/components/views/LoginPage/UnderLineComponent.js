@@ -12,7 +12,7 @@ const UnderLine = styled.div`
   }
     @media only screen and (max-width: 768px) {
     width: ${props=> props.MobileLength || 0}rem;
-    margin-left:20%;
+    margin-left:15%;
   }
 `
 

@@ -89,10 +89,8 @@ const MainContainer = ({ match }) => {
   const onClickDisplay = useCallback(
     (id) => {
       const sortId = id;
-      console.log("최상위 컴포넌트", sortId);
       (async () => {
         const finalData = { ...(await getSortAPI(sortId)) };
-        console.log(finalData);
         try {
           setSort({
             status: "pending",
@@ -112,8 +110,6 @@ const MainContainer = ({ match }) => {
           });
         }
       })();
-
-      console.log(sort.item);
     },
     [sort]
   );
@@ -121,7 +117,6 @@ const MainContainer = ({ match }) => {
   // 클릭한 카테고리 id를 받아와서, 해당하는 테스트만 return하는 메소드
   const getSortAPI = async (sortId) => {
     const { data } = await axios.get(`${url}/main`);
-    console.log(data);
     let finalData = [];
     data.data.tests.forEach((req) => {
       if (req.Category.id === sortId) {
@@ -150,8 +145,6 @@ const MainContainer = ({ match }) => {
       return <StartLoading />;
     case "resolved":
     default:
-      // ={category.item.data.tests}
-
       return (
         <Background
           categoryList={category.item.data.categories}
