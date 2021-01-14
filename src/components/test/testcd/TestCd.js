@@ -129,7 +129,7 @@ const TestCd = ({ newList, match }) => {
           title={newList[activeIndex].testTitle}
           DesktopLength="2"
           TabletLength="2"
-          MobileLength="1.8"
+          MobileLength="1.2"
         />
       </TitleWrapper>
       <BlankTop DesktopMargin="4.2" TabletMargin="5" MobileMargin="9" />
