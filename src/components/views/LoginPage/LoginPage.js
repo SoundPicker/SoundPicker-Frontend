@@ -20,11 +20,12 @@ import ColorButton from './ColorButton';
 
 const Background = styled.div`
     width:100vw;
-    height:1000vh;
+    height:100%;
+    min-height:100vh;
     background-repeat: no-repeat;
     background-position: center top;
     background-color:  rgba( 12, 26, 34, 1);
-    background-size:contain;
+    background-size:cover;
     background-image: url(${Bg1});
     @media only screen and (max-width: 1024px) {
       background-image: url(${Bg2});

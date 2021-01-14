@@ -9,19 +9,27 @@ import Bg2 from '../../assets/images/quizloading_background2.jpg'
 
 const Background = styled.div`
   width: 100vw;
-  height: 1000vh;
+  height: 100%;
+  min-height:100vh;
   background-repeat: no-repeat;
   background-position: center top;
   background-color: rgba(12, 26, 34, 1);
-  background-size: contain;
+  background-size: cover;
   @media (min-width: 768px) and (max-width:1024px){
       background-image: url(${Bg2});
+      background-size: contain;
+    }
+    @media  (max-width:1440px) {
+      background-size: contain;
     }
  @media  (min-width:1024px) {
   background-image: url(${Bg1});
+  
     }
     @media (max-width: 768px) {
       background-image: url(${Bg2});
+      background-size: contain;
+
     }
 `
 

@@ -22,11 +22,12 @@ import {
 
 const Background = styled.div`
     width:100vw;
-    height:1000vh;
+    height:100%;
+    min-height:100vh;
     background-repeat: no-repeat;
     background-position: center top;
     background-color:  #081923;
-    background-size:contain;
+    background-size:cover;
     border:1px solid rgba(0,0,0,0);
     @media (min-width: 768px) and (max-width:1024px){
       background-image: url(${Bg2});
