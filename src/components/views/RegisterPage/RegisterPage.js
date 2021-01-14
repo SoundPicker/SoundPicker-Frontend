@@ -25,55 +25,45 @@ background-color:  #081923;
 `;
 
 const Background = styled.div`
-    width:100vw;
+    width:100%;
     height:100%;
     background-repeat: no-repeat;
     background-position: center top;
     background-color:  #081923;
-    background-size:contain;
-    border:1px solid rgba(0,0,0,0);
-    @media (min-width: 768px) and (max-width:1024px){
+    background-image: url(${Bg1});
+    @media  (min-width:1024px) {
+      min-height:1080px;
+    }
+    @media only screen and (max-width: 1024px) {
       background-image: url(${Bg2});
-      min-height:100vh;
+      min-height:1336px;
 
     }
-    @media  (max-width:1440px) {
-      min-height:210vh;
-    }
- @media  (min-width:1024px) {
-  background-image: url(${Bg1});
-  min-height:150vh;
-    }
+
     @media (max-width: 768px) {
       background-image: url(${Bg3});
-      min-height:170vh;
+      min-height:1024px;
     }
 `;
-const Wrapper = styled.div`
-
-  background-size: cover;
+const Wrapper=styled.div`
+  width:97.1rem;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
   align-items: center;
-
-
-  @media (min-width: 768px) and (max-width:1024px) { //between
-    margin-top:35%;
-      width:100%auto;
-    }
-
-    @media (min-width: 1024px) { //desktop 
-      margin-top:17%;
-      width:100%auto;
-    }
-    @media (max-width: 768px) { //iphone
-      width:100%auto;
-        margin-top:30%;
+  margin: 0 auto;
+  @media only screen and (max-width: 1024px) {
+        width:71.5rem;
   }
+    @media only screen and (max-width: 768px) {
+        width:54.8rem;
+  }
+    @media only screen and (max-width: 548px) {
+        width:100%;
+        padding:0 0.5rem;
+    }
 
-
-`;
+  ` 
 
 const MyIcon = styled.img`
   @media (min-width: 768px) and (max-width: 1024px) {
@@ -137,7 +127,11 @@ function RegisterPage(props) {
 <Fix>
 <Background> <QuizHeader/>
   <Wrapper>
-  <MyIcon></MyIcon>
+  <div>
+      <BlankTop DesktopMargin='38' TabletMargin='48.5' MobileMargin='26.5' />
+
+      <MyIcon></MyIcon>
+    </div>  
   <BlankTop DesktopMargin='3' TabletMargin='3' MobileMargin='2' />
   <TextComponent title="회원가입"  DesktopLength='15' TabletLength='15' MobileLength='13'/> 
   <BlankTop DesktopMargin='5' TabletMargin='3' MobileMargin='1' />
