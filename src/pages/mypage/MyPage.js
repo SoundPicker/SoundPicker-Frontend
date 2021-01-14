@@ -8,6 +8,7 @@ import QuizHeader from '../../components/common/QuizHeader';
 import UnderLineWrap from './UnderLineWrap';
 import TextComponent from '../../components/common/TextComponent';
 import Button from './Button';
+import Button2 from './Button2';
 import BoldTextComponent from './BoldTextComponent';
 import Bg1 from '../../assets/images/mypage_background1.jpg';
 import Bg2 from '../../assets/images/mypage_background2.jpg';
@@ -192,8 +193,8 @@ switch (myState.status) {
             <Wrapper>
               
                 <MyIcon></MyIcon>
-                <BlankTop DesktopMargin='3' TabletMargin='3' MobileMargin='3' />
-                <TextComponent title="마이페이지"  DesktopLength='20' TabletLength='15' MobileLength='10'/>  
+                <BlankTop DesktopMargin='3' TabletMargin='3' MobileMargin='1' />
+                <TextComponent title="마이페이지"  DesktopLength='20' TabletLength='15' MobileLength='13'/>  
                 <BlankTop DesktopMargin='5' TabletMargin='5' MobileMargin='5' />
                 <Content>
                   <BoldTextComponent title="개인정보 수정"  DesktopLength='25' TabletLength='20' MobileLength='15'/>
@@ -201,18 +202,18 @@ switch (myState.status) {
                 <BlankTop DesktopMargin='5' TabletMargin='5' MobileMargin='5' />
                 <Content>
                   <Input  style={{ color: 'white'  }} ref={nameInput} bordered={false} name="nickname" value={myState.member.nickname} onChange={onChangeInputs}/>
-                  <Button font='12' onClick = {() => {nameInput.current.focus(); console.log("click"); }} >닉네임 변경</Button>
+                  <Button2 font='12' onClick = {() => {nameInput.current.focus();}}>닉네임 변경</Button2>
                 </Content>
-                <BlankTop DesktopMargin='5' TabletMargin='5' MobileMargin='5' />
+                <BlankTop DesktopMargin='5' TabletMargin='5' MobileMargin='1' />
                 <Content>
                 <Input  style={{ color: 'white'  }} bordered={false} name="email" value={myState.member.email} disabled={true}/>
-                <Button font='12' color='gray'>이메일 변경불가</Button>
+                <Button2 font='12' color='gray'>이메일 <div></div>변경불가</Button2>
                 </Content>
-                <BlankTop DesktopMargin='5' TabletMargin='5' MobileMargin='5' />
+                <BlankTop DesktopMargin='5' TabletMargin='5' MobileMargin='1' />
                 <Content>
                   <Input placeholder='******'
-                    style={{ color: 'white'  }} ref={passwordInput} bordered={false} name="password" onChange={onChangePassword}/>
-                  <Button font='12' onClick = {() => {passwordInput.current.focus(); }} >비밀번호 변경</Button>
+                    style={{ color: 'white'  }} ref={passwordInput} bordered={false} name="password" onChange={onChangePassword}disabled={true}/>
+                  <Button2 font='12' color='gray' onClick = {() => {passwordInput.current.focus(); }} >비밀번호 <div></div> 변경불가</Button2>
                 </Content>
                 <BlankTop DesktopMargin='8' TabletMargin='7' MobileMargin='5' />
                 <Content>
