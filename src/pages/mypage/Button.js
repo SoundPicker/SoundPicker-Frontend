@@ -5,15 +5,17 @@ const StyledButton = styled.button`
   line-height: 1.5;
   padding-left: 15px;
   padding-right:15px;
-  @media only screen and (max-width: 768px){ //iphone
-    font-size:6px;
-    width:50px;
+  @media only screen and (max-width: 767px){ //iphone
+    font-size:5px;
+    width:47px;
     margin-left: 1px;
     margin-right:1px;
   padding-right:1px;
   padding-left:1px;
+  padding-top:1px;
+  padding-bottom:1px;
   }
-  @media only screen and (max-width: 1024px) {
+  @media only screen and (min-width: 768px) and (max-width: 1024px) {
     font-size:8px;
     width:90px;
     margin-left: 1px;
