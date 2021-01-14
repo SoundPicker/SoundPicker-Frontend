@@ -19,6 +19,10 @@ const Bar = styled.div`
     height: 23rem;
     right: 17rem;
   }
+  @media only screen and (max-width: 375px) {
+    height: 23rem;
+    right: 13rem;
+  }
 `
 
 const Fill = styled.div`
