@@ -19,57 +19,51 @@ import {
   Form, Button,
 } from 'antd';
 
+const Fix =styled.div`
+min-height:100vh;
+background-color:  #081923;
+`;
 
 const Background = styled.div`
-    width:100vw;
-    height:1000vh;
+    width:100%;
+    height:100%;
     background-repeat: no-repeat;
     background-position: center top;
     background-color:  #081923;
-    background-size:contain;
-    border:1px solid rgba(0,0,0,0);
-    @media (min-width: 768px) and (max-width:1024px){
+    background-image: url(${Bg1});
+    @media  (min-width:1024px) {
+      min-height:1080px;
+    }
+    @media only screen and (max-width: 1024px) {
       background-image: url(${Bg2});
+      min-height:1336px;
+
     }
- @media  (min-width:1025px) {
-  background-image: url(${Bg1});
-    }
+
     @media (max-width: 768px) {
       background-image: url(${Bg3});
+      min-height:1024px;
     }
 `;
-const Wrapper = styled.div`
-  background-size: cover;
+const Wrapper=styled.div`
+  width:97.1rem;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
   align-items: center;
-
-  @media (min-width: 768px) and (max-width: 1024px) {
-    //between
-    margin-top: 35%;
-    width: 100%auto;
+  margin: 0 auto;
+  @media only screen and (max-width: 1024px) {
+        width:71.5rem;
   }
-
-  @media (min-width: 768px) and (max-width:1024px) { //between
-    margin-top:35%;
-      width:100%auto;
+    @media only screen and (max-width: 768px) {
+        width:54.8rem;
+  }
+    @media only screen and (max-width: 548px) {
+        width:100%;
+        padding:0 0.5rem;
     }
 
-    @media (min-width: 1025px) { //desktop 
-      margin-top:17%;
-      width:100%auto;
-    }
-    @media (max-width: 767px) { //iphone
-      width:100%auto;
-        margin-top:30%;
-  }
-  @media (max-width: 767px) {
-    //iphone
-    width: 100%auto;
-    margin-top: 30%;
-  }
-`;
+  ` 
 
 const MyIcon = styled.img`
   @media (min-width: 768px) and (max-width: 1024px) {
@@ -80,9 +74,12 @@ const MyIcon = styled.img`
     //desktop
     width: 221px;
   }
-  @media (max-width: 767px) {
+  @media (max-width: 768px) {
     //iphone
     width: 300px;
+  }
+  @media (max-width: 767px) { //iphone
+    width:150px;
   }
 `;
 
@@ -97,32 +94,47 @@ const Input = styled.input`
   width: 370px;
   color: white;
   outline: none;
-  @media (max-width: 767px) {
+  @media (max-width: 768px) {
     //iphone
-    width: 240px;
+    width: 250px;
   }
+  @media (max-width: 767px) { //iphone
+    width:290px;
+  }
+ 
 `;
 
 const Content = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  @media (max-width: 767px) {
+  @media (max-width: 768px) {
     //iphone
-    margin-left: 20%;
+    margin-left: 15%;
   }
+
+  
 `;
+const Center=styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+`
 
 function RegisterPage(props) {
   const dispatch = useDispatch();
   return (
-
+<Fix>
 <Background> <QuizHeader/>
   <Wrapper>
-  <MyIcon></MyIcon>
+  <div>
+      <BlankTop DesktopMargin='38' TabletMargin='48.5' MobileMargin='26.5' />
+
+      <MyIcon></MyIcon>
+    </div>  
   <BlankTop DesktopMargin='3' TabletMargin='3' MobileMargin='2' />
   <TextComponent title="회원가입"  DesktopLength='15' TabletLength='15' MobileLength='13'/> 
-  <BlankTop DesktopMargin='5' TabletMargin='3' MobileMargin='3' />
+  <BlankTop DesktopMargin='5' TabletMargin='3' MobileMargin='1' />
     <Formik
       initialValues={{
         email: '',
@@ -197,7 +209,7 @@ function RegisterPage(props) {
                     DesktopLength="45"
                     BetweenLength="45"
                     TabletLength="45"
-                    MobileLength="30"
+                    MobileLength="25"
                   />
                 </Form.Item>
 
@@ -226,7 +238,7 @@ function RegisterPage(props) {
                     DesktopLength="45"
                     BetweenLength="45"
                     TabletLength="45"
-                    MobileLength="30"
+                    MobileLength="25"
                   />
                 </Form.Item>
 
@@ -264,7 +276,7 @@ function RegisterPage(props) {
                     DesktopLength="45"
                     BetweenLength="45"
                     TabletLength="45"
-                    MobileLength="30"
+                    MobileLength="25"
                   />
                 </Form.Item>
 
@@ -298,11 +310,12 @@ function RegisterPage(props) {
                     DesktopLength="45"
                     BetweenLength="45"
                     TabletLength="45"
-                    MobileLength="30"
+                    MobileLength="25"
                   />
                 </Form.Item>
 
                 <BlankTop DesktopMargin="3" TabletMargin="1" MobileMargin="1" />
+                <Center>
                 <ColorButton
                   font="12"
                   background="#60FFDA"
@@ -317,21 +330,19 @@ function RegisterPage(props) {
                     onClick={handleSubmit}
                     disabled={isSubmitting}
                   >
-                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
-                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp; 회원가입 &nbsp; &nbsp; &nbsp;
-                    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
-                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+                  
+                    
+                    &nbsp; 
+                    &nbsp;&nbsp; 회원가입 &nbsp; &nbsp; 
+                   
                   </Button>
-                </ColorButton>
+                </ColorButton></Center>
               </form>
             );
           }}
         </Formik>
       </Wrapper>
-    </Background>
+    </Background></Fix>
   );
 }
 

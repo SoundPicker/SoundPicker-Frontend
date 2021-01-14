@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import MenuIcon from "../common/MenuIcon";
+import QuizHeader from "../common/QuizHeader";
 
 const Wrap = styled.div`
   width: 100vw;
@@ -28,7 +28,11 @@ const Wrap = styled.div`
 
 // MenuIcon 자리 비워둠
 const Header = () => {
-  return <Wrap></Wrap>;
+  return (
+    <Wrap>
+      <QuizHeader></QuizHeader>
+    </Wrap>
+  );
 };
 
 export default Header;

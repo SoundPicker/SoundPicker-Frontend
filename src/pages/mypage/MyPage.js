@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import styled from "styled-components";
 import BlankTop from '../../components/common/BlankTop';
 import QuizHeader from '../../components/common/QuizHeader';
-import UnderLineWrap from '../../components/common/UnderLineWrap';
+import UnderLineWrap from './UnderLineWrap';
 import TextComponent from '../../components/common/TextComponent';
 import Button from './Button';
 import BoldTextComponent from './BoldTextComponent';
@@ -19,7 +19,9 @@ import { Input } from 'antd';
 
 const Background = styled.div`
     width:100vw;
-    height:2000vh;
+    height:100%;
+    min-height:100vh;
+
     border:1px solid rgba(0,0,0,0);
     background-repeat: no-repeat;
     background-position: center top;
@@ -222,7 +224,7 @@ switch (myState.status) {
                   
                   <div>
                   <Detail>
-                  <BoldTextComponent title={member.title}  DesktopLength='15' TabletLength='10' MobileLength='7'/>
+                  <BoldTextComponent key={i} title={member.title}  DesktopLength='15' TabletLength='10' MobileLength='7'/>
                   <div>
                   <Button font='12' onClick={() => history.push(`/testedit/${member.id}`)}>수정</Button>
                    <Button font='12' onClick={()=>onDeleteTest(member)}>삭제</Button>
@@ -231,7 +233,7 @@ switch (myState.status) {
                     <TextComponent title={member.description}  DesktopLength='10' TabletLength='10' MobileLength='10'/>
                   </Detail> 
                   <BlankTop DesktopMargin='2' TabletMargin='2' MobileMargin='2' />
-                  <UnderLineWrap  DesktopLength='130'BetweenLength='95' TabletLength='70' MobileLength='45' ></UnderLineWrap>
+                  <UnderLineWrap  DesktopLength='130'BetweenLength='95' TabletLength='70' MobileLength='36' ></UnderLineWrap>
                   <BlankTop DesktopMargin='4' TabletMargin='2' MobileMargin='2' /> 
                 </div>
                 )}

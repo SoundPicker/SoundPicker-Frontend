@@ -7,22 +7,33 @@ import Bg1 from '../../assets/images/startloading_background2.jpg';
 import Bg2 from '../../assets/images/startloading_background1.jpg';
 import logo1 from '../../assets/images/image_watermark.png';
 
+const Fix =styled.div`
+min-height:100vh;
+background-color:  #081923;
+`;
 
 const Background = styled.div`
     width:100vw;
-    height:1000vh;
+    height:100%;
+    min-height:100vh;
     background-repeat: no-repeat;
     background-position: center top;
-    background-color: rgba( 12, 26, 34, 1);
+    background-color: #081923;
     background-size:contain;
     @media (min-width: 768px) and (max-width:1024px){
       background-image: url(${Bg2});
+      min-height:100vh;
+    }
+    @media  (max-width:1440px) {
+      min-height:210vh;
     }
  @media  (min-width:1024px) {
   background-image: url(${Bg1});
+  min-height:150vh;
     }
     @media (max-width: 768px) {
       background-image: url(${Bg2});
+      min-height:170vh;
     }
 `;
 
@@ -95,6 +106,7 @@ function StartLoading(){
 
     return(
         <div>
+          <Fix>
           <Background>
             <Wrapper>
                 <BlankTop DesktopMargin='5' TabletMargin='5' MobileMargin='5' />
@@ -107,9 +119,9 @@ function StartLoading(){
             <ContentComponent title={`${text}`}/>;
             
             <div></div>
-            
             </Wrapper>
             </Background>
+            </Fix>
         </div>
     );
 

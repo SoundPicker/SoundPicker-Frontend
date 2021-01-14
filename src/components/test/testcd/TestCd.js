@@ -152,13 +152,17 @@ const TestCd = ({ newList, match }) => {
                     <AnswerText inside={recordInside}>
                       {answer ?? '정답은?'}
                     </AnswerText>
-                    <RecordImg
-                      src={recordImg}
-                      rotateSecond={rotateSecond}
-                      onAnimationEnd={() => setRotateSecond(0)}
-                      // 해당요소의 애니메이션이 종료됐을때 레코드판 돌리는 재생시간을 다시 0초로 초기화
-                      inside={recordInside} //레코드가 들어가는 애니메이션을위한 트리거 변수
-                    />
+
+                    <RecordWrapper inside={recordInside}>
+                      <RecordImg
+                        src={recordImg}
+                        rotateSecond={rotateSecond}
+                        onAnimationEnd={() => setRotateSecond(0)}
+                        // 해당요소의 애니메이션이 종료됐을때 레코드판 돌리는 재생시간을 다시 0초로 초기화
+                        // inside={recordInside}
+                        //레코드가 들어가는 애니메이션을위한 트리거 변수
+                      />
+                    </RecordWrapper>
                   </>
                 )}
               </SwiperContainer>
@@ -196,6 +200,28 @@ const TestCd = ({ newList, match }) => {
 }
 
 /**키프레임 시작 */
+
+
+const RecordWrapper = styled.div`
+  z-index: 1;
+  margin-left: -26%;
+  animation-fill-mode: forwards;
+  @media only screen and (max-width: 1024px) {
+    margin-left: -26%;
+  }
+  @media only screen and (max-width: 768px) {
+    /* width: 18.5rem; */
+  }
+  ${props =>
+    props.inside && //레코드판을 집어넣는 css애니메이션 추가 트리거가 true일때 실행.
+    css`
+      animation-timing-function: ease-in-out;
+      animation-duration: 0.5s;
+      animation-iteration-count: 1;
+      animation-name: ${RecordInside};
+    `}
+`
+
 
 const HintFade = keyframes`
   0% { 
@@ -303,7 +329,7 @@ const UnActiveAnimation1024 = keyframes`
 }
 100% {
     opacity: .5; 
-    transform: translateX(-60%) scale(0.7);
+    transform: translateX(-68%) scale(0.7);
 }
 `
 
@@ -451,7 +477,7 @@ const SwiperContainer = styled.div`
         opacity: 0.5;
         transform: translateX(-65%) scale(0.6);
         @media only screen and (max-width: 1024px) {
-          transform: translateX(-60%) scale(0.7);
+          transform: translateX(-68%) scale(0.7);
         }
         @media only screen and (max-width: 768px) {
           transform: translateX(-130%) scale(1);
@@ -477,9 +503,8 @@ const SwiperContainer = styled.div`
 
 const RecordImg = styled.img`
   object-fit: contain;
-  z-index: 1;
-  margin-left: -25%;
   animation-fill-mode: forwards;
+
   ${props =>
     props.rotateSecond > 0 && //레코드판을 돌리는 css애니메이션 추가 0초 초과일때만 작동하도록 한다.
     css`
@@ -490,14 +515,14 @@ const RecordImg = styled.img`
         ? Rotate1Record
         : Rotate3Record}; //1초일때 3초일때 분기해서 키프레임을 넣어줌
     `}
-  ${props =>
-    props.inside && //레코드판을 집어넣는 css애니메이션 추가 트리거가 true일때 실행.
-    css`
-      animation-timing-function: ease-in-out;
-      animation-duration: 0.5s;
-      animation-iteration-count: 1;
-      animation-name: ${RecordInside};
-    `}
+  @media only screen and (max-width: 1024px) {
+    width: 40rem;
+    /* margin-left: -25%; */
+  }
+  @media only screen and (max-width: 768px) {
+    width: 26rem;
+    /* width: 18.5rem; */
+  }
 `
 
 const CaseImg = styled.img`

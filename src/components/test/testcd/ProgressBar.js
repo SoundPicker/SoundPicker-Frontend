@@ -10,14 +10,14 @@ const Bar = styled.div`
   background-color: #fff;
   transform: rotate(180deg);
   height: 37rem;
-  right: 23rem;
+  right: 24rem;
   @media only screen and (max-width: 1024px) {
     height: 34rem;
-    right: 21.5rem;
+    right: 22rem;
   }
   @media only screen and (max-width: 768px) {
     height: 23rem;
-    right: 18rem;
+    right: 17rem;
   }
 `
 

@@ -391,7 +391,7 @@ const TestEditFormContainer = ({history,match}) => {
         }
         const newTimer = setTimeout(async () => {
             try {
-                axios.put(`http://3.35.187.65:3000/test/${match.params.id}`,variable,config)
+                axios.put(`https://soundpicker.ga/test/${match.params.id}`,variable,config)
                 .then(response=> {
                     if(response.data.success){
                       history.push("/");
@@ -584,11 +584,12 @@ const TestEditFormContainer = ({history,match}) => {
 
 
     useEffect(() => {
+
         const script = document.createElement('script');
         script.src = 'https://www.youtube.com/iframe_api';
         const firstScriptTag = document.getElementsByTagName('script')[0];
           firstScriptTag.parentNode.insertBefore(script, firstScriptTag);
-        
+
         window.onYouTubeIframeAPIReady = () => {
           // eslint-disable-next-line react-hooks/exhaustive-deps
           player0 = new window.YT.Player(`player0`, {
@@ -602,7 +603,7 @@ const TestEditFormContainer = ({history,match}) => {
               fs: 0,
               showinfo:0,
               enablejsapi: 1,
-              origin:'http://localhost:3001'
+              origin:'https://soundpicker.kr'
             },
             events: {
               onReady: onReadyAPI0,
@@ -620,7 +621,7 @@ const TestEditFormContainer = ({history,match}) => {
               fs: 0,
               showinfo:0,
               enablejsapi: 1,
-              origin:'http://localhost:3000'
+              origin:'https://soundpicker.kr'
             },
             events: {
               onReady: onReadyAPI1,
@@ -638,7 +639,7 @@ const TestEditFormContainer = ({history,match}) => {
               fs: 0,
               showinfo:0,
               enablejsapi: 1,
-              origin:'http://localhost:3000'
+              origin:'https://soundpicker.kr'
             },
             events: {
               onReady: onReadyAPI2,
@@ -656,7 +657,7 @@ const TestEditFormContainer = ({history,match}) => {
               fs: 0,
               showinfo:0,
               enablejsapi: 1,
-              origin:'http://localhost:3000'
+              origin:'https://soundpicker.kr'
             },
             events: {
               onReady: onReadyAPI3,
@@ -674,7 +675,7 @@ const TestEditFormContainer = ({history,match}) => {
               fs: 0,
               showinfo:0,
               enablejsapi: 1,
-              origin:'http://localhost:3000'
+              origin:'https://soundpicker.kr'
             },
             events: {
               onReady: onReadyAPI4,
@@ -692,7 +693,7 @@ const TestEditFormContainer = ({history,match}) => {
               fs: 0,
               showinfo:0,
               enablejsapi: 1,
-              origin:'http://localhost:3000'
+              origin:'https://soundpicker.kr'
             },
             events: {
               onReady: onReadyAPI5,
@@ -710,7 +711,7 @@ const TestEditFormContainer = ({history,match}) => {
               fs: 0,
               showinfo:0,
               enablejsapi: 1,
-              origin:'http://localhost:3000'
+              origin:'https://soundpicker.kr'
             },
             events: {
               onReady: onReadyAPI6,
@@ -728,7 +729,7 @@ const TestEditFormContainer = ({history,match}) => {
               fs: 0,
               showinfo:0,
               enablejsapi: 1,
-              origin:'http://localhost:3000'
+              origin:'https://soundpicker.kr'
             },
             events: {
               onReady: onReadyAPI7,
@@ -746,7 +747,7 @@ const TestEditFormContainer = ({history,match}) => {
               fs: 0,
               showinfo:0,
               enablejsapi: 1,
-              origin:'http://localhost:3000'
+              origin:'https://soundpicker.kr'
             },
             events: {
               onReady: onReadyAPI8,
@@ -764,7 +765,7 @@ const TestEditFormContainer = ({history,match}) => {
               fs: 0,
               showinfo:0,
               enablejsapi: 1,
-              origin:'http://localhost:3000'
+              origin:'https://soundpicker.kr'
             },
             events: {
               onReady: onReadyAPI9,
@@ -789,7 +790,7 @@ const TestEditFormContainer = ({history,match}) => {
       }, []);
       const getTestData = async id =>{
           try{
-              await axios.get(`http://3.35.187.65:3000/test/${id}/updatepage`)
+              await axios.get(`https://soundpicker.ga/test/${id}/updatepage`)
               .then(response=> {
                   if(response.data.success){
                     setTestTitle(response.data.data.test.title);
@@ -963,12 +964,12 @@ const TestEditFormContainer = ({history,match}) => {
                             <BlankTop DesktopMargin='1.9' TabletMargin='2' MobileMargin='2.6'/>
                             <QuestionListInputWrap>
                                 <QuestionListInputText text={i!==9?"Qustion00"+(i+1):"Qustion010"} />
-                                <QuestionListInput inputName='answer' inputMaxLength="20" inputPlaceholder='정답을 적어주세요 (최대 20자)'  changeText={changeText(i)} value={d.answer}/>
+                                <QuestionListInput inputName='answer' inputMaxLength="20" inputPlaceholder='정답을 적어주세요(최대20자)'  changeText={changeText(i)} value={d.answer}/>
                             </QuestionListInputWrap>
                             <BlankTop DesktopMargin='1.9' TabletMargin='3.9' MobileMargin='2.6'/>
                             <QuestionListHintWrap>
                                 <QuestionListInputText text='Hint' />
-                                <QuestionListInput inputName='hint' inputMaxLength="10" inputPlaceholder='힌트를 적어주세요 (최대 10자)'  changeText={changeText(i)} value={d.hint} />
+                                <QuestionListInput inputName='hint' inputMaxLength="10" inputPlaceholder='힌트를 적어주세요(최대10자)'  changeText={changeText(i)} value={d.hint} />
                             </QuestionListHintWrap>
                         </QuestionListLeftWrap>
 

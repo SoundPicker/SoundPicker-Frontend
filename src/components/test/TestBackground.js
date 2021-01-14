@@ -15,10 +15,11 @@ const TestWrap = styled.div`
   overflow: hidden;
   @media only screen and (max-width: 1024px) {
     background-image: url(${bg1024});
-    height: 150vh;
+    height: 180vh;
   }
   @media only screen and (max-width: 768px) {
     background-image: url(${bg768});
+    height: 160vh;
   }
 `
 
