@@ -574,10 +574,12 @@ const TestMakingFormContainer = ({history}) => {
 
 
     useEffect(() => {
+
         const script = document.createElement('script');
+        script.id = 'youtubeAPI';
         script.src = 'https://www.youtube.com/iframe_api';
         const firstScriptTag = document.getElementsByTagName('script')[0];
-          firstScriptTag.parentNode.insertBefore(script, firstScriptTag);
+        firstScriptTag.parentNode.insertBefore(script, firstScriptTag);          
         
         window.onYouTubeIframeAPIReady = () => {
           // eslint-disable-next-line react-hooks/exhaustive-deps

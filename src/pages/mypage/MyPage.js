@@ -19,7 +19,7 @@ import { Input } from 'antd';
 
 const Background = styled.div`
     width:100vw;
-    height:2000vh;
+    height:100%;
     border:1px solid rgba(0,0,0,0);
     background-repeat: no-repeat;
     background-position: center top;
