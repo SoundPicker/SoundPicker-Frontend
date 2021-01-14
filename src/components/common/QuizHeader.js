@@ -31,7 +31,7 @@ function QuizHeader() {
 
   switch (myState.status) {
     case 'pending':
-      return <h1>ㅁㄴ</h1>
+      return <></>
     case 'resolved':
       return (
         <>
