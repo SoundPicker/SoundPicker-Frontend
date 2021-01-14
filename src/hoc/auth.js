@@ -22,10 +22,11 @@ export default function(SpecificComponent,option,adminRoute=null){
             dispatch(()=>{
                 console.log(window.localStorage.getItem('isAuth'));
                     //로그인 하지 않은 상태
-                    if(window.localStorage.getItem('isAuth')==='false'&&window.location.pathname==='/register'){
+                    if(window.localStorage.getItem('isAuth')==='false'&&window.location.hash==='#/register'){
                         props.history.push('/register');
                     }else if(window.localStorage.getItem('isAuth')==='false'){
                         props.history.push('/login');
+
                     }else{
                         //로그인 한 상태
                         if(adminRoute && window.localStorage.getItem('isAuth')==='true'){

@@ -20,6 +20,7 @@ import { Input } from 'antd';
 const Background = styled.div`
     width:100vw;
     height:100%;
+    min-height:100vh;
     border:1px solid rgba(0,0,0,0);
     background-repeat: no-repeat;
     background-position: center top;
@@ -222,7 +223,7 @@ switch (myState.status) {
                   
                   <div>
                   <Detail>
-                  <BoldTextComponent title={member.title}  DesktopLength='15' TabletLength='10' MobileLength='7'/>
+                  <BoldTextComponent key={i} title={member.title}  DesktopLength='15' TabletLength='10' MobileLength='7'/>
                   <div>
                   <Button font='12' onClick={() => history.push(`/testedit/${member.id}`)}>수정</Button>
                    <Button font='12' onClick={()=>onDeleteTest(member)}>삭제</Button>

@@ -31,7 +31,7 @@ const Background = styled.div`
     @media (min-width: 768px) and (max-width:1024px){
       background-image: url(${Bg2});
     }
- @media  (min-width:1025px) {
+ @media  (min-width:1024px) {
   background-image: url(${Bg1});
     }
     @media (max-width: 768px) {
@@ -45,18 +45,13 @@ const Wrapper = styled.div`
   flex-wrap: wrap;
   align-items: center;
 
-  @media (min-width: 768px) and (max-width: 1024px) {
-    //between
-    margin-top: 35%;
-    width: 100%auto;
-  }
 
   @media (min-width: 768px) and (max-width:1024px) { //between
     margin-top:35%;
       width:100%auto;
     }
 
-    @media (min-width: 1025px) { //desktop 
+    @media (min-width: 1024px) { //desktop 
       margin-top:17%;
       width:100%auto;
     }
@@ -64,11 +59,7 @@ const Wrapper = styled.div`
       width:100%auto;
         margin-top:30%;
   }
-  @media (max-width: 767px) {
-    //iphone
-    width: 100%auto;
-    margin-top: 30%;
-  }
+
 `;
 
 const MyIcon = styled.img`
@@ -80,7 +71,7 @@ const MyIcon = styled.img`
     //desktop
     width: 221px;
   }
-  @media (max-width: 767px) {
+  @media (max-width: 768px) {
     //iphone
     width: 300px;
   }
@@ -97,20 +88,23 @@ const Input = styled.input`
   width: 370px;
   color: white;
   outline: none;
-  @media (max-width: 767px) {
+  @media (max-width: 768px) {
     //iphone
-    width: 240px;
+    width: 250px;
   }
+ 
 `;
 
 const Content = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  @media (max-width: 767px) {
+  @media (max-width: 768px) {
     //iphone
     margin-left: 20%;
   }
+
+  
 `;
 
 function RegisterPage(props) {

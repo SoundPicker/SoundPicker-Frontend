@@ -98,6 +98,11 @@ const Content=styled.div`
     margin-left:15%;
   }
 `
+const Center=styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+`
 
 
 function LoginPage(props) {
@@ -216,7 +221,7 @@ function LoginPage(props) {
               )}
 
               <Form.Item>
-                <div>
+                <div><Center>
                 <ColorButton font='12' border="#60FFDA" color="#ffffff"  ><Button onClick={goToMain} ghost='true' type='text'  style={{ minWidth: '100%' }} >
                 <p style={{ color: '#ffffff'}}>&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;회원가입&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;</p>
                 </Button></ColorButton>
@@ -224,7 +229,7 @@ function LoginPage(props) {
                 <ColorButton font='12' background="#60FFDA" color="#000000" border="#60FFDA"  ><Button ghost='true' type='text' htmlType="submit" className="login-form-button" style={{ minWidth: '100%' }} disabled={isSubmitting} onSubmit={handleSubmit}>
                 &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; 로그인&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
                 </Button></ColorButton>
-                </div>
+                </Center> </div>
               </Form.Item>
             </form>
         );
