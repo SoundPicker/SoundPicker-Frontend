@@ -33,6 +33,7 @@
       "react-app/jest"
     ]
   },
+  "homepage": "http://boring-wilson-c19003.netlify.app/",
   "browserslist": {
     "production": [
       ">0.2%",
