@@ -39,6 +39,9 @@ const Background = styled.div`
     }
 `;
 const Wrapper = styled.div`
+position: absolute;
+  width: 100%;
+  height: 100%;
   background-size: cover;
   display: flex;
   flex-direction: column;
@@ -55,10 +58,11 @@ const Wrapper = styled.div`
       margin-top:17%;
       width:100%auto;
     }
-    @media (max-width: 767px) { //iphone
+    @media (max-width: 768px) { //iphone
       width:100%auto;
         margin-top:30%;
   }
+
 
 `;
 
@@ -74,6 +78,9 @@ const MyIcon = styled.img`
   @media (max-width: 768px) {
     //iphone
     width: 300px;
+  }
+  @media (max-width: 767px) { //iphone
+    width:150px;
   }
 `;
 
@@ -92,6 +99,9 @@ const Input = styled.input`
     //iphone
     width: 250px;
   }
+  @media (max-width: 767px) { //iphone
+    width:290px;
+  }
  
 `;
 
@@ -101,11 +111,16 @@ const Content = styled.div`
   justify-content: space-between;
   @media (max-width: 768px) {
     //iphone
-    margin-left: 20%;
+    margin-left: 15%;
   }
 
   
 `;
+const Center=styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+`
 
 function RegisterPage(props) {
   const dispatch = useDispatch();
@@ -191,7 +206,7 @@ function RegisterPage(props) {
                     DesktopLength="45"
                     BetweenLength="45"
                     TabletLength="45"
-                    MobileLength="30"
+                    MobileLength="25"
                   />
                 </Form.Item>
 
@@ -220,7 +235,7 @@ function RegisterPage(props) {
                     DesktopLength="45"
                     BetweenLength="45"
                     TabletLength="45"
-                    MobileLength="30"
+                    MobileLength="25"
                   />
                 </Form.Item>
 
@@ -258,7 +273,7 @@ function RegisterPage(props) {
                     DesktopLength="45"
                     BetweenLength="45"
                     TabletLength="45"
-                    MobileLength="30"
+                    MobileLength="25"
                   />
                 </Form.Item>
 
@@ -292,11 +307,12 @@ function RegisterPage(props) {
                     DesktopLength="45"
                     BetweenLength="45"
                     TabletLength="45"
-                    MobileLength="30"
+                    MobileLength="25"
                   />
                 </Form.Item>
 
                 <BlankTop DesktopMargin="3" TabletMargin="1" MobileMargin="1" />
+                <Center>
                 <ColorButton
                   font="12"
                   background="#60FFDA"
@@ -311,15 +327,13 @@ function RegisterPage(props) {
                     onClick={handleSubmit}
                     disabled={isSubmitting}
                   >
-                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
-                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                  
+                    
+                     &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
                     &nbsp;&nbsp; 회원가입 &nbsp; &nbsp; &nbsp;
-                    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
-                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+                    &nbsp;&nbsp;
                   </Button>
-                </ColorButton>
+                </ColorButton></Center>
               </form>
             );
           }}
