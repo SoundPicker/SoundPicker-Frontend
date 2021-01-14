@@ -8,6 +8,7 @@ const Wrap = styled.div`
   display: flex;
   justify-content: center;
 
+  /*
   @keyframes fadeIn {
     from {
       opacity: 0;
@@ -19,6 +20,7 @@ const Wrap = styled.div`
 
   animation: fadeIn 1000ms 1;
   animation-timing-function: ease-in;
+  */
 `;
 
 const WrapImage = styled.div`

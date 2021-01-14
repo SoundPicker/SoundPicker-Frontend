@@ -3,10 +3,10 @@ import styled from "styled-components";
 import ContentComponent from "./ContentComponent";
 import BlankTop from '../common/BlankTop';
 import LoadingComponent from '../common/LoadingComponent';
-import Bg1 from '../../assets/images/startloading_background2.jpg';
-import Bg2 from '../../assets/images/startloading_background1.jpg';
+import Bg1 from '../../assets/images/startloading_background1.jpg';
+import Bg2 from '../../assets/images/startloading_background2.jpg';
 import logo1 from '../../assets/images/image_watermark.png';
-import Bg3 from '../../assets/images/quizloading_background3.jpg';
+import Bg3 from '../../assets/images/startloading_background3.png';
 
 const Fix =styled.div`
 min-height:100vh;

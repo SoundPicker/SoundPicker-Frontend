@@ -8,6 +8,7 @@ const Wrap = styled.div`
   height: 3.3rem;
   justify-content: center;
 
+  /*
   @keyframes fadeIn {
     from {
       opacity: 0;
@@ -19,6 +20,7 @@ const Wrap = styled.div`
 
   animation: fadeIn 700ms 1;
   animation-timing-function: ease-in;
+  */
 `;
 
 const Logo = styled.div`
