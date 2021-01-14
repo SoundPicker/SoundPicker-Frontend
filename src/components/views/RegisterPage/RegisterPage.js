@@ -39,9 +39,7 @@ const Background = styled.div`
     }
 `;
 const Wrapper = styled.div`
-position: absolute;
-  width: 100%;
-  height: 100%;
+
   background-size: cover;
   display: flex;
   flex-direction: column;
@@ -329,9 +327,9 @@ function RegisterPage(props) {
                   >
                   
                     
-                     &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
-                    &nbsp;&nbsp; 회원가입 &nbsp; &nbsp; &nbsp;
-                    &nbsp;&nbsp;
+                    &nbsp; 
+                    &nbsp;&nbsp; 회원가입 &nbsp; &nbsp; 
+                   
                   </Button>
                 </ColorButton></Center>
               </form>

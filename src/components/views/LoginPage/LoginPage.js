@@ -234,11 +234,11 @@ function LoginPage(props) {
               <Form.Item>
                 <div><Center>
                 <ColorButton font='12' border="#60FFDA" color="#ffffff"  ><Button onClick={goToMain} ghost='true' type='text'  style={{ minWidth: '100%' }} >
-                <p style={{ color: '#ffffff'}}> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;회원가입&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; </p>
+                <p style={{ color: '#ffffff'}}> &nbsp;&nbsp;&nbsp; 회원가입&nbsp;&nbsp;&nbsp; &nbsp; </p>
                 </Button></ColorButton>
 
                 <ColorButton font='12' background="#60FFDA" color="#000000" border="#60FFDA"  ><Button ghost='true' type='text' htmlType="submit" className="login-form-button" style={{ minWidth: '100%' }} disabled={isSubmitting} onSubmit={handleSubmit}>
-               &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; 로그인&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; 
+               &nbsp;&nbsp; &nbsp;&nbsp;로그인&nbsp;&nbsp; &nbsp;&nbsp;
                 </Button></ColorButton>
                 </Center> </div>
               </Form.Item>
