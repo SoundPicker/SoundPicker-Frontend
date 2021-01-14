@@ -21,7 +21,6 @@ export default function(SpecificComponent,option,adminRoute=null){
         
             dispatch(()=>{
                 if(option!==null){
-                console.log(window.localStorage.getItem('isAuth'));
                     //로그인 하지 않은 상태
                     if(window.localStorage.getItem('isAuth')==='false'&&window.location.hash==='#/register'){
                         props.history.push('/register');
