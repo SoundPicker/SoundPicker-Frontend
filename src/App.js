@@ -17,7 +17,7 @@ const App = ({ match }) => {
     <Router>
       <ScrollToTop>
         <Switch>
-          <Route exact path="/" component={MainPage} />
+          <Route exact path="/" component={Auth(MainPage, null)} />
           <Route
             exact
             path="/testmaking"

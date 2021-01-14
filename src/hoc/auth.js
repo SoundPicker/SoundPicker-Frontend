@@ -20,6 +20,7 @@ export default function(SpecificComponent,option,adminRoute=null){
         useEffect(()=>{
         
             dispatch(()=>{
+                if(!window.localStorage.getItem('isAuth')===null){
                 console.log(window.localStorage.getItem('isAuth'));
                     //로그인 하지 않은 상태
                     if(window.localStorage.getItem('isAuth')==='false'&&window.location.hash==='#/register'){
@@ -37,6 +38,7 @@ export default function(SpecificComponent,option,adminRoute=null){
                             }
                         }
                     }
+                }
                     
             })
 

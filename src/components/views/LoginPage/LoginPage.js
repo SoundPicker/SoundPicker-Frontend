@@ -36,7 +36,6 @@ const Background = styled.div`
     @media only screen and (max-width: 1024px) {
       background-image: url(${Bg2});
       min-height:1336px;
-
     }
 
     @media (max-width: 768px) {

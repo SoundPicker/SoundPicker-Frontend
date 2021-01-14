@@ -6,6 +6,7 @@ import LoadingComponent from '../common/LoadingComponent';
 import Bg1 from '../../assets/images/startloading_background2.jpg';
 import Bg2 from '../../assets/images/startloading_background1.jpg';
 import logo1 from '../../assets/images/image_watermark.png';
+import Bg3 from '../../assets/images/quizloading_background3.jpg';
 
 const Fix =styled.div`
 min-height:100vh;
@@ -13,53 +14,44 @@ background-color:  #081923;
 `;
 
 const Background = styled.div`
-    width:100vw;
+    width:100%;
     height:100%;
-    min-height:100vh;
     background-repeat: no-repeat;
     background-position: center top;
     background-color: #081923;
-    background-size:contain;
-    @media (min-width: 768px) and (max-width:1024px){
+    background-image: url(${Bg1});
+    @media  (min-width:1024px) {
+      min-height:1080px;
+    }
+    @media only screen and (max-width: 1024px) {
       background-image: url(${Bg2});
-      min-height:100vh;
+      min-height:1336px;
     }
-    @media  (max-width:1440px) {
-      min-height:210vh;
-    }
- @media  (min-width:1024px) {
-  background-image: url(${Bg1});
-  min-height:150vh;
-    }
+
     @media (max-width: 768px) {
-      background-image: url(${Bg2});
-      min-height:170vh;
+      background-image: url(${Bg3});
+      min-height:1024px;
     }
 `;
 
 
 const Wrapper=styled.div`
- position: absolute;
-  width: 100%;
+  width:97.1rem;
   height: 100%;
-  background-size: cover;
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
   align-items: center;
-  @media (min-width: 768px) and (max-width:1024px) { //between
-    margin-top:45%;
-      width:100%auto;
-    }
-
-    @media (min-width: 1024px) { //desktop
-      margin-top:15%;
-      width:100%auto;
-    }
-    @media (max-width: 767px) { //iphone
-      width:100%auto;
-        margin-top:40%;
+  margin: 0 auto;
+  @media only screen and (max-width: 1024px) {
+        width:71.5rem;
   }
+    @media only screen and (max-width: 768px) {
+        width:54.8rem;
+  }
+    @media only screen and (max-width: 548px) {
+        width:100%;
+        padding:0 0.5rem;
+    }
 
 `;
 
@@ -109,7 +101,7 @@ function StartLoading(){
           <Fix>
           <Background>
             <Wrapper>
-                <BlankTop DesktopMargin='5' TabletMargin='5' MobileMargin='5' />
+            <BlankTop DesktopMargin='38' TabletMargin='48.5' MobileMargin='38' />
                 <ContentComponent title="소리로 하는 모든 즐거움" />
                 <BlankTop DesktopMargin='3' TabletMargin='2' MobileMargin='2' />
                 <MyIcon></MyIcon>

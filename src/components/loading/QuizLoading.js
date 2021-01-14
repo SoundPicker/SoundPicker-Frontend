@@ -6,6 +6,7 @@ import BlankTop from '../common/BlankTop'
 import LoadingComponent from '../common/LoadingComponent'
 import Bg1 from '../../assets/images/quizloading_background1.jpg'
 import Bg2 from '../../assets/images/quizloading_background2.jpg'
+import Bg3 from '../../assets/images/quizloading_background3.jpg'
 
 const Fix =styled.div`
 min-height:100vh;
@@ -13,54 +14,43 @@ background-color:  #081923;
 `;
 
 const Background = styled.div`
-  width: 100vw;
+  width: 100%;
   height: 100%;
   background-repeat: no-repeat;
   background-position: center top;
   background-color: #081923;
-  background-size: contain;
-  @media (min-width: 768px) and (max-width:1024px){
-      background-image: url(${Bg2});
-      min-height:100vh;
-    }
-    @media  (max-width:1440px) {
-      min-height:210vh;
-    }
- @media  (min-width:1024px) {
   background-image: url(${Bg1});
-  min-height:150vh;
+  @media  (min-width:1024px) {
+      min-height:1080px;
     }
-    @media (max-width: 768px) {
+    @media only screen and (max-width: 1024px) {
       background-image: url(${Bg2});
-      min-height:170vh;
+      min-height:1336px;
+    }
+
+    @media (max-width: 768px) {
+      background-image: url(${Bg3});
+      min-height:1024px;
     }
 `
 
 const Wrapper = styled.div`
-  position: absolute;
-  width: 100%;
+  width:97.1rem;
   height: 100%;
-  background-size: cover;
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
   align-items: center;
-  @media (min-width: 768px) and (max-width: 1024px) {
-    //between
-    margin-top: 50%;
-    width: 100%auto;
+  margin: 0 auto;
+  @media only screen and (max-width: 1024px) {
+        width:71.5rem;
   }
-
-  @media (min-width: 1024px) {
-    //desktop
-    margin-top: 20%;
-    width: 100%auto;
+    @media only screen and (max-width: 768px) {
+        width:54.8rem;
   }
-  @media (max-width: 767px) {
-    //iphone
-    width: 100%auto;
-    margin-top: 50%;
-  }
+    @media only screen and (max-width: 548px) {
+        width:100%;
+        padding:0 0.5rem;
+    }
 `
 function QuizLoading() {
   const e = Math.floor(Math.random()*6+1);
@@ -89,6 +79,7 @@ function QuizLoading() {
       <Fix>
       <Background>
         <Wrapper>
+        <BlankTop DesktopMargin='38' TabletMargin='48.5' MobileMargin='38' />
           <TitleComponent title="순간의 센스가" />
           <BlankTop DesktopMargin="2" TabletMargin="1" MobileMargin="1" />
           <TitleComponent title="정답을 좌우한다" />
