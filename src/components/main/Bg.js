@@ -6,7 +6,7 @@ import BgSmallMobile from "../../assets/small_mobile/main_all_background.jpg";
 
 const Warp = styled.div`
   width: 100vw;
-  height: 10000vh;
+  height: 100%;
   background-image: url(${BgDesktop});
   background-repeat: no-repeat;
   background-position: center top;

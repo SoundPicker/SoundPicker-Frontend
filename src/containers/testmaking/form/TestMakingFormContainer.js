@@ -379,7 +379,6 @@ const TestMakingFormContainer = ({history}) => {
     }
     if(send===true){
       if (timer) {
-        console.log('clear timer');
         clearTimeout(timer);
       }
       const newTimer = setTimeout(async () => {
@@ -391,7 +390,6 @@ const TestMakingFormContainer = ({history}) => {
             }
         })
         } catch (e) {
-          console.error('error', e);
           setServerLoading(true);
         }
       }, 5000);
@@ -927,12 +925,12 @@ const TestMakingFormContainer = ({history}) => {
                             <BlankTop DesktopMargin='1.9' TabletMargin='2' MobileMargin='2.6'/>
                             <QuestionListInputWrap>
                                 <QuestionListInputText text={i!==9?"Qustion00"+(i+1):"Qustion010"} />
-                                <QuestionListInput inputName='answer' inputMaxLength="20" inputPlaceholder='정답을 적어주세요 (최대 20자)'  changeText={changeText(i)} value={d.answer}/>
+                                <QuestionListInput inputName='answer' inputMaxLength="20" inputPlaceholder='정답을 적어주세요(최대20자)'  changeText={changeText(i)} value={d.answer}/>
                             </QuestionListInputWrap>
                             <BlankTop DesktopMargin='1.9' TabletMargin='3.9' MobileMargin='2.6'/>
                             <QuestionListHintWrap>
                                 <QuestionListInputText text='Hint' />
-                                <QuestionListInput inputName='hint' inputMaxLength="10" inputPlaceholder='힌트를 적어주세요 (최대 10자)'  changeText={changeText(i)} value={d.hint} />
+                                <QuestionListInput inputName='hint' inputMaxLength="10" inputPlaceholder='힌트를 적어주세요(최대10자)'  changeText={changeText(i)} value={d.hint} />
                             </QuestionListHintWrap>
                         </QuestionListLeftWrap>
 

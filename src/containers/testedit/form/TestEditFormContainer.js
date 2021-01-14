@@ -213,11 +213,9 @@ const TestEditFormContainer = ({history,match}) => {
   const getYoutubeId = questionNumber => e => {
     const { target: { value } } = e;
     const { target: { name } } = e;
-    console.log(value)
     if(value)  {
         const regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
         const matchs = value.match(regExp);
-        console.log("matches:",matchs)
         if(value!==''&&matchs&&matchs[7].length===11){
 
             const tempsQustios = questions.map(question => {
@@ -238,8 +236,7 @@ const TestEditFormContainer = ({history,match}) => {
   
           });  
           setLinks(tempsLinks);
-          console.log("links2" ,tempsLinks);
-          console.log("questions2" ,tempsQustios)
+    
         }else{
             const tempsQustios = questions.map(question => {
                 if( question.questionNumber === questionNumber+1 ){
@@ -260,8 +257,7 @@ const TestEditFormContainer = ({history,match}) => {
           });  
           setLinks(tempsLinks);
             
-          console.log("links" ,tempsLinks);
-          console.log("questions" ,tempsQustios)
+
         }
     }else{
       const tempsQustios = questions.map(question => {
@@ -391,7 +387,6 @@ const TestEditFormContainer = ({history,match}) => {
     }
     if(send===true){
         if (timer) {
-            console.log('clear timer');
             clearTimeout(timer);
         }
         const newTimer = setTimeout(async () => {
@@ -403,7 +398,6 @@ const TestEditFormContainer = ({history,match}) => {
                     }
                 })
             } catch (e) {
-              console.error('error', e);
               setServerLoading(true);
 
             }
@@ -802,7 +796,6 @@ const TestEditFormContainer = ({history,match}) => {
                     setTestDescription(response.data.data.test.description);
                     setTestCategory(response.data.data.test.CategoryId)
                     setQuestions(response.data.data.questions)
-                    console.log(response.data.data.questions)
                     const linkArray=[]
                     for(let i=0; i<response.data.data.questions.length; i++){
                       let data2 = {
@@ -970,12 +963,12 @@ const TestEditFormContainer = ({history,match}) => {
                             <BlankTop DesktopMargin='1.9' TabletMargin='2' MobileMargin='2.6'/>
                             <QuestionListInputWrap>
                                 <QuestionListInputText text={i!==9?"Qustion00"+(i+1):"Qustion010"} />
-                                <QuestionListInput inputName='answer' inputMaxLength="20" inputPlaceholder='정답을 적어주세요 (최대 20자)'  changeText={changeText(i)} value={d.answer}/>
+                                <QuestionListInput inputName='answer' inputMaxLength="20" inputPlaceholder='정답을 적어주세요(최대20자)'  changeText={changeText(i)} value={d.answer}/>
                             </QuestionListInputWrap>
                             <BlankTop DesktopMargin='1.9' TabletMargin='3.9' MobileMargin='2.6'/>
                             <QuestionListHintWrap>
                                 <QuestionListInputText text='Hint' />
-                                <QuestionListInput inputName='hint' inputMaxLength="10" inputPlaceholder='힌트를 적어주세요 (최대 10자)'  changeText={changeText(i)} value={d.hint} />
+                                <QuestionListInput inputName='hint' inputMaxLength="10" inputPlaceholder='힌트를 적어주세요(최대10자)'  changeText={changeText(i)} value={d.hint} />
                             </QuestionListHintWrap>
                         </QuestionListLeftWrap>
 

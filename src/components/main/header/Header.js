@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { useEffect, useState, useRef } from "react";
+import { useState } from "react";
 import { logoutUser } from "../../../_actions/user_action";
 const HeaderDiv = styled.div`
   display: flex;
@@ -45,7 +45,7 @@ const LoginDiv = styled.div`
     margin-right: 0.9rem;
   }
   @media (max-width: 568px) {
-    width: 3.7rem;
+    width: 5rem;
     height: 1.2rem;
     margin-right: 0.8rem;
   }
@@ -72,7 +72,7 @@ const SignUpDiv = styled.div`
   cursor: pointer;
 
   @media (max-width: 568px) {
-    width: 4.3rem;
+    width: 5.3rem;
     height: 1.2rem;
   }
 `;
@@ -97,6 +97,9 @@ const SignOut = styled.button`
   border: rgba(0, 0, 0, 0);
   @media (max-width: 768px) {
     font-size: 1.4rem;
+  }
+  @media (max-width: 568px) {
+    font-size: 0.8rem;
   }
 `;
 
@@ -131,15 +134,15 @@ function Header() {
     case "true":
       return (
         <HeaderDiv>
-            <LoginDiv>
-          <Link to="/">
-          <SignOut onClick={(LogOut)} >로그아웃</SignOut>
-          </Link>
-        </LoginDiv>
+          <LoginDiv>
+            <Link to="/">
+              <SignOut onClick={LogOut}>로그아웃</SignOut>
+            </Link>
+          </LoginDiv>
 
-        <SignUpDiv>
-          <Link to="/mypage">
-          <SignUp>마이페이지</SignUp>
+          <SignUpDiv>
+            <Link to="/mypage">
+              <SignUp>마이페이지</SignUp>
             </Link>
           </SignUpDiv>
         </HeaderDiv>
