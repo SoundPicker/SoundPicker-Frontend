@@ -1,7 +1,7 @@
 import styled from 'styled-components'
-import bg1920 from '../../assets/images/test/all_background1920.jpg'
-import bg1024 from '../../assets/images/test/all_background1024.jpg'
-import bg768 from '../../assets/images/test/all_background768.jpg'
+import bg1920 from '../../assets/images/test/all_background1920.png'
+import bg1024 from '../../assets/images/test/all_background1024.png'
+import bg768 from '../../assets/images/test/all_background768.png'
 
 const TestWrap = styled.div`
   width: 100%;

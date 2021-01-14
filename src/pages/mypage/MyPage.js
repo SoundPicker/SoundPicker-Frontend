@@ -11,7 +11,7 @@ import Button from './Button';
 import Button2 from './Button2';
 import BoldTextComponent from './BoldTextComponent';
 import Bg1 from '../../assets/images/mypage_background1.jpg';
-import Bg2 from '../../assets/images/mypage_background2.jpg';
+import Bg2 from '../../assets/images/mypage_background2.png';
 import logo1 from '../../assets/images/image_watermark.png';
 import StartLoading from "../../components/loading/StartLoading";
 import {auth, changeName,changePassword,deleteTest} from "../../_actions/user_action";
