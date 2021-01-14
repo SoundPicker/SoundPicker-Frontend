@@ -1,4 +1,5 @@
 import BlankTop from "../../components/common/BlankTop";
+import QuizHeader from "../../components/common/QuizHeader";
 import Header from "../../components/testmaking/Header";
 import TMBackground from "../../components/testmaking/TMBackground";
 import TMInner from "../../components/testmaking/TMInner";
@@ -10,6 +11,7 @@ const TestEditPage = ({history,match}) => {
     return(
         <>
             <TMBackground>
+                <QuizHeader />
                 <TMInner>
                     <table></table>
                     <BlankTop DesktopMargin='10.2' TabletMargin='14.5' MobileMargin='8.9'/>
