@@ -31,12 +31,17 @@ const Background = styled.div`
     border:1px solid rgba(0,0,0,0);
     @media (min-width: 768px) and (max-width:1024px){
       background-image: url(${Bg2});
+      background-size: contain;
+    }
+    @media  (max-width:1440px) {
+      background-size: contain;
     }
  @media  (min-width:1024px) {
   background-image: url(${Bg1});
     }
     @media (max-width: 768px) {
       background-image: url(${Bg3});
+      background-size: contain;
     }
 `;
 const Wrapper = styled.div`

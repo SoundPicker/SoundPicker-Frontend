@@ -27,12 +27,20 @@ const Background = styled.div`
     background-color:  rgba( 12, 26, 34, 1);
     background-size:cover;
     background-image: url(${Bg1});
-    @media only screen and (max-width: 1024px) {
+    @media (min-width: 768px) and (max-width:1024px){
       background-image: url(${Bg2});
-      }
-      @media only screen and (max-width: 769px) {
-        background-image: url(${Bg3});
-      }
+      background-size: contain;
+    }
+    @media  (max-width:1440px) {
+      background-size: contain;
+    }
+ @media  (min-width:1024px) {
+  background-image: url(${Bg1});
+    }
+    @media (max-width: 768px) {
+      background-image: url(${Bg3});
+      background-size: contain;
+    }
 `;
 const Wrapper=styled.div`
  position: absolute;
@@ -48,7 +56,7 @@ const Wrapper=styled.div`
       width:100%auto;
     }
 
-    @media (min-width: 1025px) { //desktop 
+    @media (min-width: 1024px) { //desktop 
       margin-top:20%;
       width:100%auto;
     }
