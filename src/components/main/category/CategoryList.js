@@ -130,8 +130,8 @@ const CategoryList = ({ categoryList, startNum, onClickDisplay }) => {
       {categoryList.map((item, index) => {
         if (index === 9) {
           return (
-            <CategoryItem>
-              <CategoryName key={index}>{item["description"]}</CategoryName>
+            <CategoryItem key={index}>
+              <CategoryName>{item["description"]}</CategoryName>
               <CategoryBtn
                 className="cateBtn cateAll"
                 onClick={(evt) => {
@@ -146,8 +146,8 @@ const CategoryList = ({ categoryList, startNum, onClickDisplay }) => {
       {categoryList.map((item, index) => {
         if (index < startNum + categoryNum && index >= startNum) {
           return (
-            <CategoryItem>
-              <CategoryName key={index}>{item["description"]}</CategoryName>
+            <CategoryItem key={index}>
+              <CategoryName>{item["description"]}</CategoryName>
               <CategoryBtn
                 className="cateBtn"
                 onClick={(evt) => {
