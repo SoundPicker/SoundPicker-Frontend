@@ -419,7 +419,7 @@ const AnswerText = styled.p`
     font-size: 1.1rem;
   }
   @media only screen and (max-width: 375px) {
-    /* margin-left: -15%; */
+    margin-left: -15%;
   }
   ${props =>
     props.inside && //레코드판을 집어넣는 css애니메이션 추가 트리거가 true일때 실행.
