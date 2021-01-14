@@ -5,6 +5,7 @@ const Title = styled.div`
     font-family: NanumGothic;
     color:#ffffff;
     line-height: 30px;
+    width:80px;
     font-size: ${props=> props.DesktopLength || 0}px;
     @media only screen and (max-width: 1024px) {
     font-size: ${props=> props.TabletLength || 0}px;
