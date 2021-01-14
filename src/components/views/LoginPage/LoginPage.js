@@ -54,7 +54,12 @@ const Wrapper=styled.div`
     @media (max-width: 768px) { //iphone
       width:100%auto;
         margin-top:35%;
-  }` 
+  }
+  @media (max-width: 767px) { //iphone
+      width:100%auto;
+        margin-top:30%;
+  }
+  ` 
 
 
 const MyIcon = styled.img`
@@ -67,6 +72,9 @@ const MyIcon = styled.img`
     }
     @media (max-width: 768px) { //iphone
       width:300px;
+  }
+  @media (max-width: 767px) { //iphone
+    width:150px;
   }
 `;
 
@@ -85,8 +93,11 @@ margin-bottom:5px;
 @media (min-width: 768px) and (max-width:1024px) { //between
     width:300px;
     }
-@media (max-width: 767px) { //iphone
+@media (max-width: 768px) { //iphone
       width:200px;
+  }
+  @media (max-width: 767px) { //iphone
+    width:290px;
   }
 `
 
@@ -97,6 +108,11 @@ const Content=styled.div`
   @media (max-width: 768px) { //iphone
     margin-left:15%;
   }
+`
+const Center=styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 `
 
 
@@ -190,7 +206,7 @@ function LoginPage(props) {
                 />
                 
                  </Content>
-                <UnderLineComponent DesktopLength='45' BetweenLength='45' TabletLength='45' MobileLength='30' />
+                <UnderLineComponent DesktopLength='45' BetweenLength='45' TabletLength='45' MobileLength='25' />
               </Form.Item>
 
               <Form.Item required>
@@ -208,7 +224,7 @@ function LoginPage(props) {
                   }
                 />
                 </Content>
-                <UnderLineComponent DesktopLength='45' BetweenLength='45' TabletLength='45' MobileLength='30' />
+                <UnderLineComponent DesktopLength='45' BetweenLength='45' TabletLength='45' MobileLength='25' />
               </Form.Item>
 
               {formErrorMessage && (
@@ -216,15 +232,15 @@ function LoginPage(props) {
               )}
 
               <Form.Item>
-                <div>
+                <div><Center>
                 <ColorButton font='12' border="#60FFDA" color="#ffffff"  ><Button onClick={goToMain} ghost='true' type='text'  style={{ minWidth: '100%' }} >
-                <p style={{ color: '#ffffff'}}>&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;회원가입&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;</p>
+                <p style={{ color: '#ffffff'}}> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;회원가입&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; </p>
                 </Button></ColorButton>
 
                 <ColorButton font='12' background="#60FFDA" color="#000000" border="#60FFDA"  ><Button ghost='true' type='text' htmlType="submit" className="login-form-button" style={{ minWidth: '100%' }} disabled={isSubmitting} onSubmit={handleSubmit}>
-                &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; 로그인&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+               &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; 로그인&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; 
                 </Button></ColorButton>
-                </div>
+                </Center> </div>
               </Form.Item>
             </form>
         );

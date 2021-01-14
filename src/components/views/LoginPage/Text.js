@@ -12,6 +12,11 @@ const Title = styled.div`
     @media only screen and (max-width: 768px) {
     font-size: ${props=> props.MobileLength || 0}px;
     }
+    @media (max-width: 767px) { //iphone
+    font-size:10px;
+    line-height: 10px;
+    width:60px;
+  }
 `
 
 const TextComponent = ({title,DesktopLength,TabletLength,MobileLength}) => { 

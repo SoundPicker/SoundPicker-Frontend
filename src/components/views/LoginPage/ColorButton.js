@@ -8,6 +8,7 @@ const StyledButton = styled.button`
     padding-left: 10px;
     padding-right:10px;
     font-size:10px;
+    width:150px;
   }
 
   width: ${(props) => props.width || 200 } px ;

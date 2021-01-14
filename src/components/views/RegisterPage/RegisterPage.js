@@ -31,7 +31,7 @@ const Background = styled.div`
     @media (min-width: 768px) and (max-width:1024px){
       background-image: url(${Bg2});
     }
- @media  (min-width:1025px) {
+ @media  (min-width:1024px) {
   background-image: url(${Bg1});
     }
     @media (max-width: 768px) {
@@ -39,36 +39,31 @@ const Background = styled.div`
     }
 `;
 const Wrapper = styled.div`
+position: absolute;
+  width: 100%;
+  height: 100%;
   background-size: cover;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   align-items: center;
 
-  @media (min-width: 768px) and (max-width: 1024px) {
-    //between
-    margin-top: 35%;
-    width: 100%auto;
-  }
 
   @media (min-width: 768px) and (max-width:1024px) { //between
     margin-top:35%;
       width:100%auto;
     }
 
-    @media (min-width: 1025px) { //desktop 
+    @media (min-width: 1024px) { //desktop 
       margin-top:17%;
       width:100%auto;
     }
-    @media (max-width: 767px) { //iphone
+    @media (max-width: 768px) { //iphone
       width:100%auto;
         margin-top:30%;
   }
-  @media (max-width: 767px) {
-    //iphone
-    width: 100%auto;
-    margin-top: 30%;
-  }
+
+
 `;
 
 const MyIcon = styled.img`
@@ -80,9 +75,12 @@ const MyIcon = styled.img`
     //desktop
     width: 221px;
   }
-  @media (max-width: 767px) {
+  @media (max-width: 768px) {
     //iphone
     width: 300px;
+  }
+  @media (max-width: 767px) { //iphone
+    width:150px;
   }
 `;
 
@@ -97,21 +95,32 @@ const Input = styled.input`
   width: 370px;
   color: white;
   outline: none;
-  @media (max-width: 767px) {
+  @media (max-width: 768px) {
     //iphone
-    width: 240px;
+    width: 250px;
   }
+  @media (max-width: 767px) { //iphone
+    width:290px;
+  }
+ 
 `;
 
 const Content = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  @media (max-width: 767px) {
+  @media (max-width: 768px) {
     //iphone
-    margin-left: 20%;
+    margin-left: 15%;
   }
+
+  
 `;
+const Center=styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+`
 
 function RegisterPage(props) {
   const dispatch = useDispatch();
@@ -197,7 +206,7 @@ function RegisterPage(props) {
                     DesktopLength="45"
                     BetweenLength="45"
                     TabletLength="45"
-                    MobileLength="30"
+                    MobileLength="25"
                   />
                 </Form.Item>
 
@@ -226,7 +235,7 @@ function RegisterPage(props) {
                     DesktopLength="45"
                     BetweenLength="45"
                     TabletLength="45"
-                    MobileLength="30"
+                    MobileLength="25"
                   />
                 </Form.Item>
 
@@ -264,7 +273,7 @@ function RegisterPage(props) {
                     DesktopLength="45"
                     BetweenLength="45"
                     TabletLength="45"
-                    MobileLength="30"
+                    MobileLength="25"
                   />
                 </Form.Item>
 
@@ -298,11 +307,12 @@ function RegisterPage(props) {
                     DesktopLength="45"
                     BetweenLength="45"
                     TabletLength="45"
-                    MobileLength="30"
+                    MobileLength="25"
                   />
                 </Form.Item>
 
                 <BlankTop DesktopMargin="3" TabletMargin="1" MobileMargin="1" />
+                <Center>
                 <ColorButton
                   font="12"
                   background="#60FFDA"
@@ -317,15 +327,13 @@ function RegisterPage(props) {
                     onClick={handleSubmit}
                     disabled={isSubmitting}
                   >
-                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
-                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                  
+                    
+                     &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
                     &nbsp;&nbsp; 회원가입 &nbsp; &nbsp; &nbsp;
-                    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
-                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+                    &nbsp;&nbsp;
                   </Button>
-                </ColorButton>
+                </ColorButton></Center>
               </form>
             );
           }}

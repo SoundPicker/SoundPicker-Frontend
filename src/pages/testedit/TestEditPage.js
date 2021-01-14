@@ -8,6 +8,12 @@ import TestEditFormContainer from "../../containers/testedit/form/TestEditFormCo
 
 
 const TestEditPage = ({history,match}) => {
+    if (window.location.href.indexOf('#reload') === -1)
+    {
+      window.location.href += '#reload'
+      window.location.reload(true);
+  }
+
     return(
         <>
             <TMBackground>
