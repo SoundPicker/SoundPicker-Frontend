@@ -453,7 +453,7 @@ const CardList = ({ testList, testList2 }) => {
     one -= 3;
   }
 
-  const defaultHeight = width > 568 ? 116.5 : 61.2;
+  const defaultHeight = width > 568 ? 116.5 : 65;
   const [height, setHeight] = useState(defaultHeight);
   const countPlus = (e) => {
     setCount(count + 1);
@@ -462,7 +462,10 @@ const CardList = ({ testList, testList2 }) => {
 
   const max = Math.max(one, two, three, four);
 
-  const maxHeight = width > 828 ? 30 * max : width > 568 ? 28 * max : 20 * max;
+  // divide는 한 번에 나오는 더보기 묶음 개수
+  const divide = width > 568 ? Math.round(max / 4) : Math.round(max / 3.5);
+
+  const maxHeight = width > 568 ? divide * 119 : divide * 65;
 
   return (
     <>
@@ -476,9 +479,8 @@ const CardList = ({ testList, testList2 }) => {
             {finalList.map((item, index) => {
               if (index < one) {
                 return (
-                  <>
+                  <div key={index}>
                     <Card
-                      key={index}
                       onClick={() => history.push(`/test/${item["id"]}`)}
                       random={Math.floor(Math.random() * 10)}
                     >
@@ -507,7 +509,7 @@ const CardList = ({ testList, testList2 }) => {
                       MobileMargin={1.8}
                       SmallMobileMargin={1.2}
                     />
-                  </>
+                  </div>
                 );
               }
             })}
@@ -519,9 +521,8 @@ const CardList = ({ testList, testList2 }) => {
               if (width <= 828) {
                 if (index >= one) {
                   return (
-                    <>
+                    <div key={index}>
                       <Card
-                        key={index}
                         onClick={() => history.push(`/test/${item["id"]}`)}
                         random={Math.floor(Math.random() * 10)}
                       >
@@ -550,15 +551,14 @@ const CardList = ({ testList, testList2 }) => {
                         MobileMargin={1.8}
                         SmallMobileMargin={1.2}
                       />
-                    </>
+                    </div>
                   );
                 }
               } else {
                 if (index >= one && index < one + two) {
                   return (
-                    <>
+                    <div key={index}>
                       <Card
-                        key={index}
                         onClick={() => history.push(`/test/${item["id"]}`)}
                         random={Math.floor(Math.random() * 10)}
                       >
@@ -587,7 +587,7 @@ const CardList = ({ testList, testList2 }) => {
                         MobileMargin={1.8}
                         SmallMobileMargin={1.2}
                       />
-                    </>
+                    </div>
                   );
                 }
               }
@@ -600,9 +600,8 @@ const CardList = ({ testList, testList2 }) => {
               if (width <= 1440) {
                 if (index >= one + two) {
                   return (
-                    <>
+                    <div key={index}>
                       <Card
-                        key={index}
                         onClick={() => history.push(`/test/${item["id"]}`)}
                         random={Math.floor(Math.random() * 10)}
                       >
@@ -628,15 +627,14 @@ const CardList = ({ testList, testList2 }) => {
                         TabletMargin={1.6}
                         MobileMargin={1.8}
                       />
-                    </>
+                    </div>
                   );
                 }
               } else {
                 if (index >= one + two && index < one + two + three) {
                   return (
-                    <>
+                    <div key={index}>
                       <Card
-                        key={index}
                         onClick={() => history.push(`/test/${item["id"]}`)}
                         random={Math.floor(Math.random() * 10)}
                       >
@@ -662,7 +660,7 @@ const CardList = ({ testList, testList2 }) => {
                         TabletMargin={1.6}
                         MobileMargin={1.8}
                       />
-                    </>
+                    </div>
                   );
                 }
               }
@@ -674,9 +672,8 @@ const CardList = ({ testList, testList2 }) => {
             {finalList.map((item, index) => {
               if (index >= one + two + three) {
                 return (
-                  <>
+                  <div key={index}>
                     <Card
-                      key={index}
                       onClick={() => history.push(`/test/${item["id"]}`)}
                       random={Math.floor(Math.random() * 10)}
                     >
@@ -702,7 +699,7 @@ const CardList = ({ testList, testList2 }) => {
                       TabletMargin={1.6}
                       MobileMargin={1.8}
                     />
-                  </>
+                  </div>
                 );
               }
             })}
