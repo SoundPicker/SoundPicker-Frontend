@@ -203,8 +203,14 @@ const TestCd = ({ newList, match }) => {
 
 const RecordWrapper = styled.div`
   z-index: 1;
-  margin-left: -25%;
+  margin-left: -26%;
   animation-fill-mode: forwards;
+  @media only screen and (max-width: 1024px) {
+    margin-left: -26%;
+  }
+  @media only screen and (max-width: 768px) {
+    /* width: 18.5rem; */
+  }
   ${props =>
     props.inside && //레코드판을 집어넣는 css애니메이션 추가 트리거가 true일때 실행.
     css`
@@ -320,7 +326,7 @@ const UnActiveAnimation1024 = keyframes`
 }
 100% {
     opacity: .5; 
-    transform: translateX(-60%) scale(0.7);
+    transform: translateX(-68%) scale(0.7);
 }
 `
 
@@ -468,7 +474,7 @@ const SwiperContainer = styled.div`
         opacity: 0.5;
         transform: translateX(-65%) scale(0.6);
         @media only screen and (max-width: 1024px) {
-          transform: translateX(-60%) scale(0.7);
+          transform: translateX(-68%) scale(0.7);
         }
         @media only screen and (max-width: 768px) {
           transform: translateX(-130%) scale(1);
@@ -495,6 +501,7 @@ const SwiperContainer = styled.div`
 const RecordImg = styled.img`
   object-fit: contain;
   animation-fill-mode: forwards;
+
   ${props =>
     props.rotateSecond > 0 && //레코드판을 돌리는 css애니메이션 추가 0초 초과일때만 작동하도록 한다.
     css`
@@ -505,6 +512,14 @@ const RecordImg = styled.img`
         ? Rotate1Record
         : Rotate3Record}; //1초일때 3초일때 분기해서 키프레임을 넣어줌
     `}
+  @media only screen and (max-width: 1024px) {
+    width: 40rem;
+    /* margin-left: -25%; */
+  }
+  @media only screen and (max-width: 768px) {
+    width: 26rem;
+    /* width: 18.5rem; */
+  }
 `
 
 const CaseImg = styled.img`
