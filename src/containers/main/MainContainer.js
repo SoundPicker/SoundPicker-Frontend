@@ -9,7 +9,7 @@ const MainContainer = ({ match }) => {
     item: null,
   })
 
-  const url = 'https://3.35.187.65:3000'
+  const url = 'http://3.35.187.65:3000'
 
   // categoryList
   const getCategoryAPI = async () => {
