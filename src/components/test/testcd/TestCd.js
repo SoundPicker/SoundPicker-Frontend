@@ -520,6 +520,7 @@ const RecordImg = styled.img`
         ? Rotate1Record
         : Rotate3Record}; //1초일때 3초일때 분기해서 키프레임을 넣어줌
     `}
+  width:45rem;
   @media only screen and (max-width: 1024px) {
     width: 40rem;
     /* margin-left: -25%; */
@@ -527,6 +528,9 @@ const RecordImg = styled.img`
   @media only screen and (max-width: 768px) {
     width: 26rem;
     /* width: 18.5rem; */
+  }
+  @media only screen and (max-width: 375px) {
+    width: 28rem;
   }
 `
 
@@ -537,8 +541,13 @@ const CaseImg = styled.img`
   z-index: 2;
   margin-left: 30%;
   @media only screen and (max-width: 1024px) {
+    margin-left: 30%;
   }
   @media only screen and (max-width: 768px) {
+    margin-left: 30%;
+  }
+  @media only screen and (max-width: 375px) {
+    margin-left: 25%;
   }
 `
 
