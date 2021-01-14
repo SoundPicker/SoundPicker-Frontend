@@ -21,6 +21,7 @@ const Background = styled.div`
     width:100vw;
     height:100%;
     min-height:100vh;
+
     border:1px solid rgba(0,0,0,0);
     background-repeat: no-repeat;
     background-position: center top;
