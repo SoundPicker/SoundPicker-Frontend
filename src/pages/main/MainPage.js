@@ -9,7 +9,6 @@ const MainPage = (match) => {
   return (
     <>
       <MainContainer match={match} />
-      <BlankTop DesktopMargin="20" TabletMargin="10" MobileMargin="5" />
     </>
   );
 };
