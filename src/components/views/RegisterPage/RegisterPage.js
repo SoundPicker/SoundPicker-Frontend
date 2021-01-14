@@ -4,35 +4,41 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import { registerUser } from "../../../_actions/user_action";
 import { useDispatch } from "react-redux";
-import TextComponent from "../../../components/common/TextComponent";
-import BlankTop from "../../../components/common/BlankTop";
-import UnderLineComponent from "./UnderLineComponent";
-import Bg1 from "../../../assets/images/login_background1.jpg";
-import Bg2 from "../../../assets/images/login_background2.jpg";
-import Bg3 from "../../../assets/images/login_background3.jpg";
-import logo1 from "../../../assets/images/image_watermark.png";
-import Text from "./Text";
-import ColorButton from "./ColorButton";
+import TextComponent from '../../../components/common/TextComponent';
+import BlankTop from '../../../components/common/BlankTop';
+import QuizHeader from '../../common/QuizHeader';
+import UnderLineComponent from './UnderLineComponent';
+import Bg1 from '../../../assets/images/login_background1.jpg';
+import Bg2 from '../../../assets/images/login_background2.jpg';
+import Bg3 from '../../../assets/images/login_background3.jpg';
+import logo1 from '../../../assets/images/image_watermark.png';
+import Text from './Text';
+import ColorButton from './ColorButton';
+
+import {
+  Form,
+  Button,
+} from 'antd';
 
 import { Form, Button } from "antd";
 
 const Background = styled.div`
-  width: 100vw;
-  height: 1000vh;
-  background-repeat: no-repeat;
-  background-position: center top;
-  background-color: #081923;
-  background-size: contain;
-  border: 1px solid rgba(0, 0, 0, 0);
-  @media (min-width: 768px) and (max-width: 1024px) {
-    background-image: url(${Bg2});
-  }
-  @media (min-width: 1024px) {
-    background-image: url(${Bg1});
-  }
-  @media (max-width: 768px) {
-    background-image: url(${Bg3});
-  }
+    width:100vw;
+    height:1000vh;
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-color:  #081923;
+    background-size:contain;
+    border:1px solid rgba(0,0,0,0);
+    @media (min-width: 768px) and (max-width:1024px){
+      background-image: url(${Bg2});
+    }
+ @media  (min-width:1025px) {
+  background-image: url(${Bg1});
+    }
+    @media (max-width: 768px) {
+      background-image: url(${Bg3});
+    }
 `;
 const Wrapper = styled.div`
   background-size: cover;
@@ -40,16 +46,25 @@ const Wrapper = styled.div`
   flex-direction: column;
   flex-wrap: wrap;
   align-items: center;
+
   @media (min-width: 768px) and (max-width: 1024px) {
     //between
     margin-top: 35%;
     width: 100%auto;
   }
 
-  @media (min-width: 1024px) {
-    //desktop
-    margin-top: 17%;
-    width: 100%auto;
+  @media (min-width: 768px) and (max-width:1024px) { //between
+    margin-top:35%;
+      width:100%auto;
+    }
+
+    @media (min-width: 1025px) { //desktop 
+      margin-top:17%;
+      width:100%auto;
+    }
+    @media (max-width: 767px) { //iphone
+      width:100%auto;
+        margin-top:30%;
   }
   @media (max-width: 767px) {
     //iphone
@@ -63,7 +78,6 @@ const MyIcon = styled.img`
     //between
     width: 180px;
   }
-
   @media (min-width: 1024px) {
     //desktop
     width: 221px;
@@ -104,93 +118,82 @@ const Content = styled.div`
 function RegisterPage(props) {
   const dispatch = useDispatch();
   return (
-    <Background>
-      <Wrapper>
-        <MyIcon></MyIcon>
-        <BlankTop DesktopMargin="3" TabletMargin="3" MobileMargin="2" />
-        <TextComponent
-          title="회원가입"
-          DesktopLength="15"
-          TabletLength="15"
-          MobileLength="13"
-        />
-        <BlankTop DesktopMargin="5" TabletMargin="3" MobileMargin="3" />
-        <Formik
-          initialValues={{
-            email: "",
-            nickname: "",
-            password: "",
-            confirmPassword: "",
-          }}
-          validationSchema={Yup.object().shape({
-            nickname: Yup.string().required("Name is required"),
-            email: Yup.string()
-              .email("Email is invalid")
-              .required("Email is required"),
-            password: Yup.string()
-              .min(6, "Password must be at least 6 characters")
-              .required("Password is required"),
-            confirmPassword: Yup.string()
-              .oneOf([Yup.ref("password"), null], "Passwords must match")
-              .required("Confirm Password is required"),
-          })}
-          onSubmit={(values, { setSubmitting }) => {
-            setTimeout(() => {
-              let dataToSubmit = {
-                email: values.email,
-                password: values.password,
-                nickname: values.nickname,
-              };
 
-              dispatch(registerUser(dataToSubmit)).then((response) => {
-                if (response.payload.success) {
-                } else {
-                  alert(response.payload.err.errmsg);
-                }
-              });
+<Background> <QuizHeader/>
+  <Wrapper>
+  <MyIcon></MyIcon>
+  <BlankTop DesktopMargin='3' TabletMargin='3' MobileMargin='2' />
+  <TextComponent title="회원가입"  DesktopLength='15' TabletLength='15' MobileLength='13'/> 
+  <BlankTop DesktopMargin='5' TabletMargin='3' MobileMargin='3' />
+    <Formik
+      initialValues={{
+        email: '',
+        nickname: '',
+        password: '',
+        confirmPassword: ''
+      }}
+      validationSchema={Yup.object().shape({
+        nickname: Yup.string()
+          .required('Name is required'),
+        email: Yup.string()
+          .email('Email is invalid')
+          .required('Email is required'),
+        password: Yup.string()
+          .min(6, 'Password must be at least 6 characters')
+          .required('Password is required'),
+        confirmPassword: Yup.string()
+          .oneOf([Yup.ref('password'), null], 'Passwords must match')
+          .required('Confirm Password is required')
+      })}
+      onSubmit={(values, { setSubmitting }) => {
+        setTimeout(() => {
 
-              setSubmitting(false);
-            }, 500);
-          }}
-        >
-          {(props) => {
-            const {
-              values,
-              touched,
-              errors,
-              isSubmitting,
-              handleChange,
-              handleBlur,
-              handleSubmit,
-            } = props;
-            return (
-              <form style={{ minWidth: "150px" }} onSubmit={handleSubmit}>
-                <Form.Item
-                  requiredMark="optional"
-                  hasFeedback
-                  validateStatus={
-                    errors.email && touched.email ? "error" : "success"
+          let dataToSubmit = {
+            email: values.email,
+            password: values.password,
+            nickname: values.nickname,
+          };
+
+          dispatch(registerUser(dataToSubmit)).then(response => {
+            if (response.payload.success) {
+              props.history.push("/login");
+            } else {
+              alert(response.payload.err.errmsg)
+            }
+          })
+
+          setSubmitting(false);
+        }, 500);
+      }}
+    >
+      {props => {
+        const {
+          values,
+          touched,
+          errors,
+          isSubmitting,
+          handleChange,
+          handleBlur,
+          handleSubmit,
+
+        } = props;
+        return (
+
+            <form style={{ minWidth: '150px' }}  onSubmit={handleSubmit} > 
+              <Form.Item  requiredMark="optional"  hasFeedback validateStatus={errors.email && touched.email ? "error" : 'success'}>
+                <Content>
+              <Text title="이메일"  DesktopLength='15' TabletLength='15' MobileLength='13'/> 
+                <Input
+                  id="email"
+                  type="email"
+                  value={values.email}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  className={
+                    errors.email && touched.email ? 'text-input error' : 'text-input'
                   }
-                >
-                  <Content>
-                    <Text
-                      title="이메일"
-                      DesktopLength="15"
-                      TabletLength="15"
-                      MobileLength="13"
-                    />
-                    <Input
-                      id="email"
-                      type="email"
-                      value={values.email}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      className={
-                        errors.email && touched.email
-                          ? "text-input error"
-                          : "text-input"
-                      }
-                    />
+                />
+                 
                   </Content>
                   <UnderLineComponent
                     DesktopLength="45"

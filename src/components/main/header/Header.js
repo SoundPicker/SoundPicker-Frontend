@@ -131,9 +131,15 @@ function Header() {
     case "true":
       return (
         <HeaderDiv>
-          <SignUpDiv>
-            <Link to="/">
-              <SignOut onClick={LogOut}>로그아웃</SignOut>
+            <LoginDiv>
+          <Link to="/">
+          <SignOut onClick={(LogOut)} >로그아웃</SignOut>
+          </Link>
+        </LoginDiv>
+
+        <SignUpDiv>
+          <Link to="/mypage">
+          <SignUp>마이페이지</SignUp>
             </Link>
           </SignUpDiv>
         </HeaderDiv>

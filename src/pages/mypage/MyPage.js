@@ -4,6 +4,7 @@ import {  useHistory } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 import styled from "styled-components";
 import BlankTop from '../../components/common/BlankTop';
+import QuizHeader from '../../components/common/QuizHeader';
 import UnderLineWrap from '../../components/common/UnderLineWrap';
 import TextComponent from '../../components/common/TextComponent';
 import Button from './Button';
@@ -185,7 +186,9 @@ switch (myState.status) {
       return (
         myState.member&&
         <Background>
+          <QuizHeader />
             <Wrapper>
+              
                 <MyIcon></MyIcon>
                 <BlankTop DesktopMargin='3' TabletMargin='3' MobileMargin='3' />
                 <TextComponent title="마이페이지"  DesktopLength='20' TabletLength='15' MobileLength='10'/>  
@@ -209,11 +212,11 @@ switch (myState.status) {
                     style={{ color: 'white'  }} ref={passwordInput} bordered={false} name="password" onChange={onChangePassword}/>
                   <Button font='12' onClick = {() => {passwordInput.current.focus(); }} >비밀번호 변경</Button>
                 </Content>
-                <BlankTop DesktopMargin='8' TabletMargin='5' MobileMargin='5' />
+                <BlankTop DesktopMargin='8' TabletMargin='7' MobileMargin='5' />
                 <Content>
                   <BoldTextComponent title="마이테스트 수정"  DesktopLength='25' TabletLength='20' MobileLength='15'/>
                 </Content>
-                <BlankTop DesktopMargin='7' TabletMargin='3' MobileMargin='3' />
+                <BlankTop DesktopMargin='7' TabletMargin='5' MobileMargin='3' />
             
                   {myState.member.Tests && myState?.member?.Tests.map((member,i)=>
                   
