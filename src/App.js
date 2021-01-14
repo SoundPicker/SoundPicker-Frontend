@@ -21,7 +21,7 @@ const App = ({ match }) => {
           <Route
             exact
             path="/testmaking"
-            component={Auth(TestMakingPage, true)}
+            component={TestMakingPage}
           />
           <Route
             exact

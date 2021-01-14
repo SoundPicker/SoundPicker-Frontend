@@ -20,27 +20,18 @@ import ColorButton from './ColorButton';
 
 const Background = styled.div`
     width:100vw;
-    height:100%;
-    min-height:100vh;
+    height:1000vh;
     background-repeat: no-repeat;
     background-position: center top;
     background-color:  rgba( 12, 26, 34, 1);
-    background-size:cover;
+    background-size:contain;
     background-image: url(${Bg1});
-    @media (min-width: 768px) and (max-width:1024px){
+    @media only screen and (max-width: 1024px) {
       background-image: url(${Bg2});
-      background-size: contain;
-    }
-    @media  (max-width:1440px) {
-      background-size: contain;
-    }
- @media  (min-width:1024px) {
-  background-image: url(${Bg1});
-    }
-    @media (max-width: 768px) {
-      background-image: url(${Bg3});
-      background-size: contain;
-    }
+      }
+      @media only screen and (max-width: 769px) {
+        background-image: url(${Bg3});
+      }
 `;
 const Wrapper=styled.div`
  position: absolute;
@@ -56,7 +47,7 @@ const Wrapper=styled.div`
       width:100%auto;
     }
 
-    @media (min-width: 1024px) { //desktop 
+    @media (min-width: 1025px) { //desktop 
       margin-top:20%;
       width:100%auto;
     }
@@ -243,11 +234,11 @@ function LoginPage(props) {
               <Form.Item>
                 <div><Center>
                 <ColorButton font='12' border="#60FFDA" color="#ffffff"  ><Button onClick={goToMain} ghost='true' type='text'  style={{ minWidth: '100%' }} >
-                <p style={{ color: '#ffffff'}}> &nbsp;&nbsp;&nbsp; 회원가입&nbsp;&nbsp;&nbsp; &nbsp; </p>
+                <p style={{ color: '#ffffff'}}> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;회원가입&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; </p>
                 </Button></ColorButton>
 
                 <ColorButton font='12' background="#60FFDA" color="#000000" border="#60FFDA"  ><Button ghost='true' type='text' htmlType="submit" className="login-form-button" style={{ minWidth: '100%' }} disabled={isSubmitting} onSubmit={handleSubmit}>
-               &nbsp;&nbsp; &nbsp;&nbsp;로그인&nbsp;&nbsp; &nbsp;&nbsp;
+               &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; 로그인&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; 
                 </Button></ColorButton>
                 </Center> </div>
               </Form.Item>
