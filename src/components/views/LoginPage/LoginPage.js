@@ -18,28 +18,34 @@ import logo1 from '../../../assets/images/image_watermark.png';
 import Text from './Text';
 import ColorButton from './ColorButton';
 
+const Fix =styled.div`
+min-height:100vh;
+background-color:  #081923;
+`;
+
 const Background = styled.div`
     width:100vw;
     height:100%;
-    min-height:100vh;
     background-repeat: no-repeat;
     background-position: center top;
-    background-color:  rgba( 12, 26, 34, 1);
-    background-size:cover;
+    background-color:  #081923;
+    background-size:contain;
     background-image: url(${Bg1});
     @media (min-width: 768px) and (max-width:1024px){
       background-image: url(${Bg2});
-      background-size: contain;
+      min-height:100vh;
+
     }
     @media  (max-width:1440px) {
-      background-size: contain;
+      min-height:210vh;
     }
  @media  (min-width:1024px) {
   background-image: url(${Bg1});
+  min-height:150vh;
     }
     @media (max-width: 768px) {
       background-image: url(${Bg3});
-      background-size: contain;
+      min-height:170vh;
     }
 `;
 const Wrapper=styled.div`
@@ -135,11 +141,12 @@ function LoginPage(props) {
     props.history.push('/register');}
 
   return (
+    <Fix>
     <Background><QuizHeader/><Wrapper>
        <MyIcon></MyIcon>
   <BlankTop DesktopMargin='3' TabletMargin='3' MobileMargin='3' />
   <TextComponent title="로그인"  DesktopLength='15' TabletLength='15' MobileLength='15'/> 
-  <BlankTop DesktopMargin='5' TabletMargin='3' MobileMargin='5' />
+  <BlankTop DesktopMargin='5' TabletMargin='3' MobileMargin='3' />
     <Formik
       initialValues={{
         email: '',
@@ -254,7 +261,7 @@ function LoginPage(props) {
             </form>
         );
       }}
-    </Formik> </Wrapper></Background>
+    </Formik> </Wrapper></Background></Fix>
   );
 };
 

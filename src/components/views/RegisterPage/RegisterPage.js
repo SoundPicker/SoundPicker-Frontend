@@ -19,29 +19,34 @@ import {
   Form, Button,
 } from 'antd';
 
+const Fix =styled.div`
+min-height:100vh;
+background-color:  #081923;
+`;
 
 const Background = styled.div`
     width:100vw;
     height:100%;
-    min-height:100vh;
     background-repeat: no-repeat;
     background-position: center top;
     background-color:  #081923;
-    background-size:cover;
+    background-size:contain;
     border:1px solid rgba(0,0,0,0);
     @media (min-width: 768px) and (max-width:1024px){
       background-image: url(${Bg2});
-      background-size: contain;
+      min-height:100vh;
+
     }
     @media  (max-width:1440px) {
-      background-size: contain;
+      min-height:210vh;
     }
  @media  (min-width:1024px) {
   background-image: url(${Bg1});
+  min-height:150vh;
     }
     @media (max-width: 768px) {
       background-image: url(${Bg3});
-      background-size: contain;
+      min-height:170vh;
     }
 `;
 const Wrapper = styled.div`
@@ -129,13 +134,13 @@ const Center=styled.div`
 function RegisterPage(props) {
   const dispatch = useDispatch();
   return (
-
+<Fix>
 <Background> <QuizHeader/>
   <Wrapper>
   <MyIcon></MyIcon>
   <BlankTop DesktopMargin='3' TabletMargin='3' MobileMargin='2' />
   <TextComponent title="회원가입"  DesktopLength='15' TabletLength='15' MobileLength='13'/> 
-  <BlankTop DesktopMargin='5' TabletMargin='3' MobileMargin='3' />
+  <BlankTop DesktopMargin='5' TabletMargin='3' MobileMargin='1' />
     <Formik
       initialValues={{
         email: '',
@@ -343,7 +348,7 @@ function RegisterPage(props) {
           }}
         </Formik>
       </Wrapper>
-    </Background>
+    </Background></Fix>
   );
 }
 

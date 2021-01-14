@@ -15,7 +15,6 @@ const Title = styled.div`
     }
     @media (max-width: 767px) { //iphone
     font-size:10px;
-    line-height: 10px;
     width:60px;
   }
 `
