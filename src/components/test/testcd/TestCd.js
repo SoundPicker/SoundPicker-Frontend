@@ -399,7 +399,7 @@ const ContentContainer = styled.div`
   }
   @media only screen and (max-width: 375px) {
     height: 26rem;
-    padding-left: 2rem;
+    padding-left: 0rem;
   }
 `
 const AnswerText = styled.p`
