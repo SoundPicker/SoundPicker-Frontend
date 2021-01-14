@@ -99,7 +99,7 @@ const Input = styled.input`
     width: 250px;
   }
   @media (max-width: 767px) { //iphone
-    width:290px;
+    width:220px;
   }
  
 `;
@@ -110,7 +110,7 @@ const Content = styled.div`
   justify-content: space-between;
   @media (max-width: 768px) {
     //iphone
-    margin-left: 15%;
+    margin-left: 10%;
   }
 
   
@@ -144,16 +144,20 @@ function RegisterPage(props) {
       }}
       validationSchema={Yup.object().shape({
         nickname: Yup.string()
-          .required('Name is required'),
+          .required('닉네임을 입력해야 합니다.'),
         email: Yup.string()
-          .email('Email is invalid')
-          .required('Email is required'),
+          .email('이메일형식이 올바르지 않습니다.')
+          .required('이메일을 입력해야 합니다.'),
         password: Yup.string()
-          .min(6, 'Password must be at least 6 characters')
-          .required('Password is required'),
+          .min(10, '패스워드는 적어도 10글자 이상이여야 합니다.')
+          .max(20,'패스워드는  20글자 이하여야 합니다.')
+          .matches(
+            /^(?=.*[A-z])(?=.*[0-9])/
+        ,'숫자와 영어를 혼합하여야 합니다.')
+          .required('패스워드를 입력해야 합니다.'),
         confirmPassword: Yup.string()
-          .oneOf([Yup.ref('password'), null], 'Passwords must match')
-          .required('Confirm Password is required')
+          .oneOf([Yup.ref('password'), null], '패스워드가 일치하지 않습니다.')
+          .required('패스워드를 입력해야 합니다.')
       })}
       onSubmit={(values, { setSubmitting }) => {
         setTimeout(() => {
@@ -233,6 +237,7 @@ function RegisterPage(props) {
                           : "text-input"
                       }
                     />
+                   
                   </Content>
                   <UnderLineComponent
                     DesktopLength="45"
@@ -315,6 +320,10 @@ function RegisterPage(props) {
                 </Form.Item>
 
                 <BlankTop DesktopMargin="3" TabletMargin="1" MobileMargin="1" />
+                <Center>{errors.password && touched.password && (
+                  <div className="input-feedback" style={{color:'white'}}>{errors.password}</div>
+                )}</Center>
+                <BlankTop DesktopMargin="2" TabletMargin="1" MobileMargin="1" />
                 <Center>
                 <ColorButton
                   font="12"
@@ -323,6 +332,7 @@ function RegisterPage(props) {
                   border="#60FFDA"
                 >
                   {" "}
+                  
                   <Button
                     size="large"
                     ghost="true"
@@ -337,6 +347,7 @@ function RegisterPage(props) {
                    
                   </Button>
                 </ColorButton></Center>
+               
               </form>
             );
           }}
