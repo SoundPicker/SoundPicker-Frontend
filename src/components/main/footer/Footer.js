@@ -167,18 +167,18 @@ const Member = styled.div`
   display: flex;
   justify-content: space-between;
   width: 84.6rem;
-  height: 17rem;
+  height: 25rem;
   margin: 0 auto;
   @media (max-width: 1024px) {
     width: 59.1rem;
-    height: 16.6rem;
+    height: 24.6rem;
   }
   @media (max-width: 768px) {
     width: 54.3rem;
   }
   @media (max-width: 568px) {
     width: 30.4rem;
-    height: 9.4rem;
+    height: 17.4rem;
   }
 `;
 
