@@ -200,24 +200,3 @@ a {
   background-color: #60ffda;
   cursor: pointer;
 }
-
-@media screen and (max-width: 568px) {
-  .cateBtn {
-    width: 0.5rem;
-    height: 0.5rem;
-    padding: 0;
-    box-shadow: 0 0 4px 0 #ffffff;
-  }
-
-  .clicked {
-    width: 0.6rem;
-    height: 0.6rem;
-    padding: 0;
-    box-shadow: 0 0 8px 0 #60ffda;
-  }
-
-  .cateBtn.cateAll {
-    width: 0.6rem;
-    height: 0.6rem;
-  }
-}

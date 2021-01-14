@@ -114,7 +114,6 @@ const Card = styled.div`
     @media (max-width: 568px) {
       border-width: 2px;
     }
-    transition: background 500ms ease-in-out;
   }
 
   @media (max-width: 1024px) {
