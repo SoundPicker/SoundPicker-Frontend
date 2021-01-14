@@ -24,56 +24,44 @@ background-color:  #081923;
 `;
 
 const Background = styled.div`
-    width:100vw;
+    width:100%;
     height:100%;
     background-repeat: no-repeat;
     background-position: center top;
     background-color:  #081923;
-    background-size:contain;
     background-image: url(${Bg1});
+    @media  (min-width:1024px) {
+      min-height:1080px;
+    }
     @media only screen and (max-width: 1024px) {
       background-image: url(${Bg2});
-      min-height:100vh;
+      min-height:1336px;
 
     }
-    @media  (max-width:1440px) {
-      min-height:210vh;
-    }
- @media  (min-width:1024px) {
-  background-image: url(${Bg1});
-  min-height:150vh;
-    }
+
     @media (max-width: 768px) {
       background-image: url(${Bg3});
-      min-height:170vh;
+      min-height:1024px;
     }
 `;
 const Wrapper=styled.div`
- position: absolute;
-  width: 100%;
+  width:97.1rem;
   height: 100%;
-  background-size: cover;
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
   align-items: center;
-  @media (min-width: 768px) and (max-width:1024px) { //between
-    margin-top:50%;
-      width:100%auto;
+  margin: 0 auto;
+  @media only screen and (max-width: 1024px) {
+        width:71.5rem;
+  }
+    @media only screen and (max-width: 768px) {
+        width:54.8rem;
+  }
+    @media only screen and (max-width: 548px) {
+        width:100%;
+        padding:0 0.5rem;
     }
 
-    @media (min-width: 1025px) { //desktop 
-      margin-top:20%;
-      width:100%auto;
-    }
-    @media (max-width: 768px) { //iphone
-      width:100%auto;
-        margin-top:35%;
-  }
-  @media (max-width: 767px) { //iphone
-      width:100%auto;
-        margin-top:30%;
-  }
   ` 
 
 
@@ -142,8 +130,14 @@ function LoginPage(props) {
 
   return (
     <Fix>
-    <Background><QuizHeader/><Wrapper>
-       <MyIcon></MyIcon>
+    <Background><QuizHeader/>
+    <Wrapper>
+      <div>
+      <BlankTop DesktopMargin='38' TabletMargin='48.5' MobileMargin='26.5' />
+
+      <MyIcon></MyIcon>
+    </div>
+       
   <BlankTop DesktopMargin='3' TabletMargin='3' MobileMargin='3' />
   <TextComponent title="로그인"  DesktopLength='15' TabletLength='15' MobileLength='15'/> 
   <BlankTop DesktopMargin='5' TabletMargin='3' MobileMargin='3' />
