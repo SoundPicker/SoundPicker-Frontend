@@ -379,7 +379,6 @@ const TestMakingFormContainer = ({history}) => {
     }
     if(send===true){
       if (timer) {
-        console.log('clear timer');
         clearTimeout(timer);
       }
       const newTimer = setTimeout(async () => {
@@ -391,7 +390,6 @@ const TestMakingFormContainer = ({history}) => {
             }
         })
         } catch (e) {
-          console.error('error', e);
           setServerLoading(true);
         }
       }, 5000);

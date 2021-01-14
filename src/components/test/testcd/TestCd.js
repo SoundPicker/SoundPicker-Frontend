@@ -201,6 +201,7 @@ const TestCd = ({ newList, match }) => {
 
 /**키프레임 시작 */
 
+
 const RecordWrapper = styled.div`
   z-index: 1;
   margin-left: -26%;
@@ -221,6 +222,7 @@ const RecordWrapper = styled.div`
     `}
 `
 
+
 const HintFade = keyframes`
   0% { 
    opacity: 1;
@@ -232,6 +234,7 @@ const HintFade = keyframes`
   100% {
   opacity: 1;
   }
+
 `
 
 //1초 레코드판 돌리는 키프레임
