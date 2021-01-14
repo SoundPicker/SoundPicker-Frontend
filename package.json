@@ -33,7 +33,7 @@
       "react-app/jest"
     ]
   },
-  "homepage": "https://soundpicker.kr/",
+  "homepage": "https://soundpicker.netlify.app/",
   "browserslist": {
     "production": [
       ">0.2%",
