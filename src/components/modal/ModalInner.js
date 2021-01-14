@@ -9,6 +9,17 @@ const LayoutInner = styled.div`
   width: 100%;
   max-width: 85rem;
   min-width: 64.8rem;
+
+  @media only screen and (max-width: 1024px) {
+  }
+  @media only screen and (max-width: 768px) {
+    max-width: 80rem;
+    min-width: 40rem;
+  }
+  @media only screen and (max-width: 375px) {
+    max-width: 80rem;
+    min-width: 20rem;
+  }
   margin: 7.2rem auto;
   outline: 0;
   ${props =>
@@ -25,9 +36,6 @@ const LayoutInner = styled.div`
       animation-duration: 1s;
       animation-name: ${FadeOut};
     `}
-  @media only screen and (max-width: 880px) {
-    width: 95vw;
-  }
 `
 
 const FadeIn = keyframes`{
