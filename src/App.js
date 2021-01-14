@@ -32,14 +32,14 @@ const App = ({ match }) => {
           <Route component={QuizLoading} path="/quizloading" exact />
           <Route component={StartLoading} path="/startloading" exact />
           <Route
-            component={TestEndPage}
+            component={Auth(TestEndPage,null)}
             path="/test/:id/recommendation"
             exact
           />
 
           <Route exact path="/register" component={Auth(RegisterPage, false)} />
           <Route exact path="/login" component={Auth(LoginPage, false)} />
-          <Route component={TestPage} path="/test/:id" />
+          <Route component={Auth(TestPage,null)} path="/test/:id" />
           <Route path="/*">404 Not Found</Route>
         </Switch>
       </ScrollToTop>
