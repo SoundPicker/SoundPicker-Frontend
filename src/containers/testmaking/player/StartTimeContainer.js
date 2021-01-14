@@ -54,7 +54,6 @@ const StartTimeContainer = ({questionStartsfrom,changeStartTime,totalTime}) => {
     },[])
 
     useEffect(()=>{
-        console.log(minutes, seconds);
 
         const inputTime =  parseInt(minutes*60) + parseInt(seconds);
         if(parseInt(totalTime-4) >= inputTime){
