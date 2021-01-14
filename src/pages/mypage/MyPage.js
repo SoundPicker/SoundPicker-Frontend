@@ -231,7 +231,7 @@ switch (myState.status) {
                    <Button font='12' onClick={()=>onDeleteTest(member)}>삭제</Button>
                   <Button font='12'  color="#60FFDA" border="#60FFDA"  onClick={() => history.push(`/test/${member.id}`)} > 플레이</Button> </div></Detail>  
                   <Detail>
-                    <TextComponent  key={i} title={member.description}  DesktopLength='10' TabletLength='9' MobileLength='5'/>
+                    <TextComponent  key={i} title={member.description}  DesktopLength='10' TabletLength='9' MobileLength='7'/>
                   </Detail> 
                   <BlankTop DesktopMargin='2' TabletMargin='2' MobileMargin='2' />
                   <UnderLineWrap  DesktopLength='130'BetweenLength='95' TabletLength='70' MobileLength='36' ></UnderLineWrap>
