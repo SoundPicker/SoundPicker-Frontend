@@ -1,16 +1,16 @@
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import MainPage from "./pages/main/MainPage";
-import TestMakingPage from "./pages/testmaking/TestMakingPage";
-import MyPage from "./pages/mypage/MyPage";
-import QuizLoading from "./components/loading/QuizLoading";
-import StartLoading from "./components/loading/StartLoading";
-import TestPage from "./pages/test/TestPage";
-import TestEndPage from "./pages/test_end/TestEndPage";
-import LoginPage from "./components/views/LoginPage/LoginPage";
-import RegisterPage from "./components/views/RegisterPage/RegisterPage";
-import TestEditPage from "./pages/testedit/TestEditPage";
-import Auth from "./hoc/auth";
-import ScrollToTop from "../src/components/common/ScrollToTop";
+import { HashRouter as Router, Switch, Route } from 'react-router-dom'
+import MainPage from './pages/main/MainPage'
+import TestMakingPage from './pages/testmaking/TestMakingPage'
+import MyPage from './pages/mypage/MyPage'
+import QuizLoading from './components/loading/QuizLoading'
+import StartLoading from './components/loading/StartLoading'
+import TestPage from './pages/test/TestPage'
+import TestEndPage from './pages/test_end/TestEndPage'
+import LoginPage from './components/views/LoginPage/LoginPage'
+import RegisterPage from './components/views/RegisterPage/RegisterPage'
+import TestEditPage from './pages/testedit/TestEditPage'
+import Auth from './hoc/auth'
+import ScrollToTop from '../src/components/common/ScrollToTop'
 
 const App = ({ match }) => {
   return (
@@ -44,7 +44,7 @@ const App = ({ match }) => {
         </Switch>
       </ScrollToTop>
     </Router>
-  );
-};
+  )
+}
 
-export default App;
+export default App
