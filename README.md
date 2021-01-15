@@ -4,7 +4,7 @@
 - 프로젝트 기간: 2020.12.26 ~ 2021.01.16 🦍
   >
 
-<img style="border: 0px solid black !important;  " src="https://user-images.githubusercontent.com/61777830/103285304-23353d80-4a21-11eb-9d7e-899c970b818c.png" width="100%" height = "300px" />
+<img style="border: 0px solid black !important;  " src="https://user-images.githubusercontent.com/61777830/103285304-23353d80-4a21-11eb-9d7e-899c970b818c.png" width="100%" height = "400px" />
 
 <br>
 <br>
