@@ -9,17 +9,14 @@ const MainContainer = ({ match }) => {
     item: null,
   })
 
-  const url = "https://soundpicker.ga";
+  const url = 'https://soundpicker.ga'
 
   // categoryList
   const getCategoryAPI = async () => {
     const { data } = await axios.get(`${url}/main/`)
     try {
-      console.log('[SUCCESS] GET CATEGORY', data)
       return data
-    } catch (e) {
-      console.log('[FAIL] GET CATEGORY')
-    }
+    } catch (e) {}
   }
 
   useEffect(() => {
@@ -52,11 +49,8 @@ const MainContainer = ({ match }) => {
   const getTestAPI = async () => {
     const { data } = await axios.get(`${url}/main/`)
     try {
-      console.log('[SUCCESS] GET TEST', data)
       return data
-    } catch (e) {
-      console.log('[FAIL] GET TEST')
-    }
+    } catch (e) {}
   }
 
   useEffect(() => {
@@ -127,11 +121,8 @@ const MainContainer = ({ match }) => {
       finalData = data.data.tests
     }
     try {
-      console.log('[SUCCESS] GET SORT', finalData, finalData.length)
       return finalData
-    } catch (e) {
-      console.log('[FAIL] GET SORT')
-    }
+    } catch (e) {}
   }
 
   // input 관련 state
