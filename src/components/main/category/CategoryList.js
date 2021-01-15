@@ -21,20 +21,11 @@ const CategoryName = styled.span`
   }
 `;
 
-const CategoryBtn = styled.button`
-  &:hover {
-    width: 2rem;
-    height: 2rem;
-    box-shadow: 0 0 12px 0 #ffffff;
-    outline: none;
-
-    @media (max-width: 1024px) {
-      width: 1.4rem;
-      height: 1.4rem;
-      padding: 0;
-      box-shadow: 0 0 15px 0 #60ffda;
-    }
-  }
+const CategoryBtn = styled.div`
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background-color: #071923;
 `;
 
 const CategoryItem = styled.div`
