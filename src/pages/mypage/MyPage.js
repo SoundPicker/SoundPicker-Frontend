@@ -21,8 +21,7 @@ import { Input } from 'antd';
 const Background = styled.div`
     width:100vw;
     height:100%;
-    min-height:100vh;
-
+    min-height:1366px;
     border:1px solid rgba(0,0,0,0);
     background-repeat: no-repeat;
     background-position: center top;
@@ -30,12 +29,15 @@ const Background = styled.div`
     background-size:contain;
     @media (min-width: 768px) and (max-width:1024px){
       background-image: url(${Bg2});
+      min-height:1366px;
     }
  @media  (min-width:1024px) {
   background-image: url(${Bg1});
+  
     }
     @media (max-width: 768px) {
       background-image: url(${Bg2});
+      min-height:1024px;
     }
 `;
 
