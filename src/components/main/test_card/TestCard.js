@@ -287,7 +287,7 @@ const CardListWrap = styled.div`
 
 const GradientBox = styled.div`
   width: 130.3rem;
-  height: 22.2rem;
+  height: 15rem;
   position: absolute;
   bottom: 0;
   left: -3.55rem;
@@ -295,22 +295,25 @@ const GradientBox = styled.div`
 
   @media (max-width: 1440px) {
     width: 95.7rem;
+    height: 13rem;
     left: -1.85rem;
   }
 
   @media (max-width: 1024px) {
     width: 86rem;
+    height: 8rem;
     left: -2.2rem;
   }
 
   @media (max-width: 828px) {
     width: 60.1rem;
+    height: 6rem;
     left: -1.55rem;
   }
 
   @media (max-width: 568px) {
     width: 32.2rem;
-    height: 19.8rem;
+    height: 5rem;
     left: -0.9rem;
   }
 `;
