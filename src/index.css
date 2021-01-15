@@ -203,21 +203,21 @@ a {
 
 @media screen and (max-width: 1024px) {
   .cateBtn {
-    width: 0.5rem;
-    height: 0.5rem;
+    width: 0.8rem;
+    height: 0.8rem;
     padding: 0;
-    box-shadow: 0 0 4px 0 #ffffff;
+    box-shadow: 0 0 7px 0 #ffffff;
   }
 
   .clicked {
-    width: 0.6rem;
-    height: 0.6rem;
+    width: 0.9rem;
+    height: 0.9rem;
     padding: 0;
-    box-shadow: 0 0 8px 0 #60ffda;
+    box-shadow: 0 0 10px 0 #60ffda;
   }
 
   .cateBtn.cateAll {
-    width: 0.6rem;
-    height: 0.6rem;
+    width: 0.9rem;
+    height: 0.9rem;
   }
 }

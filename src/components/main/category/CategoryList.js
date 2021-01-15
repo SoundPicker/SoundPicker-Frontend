@@ -29,10 +29,10 @@ const CategoryBtn = styled.button`
     outline: none;
 
     @media (max-width: 1024px) {
-      width: 0.6rem;
-      height: 0.6rem;
+      width: 0.9rem;
+      height: 0.9rem;
       padding: 0;
-      box-shadow: 0 0 8px 0 #60ffda;
+      box-shadow: 0 0 10px 0 #60ffda;
     }
   }
 `;
