@@ -463,9 +463,18 @@ const CardList = ({ testList, testList2 }) => {
   };
 
   const max = Math.max(one, two, three, four);
+  console.log(max);
 
   // divide는 한 번에 나오는 더보기 묶음 개수
-  const divide = width > 568 ? Math.round(max / 4) : Math.round(max / 3.5);
+  const divide =
+    width > 568
+      ? max % 4 === 0
+        ? Math.round(max / 4) + 1
+        : Math.round(max / 4)
+      : max % 3.5 <= 1
+      ? Math.round(max / 3.5) + 1
+      : Math.round(max / 3.5);
+  console.log(divide);
 
   const maxHeight = width > 568 ? divide * 119 : divide * 65;
 
