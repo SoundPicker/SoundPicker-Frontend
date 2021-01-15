@@ -215,4 +215,9 @@ a {
     padding: 0;
     box-shadow: 0 0 8px 0 #60ffda;
   }
+
+  .cateBtn.cateAll {
+    width: 0.6rem;
+    height: 0.6rem;
+  }
 }
