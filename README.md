@@ -265,9 +265,9 @@
 
 👇🏻👇🏻👇🏻 아래 링크에서 확인 가능합니다! (밑으로 쭉 내려 주세요)👇🏻👇🏻👇🏻
 
-https://www.notion.so/WEB_-_-3188c03565bf4f52a5af8616a3359c58  (밑으로 쭉 내려 주세요)
-https://www.notion.so/WEB_-_-3188c03565bf4f52a5af8616a3359c58  
-https://www.notion.so/WEB_-_-3188c03565bf4f52a5af8616a3359c58
+https://www.notion.so/WEB_-_-3188c03565bf4f52a5af8616a3359c58  (밑으로 쭉 내려 주세요) <br>
+https://www.notion.so/WEB_-_-3188c03565bf4f52a5af8616a3359c58  <br>
+https://www.notion.so/WEB_-_-3188c03565bf4f52a5af8616a3359c58  <br>
 
     │   
     ├── ㅡ
