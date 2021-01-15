@@ -12,7 +12,7 @@
 
 ## 🕸 WEB Developer 🕸
 
-<img style="border: 0px solid black !important; border-radius:50%" src="https://user-images.githubusercontent.com/61777830/103284989-309df800-4a20-11eb-95bd-d5b20b763b2d.jpeg" width="180px" height = "180px" /> 승미 <img style="border: 0px solid black !important; border-radius:50%; " src="https://user-images.githubusercontent.com/61777830/103285053-5d520f80-4a20-11eb-80ca-3c333c40cd8d.jpeg" width="180px" height = "180px" />아연
+<img style="border: 0px solid black !important;" style="border-radius:50%" src="https://user-images.githubusercontent.com/61777830/103284989-309df800-4a20-11eb-95bd-d5b20b763b2d.jpeg" width="180px" height = "180px" /> 승미 <img style="border: 0px solid black !important; border-radius:50%; " src="https://user-images.githubusercontent.com/61777830/103285053-5d520f80-4a20-11eb-80ca-3c333c40cd8d.jpeg" width="180px" height = "180px" />아연
 <img style="border: 0px solid black !important; border-radius:50%; " src="https://user-images.githubusercontent.com/61777830/103285203-cdf92c00-4a20-11eb-9ef6-4475d32007ba.jpeg" width="180px" height = "180px" />재훈 <img style="border: 0px solid black !important; border-radius:50%; " src="https://user-images.githubusercontent.com/61777830/103285090-8377af80-4a20-11eb-87f2-4ac7855538c6.jpeg" width="180px" height = "180px" />
 재현
 
