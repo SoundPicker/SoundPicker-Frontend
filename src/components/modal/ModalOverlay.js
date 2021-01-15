@@ -2,7 +2,6 @@ import styled, { css, keyframes } from 'styled-components'
 
 const Overlay = styled.div`
   display: ${props => (props.visible ? 'block' : 'none')};
-  /* visibility: ${props => (props.visible ? 'visible' : 'hidden')}; */
   position: fixed;
   top: 0;
   left: 0;

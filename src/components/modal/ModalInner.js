@@ -9,22 +9,31 @@ const LayoutInner = styled.div`
   width: 100%;
   max-width: 85rem;
   min-width: 64.8rem;
-
+  margin: 17rem auto 0 auto;
+  margin-bottom: 6rem;
   @media only screen and (max-width: 1024px) {
+    margin: 12rem auto 5rem auto;
+    margin-bottom: 5rem;
   }
   @media only screen and (max-width: 768px) {
-    max-width: 80rem;
-    min-width: 40rem;
+    margin: 10rem auto 3rem auto;
+    max-width: 60rem;
+    min-width: 30rem;
+    margin-bottom: 4rem;
   }
   @media only screen and (max-width: 667px) {
+    margin: 8rem auto 2rem auto;
     max-width: 35rem;
     min-width: 30rem;
+    margin-bottom: 3rem;
   }
   @media only screen and (max-width: 375px) {
+    margin: 8rem auto 2rem auto;
     max-width: 30rem;
-    min-width: 20rem; // 머지
+    min-width: 20rem;
+    margin-bottom: 3rem;
   }
-  margin: 7.2rem auto;
+
   outline: 0;
   ${props =>
     props.modalIn &&

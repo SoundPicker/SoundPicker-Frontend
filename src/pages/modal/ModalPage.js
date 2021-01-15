@@ -35,7 +35,6 @@ function ModalPage({
         <ModalInner modalIn={modalIn}>
           <ModalContent data={data} />
         </ModalInner>
-
         <AnswerButtonStyle
           modalOut={modalOut}
           modalIn={modalIn}
@@ -49,6 +48,14 @@ function ModalPage({
     </>
   )
 }
+const ModalFix = styled.div`
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+`
 
 const FadeIn = keyframes`{
     0% { 
@@ -58,7 +65,6 @@ const FadeIn = keyframes`{
     opacity: 1;
     }
   `
-
 const FadeOut = keyframes`{
     0% { 
      opacity: 1;
@@ -67,7 +73,6 @@ const FadeOut = keyframes`{
     opacity: 0;
     }
   `
-
 const AnswerButtonStyle = styled.button`
   cursor: pointer;
   color: #030f2c;
@@ -81,14 +86,16 @@ const AnswerButtonStyle = styled.button`
   margin: 0 auto;
   z-index: 1000;
   overflow: auto;
-
+  font-size: 1.5rem;
   @media only screen and (max-width: 1024px) {
     width: 35rem;
     height: 4rem;
+    font-size: 1.6rem;
   }
   @media only screen and (max-width: 768px) {
     width: 32rem;
     height: 4rem;
+    font-size: 1.2rem;
   }
   background: linear-gradient(
     90deg,
