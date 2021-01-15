@@ -416,9 +416,10 @@ const AnswerText = styled.p`
     font-size: 1.3rem;
   }
   @media only screen and (max-width: 768px) {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
   }
   @media only screen and (max-width: 375px) {
+    font-size: 1.2rem;
     margin-left: -15%;
   }
   ${props =>
@@ -631,18 +632,22 @@ const HintButtonStyle = styled.button`
   white-space: nowrap;
   color: #fff;
   border: 1px solid #ffffff;
+
   outline: none;
   background: none;
   padding: 0px;
   width: 44rem;
   height: 5rem;
   margin-bottom: 2rem;
+  font-size: 1.5rem;
   @media only screen and (max-width: 1024px) {
+    font-size: 1.6rem;
     width: 35rem;
     height: 4rem;
     margin-bottom: 1.5rem;
   }
   @media only screen and (max-width: 768px) {
+    font-size: 1.2rem;
     width: 32rem;
     height: 4rem;
     margin-bottom: 1rem;
@@ -669,11 +674,14 @@ const AnswerButtonStyle = styled.button`
   padding: 0px;
   width: 44rem;
   height: 5rem;
+  font-size: 1.5rem;
   @media only screen and (max-width: 1024px) {
+    font-size: 1.6rem;
     width: 35rem;
     height: 4rem;
   }
   @media only screen and (max-width: 768px) {
+    font-size: 1.2rem;
     width: 32rem;
     height: 4rem;
   }
