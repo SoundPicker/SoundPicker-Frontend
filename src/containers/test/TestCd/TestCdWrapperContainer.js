@@ -3,24 +3,19 @@ import TestCd from '../../../components/test/testcd/TestCd'
 import axios from 'axios'
 import QuizLoading from '../../../components/loading/QuizLoading'
 const TestCdWrapperContainer = ({ match }) => {
-  console.log(match)
   //레코드 데이터 정의
   const [quiz, setQuiz] = useState({
     status: 'idle',
     item: null,
   })
 
-  // const url = " http://3.35.187.65:3000";
   const url = 'https://soundpicker.ga'
 
   const getQuizApi = async id => {
     const { data } = await axios.get(`${url}/test/${id}`)
     try {
-      console.log('[SUCCESS] get test', data)
       return data
-    } catch (e) {
-      console.log('[FAIL] get test')
-    }
+    } catch (e) {}
   }
 
   useEffect(() => {

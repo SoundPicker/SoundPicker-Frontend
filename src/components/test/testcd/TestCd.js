@@ -81,14 +81,13 @@ const TestCd = ({ newList, match }) => {
       }
     } else if (buttonText === '테스트 완료') {
       history.push(`/test/${match.params.id}/recommendation`)
-      console.log(history)
     }
   }
 
   //레코드판 돌아가는 애니메이션 핸들러
   const handleRotateAnimation = second => {
     //레코드판 재생시간이 0초일때만 에니메이션 실행을 하여 마구 연타하였을때 애니메이션 꼬이는것을 방지
-    console.log(rotateSecond)
+
     if (rotateSecond === 0) {
       setRotateSecond(second)
       //이곳에 사운드 재생
