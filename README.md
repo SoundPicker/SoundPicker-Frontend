@@ -4,6 +4,8 @@
 - 프로젝트 기간: 2020.12.26 ~ 2021.01.16 🦍
   >
 
+## 🔈 URL: https://soundpicker.kr/ 🔈
+
 <img style="border: 0px solid black !important;  " src="https://user-images.githubusercontent.com/61777830/103285304-23353d80-4a21-11eb-9d7e-899c970b818c.png" width="100%" height = "400px" />
 
 <br>
@@ -12,7 +14,7 @@
 
 ## 🕸 WEB Developer 🕸
 
-<img style="border: 0px solid black !important; border-radius:100px; " src="https://user-images.githubusercontent.com/61777830/103284989-309df800-4a20-11eb-95bd-d5b20b763b2d.jpeg" width="180px" height = "180px" /> 승미 <img style="border: 0px solid black !important; border-radius:50%; " src="https://user-images.githubusercontent.com/61777830/103285053-5d520f80-4a20-11eb-80ca-3c333c40cd8d.jpeg" width="180px" height = "180px" />아연
+<img style="border: 0px solid black !important;" src="https://user-images.githubusercontent.com/61777830/103284989-309df800-4a20-11eb-95bd-d5b20b763b2d.jpeg" width="180px" height = "180px" /> 승미 <img style="border: 0px solid black !important; border-radius:50%; " src="https://user-images.githubusercontent.com/61777830/103285053-5d520f80-4a20-11eb-80ca-3c333c40cd8d.jpeg" width="180px" height = "180px" />아연
 <img style="border: 0px solid black !important; border-radius:50%; " src="https://user-images.githubusercontent.com/61777830/103285203-cdf92c00-4a20-11eb-9ef6-4475d32007ba.jpeg" width="180px" height = "180px" />재훈 <img style="border: 0px solid black !important; border-radius:50%; " src="https://user-images.githubusercontent.com/61777830/103285090-8377af80-4a20-11eb-87f2-4ac7855538c6.jpeg" width="180px" height = "180px" />
 재현
 
@@ -30,13 +32,9 @@
 |         Yup         |       input 조건 관리       |               |
 |        redux        |       전역 상태 관리        |               |
 |     react-redux     |       전역 상태 관리        |               |
-|     redux thunk     |       전역 상태 관리        |               |
-|     redux-promise     |       전역 상태 관리        |               |
-|     redux-devtools     |       전역 상태 관리        |               |
 |  styled-components  |         스타일 시트         |               |
 |     YoutubeApi      |   iframe을 가져오기 위함    |               |
 |       xeicon        | 기본 아이콘을 가져오기 위함 |               |
-|       antd        | 기본 아이콘을 가져오기 위함 |               |
 
 <br>
  <br>
@@ -261,10 +259,26 @@
 
 <br>
 
-### 🦍 서비스 핵심 기능 소개 🦍
+
+### 🦍 서비스 핵심 기술 소개 🦍
 
 
+👇🏻👇🏻👇🏻 아래 링크에서 확인 가능합니다! (밑으로 쭉 내려 주세요)👇🏻👇🏻👇🏻
 
+https://www.notion.so/WEB_-_-3188c03565bf4f52a5af8616a3359c58  (밑으로 쭉 내려 주세요)
+https://www.notion.so/WEB_-_-3188c03565bf4f52a5af8616a3359c58  
+https://www.notion.so/WEB_-_-3188c03565bf4f52a5af8616a3359c58
 
-
-
+    │   
+    ├── ㅡ
+    ├── Main Page 
+    ├── Test Making & Test Edit Page  
+    ├── Loading page (Main, Quiz) 
+    ├── Register page  
+    ├── Login page
+    ├── My page  
+    ├── Quiz page  
+    ├── Quiz Modal page 
+    └── Test End page
+   
+        
