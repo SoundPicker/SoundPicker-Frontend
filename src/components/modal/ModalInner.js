@@ -16,9 +16,13 @@ const LayoutInner = styled.div`
     max-width: 80rem;
     min-width: 40rem;
   }
+  @media only screen and (max-width: 667px) {
+    max-width: 35rem;
+    min-width: 30rem;
+  }
   @media only screen and (max-width: 375px) {
     max-width: 30rem;
-    min-width: 20rem;
+    min-width: 20rem; // 머지
   }
   margin: 7.2rem auto;
   outline: 0;

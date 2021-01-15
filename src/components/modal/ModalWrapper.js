@@ -3,7 +3,7 @@ import styled from 'styled-components'
 const LayoutWrapper = styled.div`
   display: ${props => (props.visible ? 'block' : 'none')};
   position: fixed;
-  top: 0px;
+  top: 0;
   right: 0;
   bottom: 0;
   left: 0;
