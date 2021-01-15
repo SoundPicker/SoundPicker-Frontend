@@ -552,7 +552,7 @@ const CaseImg = styled.img`
     margin-left: 30%;
   }
   @media only screen and (max-width: 375px) {
-    margin-left: 26%;
+    margin-left: 25%;
   }
 `
 

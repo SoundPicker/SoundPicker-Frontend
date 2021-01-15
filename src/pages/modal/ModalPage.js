@@ -77,11 +77,8 @@ const AnswerButtonStyle = styled.button`
   padding: 0px;
   width: 44rem;
   height: 5rem;
-  /* position: fixed; */
   display: block;
   margin: 0 auto;
-  /* margin-bottom: 10rem; */
-
   z-index: 1000;
   overflow: auto;
 

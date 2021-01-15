@@ -8,9 +8,10 @@ import QuizHeader from '../../components/common/QuizHeader';
 import UnderLineWrap from './UnderLineWrap';
 import TextComponent from '../../components/common/TextComponent';
 import Button from './Button';
+import Button2 from './Button2';
 import BoldTextComponent from './BoldTextComponent';
 import Bg1 from '../../assets/images/mypage_background1.jpg';
-import Bg2 from '../../assets/images/mypage_background2.jpg';
+import Bg2 from '../../assets/images/mypage_background2.png';
 import logo1 from '../../assets/images/image_watermark.png';
 import StartLoading from "../../components/loading/StartLoading";
 import {auth, changeName,changePassword,deleteTest} from "../../_actions/user_action";
@@ -20,8 +21,7 @@ import { Input } from 'antd';
 const Background = styled.div`
     width:100vw;
     height:100%;
-    min-height:100vh;
-
+    min-height:1366px;
     border:1px solid rgba(0,0,0,0);
     background-repeat: no-repeat;
     background-position: center top;
@@ -29,12 +29,15 @@ const Background = styled.div`
     background-size:contain;
     @media (min-width: 768px) and (max-width:1024px){
       background-image: url(${Bg2});
+      min-height:1366px;
     }
  @media  (min-width:1024px) {
   background-image: url(${Bg1});
+  
     }
     @media (max-width: 768px) {
       background-image: url(${Bg2});
+      min-height:1024px;
     }
 `;
 
@@ -192,8 +195,8 @@ switch (myState.status) {
             <Wrapper>
               
                 <MyIcon></MyIcon>
-                <BlankTop DesktopMargin='3' TabletMargin='3' MobileMargin='3' />
-                <TextComponent title="마이페이지"  DesktopLength='20' TabletLength='15' MobileLength='10'/>  
+                <BlankTop DesktopMargin='3' TabletMargin='3' MobileMargin='1' />
+                <TextComponent title="마이페이지"  DesktopLength='20' TabletLength='15' MobileLength='13'/>  
                 <BlankTop DesktopMargin='5' TabletMargin='5' MobileMargin='5' />
                 <Content>
                   <BoldTextComponent title="개인정보 수정"  DesktopLength='25' TabletLength='20' MobileLength='15'/>
@@ -201,18 +204,18 @@ switch (myState.status) {
                 <BlankTop DesktopMargin='5' TabletMargin='5' MobileMargin='5' />
                 <Content>
                   <Input  style={{ color: 'white'  }} ref={nameInput} bordered={false} name="nickname" value={myState.member.nickname} onChange={onChangeInputs}/>
-                  <Button font='12' onClick = {() => {nameInput.current.focus(); console.log("click"); }} >닉네임 변경</Button>
+                  <Button2 font='12' onClick = {() => {nameInput.current.focus();}}>닉네임 변경</Button2>
                 </Content>
-                <BlankTop DesktopMargin='5' TabletMargin='5' MobileMargin='5' />
+                <BlankTop DesktopMargin='5' TabletMargin='5' MobileMargin='1' />
                 <Content>
                 <Input  style={{ color: 'white'  }} bordered={false} name="email" value={myState.member.email} disabled={true}/>
-                <Button font='12' color='gray'>이메일 변경불가</Button>
+                <Button2 font='12' color='gray'>이메일 <div></div>변경불가</Button2>
                 </Content>
-                <BlankTop DesktopMargin='5' TabletMargin='5' MobileMargin='5' />
+                <BlankTop DesktopMargin='5' TabletMargin='5' MobileMargin='1' />
                 <Content>
                   <Input placeholder='******'
-                    style={{ color: 'white'  }} ref={passwordInput} bordered={false} name="password" onChange={onChangePassword}/>
-                  <Button font='12' onClick = {() => {passwordInput.current.focus(); }} >비밀번호 변경</Button>
+                    style={{ color: 'white'  }} ref={passwordInput} bordered={false} name="password" onChange={onChangePassword}disabled={true}/>
+                  <Button2 font='12' color='gray' onClick = {() => {passwordInput.current.focus(); }} >비밀번호 <div></div> 변경불가</Button2>
                 </Content>
                 <BlankTop DesktopMargin='8' TabletMargin='7' MobileMargin='5' />
                 <Content>
@@ -224,13 +227,13 @@ switch (myState.status) {
                   
                   <div>
                   <Detail>
-                  <BoldTextComponent key={i} title={member.title}  DesktopLength='15' TabletLength='12' MobileLength='8'/>
+                  <BoldTextComponent key={i} title={member.title}  DesktopLength='15' TabletLength='12' MobileLength='12'/>
                   <div>
                   <Button font='12' onClick={() => history.push(`/testedit/${member.id}`)}>수정</Button>
                    <Button font='12' onClick={()=>onDeleteTest(member)}>삭제</Button>
                   <Button font='12'  color="#60FFDA" border="#60FFDA"  onClick={() => history.push(`/test/${member.id}`)} > 플레이</Button> </div></Detail>  
                   <Detail>
-                    <TextComponent title={member.description}  DesktopLength='10' TabletLength='9' MobileLength='5'/>
+                    <TextComponent  key={i} title={member.description}  DesktopLength='10' TabletLength='9' MobileLength='7'/>
                   </Detail> 
                   <BlankTop DesktopMargin='2' TabletMargin='2' MobileMargin='2' />
                   <UnderLineWrap  DesktopLength='130'BetweenLength='95' TabletLength='70' MobileLength='36' ></UnderLineWrap>
