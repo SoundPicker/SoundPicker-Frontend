@@ -201,7 +201,7 @@ a {
   cursor: pointer;
 }
 
-@media screen and (max-width: 828px) {
+@media screen and (max-width: 1024px) {
   .cateBtn {
     width: 0.5rem;
     height: 0.5rem;

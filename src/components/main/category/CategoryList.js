@@ -27,6 +27,13 @@ const CategoryBtn = styled.button`
     height: 2rem;
     box-shadow: 0 0 12px 0 #ffffff;
     outline: none;
+
+    @media (max-width: 1024px) {
+      width: 0.6rem;
+      height: 0.6rem;
+      padding: 0;
+      box-shadow: 0 0 8px 0 #60ffda;
+    }
   }
 `;
 
