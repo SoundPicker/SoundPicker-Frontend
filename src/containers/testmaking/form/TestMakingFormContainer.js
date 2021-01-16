@@ -594,7 +594,8 @@ const TestMakingFormContainer = ({history}) => {
               fs: 0,
               showinfo:0,
               enablejsapi: 1,
-              origin:'https://soundpicker.kr'
+              playsinline:1,
+              origin:'https://soundpicker.kr/'
             },
             events: {
               onReady: onReadyAPI0,
@@ -612,7 +613,8 @@ const TestMakingFormContainer = ({history}) => {
               fs: 0,
               showinfo:0,
               enablejsapi: 1,
-              origin:'https://soundpicker.kr'
+              playsinline:1,
+              origin:'https://soundpicker.kr/'
             },
             events: {
               onReady: onReadyAPI1,
@@ -630,7 +632,8 @@ const TestMakingFormContainer = ({history}) => {
               fs: 0,
               showinfo:0,
               enablejsapi: 1,
-              origin:'https://soundpicker.kr'
+              playsinline:1,
+              origin:'https://soundpicker.kr/'
             },
             events: {
               onReady: onReadyAPI2,
@@ -648,7 +651,8 @@ const TestMakingFormContainer = ({history}) => {
               fs: 0,
               showinfo:0,
               enablejsapi: 1,
-              origin:'https://soundpicker.kr'
+              playsinline:1,
+              origin:'https://soundpicker.kr/'
             },
             events: {
               onReady: onReadyAPI3,
@@ -666,7 +670,8 @@ const TestMakingFormContainer = ({history}) => {
               fs: 0,
               showinfo:0,
               enablejsapi: 1,
-              origin:'https://soundpicker.kr'
+              playsinline:1,
+              origin:'https://soundpicker.kr/'
             },
             events: {
               onReady: onReadyAPI4,
@@ -684,6 +689,7 @@ const TestMakingFormContainer = ({history}) => {
               fs: 0,
               showinfo:0,
               enablejsapi: 1,
+              playsinline:1,
               origin:'https://soundpicker.kr'
             },
             events: {
@@ -702,6 +708,7 @@ const TestMakingFormContainer = ({history}) => {
               fs: 0,
               showinfo:0,
               enablejsapi: 1,
+              playsinline:1,
               origin:'https://soundpicker.kr'
             },
             events: {
@@ -720,6 +727,7 @@ const TestMakingFormContainer = ({history}) => {
               fs: 0,
               showinfo:0,
               enablejsapi: 1,
+              playsinline:1,
               origin:'https://soundpicker.kr'
             },
             events: {
@@ -738,6 +746,7 @@ const TestMakingFormContainer = ({history}) => {
               fs: 0,
               showinfo:0,
               enablejsapi: 1,
+              playsinline:1,
               origin:'https://soundpicker.kr'
             },
             events: {
@@ -756,6 +765,7 @@ const TestMakingFormContainer = ({history}) => {
               fs: 0,
               showinfo:0,
               enablejsapi: 1,
+              playsinline:1,
               origin:'https://soundpicker.kr'
             },
             events: {

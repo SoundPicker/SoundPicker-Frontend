@@ -31,7 +31,7 @@ const PlayerContainer = ({questionUrl,i,isLoading,isPlaying,player,totalTime,cur
 }
   useEffect(() => {
         const a = document.getElementsByTagName('iframe')[i];
-        a.src = `https://www.youtube.com/embed/${questionUrl}?autoplay=0&controls=0&fs=0&showinfo=0&enablejsapi=1&origin=https%3A%2F%2Fsoundpicker.kr&widgetid=1`;
+        a.src = `https://www.youtube.com/embed/${questionUrl}?autoplay=0&controls=0&fs=0&showinfo=0&enablejsapi=1&playsinline=1&origin=https%3A%2F%2Fsoundpicker.kr&widgetid=1`;
   },[questionUrl,i]);
 
 

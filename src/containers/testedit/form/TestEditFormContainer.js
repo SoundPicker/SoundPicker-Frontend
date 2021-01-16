@@ -603,6 +603,7 @@ const TestEditFormContainer = ({history,match}) => {
               fs: 0,
               showinfo:0,
               enablejsapi: 1,
+              playsinline:1,
               origin:'https://soundpicker.kr'
             },
             events: {
@@ -621,6 +622,7 @@ const TestEditFormContainer = ({history,match}) => {
               fs: 0,
               showinfo:0,
               enablejsapi: 1,
+              playsinline:1,
               origin:'https://soundpicker.kr'
             },
             events: {
@@ -639,6 +641,7 @@ const TestEditFormContainer = ({history,match}) => {
               fs: 0,
               showinfo:0,
               enablejsapi: 1,
+              playsinline:1,
               origin:'https://soundpicker.kr'
             },
             events: {
@@ -675,6 +678,7 @@ const TestEditFormContainer = ({history,match}) => {
               fs: 0,
               showinfo:0,
               enablejsapi: 1,
+              playsinline:1,
               origin:'https://soundpicker.kr'
             },
             events: {
@@ -693,6 +697,7 @@ const TestEditFormContainer = ({history,match}) => {
               fs: 0,
               showinfo:0,
               enablejsapi: 1,
+              playsinline:1,
               origin:'https://soundpicker.kr'
             },
             events: {
@@ -711,6 +716,7 @@ const TestEditFormContainer = ({history,match}) => {
               fs: 0,
               showinfo:0,
               enablejsapi: 1,
+              playsinline:1,
               origin:'https://soundpicker.kr'
             },
             events: {
@@ -729,6 +735,7 @@ const TestEditFormContainer = ({history,match}) => {
               fs: 0,
               showinfo:0,
               enablejsapi: 1,
+              playsinline:1,
               origin:'https://soundpicker.kr'
             },
             events: {
@@ -747,6 +754,7 @@ const TestEditFormContainer = ({history,match}) => {
               fs: 0,
               showinfo:0,
               enablejsapi: 1,
+              playsinline:1,
               origin:'https://soundpicker.kr'
             },
             events: {
@@ -765,6 +773,7 @@ const TestEditFormContainer = ({history,match}) => {
               fs: 0,
               showinfo:0,
               enablejsapi: 1,
+              playsinline:1,
               origin:'https://soundpicker.kr'
             },
             events: {
