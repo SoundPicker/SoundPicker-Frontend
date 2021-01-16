@@ -464,7 +464,7 @@ const CardList = ({ testList, testList2 }) => {
 
   const max = Math.max(one, two, three, four);
 
-  const divide = width < 568 ? Math.ceil(max / 3) : Math.ceil(max / 4) + 1;
+  const divide = width < 568 ? Math.ceil(max / 3) + 1 : Math.ceil(max / 4) + 1;
 
   const maxHeight = width > 568 ? divide * 116.5 : divide * 65;
 
