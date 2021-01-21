@@ -427,8 +427,6 @@ const CardList = ({ testList, testList2 }) => {
 
   const history = useHistory();
 
-  const [count, setCount] = useState(2);
-
   const { width } = useWindowDimensions();
 
   const divideNum = width > 1440 ? 4 : width > 828 ? 3 : 2;
@@ -455,16 +453,23 @@ const CardList = ({ testList, testList2 }) => {
     one -= 3;
   }
 
+  const [count, setCount] = useState(1);
+
   const defaultHeight = width > 568 ? 116.5 : 65;
   const [height, setHeight] = useState(defaultHeight);
-  const countPlus = (e) => {
-    setCount(count + 1);
+
+  useEffect(() => {
     setHeight(count * defaultHeight);
-  };
+  });
 
   const max = Math.max(one, two, three, four);
 
-  const divide = width < 568 ? Math.ceil(max / 3) + 1 : Math.ceil(max / 4) + 1;
+  const divide =
+    width > 828
+      ? Math.ceil(max / 3.5)
+      : width > 568
+      ? Math.ceil(max / 4)
+      : Math.ceil(max / 3.3);
 
   const maxHeight = width > 568 ? divide * 116.5 : divide * 65;
 
@@ -709,7 +714,13 @@ const CardList = ({ testList, testList2 }) => {
         <GradientBox />
       </CardListWrap>
       {height < maxHeight && (
-        <LoadMoreBtn onClick={countPlus}>더보기</LoadMoreBtn>
+        <LoadMoreBtn
+          onClick={() => {
+            setCount((count) => count + 1);
+          }}
+        >
+          더보기
+        </LoadMoreBtn>
       )}
     </>
   );
