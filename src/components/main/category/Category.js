@@ -11,6 +11,7 @@ import { useState, useEffect } from "react";
 const Wrap = styled.div`
   display: flex;
   justify-content: center;
+  width: 100%;
 
   @keyframes fadeIn {
     from {
@@ -41,10 +42,10 @@ const LeftBtn = styled.button`
     outline: none;
   }
 
-  @media (max-width: 1024px) {
+  @media (max-width: 1440px) {
     margin-right: 1.7rem;
   }
-  @media (max-width: 768px) {
+  @media (max-width: 828px) {
     margin-right: 2.6rem;
   }
   @media (max-width: 568px) {
@@ -59,6 +60,7 @@ const RightBtn = styled.button`
   display: block;
   width: 5.4rem;
   height: 5.4rem;
+  margin-left: 8rem;
   background-image: url(${BtnRight});
   background-repeat: no-repeat;
   background-position: center center;
@@ -70,9 +72,16 @@ const RightBtn = styled.button`
     outline: none;
   }
 
+  @media (max-width: 1440px) {
+    margin-left: 1.7rem;
+  }
+  @media (max-width: 828px) {
+    margin-left: 2.6rem;
+  }
   @media (max-width: 568px) {
     width: 4.8rem;
     height: 4.8rem;
+    margin-left: 1.3rem;
     background-image: url(${BtnRightMobile});
   }
 `;

@@ -1,6 +1,25 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
+const Wrap = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 102.1rem;
+
+  @media (max-width: 1440px) {
+    width: 78.1rem;
+  }
+  @media (max-width: 1047px) {
+    width: 67.4rem;
+  }
+  @media (max-width: 828px) {
+    width: 41rem;
+  }
+  @media (max-width: 568px) {
+    width: 18.2rem;
+  }
+`;
+
 // 서버랑 통신해서 카테고리 이름 받아오기
 const CategoryName = styled.span`
   font-size: 1.28rem;
@@ -35,23 +54,9 @@ const CategoryItem = styled.div`
   align-items: center;
   width: 6.9rem;
   height: 5.3rem;
-  margin-right: 4.3rem;
-  &:nth-child(9) {
-    margin-right: 8rem;
-  }
-  @media (max-width: 1024px) {
-    &:nth-child(7) {
-      margin-right: 1.4rem;
-    }
-  }
-  @media (max-width: 828px) {
-    &:nth-child(5) {
-      margin-right: 3.2rem;
-    }
-  }
+
   @media (max-width: 568px) {
     width: 6rem;
-    margin-right: 2rem;
   }
 `;
 
@@ -90,12 +95,6 @@ function handleClick(event) {
     event.target.classList.remove("clicked");
   } else {
     for (var i = 0; i < div.length; i++) {
-      /*
-      if (div[0].classList === "cateAll") {
-        console.log(div[0].classList);
-        div[0].classList.remove("cateAll");
-      }
-      */
       div[i].classList.remove("clicked");
     }
 
@@ -117,7 +116,7 @@ const CategoryList = ({ categoryList, startNum, onClickDisplay }) => {
   const categoryNum = width > 1024 ? 7 : width > 828 ? 5 : width > 568 ? 3 : 2;
 
   return (
-    <>
+    <Wrap>
       {categoryList.map((item, index) => {
         if (index === 9) {
           return (
@@ -150,7 +149,7 @@ const CategoryList = ({ categoryList, startNum, onClickDisplay }) => {
           );
         }
       })}
-    </>
+    </Wrap>
   );
 };
 
