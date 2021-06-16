@@ -9,7 +9,7 @@ const TestCdWrapperContainer = ({ match }) => {
     item: null,
   })
 
-  const url = 'https://soundpicker.ga'
+  const url = 'https://shop.soundpicker.shop'
 
   const getQuizApi = async id => {
     const { data } = await axios.get(`${url}/test/${id}`)

@@ -383,7 +383,7 @@ const TestMakingFormContainer = ({history}) => {
       }
       const newTimer = setTimeout(async () => {
         try {
-          axios.post('https://soundpicker.ga/test',variable,config)
+          axios.post('https://shop.soundpicker.shop/test',variable,config)
         .then(response=> {
             if(response.data.success){
               history.push("/");

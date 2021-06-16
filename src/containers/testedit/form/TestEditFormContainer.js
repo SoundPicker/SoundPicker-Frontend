@@ -391,7 +391,7 @@ const TestEditFormContainer = ({history,match}) => {
         }
         const newTimer = setTimeout(async () => {
             try {
-                axios.put(`https://soundpicker.ga/test/${match.params.id}`,variable,config)
+                axios.put(`https://shop.soundpicker.shop/test/${match.params.id}`,variable,config)
                 .then(response=> {
                     if(response.data.success){
                       history.push("/");
@@ -799,7 +799,7 @@ const TestEditFormContainer = ({history,match}) => {
       }, []);
       const getTestData = async id =>{
           try{
-              await axios.get(`https://soundpicker.ga/test/${id}/updatepage`)
+              await axios.get(`https://shop.soundpicker.shop/test/${id}/updatepage`)
               .then(response=> {
                   if(response.data.success){
                     setTestTitle(response.data.data.test.title);

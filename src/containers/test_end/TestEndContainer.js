@@ -20,7 +20,7 @@ const TestEndContainer = ({ match }) => {
     item: null,
   })
 
-  const url = 'https://soundpicker.ga'
+  const url = 'https://shop.soundpicker.shop'
 
   const getRecommendAPI = async () => {
     // id 값 추가하기
